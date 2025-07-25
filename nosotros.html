@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosotros | Liceo Montebonito</title>
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* Todo tu diseño CSS incluido aquí 👇 */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #7AC943;
+      color: #ADD8E6;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #6AB82E;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px 0;
+    }
+    nav a {
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffd9a3;
+    }
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+    #nosotros p {
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Liceo Montebonito</h1>
+    <p>Formando desde el pensamiento científico con amor y creatividad</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <section id="nosotros">
+    <h2>¿Quiénes somos?</h2>
+    <p>
+      En el <strong>Liceo Psicopedagógico Montebonito</strong> llevamos 9 años trabajando con pasión al servicio de la comunidad. Somos un equipo de profesionales en pedagogía, psicología y música que cree firmemente en la importancia de una educación afectiva, científica y creativa desde los primeros años de vida.
+    </p>
+    <p>
+      Nuestro Proyecto Educativo Institucional (PEI) está orientado al desarrollo del pensamiento científico infantil, fomentando la observación, la curiosidad, la experimentación y el juego como base para el aprendizaje.
+    </p>
+    <p>
+      Contamos con clases de música integradas al currículo, un mes dedicado a la ciencia lleno de actividades prácticas, y experiencias significativas diseñadas para fortalecer el desarrollo emocional, cognitivo y social de nuestros niños y niñas.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    window.onload = () => {
+      console.log("Página 'Nosotros' cargada correctamente");
+    };
+  </script>
+</body>
+</html>
