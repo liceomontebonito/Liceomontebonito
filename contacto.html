@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - Liceo Montebonito</title>
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* El mismo CSS que usas en todas tus páginas */
+  </style>
+</head>
+<body>
 
+  <header>
+    <h1>Liceo Montebonito</h1>
+    <p>Formando desde el pensamiento científico con amor y creatividad</p>
+  </header>
+
+  <nav aria-label="Menú principal">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p><strong>Dirección:</strong> Manzana 5 Casa 32, Montebonito, Dosquebradas</p>
+    <p><strong>Teléfono:</strong> 317 872 8659</p>
+    <p><strong>Email:</strong> lpmontebonito@gmail.com</p>
+
+    <form onsubmit="alert('Gracias por escribirnos'); return false;">
+      <input type="text" placeholder="Tu nombre" required />
+      <input type="email" placeholder="Tu correo" required />
+      <textarea rows="4" placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
