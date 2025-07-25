@@ -3,33 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Servicios - Liceo Montebonito</title>
+  <title>Servicios | Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* Misma estructura y colores */
-    /* (pegamos el mismo bloque CSS de index.html) */
-    body { margin: 0; font-family: 'Arial', sans-serif; background-color: #f9f9f9; }
-    header { background-color: #7AC943; color: #ADD8E6; padding: 20px; text-align: center; }
-    nav { background-color: #6AB82E; display: flex; justify-content: center; gap: 20px; padding: 12px 0; }
-    nav a { color: orange; text-decoration: none; font-weight: bold; font-size: 16px; }
-    nav a:hover { text-decoration: underline; color: #ffd9a3; }
-    section { padding: 20px; max-width: 800px; margin: auto; }
-    footer { background-color: #e0e0e0; text-align: center; padding: 10px; font-size: 14px; color: #555; }
-    ul { list-style-type: disc; padding-left: 20px; }
-    @media (max-width: 600px) { nav { flex-direction: column; gap: 10px; } }
+    /* Misma estructura de diseño */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #7AC943;
+      color: #ADD8E6;
+      padding: 20px;
+    }
+    header .contenedor-encabezado {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav {
+      background-color: #6AB82E;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px 0;
+    }
+    nav a {
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffd9a3;
+    }
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      header .contenedor-encabezado {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Liceo Montebonito</h1>
-    <p>Formando desde el pensamiento científico con amor y creatividad</p>
+    <div class="contenedor-encabezado">
+      <img src="logo.png" alt="Logo del Liceo Montebonito" />
+      <div>
+        <h1>Liceo Montebonito</h1>
+        <p>Formando desde el pensamiento científico con amor y creatividad</p>
+      </div>
+    </div>
   </header>
+
   <nav>
     <a href="index.html">Inicio</a>
     <a href="nosotros.html">Nosotros</a>
     <a href="servicios.html">Servicios</a>
     <a href="contacto.html">Contacto</a>
   </nav>
+
   <section>
     <h2>Servicios</h2>
     <ul>
@@ -39,8 +99,16 @@
       <li>Extracurriculares: Robótica y Programación</li>
     </ul>
   </section>
+
   <footer>
     &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
   </footer>
+
+  <script>
+    window.onload = () => {
+      console.log("Página 'Servicios' cargada correctamente");
+    };
+  </script>
 </body>
 </html>
+
