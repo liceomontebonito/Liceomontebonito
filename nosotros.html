@@ -6,7 +6,6 @@
   <title>Nosotros | Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* Todo tu diseño CSS incluido aquí 👇 */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -16,7 +15,17 @@
       background-color: #7AC943;
       color: #ADD8E6;
       padding: 20px;
+    }
+    header .contenedor-encabezado {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
       text-align: center;
+    }
+    header img {
+      height: 70px;
     }
     nav {
       background-color: #6AB82E;
@@ -47,21 +56,29 @@
       font-size: 14px;
       color: #555;
     }
+    #nosotros p {
+      text-align: justify;
+    }
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         gap: 10px;
       }
-    }
-    #nosotros p {
-      text-align: justify;
+      header .contenedor-encabezado {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Liceo Montebonito</h1>
-    <p>Formando desde el pensamiento científico con amor y creatividad</p>
+    <div class="contenedor-encabezado">
+      <img src="logo.png" alt="Logo del Liceo Montebonito" />
+      <div>
+        <h1>Liceo Montebonito</h1>
+        <p>Formando desde el pensamiento científico con amor y creatividad</p>
+      </div>
+    </div>
   </header>
 
   <nav>
