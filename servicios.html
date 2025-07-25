@@ -6,24 +6,31 @@
   <title>Servicios - Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* Reutiliza el mismo CSS aquí también */
+    /* Misma estructura y colores */
+    /* (pegamos el mismo bloque CSS de index.html) */
+    body { margin: 0; font-family: 'Arial', sans-serif; background-color: #f9f9f9; }
+    header { background-color: #7AC943; color: #ADD8E6; padding: 20px; text-align: center; }
+    nav { background-color: #6AB82E; display: flex; justify-content: center; gap: 20px; padding: 12px 0; }
+    nav a { color: orange; text-decoration: none; font-weight: bold; font-size: 16px; }
+    nav a:hover { text-decoration: underline; color: #ffd9a3; }
+    section { padding: 20px; max-width: 800px; margin: auto; }
+    footer { background-color: #e0e0e0; text-align: center; padding: 10px; font-size: 14px; color: #555; }
+    ul { list-style-type: disc; padding-left: 20px; }
+    @media (max-width: 600px) { nav { flex-direction: column; gap: 10px; } }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Liceo Montebonito</h1>
     <p>Formando desde el pensamiento científico con amor y creatividad</p>
   </header>
-
-  <nav aria-label="Menú principal">
+  <nav>
     <a href="index.html">Inicio</a>
     <a href="nosotros.html">Nosotros</a>
     <a href="servicios.html">Servicios</a>
     <a href="contacto.html">Contacto</a>
   </nav>
-
-  <section id="servicios">
+  <section>
     <h2>Servicios</h2>
     <ul>
       <li>Prejardín</li>
@@ -32,10 +39,8 @@
       <li>Extracurriculares: Robótica y Programación</li>
     </ul>
   </section>
-
   <footer>
     &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
   </footer>
-
 </body>
 </html>
