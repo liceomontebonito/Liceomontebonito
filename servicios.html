@@ -13,7 +13,7 @@
       background-color: #f9f9f9;
     }
     header {
-      background-color: #7AC943;
+      background-color: #87CEEB;
       color: #ADD8E6;
       padding: 20px;
     }
@@ -27,6 +27,9 @@
     }
     header img {
       height: 70px;
+    }
+    header h1 {
+      color: #7AC943;
     }
     nav {
       background-color: #6AB82E;
@@ -73,23 +76,8 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="contenedor-encabezado">
-      <img src="logo.png" alt="Logo del Liceo Montebonito" />
-      <div>
-        <h1>Liceo Montebonito</h1>
-        <p>Formando desde el pensamiento científico con amor y creatividad</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-
+  <div id="encabezado-container"></div>
+  
   <section>
     <h2>Servicios</h2>
     <ul>
@@ -99,13 +87,22 @@
       <li>Extracurriculares: Robótica y Programación</li>
     </ul>
   </section>
-
   <footer>
     &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
   </footer>
-
   <script>
+    async function cargarEncabezado() {
+      try {
+        const response = await fetch('encabezado.html');
+        const html = await response.text();
+        document.getElementById('encabezado-container').innerHTML = html;
+      } catch (error) {
+        console.error('Error cargando el encabezado:', error);
+      }
+    }
+    
     window.onload = () => {
+      cargarEncabezado();
       console.log("Página 'Servicios' cargada correctamente");
     };
   </script>
