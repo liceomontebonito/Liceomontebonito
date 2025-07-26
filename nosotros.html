@@ -55,6 +55,40 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
+      position: relative;
+    }
+    
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .floating-icon {
+      position: absolute;
+      font-size: 2.5em;
+      opacity: 0.08;
+      animation: float 8s ease-in-out infinite;
+      color: #7AC943;
+    }
+    
+    .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+    .floating-icon:nth-child(2) { top: 25%; right: 8%; animation-delay: 1s; }
+    .floating-icon:nth-child(3) { top: 45%; left: 3%; animation-delay: 2s; }
+    .floating-icon:nth-child(4) { top: 65%; right: 5%; animation-delay: 3s; }
+    .floating-icon:nth-child(5) { top: 80%; left: 10%; animation-delay: 4s; }
+    .floating-icon:nth-child(6) { top: 35%; right: 15%; animation-delay: 5s; }
+    .floating-icon:nth-child(7) { top: 55%; left: 15%; animation-delay: 6s; }
+    .floating-icon:nth-child(8) { top: 75%; right: 20%; animation-delay: 7s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 0.15; }
     }
     .hero-section {
       background: linear-gradient(135deg, #87CEEB 0%, #7AC943 100%);
@@ -237,39 +271,50 @@
   <div id="encabezado-container"></div>
   
   <div class="container">
+    <div class="floating-elements">
+      <div class="floating-icon">🧪</div>
+      <div class="floating-icon">🎨</div>
+      <div class="floating-icon">📚</div>
+      <div class="floating-icon">🔬</div>
+      <div class="floating-icon">🎭</div>
+      <div class="floating-icon">🧩</div>
+      <div class="floating-icon">⚗️</div>
+      <div class="floating-icon">🎪</div>
+    </div>
+    
     <div class="hero-section">
       <h1>¿Quiénes Somos?</h1>
       <p>9 años transformando la educación infantil a través del pensamiento científico y la creatividad</p>
     </div>
 
     <div class="content-grid">
-      <div class="card">
+      <div class="card card-with-decoration historia-card">
         <h3><span class="card-icon">🏫</span>Nuestra Historia</h3>
         <p>En el <strong>Liceo Psicopedagógico Montebonito</strong> llevamos 9 años comprometidos con la formación integral de niños y niñas, acompañándolos en su crecimiento desde el amor, la ciencia y la creatividad. Somos una institución educativa que ha dedicado casi una década a transformar la manera de enseñar y aprender en los primeros años de vida.</p>
       </div>
 
-      <div class="card">
+      <div class="card card-with-decoration metodologia-card">
         <h3><span class="card-icon">🔬</span>Nuestra Metodología</h3>
         <p>Nuestra propuesta educativa tiene sus raíces en el pensamiento científico, donde el juego, la exploración del medio, la formulación de hipótesis y la deducción se convierten en los pilares fundamentales del aprendizaje. Integramos estas metodologías con el arte, la literatura y la expresión creativa.</p>
       </div>
 
-      <div class="card">
+      <div class="card card-with-decoration equipo-card">
         <h3><span class="card-icon">👥</span>Nuestro Equipo</h3>
         <p>Nuestro equipo está conformado por profesionales especializados en pedagogía, psicología y música, quienes trabajan de manera articulada para ofrecer experiencias educativas significativas. Fomentamos la curiosidad natural y el desarrollo del pensamiento crítico desde la primera infancia.</p>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card card-with-decoration mision-card">
       <h3><span class="card-icon">🎯</span>Misión</h3>
       <p>Formar integralmente a niños y niñas en sus primeros años de vida, desarrollando su pensamiento científico a través del juego, la exploración, la experimentación y la creatividad, en un ambiente de amor, respeto y diversión que potencie sus habilidades cognitivas, emocionales y sociales.</p>
     </div>
 
-    <div class="card">
+    <div class="card card-with-decoration vision-card">
       <h3><span class="card-icon">🌟</span>Visión</h3>
       <p>Ser reconocidos como la institución educativa líder en la formación científica y creativa de la primera infancia en la región, formando pequeños investigadores y pensadores críticos que contribuyan positivamente a la sociedad del futuro.</p>
     </div>
 
-    <div class="card">
+    <div class="card card-with-decoration valores-card">
       <h3><span class="card-icon">💎</span>Nuestros Valores</h3>
       <div class="values-grid">
         <div class="value-item">
@@ -321,7 +366,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card card-with-decoration filosofia-card">
       <h3><span class="card-icon">🚀</span>Nuestra Filosofía</h3>
       <p>En el Liceo Montebonito, cada día es una oportunidad para que nuestros estudiantes exploren, creen, imaginen y construyan su propio conocimiento en un ambiente lleno de afecto, respeto y diversión, donde el juego y la ciencia van de la mano para formar ciudadanos íntegros y pensadores críticos preparados para los desafíos del siglo XXI.</p>
     </div>
