@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Servicios | Liceo Montebonito</title>
+  <title>Nosotros | Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* Misma estructura de diseño */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -31,6 +30,9 @@
     header h1 {
       color: #7AC943;
     }
+    header p {
+      color: #7AC943;
+    }
     nav {
       background-color: #6AB82E;
       display: flex;
@@ -53,16 +55,15 @@
       max-width: 800px;
       margin: auto;
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
     footer {
       background-color: #e0e0e0;
       text-align: center;
       padding: 10px;
       font-size: 14px;
       color: #555;
+    }
+    #nosotros p {
+      text-align: justify;
     }
     @media (max-width: 600px) {
       nav {
@@ -78,14 +79,17 @@
 <body>
   <div id="encabezado-container"></div>
   
-  <section>
-    <h2>Servicios</h2>
-    <ul>
-      <li>Prejardín</li>
-      <li>Jardín</li>
-      <li>Transición</li>
-      <li>Extracurriculares: Robótica y Programación</li>
-    </ul>
+  <section id="nosotros">
+    <h2>¿Quiénes somos?</h2>
+    <p>
+      En el <strong>Liceo Psicopedagógico Montebonito</strong> llevamos 9 años trabajando con pasión al servicio de la comunidad. Somos un equipo de profesionales en pedagogía, psicología y música que cree firmemente en la importancia de una educación afectiva, científica y creativa desde los primeros años de vida.
+    </p>
+    <p>
+      Nuestro Proyecto Educativo Institucional (PEI) está orientado al desarrollo del pensamiento científico infantil, fomentando la observación, la curiosidad, la experimentación y el juego como base para el aprendizaje.
+    </p>
+    <p>
+      Contamos con clases de música integradas al currículo, un mes dedicado a la ciencia lleno de actividades prácticas, y experiencias significativas diseñadas para fortalecer el desarrollo emocional, cognitivo y social de nuestros niños y niñas.
+    </p>
   </section>
   <footer>
     &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
@@ -103,7 +107,7 @@
     
     window.onload = () => {
       cargarEncabezado();
-      console.log("Página 'Servicios' cargada correctamente");
+      console.log("Página 'Nosotros' cargada correctamente");
     };
   </script>
 </body>
