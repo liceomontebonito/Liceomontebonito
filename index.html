@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Liceo Montebonito - Jardín Infantil</title>
   <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="global-header.css">
   <style>
     /* Estilos globales mejorados */
     body {
@@ -264,10 +265,11 @@
       animation-delay: 4s;
     }
     
-    @keyframes float {
+    /* NOTA: @keyframes float ya está definido en global-header.css, se puede eliminar de aquí si es idéntico */
+    /* @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-20px) rotate(180deg); }
-    }
+    } */
     
     /* Responsive */
     @media (max-width: 768px) {
@@ -323,17 +325,72 @@
   </style>
 </head>
 <body>
-  <div id="encabezado-container"></div>
-  
+  <div class="floating-buttons">
+    <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+       target="_blank" 
+       class="floating-btn whatsapp-btn" 
+       data-tooltip="Escríbenos">
+      📱
+    </a>
+    
+    <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
+       target="_blank" 
+       class="floating-btn instagram-btn" 
+       data-tooltip="Síguenos">
+      📷
+    </a>
+    
+    <a href="https://www.youtube.com/@LiceoPsicopedagogicoMontebonito" 
+       target="_blank" 
+       class="floating-btn youtube-btn" 
+       data-tooltip="Suscríbete">
+      ▶️
+    </a>
+    
+    <a href="https://www.tiktok.com/@liceomontebonito?_t=ZS-8yMv5yL4Z8c&_r=1" 
+       target="_blank" 
+       class="floating-btn tiktok-btn" 
+       data-tooltip="Síguenos">
+      🎵
+    </a>
+  </div>
+
+  <header>
+    <div class="contenedor-encabezado">
+      <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
+      <div>
+        <h1>Liceo Psicopedagógico Montebonito</h1>
+        <p>Transformando vidas a través de la educación integral</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html" class="nav-link">🏠 Inicio</a>
+    <a href="nosotros.html" class="nav-link">👥 Nosotros</a>
+    
+    <div class="dropdown">
+      <button class="dropdown-btn">
+        📚 Información
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-content">
+        <a href="servicios.html">🎓 Servicios</a>
+        <a href="admisiones.html">📋 Admisiones</a>
+        <a href="blog/index.html">📝 Blog</a>
+      </div>
+    </div>
+    
+    <a href="contacto.html" class="nav-link">📞 Contacto</a>
+  </nav>
+
   <section>
-    <!-- Floating decorative elements -->
     <div class="floating-elements">
       <div class="floating-star">⭐</div>
       <div class="floating-star">🎨</div>
       <div class="floating-star">🔬</div>
     </div>
     
-    <!-- Hero content -->
     <div class="hero-content">
       <h2>Bienvenidos</h2>
       <div class="highlight-badge">
@@ -345,7 +402,6 @@
       </p>
     </div>
     
-    <!-- Features grid -->
     <div class="features-grid">
       <div class="feature-item">
         <span class="feature-icon">🔬</span>
@@ -372,7 +428,6 @@
       </div>
     </div>
     
-    <!-- Video section -->
     <div class="video-section">
       <h3 class="video-title">Conoce Nuestro Mundo</h3>
       <p class="video-description">
@@ -381,7 +436,9 @@
       </p>
       <div class="video-container">
         <iframe 
-          src="https://www.youtube.com/embed/LYFiJpzqPmo" 
+          src="https://www.youtube.com/embed/TUbo-5t98B0" 
+          title="Conoce el Liceo Psicopedagógico Montebonito"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
         </iframe>
@@ -393,37 +450,53 @@
   </section>
   
   <footer>
-    <p class="footer-main">&copy; 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
+    <p class="footer-main">© 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
     <p class="footer-sub">Transformando vidas a través de la educación integral</p>
   </footer>
   
   <script>
-    async function cargarEncabezado() {
-      try {
-        const response = await fetch('encabezado.html');
-        const html = await response.text();
-        document.getElementById('encabezado-container').innerHTML = html;
-        
-        // Marcar enlace activo después de cargar el encabezado
-        setTimeout(() => {
-          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-          const navLinks = document.querySelectorAll('nav a');
-          navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPage || 
-                (currentPage === '' && link.getAttribute('href') === 'index.html')) {
-              link.style.backgroundColor = '#FF6B35';
-              link.style.color = 'white';
+    document.addEventListener('DOMContentLoaded', function() {
+      // Marcar enlace activo
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('nav a, .nav-link');
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage || 
+            (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+          link.style.backgroundColor = '#FF6B35';
+          link.style.color = 'white';
+        }
+      });
+
+      // Funcionalidad del dropdown
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        const btn = dropdown.querySelector('.dropdown-btn');
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdowns.forEach(otherDropdown => {
+            if (otherDropdown !== dropdown) {
+              otherDropdown.classList.remove('active');
             }
           });
-        }, 100);
-        
-      } catch (error) {
-        console.error('Error cargando el encabezado:', error);
-      }
-    }
-    
-    window.onload = () => {
-      cargarEncabezado();
+          dropdown.classList.toggle('active');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
+      });
+      
       console.log("Página 'Inicio' cargada correctamente");
       
       // Agregar interactividad a las feature items
@@ -437,7 +510,7 @@
           item.style.transform = 'translateY(0) scale(1)';
         });
       });
-    };
+    });
   </script>
 </body>
 </html>
