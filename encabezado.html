@@ -75,6 +75,71 @@
     font-style: italic;
   }
   
+  /* Botón WhatsApp flotante */
+  .whatsapp-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite;
+  }
+  
+  .whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+  }
+  
+  @keyframes whatsappPulse {
+    0% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+  }
+  
+  /* Tooltip para el botón WhatsApp */
+  .whatsapp-btn::after {
+    content: 'Escríbenos';
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+  }
+  
   /* Navegación mejorada */
   nav {
     background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
@@ -146,6 +211,19 @@
     header p {
       font-size: 1em;
     }
+    
+    .whatsapp-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      top: 15px;
+      right: 15px;
+    }
+    
+    .whatsapp-btn::after {
+      font-size: 11px;
+      padding: 6px 10px;
+    }
   }
   
   @media (max-width: 480px) {
@@ -156,8 +234,24 @@
     header h1 {
       font-size: 1.8em;
     }
+    
+    .whatsapp-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+      top: 10px;
+      right: 10px;
+    }
   }
 </style>
+
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+   target="_blank" 
+   class="whatsapp-btn" 
+   title="Contáctanos por WhatsApp">
+  📱
+</a>
 
 <!-- Header -->
 <header>
