@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog - Liceo Montebonito</title>
   <link rel="icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../global-header.css">
   <style>
     * {
       margin: 0;
@@ -321,11 +322,12 @@
       left: 20%;
       animation-delay: 4s;
     }
-
-    @keyframes float {
+    
+    /* NOTA: @keyframes float ya está definido en global-header.css, se puede eliminar de aquí si es idéntico */
+    /* @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-20px) rotate(180deg); }
-    }
+    } */
 
     @media (max-width: 768px) {
       .blog-container {
@@ -360,10 +362,66 @@
   </style>
 </head>
 <body>
-  <div id="encabezado-container"></div>
+  <div class="floating-buttons">
+    <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+       target="_blank" 
+       class="floating-btn whatsapp-btn" 
+       data-tooltip="Escríbenos">
+      📱
+    </a>
+    
+    <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
+       target="_blank" 
+       class="floating-btn instagram-btn" 
+       data-tooltip="Síguenos">
+      📷
+    </a>
+    
+    <a href="https://www.youtube.com/@LiceoPsicopedagogicoMontebonito" 
+       target="_blank" 
+       class="floating-btn youtube-btn" 
+       data-tooltip="Suscríbete">
+      ▶️
+    </a>
+    
+    <a href="https://www.tiktok.com/@liceomontebonito?_t=ZS-8yMv5yL4Z8c&_r=1" 
+       target="_blank" 
+       class="floating-btn tiktok-btn" 
+       data-tooltip="Síguenos">
+      🎵
+    </a>
+  </div>
+
+  <header>
+    <div class="contenedor-encabezado">
+      <img id="logo-img" src="../logo.png" alt="Logo Liceo Montebonito" />
+      <div>
+        <h1>Liceo Psicopedagógico Montebonito</h1>
+        <p>Transformando vidas a través de la educación integral</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="../index.html" class="nav-link">🏠 Inicio</a>
+    <a href="../nosotros.html" class="nav-link">👥 Nosotros</a>
+    
+    <div class="dropdown">
+      <button class="dropdown-btn">
+        📚 Información
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-content">
+        <a href="../servicios.html">🎓 Servicios</a>
+        <a href="../admisiones.html">📋 Admisiones</a>
+        <a href="index.html">📝 Blog</a>
+      </div>
+    </div>
+    
+    <a href="../contacto.html" class="nav-link">📞 Contacto</a>
+  </nav>
   
   <div class="blog-container">
-    <!-- Floating decorative elements -->
     <div class="floating-elements">
       <div class="floating-star">📚</div>
       <div class="floating-star">✨</div>
@@ -402,7 +460,7 @@
         <h2 class="post-title">🎉 Bienvenida al Blog</h2>
         <p class="post-excerpt">Nos complace dar la bienvenida a nuestro nuevo blog educativo. Aquí encontrarás contenido valioso para fortalecer la educación y el vínculo entre familias y docentes.</p>
         <div class="post-footer">
-          <span class="read-more">Leer más →</span>
+          <a href="2025-07-27-bienvenida.html" class="read-more">Leer más →</a>
           <span class="read-time">⏱️ 2 min</span>
         </div>
       </article>
@@ -418,7 +476,7 @@
         <h2 class="post-title">📉 Causas de la baja natalidad en Colombia</h2>
         <p class="post-excerpt">Analizamos los factores sociales, económicos y culturales que influyen en la reducción de la tasa de natalidad en nuestro país y sus implicaciones futuras.</p>
         <div class="post-footer">
-          <span class="read-more">Leer más →</span>
+          <a href="2025-07-27-baja-natalidad.html" class="read-more">Leer más →</a>
           <span class="read-time">⏱️ 5 min</span>
         </div>
       </article>
@@ -433,108 +491,127 @@
   </div>
 
   <script>
-    // Cargar encabezado
-    async function cargarEncabezado() {
-      try {
-        const response = await fetch('../encabezado.html');
-        const html = await response.text();
-        document.getElementById('encabezado-container').innerHTML = html;
-        
-        // Marcar enlace activo después de cargar el encabezado
-        setTimeout(() => {
-          const navLinks = document.querySelectorAll('nav a');
-          navLinks.forEach(link => {
-            if (link.getAttribute('href') === 'blog/index.html') {
-              link.style.backgroundColor = '#FF6B35';
-              link.style.color = 'white';
+    document.addEventListener('DOMContentLoaded', function() {
+      // Marcar enlace activo
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('nav a, .nav-link');
+      navLinks.forEach(link => {
+        // Ajuste de la lógica para el blog, ya que su href es "blog/index.html"
+        if (link.getAttribute('href').includes('blog/index.html') && currentPage === 'index.html' && window.location.pathname.includes('/blog/')) {
+          link.style.backgroundColor = '#FF6B35';
+          link.style.color = 'white';
+        } else if (link.getAttribute('href') === currentPage && !window.location.pathname.includes('/blog/')) {
+          link.style.backgroundColor = '#FF6B35';
+          link.style.color = 'white';
+        }
+      });
+
+      // Funcionalidad del dropdown
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        const btn = dropdown.querySelector('.dropdown-btn');
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdowns.forEach(otherDropdown => {
+            if (otherDropdown !== dropdown) {
+              otherDropdown.classList.remove('active');
             }
           });
-        }, 100);
-        
-      } catch (error) {
-        console.error('Error cargando el encabezado:', error);
-      }
-    }
-
-    // Funcionalidad de búsqueda
-    const searchInput = document.getElementById('searchInput');
-    const postsContainer = document.getElementById('postsContainer');
-    const categoryTags = document.querySelectorAll('.category-tag');
-    const allPosts = document.querySelectorAll('.post-card');
-
-    let currentCategory = 'todos';
-
-    // Búsqueda
-    searchInput.addEventListener('input', filterPosts);
-
-    // Filtro por categorías
-    categoryTags.forEach(tag => {
-      tag.addEventListener('click', () => {
-        categoryTags.forEach(t => t.classList.remove('active'));
-        tag.classList.add('active');
-        currentCategory = tag.dataset.category;
-        filterPosts();
+          dropdown.classList.toggle('active');
+        });
       });
-    });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
+      });
 
-    function filterPosts() {
-      const searchTerm = searchInput.value.toLowerCase();
-      let visiblePosts = 0;
+      // Funcionalidad de búsqueda
+      const searchInput = document.getElementById('searchInput');
+      const postsContainer = document.getElementById('postsContainer');
+      const categoryTags = document.querySelectorAll('.category-tag');
+      const allPosts = document.querySelectorAll('.post-card');
 
-      allPosts.forEach(post => {
-        const title = post.dataset.title.toLowerCase();
-        const content = post.dataset.content.toLowerCase();
-        const category = post.dataset.category;
+      let currentCategory = 'todos';
 
-        const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
-        const matchesCategory = currentCategory === 'todos' || category === currentCategory;
+      // Búsqueda
+      searchInput.addEventListener('input', filterPosts);
 
-        if (matchesSearch && matchesCategory) {
-          post.style.display = 'block';
-          visiblePosts++;
+      // Filtro por categorías
+      categoryTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          categoryTags.forEach(t => t.classList.remove('active'));
+          tag.classList.add('active');
+          currentCategory = tag.dataset.category;
+          filterPosts();
+        });
+      });
+
+      function filterPosts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visiblePosts = 0;
+
+        allPosts.forEach(post => {
+          const title = post.dataset.title.toLowerCase();
+          const content = post.dataset.content.toLowerCase();
+          const category = post.dataset.category;
+
+          const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
+          const matchesCategory = currentCategory === 'todos' || category === currentCategory;
+
+          if (matchesSearch && matchesCategory) {
+            post.style.display = 'block';
+            visiblePosts++;
+          } else {
+            post.style.display = 'none';
+          }
+        });
+
+        // Mostrar mensaje si no hay resultados
+        if (visiblePosts === 0) {
+          if (!document.querySelector('.empty-state')) {
+            const emptyState = document.createElement('div');
+            emptyState.className = 'empty-state';
+            emptyState.innerHTML = `
+              <h3>🔍 No se encontraron artículos</h3>
+              <p>Intenta con otros términos de búsqueda o categorías.</p>
+            `;
+            postsContainer.appendChild(emptyState);
+          }
         } else {
-          post.style.display = 'none';
-        }
-      });
-
-      // Mostrar mensaje si no hay resultados
-      if (visiblePosts === 0) {
-        if (!document.querySelector('.empty-state')) {
-          const emptyState = document.createElement('div');
-          emptyState.className = 'empty-state';
-          emptyState.innerHTML = `
-            <h3>🔍 No se encontraron artículos</h3>
-            <p>Intenta con otros términos de búsqueda o categorías.</p>
-          `;
-          postsContainer.appendChild(emptyState);
-        }
-      } else {
-        const emptyState = document.querySelector('.empty-state');
-        if (emptyState) {
-          emptyState.remove();
+          const emptyState = document.querySelector('.empty-state');
+          if (emptyState) {
+            emptyState.remove();
+          }
         }
       }
-    }
 
-    // Enlaces a artículos
-    allPosts.forEach(post => {
-      post.addEventListener('click', (e) => {
-        e.preventDefault();
-        const title = post.querySelector('.post-title').textContent;
-        
-        if (title.includes('Bienvenida')) {
-          window.location.href = '2025-07-27-bienvenida.html';
-        } else if (title.includes('natalidad')) {
-          window.location.href = '2025-07-27-baja-natalidad.html';
-        }
+      // Enlaces a artículos
+      allPosts.forEach(post => {
+        post.querySelector('.read-more').addEventListener('click', (e) => { // Asegurarse de que el clic es en el "Leer más"
+          e.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+          const title = post.querySelector('.post-title').textContent;
+          
+          if (title.includes('Bienvenida')) {
+            window.location.href = '2025-07-27-bienvenida.html';
+          } else if (title.includes('natalidad')) {
+            window.location.href = '2025-07-27-baja-natalidad.html';
+          }
+        });
       });
-    });
-
-    // Inicializar página
-    window.onload = () => {
-      cargarEncabezado();
+      
       console.log("Blog cargado correctamente");
-    };
+    });
   </script>
 </body>
 </html>
