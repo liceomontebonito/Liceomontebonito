@@ -2,26 +2,492 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Baja natalidad en Colombia</title>
-  <link rel="stylesheet" href="../estilos.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Causas de la baja natalidad en Colombia - Blog Liceo Montebonito</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: #3a7ca5;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .article-title {
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .category-badge {
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .article-content {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content ul {
+      margin: 25px 0;
+      padding-left: 0;
+    }
+
+    .article-content li {
+      background: #f8f9fa;
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #3a7ca5;
+      list-style: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .article-content li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-content strong {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .highlight-box h3 {
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .tags {
+      margin: 40px 0;
+      padding: 20px 0;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .tags h4 {
+      color: #666;
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: #f1f3f4;
+      color: #5f6368;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      background: #3a7ca5;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid #f0f0f0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3a7ca5, #2c5aa0);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #3a7ca5;
+      border: 2px solid #3a7ca5;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .share-section {
+      text-align: center;
+      margin: 40px 0;
+      padding: 25px;
+      background: #f8f9fa;
+      border-radius: 15px;
+    }
+
+    .share-section h4 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .share-facebook { background: #1877f2; }
+    .share-twitter { background: #1da1f2; }
+    .share-whatsapp { background: #25d366; }
+    .share-linkedin { background: #0077b5; }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .related-posts {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    .related-posts h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 1.5em;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .related-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border-color: #3a7ca5;
+    }
+
+    .related-card h4 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    .related-card p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin: 10px;
+      }
+
+      .article-title {
+        font-size: 2em;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .navigation {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>📉 Causas de la baja natalidad en Colombia</h1>
-    <p><strong>Publicado el 27 de julio de 2025</strong></p>
+    <div class="article-header">
+      <div class="breadcrumb">
+        <a href="index.html">🏠 Blog</a> › <a href="index.html?category=sociedad">Sociedad</a> › Baja natalidad en Colombia
+      </div>
+      
+      <h1 class="article-title">📉 Causas de la baja natalidad en Colombia</h1>
+      
+      <div class="article-meta">
+        <div class="meta-item">
+          <span>📅</span>
+          <span>27 de julio, 2025</span>
+        </div>
+        <div class="meta-item">
+          <span>👤</span>
+          <span>Equipo Editorial</span>
+        </div>
+        <div class="meta-item">
+          <span>⏱️</span>
+          <span>5 min de lectura</span>
+        </div>
+        <span class="category-badge">Sociedad</span>
+      </div>
+    </div>
 
-    <p>Colombia, al igual que muchos países latinoamericanos, enfrenta una reducción constante en su tasa de natalidad. Esta tendencia puede deberse a múltiples factores sociales, económicos y culturales.</p>
+    <article class="article-content">
+      <p>Colombia, al igual que muchos países latinoamericanos, enfrenta una reducción constante en su tasa de natalidad. Esta tendencia puede deberse a múltiples factores sociales, económicos y culturales que están transformando la estructura demográfica del país.</p>
 
-    <ul>
-      <li><strong>Educación y empoderamiento femenino:</strong> Cada vez más mujeres acceden a estudios superiores y al mercado laboral, lo que retrasa o reduce su deseo de tener hijos.</li>
-      <li><strong>Inestabilidad económica:</strong> El alto costo de vida, la informalidad laboral y la incertidumbre financiera hacen que muchas parejas pospongan o descarten la idea de tener hijos.</li>
-      <li><strong>Acceso a métodos anticonceptivos:</strong> El acceso a educación sexual y planificación familiar ha mejorado, reduciendo embarazos no deseados.</li>
-      <li><strong>Cambios culturales:</strong> Hoy en día hay más diversidad en los estilos de vida. Muchas personas priorizan su desarrollo personal, profesional o el disfrute de la vida sin hijos.</li>
-    </ul>
+      <div class="highlight-box">
+        <h3>💡 Dato Importante</h3>
+        <p>La tasa de natalidad en Colombia ha disminuido de 3.5 hijos por mujer en 1990 a aproximadamente 1.8 en 2025, situándose por debajo del nivel de reemplazo poblacional.</p>
+      </div>
 
-    <p>Este fenómeno presenta retos importantes para el país, como el envejecimiento poblacional y la sostenibilidad del sistema pensional. Es un tema que requiere análisis profundo y políticas públicas acertadas.</p>
+      <h3>🔍 Principales Factores</h3>
+      <ul>
+        <li><strong>Educación y empoderamiento femenino:</strong> Cada vez más mujeres acceden a estudios superiores y al mercado laboral, lo que retrasa o reduce su deseo de tener hijos. La educación superior permite mayor autonomía económica y personal.</li>
+        
+        <li><strong>Inestabilidad económica:</strong> El alto costo de vida, la informalidad laboral y la incertidumbre financiera hacen que muchas parejas pospongan o descarten la idea de tener hijos. Criar un hijo en Colombia requiere una inversión significativa.</li>
+        
+        <li><strong>Acceso a métodos anticonceptivos:</strong> El acceso mejorado a educación sexual y planificación familiar ha reducido significativamente los embarazos no deseados, permitiendo decisiones más conscientes sobre la maternidad y paternidad.</li>
+        
+        <li><strong>Cambios culturales:</strong> Hoy en día hay más diversidad en los estilos de vida. Muchas personas priorizan su desarrollo personal, profesional o el disfrute de la vida sin hijos, desafiando normas tradicionales.</li>
+      </ul>
 
-    <a class="volver" href="index.html">← Volver al blog</a>
+      <p>Este fenómeno presenta retos importantes para el país, como el envejecimiento poblacional y la sostenibilidad del sistema pensional. Es un tema que requiere análisis profundo y políticas públicas acertadas para garantizar un equilibrio demográfico saludable.</p>
+
+      <div class="highlight-box">
+        <h3>🚀 Reflexión Final</h3>
+        <p>La baja natalidad no es necesariamente negativa, pero sí requiere adaptación de nuestras políticas sociales y económicas para enfrentar los desafíos futuros.</p>
+      </div>
+    </article>
+
+    <div class="tags">
+      <h4>Etiquetas</h4>
+      <div class="tag-list">
+        <a href="#" class="tag">#Demografía</a>
+        <a href="#" class="tag">#Colombia</a>
+        <a href="#" class="tag">#Natalidad</a>
+        <a href="#" class="tag">#Sociedad</a>
+        <a href="#" class="tag">#Educación</a>
+        <a href="#" class="tag">#Economía</a>
+      </div>
+    </div>
+
+    <div class="share-section">
+      <h4>📤 Comparte este artículo</h4>
+      <div class="share-buttons">
+        <a href="#" class="share-btn share-facebook">📘 Facebook</a>
+        <a href="#" class="share-btn share-twitter">🐦 Twitter</a>
+        <a href="#" class="share-btn share-whatsapp">💬 WhatsApp</a>
+        <a href="#" class="share-btn share-linkedin">💼 LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="related-posts">
+      <h3>📚 Artículos Relacionados</h3>
+      <div class="related-grid">
+        <a href="2025-07-27-bienvenida.html" class="related-card">
+          <h4>🎉 Bienvenida al Blog</h4>
+          <p>Conoce más sobre nuestro nuevo espacio educativo y los temas que abordaremos.</p>
+        </a>
+        <a href="#" class="related-card">
+          <h4>👨‍👩‍👧‍👦 Familia y Educación</h4>
+          <p>La importancia del núcleo familiar en el desarrollo educativo de los estudiantes.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <a href="index.html" class="btn btn-primary">
+        <span>←</span>
+        <span>Volver al blog</span>
+      </a>
+      <a href="/Liceomontebonito/index.html" class="btn btn-secondary">
+        <span>🏠</span>
+        <span>Inicio</span>
+      </a>
+    </div>
   </div>
+
+  <script>
+    // Funcionalidad para botones de compartir
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        const text = encodeURIComponent('Causas de la baja natalidad en Colombia - Un análisis profundo');
+        
+        if (btn.classList.contains('share-facebook')) {
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        } else if (btn.classList.contains('share-twitter')) {
+          window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        } else if (btn.classList.contains('share-whatsapp')) {
+          window.open(`https://wa.me/?text=${text} ${url}`, '_blank');
+        } else if (btn.classList.contains('share-linkedin')) {
+          window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+      });
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animación de entrada para elementos
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Aplicar animación a elementos específicos
+    document.querySelectorAll('.article-content li, .related-card, .highlight-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
