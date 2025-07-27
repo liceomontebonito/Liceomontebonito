@@ -38,14 +38,17 @@
   header .contenedor-encabezado {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    text-align: center;
+    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+  }
+  
+  .logo-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   
   header img {
@@ -60,7 +63,7 @@
     transform: scale(1.1) rotate(5deg);
   }
   
-  header h1 {
+  .info-text h1 {
     color: #2c5530;
     font-size: 2.8em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -68,76 +71,49 @@
     font-weight: 700;
   }
   
-  header p {
+  .info-text p {
     color: #2c5530;
     font-size: 1.2em;
     font-weight: 500;
     font-style: italic;
+    margin: 0;
   }
-  
-  /* Botón WhatsApp flotante */
-  .whatsapp-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+
+  /* Menú hamburguesa */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    padding: 10px;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    animation: whatsappPulse 2s infinite;
+    background: rgba(255,255,255,0.1);
   }
-  
-  .whatsapp-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+
+  .menu-toggle:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
   }
-  
-  @keyframes whatsappPulse {
-    0% {
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    }
-    50% {
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
-    }
-    100% {
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #2c5530;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
   }
-  
-  /* Tooltip para el botón WhatsApp */
-  .whatsapp-btn::after {
-    content: 'Escríbenos';
-    position: absolute;
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    white-space: nowrap;
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
   }
-  
-  .whatsapp-btn:hover::after {
-    opacity: 1;
-    visibility: visible;
-    right: 75px;
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
   }
   
   /* Navegación mejorada */
@@ -151,6 +127,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: all 0.3s ease;
   }
   
   nav a {
@@ -163,6 +140,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
   }
   
   nav a::before {
@@ -186,43 +164,227 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     color: #ffd9a3;
   }
+
+  /* Botones flotantes de redes sociales */
+  .social-floating {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  .social-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+  }
+
+  .social-btn:hover::before {
+    transform: scale(1);
+  }
+
+  .social-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  }
+
+  .youtube-btn {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    color: white;
+  }
+
+  .tiktok-btn {
+    background: linear-gradient(135deg, #000000, #333333);
+    color: white;
+  }
+
+  .instagram-btn {
+    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+    color: white;
+  }
+
+  /* Tooltips para redes sociales */
+  .social-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .social-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    left: 75px;
+  }
+  
+  /* Botón WhatsApp flotante */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite;
+  }
+  
+  .whatsapp-btn:hover {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+  }
+  
+  @keyframes whatsappPulse {
+    0% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6), 0 0 0 15px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+  }
+  
+  /* Tooltip para el botón WhatsApp */
+  .whatsapp-btn::after {
+    content: 'Escríbenos';
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 80px;
+  }
   
   /* Responsive */
   @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    header .contenedor-encabezado {
+      flex-wrap: wrap;
+    }
+
+    .logo-info {
+      flex: 1;
+    }
+
+    .info-text h1 {
+      font-size: 2.2em;
+    }
+
+    .info-text p {
+      font-size: 1em;
+    }
+
     nav {
       flex-direction: column;
       gap: 15px;
       padding: 20px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    nav.active {
+      max-height: 500px;
+      opacity: 1;
+      padding: 20px;
     }
     
     nav a {
-      padding: 10px 20px;
+      padding: 15px 20px;
+      text-align: center;
+      margin: 0 20px;
+      border-radius: 15px;
     }
-    
-    header .contenedor-encabezado {
-      flex-direction: column;
-      gap: 15px;
+
+    .social-floating {
+      left: 10px;
+      top: 40%;
     }
-    
-    header h1 {
-      font-size: 2.2em;
+
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
     }
-    
-    header p {
-      font-size: 1em;
+
+    .social-btn::after {
+      display: none;
     }
     
     .whatsapp-btn {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      top: 15px;
-      right: 15px;
-    }
-    
-    .whatsapp-btn::after {
-      font-size: 11px;
-      padding: 6px 10px;
+      width: 55px;
+      height: 55px;
+      font-size: 24px;
+      bottom: 20px;
+      right: 20px;
     }
   }
   
@@ -231,44 +393,128 @@
       height: 60px;
     }
     
-    header h1 {
+    .info-text h1 {
       font-size: 1.8em;
+    }
+
+    .logo-info {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .social-floating {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
     }
     
     .whatsapp-btn {
-      width: 45px;
-      height: 45px;
-      font-size: 18px;
-      top: 10px;
-      right: 10px;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      bottom: 15px;
+      right: 15px;
     }
   }
 </style>
+
+<!-- Redes sociales flotantes -->
+<div class="social-floating">
+  <a href="https://youtube.com/@liceomontebonito?feature=shared" 
+     target="_blank" 
+     class="social-btn youtube-btn" 
+     data-tooltip="YouTube">
+    📺
+  </a>
+  <a href="https://vt.tiktok.com/ZSSYQMhke/" 
+     target="_blank" 
+     class="social-btn tiktok-btn" 
+     data-tooltip="TikTok">
+    🎵
+  </a>
+  <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
+     target="_blank" 
+     class="social-btn instagram-btn" 
+     data-tooltip="Instagram">
+    📷
+  </a>
+</div>
 
 <!-- Botón WhatsApp flotante -->
 <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
    target="_blank" 
    class="whatsapp-btn" 
    title="Contáctanos por WhatsApp">
-  📱
+  💬
 </a>
 
 <!-- Header -->
 <header>
   <div class="contenedor-encabezado">
-    <img src="logo.png" alt="Logo Liceo Montebonito" />
-    <div>
-      <h1>Liceo Psicopedagógico Montebonito</h1>
-      <p>Transformando vidas a través de la educación integral</p>
+    <div class="logo-info">
+      <img src="logo.png" alt="Logo Liceo Montebonito" />
+      <div class="info-text">
+        <h1>Liceo Psicopedagógico Montebonito</h1>
+        <p>Transformando vidas a través de la educación integral</p>
+      </div>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 </header>
 
 <!-- Navegación -->
-<nav>
+<nav id="mainNav">
   <a href="index.html">🏠 Inicio</a>
   <a href="nosotros.html">👥 Nosotros</a>
   <a href="servicios.html">🎓 Servicios</a>
+  <a href="blog/index.html">📚 Blog</a>
   <a href="admisiones.html">📋 Admisiones</a>
   <a href="contacto.html">📞 Contacto</a>
 </nav>
+
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('mainNav');
+  const toggle = document.querySelector('.menu-toggle');
+  
+  nav.classList.toggle('active');
+  toggle.classList.toggle('active');
+}
+
+// Cerrar menú al hacer clic en un enlace (móvil)
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.querySelector('.menu-toggle');
+    
+    if (window.innerWidth <= 768) {
+      nav.classList.remove('active');
+      toggle.classList.remove('active');
+    }
+  });
+});
+
+// Cerrar menú al redimensionar ventana
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.querySelector('.menu-toggle');
+    nav.classList.remove('active');
+    toggle.classList.remove('active');
+  }
+});
+</script>
