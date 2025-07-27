@@ -324,11 +324,6 @@
     animation: slideDown 0.3s ease;
   }
   
-  .dropdown.active .dropdown-content {
-    display: block;
-    opacity: 1;
-  }
-  
   @keyframes slideDown {
     from {
       opacity: 0;
@@ -374,17 +369,12 @@
     
     .dropdown-content {
       position: static;
-      display: none;
+      display: block;
       opacity: 1;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
-      background: rgba(255,255,255,0.15);
+      box-shadow: none;
+      background: rgba(255,255,255,0.1);
       margin-top: 10px;
       transform: none;
-      border-radius: 10px;
-    }
-    
-    .dropdown.active .dropdown-content {
-      display: block;
     }
     
     .dropdown-content::before {
@@ -473,7 +463,7 @@
 <!-- Header -->
 <header>
   <div class="contenedor-encabezado">
-    <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
+    <img src="logo.png" alt="Logo Liceo Montebonito" />
     <div>
       <h1>Liceo Psicopedagógico Montebonito</h1>
       <p>Transformando vidas a través de la educación integral</p>
@@ -503,19 +493,8 @@
 </nav>
 
 <script>
-  // Funcionalidad mejorada para dispositivos móviles y desktop
+  // Funcionalidad adicional para dispositivos móviles
   document.addEventListener('DOMContentLoaded', function() {
-    
-    // Corregir ruta del logo según la ubicación de la página
-    const logoImg = document.getElementById('logo-img');
-    const currentPath = window.location.pathname;
-    
-    if (currentPath.includes('/blog/')) {
-      logoImg.src = '../logo.png';
-    } else {
-      logoImg.src = 'logo.png';
-    }
-    
     const dropdowns = document.querySelectorAll('.dropdown');
     
     dropdowns.forEach(dropdown => {
@@ -523,35 +502,22 @@
       const content = dropdown.querySelector('.dropdown-content');
       
       btn.addEventListener('click', function(e) {
-        e.preventDefault();
         e.stopPropagation();
         
-        // Cerrar otros dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-          }
-        });
-        
-        // Toggle el dropdown actual
-        dropdown.classList.toggle('active');
+        // En móviles, toggle el dropdown
+        if (window.innerWidth <= 768) {
+          const isVisible = content.style.display === 'block';
+          content.style.display = isVisible ? 'none' : 'block';
+        }
       });
     });
     
     // Cerrar dropdowns al hacer clic fuera
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    });
-    
-    // Manejar redimensión de ventana
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
+    document.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        const contents = document.querySelectorAll('.dropdown-content');
+        contents.forEach(content => {
+          content.style.display = 'none';
         });
       }
     });
