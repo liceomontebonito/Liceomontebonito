@@ -5,186 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Servicios | Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="global-header.css">
   <style>
-    /* Estilos base mejorados */
+    /* Misma estructura de diseño */
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistencia en la fuente */
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Fondo consistente */
-      line-height: 1.6;
-      color: #333;
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
     }
-    
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
-    }
-
-    section h2 {
-      color: #2c5530; /* Color de encabezado consistente */
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #7AC943, #6AB82E);
-      border-radius: 2px;
-    }
-
-    ul {
-      list-style-type: none; /* Quitamos los puntos por defecto */
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    ul li {
-      background: rgba(135,206,235,0.1); /* Fondo suave */
+    header {
+      background-color: #87CEEB;
+      color: #ADD8E6;
       padding: 20px;
-      border-radius: 15px;
-      border-left: 5px solid #7AC943; /* Borde decorativo */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      font-size: 1.1em;
-      color: #2c5530;
-      font-weight: 600;
+    }
+    header .contenedor-encabezado {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    ul li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      background: rgba(122,201,67,0.1); /* Cambio de color al pasar el ratón */
-      border-left-color: #87CEEB;
-    }
-
-    ul li::before {
-      content: '✨'; /* Icono antes de cada elemento */
-      font-size: 1.2em;
-      margin-right: 5px;
-    }
-
-    /* Footer mejorado */
-    footer {
-      background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%);
-      color: white;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
       text-align: center;
-      padding: 30px 20px;
+    }
+    header img {
+      height: 70px;
+    }
+    header h1 {
+      color: #7AC943;
+    }
+    header p {
+      color: #7AC943;
+    }
+    nav {
+      background-color: #6AB82E;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px 0;
+    }
+    nav a {
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
       font-size: 16px;
-      margin-top: 40px;
     }
-    
-    .footer-main {
-      font-weight: 600;
-      margin-bottom: 8px;
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffd9a3;
     }
-    
-    .footer-sub {
-      opacity: 0.8;
-      font-style: italic;
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 10px;
       font-size: 14px;
+      color: #555;
     }
-
-    @media (max-width: 768px) {
-      section {
-        margin: 20px 10px;
-        padding: 30px 20px;
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
       }
-      ul {
-        grid-template-columns: 1fr;
+      header .contenedor-encabezado {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <div class="floating-buttons">
-    <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
-       target="_blank" 
-       class="floating-btn whatsapp-btn" 
-       data-tooltip="Escríbenos">
-      📱
-    </a>
-    
-    <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
-       target="_blank" 
-       class="floating-btn instagram-btn" 
-       data-tooltip="Síguenos">
-      📷
-    </a>
-    
-    <a href="https://www.youtube.com/@LiceoPsicopedagogicoMontebonito" 
-       target="_blank" 
-       class="floating-btn youtube-btn" 
-       data-tooltip="Suscríbete">
-      ▶️
-    </a>
-    
-    <a href="https://www.tiktok.com/@liceomontebonito?_t=ZS-8yMv5yL4Z8c&_r=1" 
-       target="_blank" 
-       class="floating-btn tiktok-btn" 
-       data-tooltip="Síguenos">
-      🎵
-    </a>
-  </div>
-
-  <header>
-    <div class="contenedor-encabezado">
-      <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
-      <div>
-        <h1>Liceo Psicopedagógico Montebonito</h1>
-        <p>Transformando vidas a través de la educación integral</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <a href="index.html" class="nav-link">🏠 Inicio</a>
-    <a href="nosotros.html" class="nav-link">👥 Nosotros</a>
-    
-    <div class="dropdown">
-      <button class="dropdown-btn">
-        📚 Información
-        <span class="dropdown-arrow">▼</span>
-      </button>
-      <div class="dropdown-content">
-        <a href="servicios.html">🎓 Servicios</a>
-        <a href="admisiones.html">📋 Admisiones</a>
-        <a href="blog/index.html">📝 Blog</a>
-      </div>
-    </div>
-    
-    <a href="contacto.html" class="nav-link">📞 Contacto</a>
-  </nav>
+  <div id="encabezado-container"></div>
   
   <section>
     <h2>Servicios</h2>
@@ -196,54 +91,583 @@
     </ul>
   </section>
   <footer>
-    <p class="footer-main">© 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
-    <p class="footer-sub">Transformando vidas a través de la educación integral</p>
+    &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Marcar enlace activo
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-      const navLinks = document.querySelectorAll('nav a, .nav-link');
-      navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage || 
-            (currentPage === 'servicios.html' && link.getAttribute('href') === 'servicios.html')) {
-          link.style.backgroundColor = '#FF6B35';
-          link.style.color = 'white';
-        }
-      });
-
-      // Funcionalidad del dropdown
-      const dropdowns = document.querySelectorAll('.dropdown');
-      dropdowns.forEach(dropdown => {
-        const btn = dropdown.querySelector('.dropdown-btn');
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          dropdowns.forEach(otherDropdown => {
-            if (otherDropdown !== dropdown) {
-              otherDropdown.classList.remove('active');
-            }
-          });
-          dropdown.classList.toggle('active');
-        });
-      });
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-          dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-          });
-        }
-      });
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-          dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-          });
-        }
-      });
-      
+    async function cargarEncabezado() {
+      try {
+        const response = await fetch('encabezado.html');
+        const html = await response.text();
+        document.getElementById('encabezado-container').innerHTML = html;
+      } catch (error) {
+        console.error('Error cargando el encabezado:', error);
+      }
+    }
+    
+    window.onload = () => {
+      cargarEncabezado();
       console.log("Página 'Servicios' cargada correctamente");
-    });
+    };
   </script>
 </body>
 </html>
+
+ENCABEZADO <!-- Estilos mejorados para el encabezado -->
+<style>
+  /* Estilos globales mejorados */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Header mejorado */
+  header {
+    background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: headerFloat 8s ease-in-out infinite;
+  }
+  
+  @keyframes headerFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  header .contenedor-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  header img {
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+  
+  header img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  header h1 {
+    color: #2c5530;
+    font-size: 2.8em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 10px 0;
+    font-weight: 700;
+  }
+  
+  header p {
+    color: #2c5530;
+    font-size: 1.2em;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  /* Botones flotantes - Contenedor */
+  .floating-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Estilo base para botones flotantes */
+  .floating-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  /* WhatsApp */
+  .whatsapp-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    animation-delay: 0s;
+  }
+  
+  .whatsapp-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+  }
+  
+  /* Instagram */
+  .instagram-btn {
+    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+    color: white;
+    animation-delay: 0.2s;
+  }
+  
+  .instagram-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 25px rgba(228, 64, 95, 0.6);
+  }
+  
+  /* YouTube */
+  .youtube-btn {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    color: white;
+    animation-delay: 0.4s;
+    font-size: 20px;
+  }
+  
+  .youtube-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6);
+  }
+  
+  /* TikTok */
+  .tiktok-btn {
+    background: linear-gradient(135deg, #000000, #25F4EE);
+    color: white;
+    animation-delay: 0.6s;
+  }
+  
+  .tiktok-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 25px rgba(37, 244, 238, 0.6);
+  }
+  
+  /* Tooltips para botones flotantes */
+  .floating-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-weight: normal;
+  }
+  
+  .floating-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+  }
+  
+  /* Navegación mejorada con dropdown */
+  nav {
+    background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  /* Enlaces normales de navegación */
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .nav-link:hover::before {
+    left: 100%;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #ffd9a3;
+  }
+  
+  /* Dropdown menu */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .dropdown-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .dropdown-btn:hover::before {
+    left: 100%;
+  }
+  
+  .dropdown-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #ffd9a3;
+  }
+  
+  .dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+  }
+  
+  .dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    z-index: 1000;
+    overflow: hidden;
+    margin-top: 10px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    animation: slideDown 0.3s ease;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  
+  .dropdown-content a {
+    color: #2c5530;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-content a:hover {
+    background: linear-gradient(135deg, #87CEEB, #98E4FF);
+    color: white;
+    transform: translateX(5px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+    }
+    
+    .nav-link, .dropdown-btn {
+      padding: 10px 20px;
+    }
+    
+    .dropdown-content {
+      position: static;
+      display: none;
+      opacity: 1;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.15);
+      margin-top: 10px;
+      transform: none;
+      border-radius: 10px;
+    }
+    
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-content::before {
+      display: none;
+    }
+    
+    header .contenedor-encabezado {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    header h1 {
+      font-size: 2.2em;
+    }
+    
+    header p {
+      font-size: 1em;
+    }
+    
+    .floating-buttons {
+      flex-direction: row;
+      top: 10px;
+      right: 10px;
+      gap: 8px;
+    }
+    
+    .floating-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+    }
+    
+    .floating-btn::after {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header img {
+      height: 60px;
+    }
+    
+    header h1 {
+      font-size: 1.8em;
+    }
+    
+    .floating-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<!-- Botones flotantes de redes sociales -->
+<div class="floating-buttons">
+  <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+     target="_blank" 
+     class="floating-btn whatsapp-btn" 
+     data-tooltip="Escríbenos">
+    📱
+  </a>
+  
+  <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
+     target="_blank" 
+     class="floating-btn instagram-btn" 
+     data-tooltip="Síguenos">
+    📷
+  </a>
+  
+  <a href="https://youtube.com/@liceomontebonito?feature=shared" 
+     target="_blank" 
+     class="floating-btn youtube-btn" 
+     data-tooltip="Suscríbete">
+    ▶️
+  </a>
+  
+  <a href="https://www.tiktok.com/@liceomontebonito?_t=ZS-8yMv5yL4Z8c&_r=1" 
+     target="_blank" 
+     class="floating-btn tiktok-btn" 
+     data-tooltip="Síguenos">
+    🎵
+  </a>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="contenedor-encabezado">
+    <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
+    <div>
+      <h1>Liceo Psicopedagógico Montebonito</h1>
+      <p>Transformando vidas a través de la educación integral</p>
+    </div>
+  </div>
+</header>
+
+<!-- Navegación con menú desplegable -->
+<nav>
+  <a href="index.html" class="nav-link">🏠 Inicio</a>
+  <a href="nosotros.html" class="nav-link">👥 Nosotros</a>
+  
+  <!-- Dropdown para Información -->
+  <div class="dropdown">
+    <button class="dropdown-btn">
+      📚 Información
+      <span class="dropdown-arrow">▼</span>
+    </button>
+    <div class="dropdown-content">
+      <a href="servicios.html">🎓 Servicios</a>
+      <a href="admisiones.html">📋 Admisiones</a>
+      <a href="blog/index.html">📝 Blog</a>
+    </div>
+  </div>
+  
+  <a href="contacto.html" class="nav-link">📞 Contacto</a>
+</nav>
+
+<script>
+  // Funcionalidad mejorada para dispositivos móviles y desktop
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Corregir ruta del logo según la ubicación de la página
+    const logoImg = document.getElementById('logo-img');
+    const currentPath = window.location.pathname;
+    
+    if (currentPath.includes('/blog/')) {
+      logoImg.src = '../logo.png';
+    } else {
+      logoImg.src = 'logo.png';
+    }
+    
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+      const btn = dropdown.querySelector('.dropdown-btn');
+      const content = dropdown.querySelector('.dropdown-content');
+      
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Cerrar otros dropdowns
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('active');
+          }
+        });
+        
+        // Toggle el dropdown actual
+        dropdown.classList.toggle('active');
+      });
+    });
+    
+    // Cerrar dropdowns al hacer clic fuera
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('active');
+        });
+      }
+    });
+    
+    // Manejar redimensión de ventana
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('active');
+        });
+      }
+    });
+  });
+</script>
