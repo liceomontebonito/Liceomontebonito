@@ -1,7 +1,262 @@
+<!-- Estilos mejorados para el encabezado -->
+<style>
+  /* Estilos globales mejorados */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Header mejorado */
+  header {
+    background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: headerFloat 8s ease-in-out infinite;
+  }
+  
+  @keyframes headerFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  header .contenedor-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  header img {
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+  
+  header img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  header h1 {
+    color: #2c5530;
+    font-size: 2.8em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 10px 0;
+    font-weight: 700;
+  }
+  
+  header p {
+    color: #2c5530;
+    font-size: 1.2em;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  /* Botón WhatsApp flotante */
+  .whatsapp-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite;
+  }
+  
+  .whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+  }
+  
+  @keyframes whatsappPulse {
+    0% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+  }
+  
+  /* Tooltip para el botón WhatsApp */
+  .whatsapp-btn::after {
+    content: 'Escríbenos';
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+  }
+  
+  /* Navegación mejorada */
+  nav {
+    background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  nav a:hover::before {
+    left: 100%;
+  }
+  
+  nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #ffd9a3;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+    }
+    
+    nav a {
+      padding: 10px 20px;
+    }
+    
+    header .contenedor-encabezado {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    header h1 {
+      font-size: 2.2em;
+    }
+    
+    header p {
+      font-size: 1em;
+    }
+    
+    .whatsapp-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      top: 15px;
+      right: 15px;
+    }
+    
+    .whatsapp-btn::after {
+      font-size: 11px;
+      padding: 6px 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header img {
+      height: 60px;
+    }
+    
+    header h1 {
+      font-size: 1.8em;
+    }
+    
+    .whatsapp-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+      top: 10px;
+      right: 10px;
+    }
+  }
+</style>
+
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+   target="_blank" 
+   class="whatsapp-btn" 
+   title="Contáctanos por WhatsApp">
+  📱
+</a>
+
 <!-- Header -->
 <header>
   <div class="contenedor-encabezado">
-    <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
+    <img src="logo.png" alt="Logo Liceo Montebonito" />
     <div>
       <h1>Liceo Psicopedagógico Montebonito</h1>
       <p>Transformando vidas a través de la educación integral</p>
@@ -9,79 +264,11 @@
   </div>
 </header>
 
-<!-- Navegación con menú desplegable -->
+<!-- Navegación -->
 <nav>
-  <a href="index.html" class="nav-link">🏠 Inicio</a>
-  <a href="nosotros.html" class="nav-link">👥 Nosotros</a>
-  
-  <!-- Dropdown para Información -->
-  <div class="dropdown">
-    <button class="dropdown-btn">
-      📚 Información
-      <span class="dropdown-arrow">▼</span>
-    </button>
-    <div class="dropdown-content">
-      <a href="servicios.html">🎓 Servicios</a>
-      <a href="admisiones.html">📋 Admisiones</a>
-      <a href="blog/index.html">📝 Blog</a>
-    </div>
-  </div>
-  
-  <a href="contacto.html" class="nav-link">📞 Contacto</a>
+  <a href="index.html">🏠 Inicio</a>
+  <a href="nosotros.html">👥 Nosotros</a>
+  <a href="servicios.html">🎓 Servicios</a>
+  <a href="admisiones.html">📋 Admisiones</a>
+  <a href="contacto.html">📞 Contacto</a>
 </nav>
-
-<script>
-  // Funcionalidad mejorada para dispositivos móviles y desktop
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // ✅ Corrección: Ruta del logo según ubicación de la página
-    const logoImg = document.getElementById('logo-img');
-    const currentPath = window.location.pathname;
-    
-    if (currentPath.includes('/blog/')) {
-      logoImg.src = '../logo.png';
-    } else {
-      logoImg.src = 'logo.png';
-    }
-    
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(dropdown => {
-      const btn = dropdown.querySelector('.dropdown-btn');
-      const content = dropdown.querySelector('.dropdown-content');
-      
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Cerrar otros dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-          }
-        });
-        
-        // Toggle el dropdown actual
-        dropdown.classList.toggle('active');
-      });
-    });
-    
-    // Cerrar dropdowns al hacer clic fuera
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    });
-    
-    // Manejar redimensión de ventana
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    });
-  });
-</script>
