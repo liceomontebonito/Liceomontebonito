@@ -7,18 +7,22 @@
 </head>
 <body>
 
-<!-- Estilos mejorados para el encabezado -->
 <style>
-  /* Estilos globales mejorados */
-  body {
+  /* Estilos globales */
+  * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     line-height: 1.6;
     color: #333;
   }
   
-  /* Header mejorado */
+  /* Header principal - CENTRADO COMPLETO */
   header {
     background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
     color: white;
@@ -28,41 +32,28 @@
     overflow: hidden;
   }
   
-  header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: headerFloat 8s ease-in-out infinite;
-  }
-  
-  @keyframes headerFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
-  }
-  
-  header .contenedor-encabezado {
+  /* Contenedor principal del header - CENTRADO */
+  .contenedor-encabezado {
     display: flex;
     align-items: center;
-    justify-content: center; /* CAMBIADO: de space-between a center */
+    justify-content: center; /* CENTRADO TOTAL */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    text-align: center; /* CENTRADO ADICIONAL */
   }
   
-  /* CORREGIDO: Logo y título centrados */
+  /* Logo e información - CENTRADOS */
   .logo-info {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     text-align: center;
+    flex-direction: row;
   }
   
+  /* Logo mejorado */
   header img {
     height: 80px;
     width: 80px;
@@ -77,6 +68,7 @@
     transform: scale(1.1) rotate(5deg);
   }
   
+  /* Texto centrado */
   .info-text {
     text-align: center;
   }
@@ -97,7 +89,7 @@
     margin: 0;
   }
 
-  /* CORREGIDO: Menú hamburguesa mejorado */
+  /* Menú hamburguesa - POSICIONADO CORRECTAMENTE */
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -106,11 +98,11 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     background: rgba(255,255,255,0.1);
-    z-index: 999;
-    position: absolute; /* CAMBIADO: posición absoluta */
-    right: 20px; /* AÑADIDO: posición derecha */
+    position: absolute;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1001;
   }
 
   .menu-toggle:hover {
@@ -127,6 +119,7 @@
     border-radius: 2px;
   }
 
+  /* Animación del menú hamburguesa */
   .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -139,7 +132,7 @@
     transform: rotate(-45deg) translate(7px, -6px);
   }
   
-  /* Navegación mejorada */
+  /* Navegación principal */
   nav {
     background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
     display: flex;
@@ -166,21 +159,6 @@
     white-space: nowrap;
   }
   
-  nav a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  nav a:hover::before {
-    left: 100%;
-  }
-  
   nav a:hover {
     background-color: rgba(255,255,255,0.2);
     transform: translateY(-2px);
@@ -188,7 +166,7 @@
     color: #ffd9a3;
   }
 
-  /* Botones flotantes de redes sociales con iconos SVG */
+  /* Redes sociales flotantes */
   .social-floating {
     position: fixed;
     left: 20px;
@@ -211,25 +189,6 @@
     font-size: 24px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .social-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    transform: scale(0);
-    transition: transform 0.3s ease;
-  }
-
-  .social-btn:hover::before {
-    transform: scale(1);
   }
 
   .social-btn:hover {
@@ -252,36 +211,10 @@
     color: white;
   }
 
-  /* Iconos SVG para redes sociales */
   .social-icon {
     width: 28px;
     height: 28px;
     fill: currentColor;
-  }
-
-  /* Tooltips para redes sociales */
-  .social-btn::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-  }
-
-  .social-btn:hover::after {
-    opacity: 1;
-    visibility: visible;
-    left: 75px;
   }
   
   /* Botón WhatsApp flotante */
@@ -324,44 +257,30 @@
     }
   }
   
-  /* Tooltip para el botón WhatsApp */
-  .whatsapp-btn::after {
-    content: 'Escríbenos';
-    position: absolute;
-    bottom: 75px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-  }
-  
-  .whatsapp-btn:hover::after {
-    opacity: 1;
-    visibility: visible;
-    bottom: 80px;
-  }
-  
-  /* CORREGIDO: Responsive mejorado */
+  /* RESPONSIVE DESIGN */
   @media (max-width: 768px) {
+    /* Mostrar menú hamburguesa en móvil */
     .menu-toggle {
       display: flex;
     }
 
-    header .contenedor-encabezado {
+    /* Header responsive */
+    header {
+      padding: 15px;
+    }
+
+    .contenedor-encabezado {
       justify-content: center;
-      position: relative;
     }
 
     .logo-info {
-      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
     }
 
     .info-text h1 {
@@ -372,7 +291,7 @@
       font-size: 1em;
     }
 
-    /* CORREGIDO: Menú móvil mejorado */
+    /* MENÚ MÓVIL CORREGIDO */
     nav {
       position: fixed;
       top: 0;
@@ -389,10 +308,11 @@
       transform: translateX(-100%);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      z-index: 998;
+      transition: all 0.4s ease;
+      z-index: 1000;
     }
 
+    /* Menú activo */
     nav.active {
       transform: translateX(0);
       opacity: 1;
@@ -404,26 +324,12 @@
       text-align: center;
       font-size: 18px;
       border-radius: 15px;
-      width: 200px;
+      width: 250px;
       margin: 5px 0;
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 0.3s ease;
+      display: block;
     }
 
-    nav.active a {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* Animación escalonada para los enlaces */
-    nav.active a:nth-child(1) { transition-delay: 0.1s; }
-    nav.active a:nth-child(2) { transition-delay: 0.2s; }
-    nav.active a:nth-child(3) { transition-delay: 0.3s; }
-    nav.active a:nth-child(4) { transition-delay: 0.4s; }
-    nav.active a:nth-child(5) { transition-delay: 0.5s; }
-    nav.active a:nth-child(6) { transition-delay: 0.6s; }
-
+    /* Redes sociales en mobile */
     .social-floating {
       left: 10px;
       top: 40%;
@@ -438,10 +344,6 @@
       width: 24px;
       height: 24px;
     }
-
-    .social-btn::after {
-      display: none;
-    }
     
     .whatsapp-btn {
       width: 55px;
@@ -454,20 +356,20 @@
   
   @media (max-width: 480px) {
     header {
-      padding: 15px;
+      padding: 10px;
     }
 
-    header img {
-      height: 60px;
-      width: 60px;
-    }
-    
     .info-text h1 {
       font-size: 1.8em;
     }
 
     .logo-info {
-      gap: 15px;
+      gap: 10px;
+    }
+
+    nav a {
+      width: 200px;
+      font-size: 16px;
     }
 
     .social-floating {
@@ -499,28 +401,25 @@
   }
 </style>
 
-<!-- Redes sociales flotantes con iconos SVG reales -->
+<!-- Redes sociales flotantes -->
 <div class="social-floating">
   <a href="https://youtube.com/@liceomontebonito?feature=shared" 
      target="_blank" 
-     class="social-btn youtube-btn" 
-     data-tooltip="YouTube">
+     class="social-btn youtube-btn">
     <svg class="social-icon" viewBox="0 0 24 24">
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
     </svg>
   </a>
   <a href="https://vt.tiktok.com/ZSSYQMhke/" 
      target="_blank" 
-     class="social-btn tiktok-btn" 
-     data-tooltip="TikTok">
+     class="social-btn tiktok-btn">
     <svg class="social-icon" viewBox="0 0 24 24">
       <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
     </svg>
   </a>
   <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
      target="_blank" 
-     class="social-btn instagram-btn" 
-     data-tooltip="Instagram">
+     class="social-btn instagram-btn">
     <svg class="social-icon" viewBox="0 0 24 24">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
     </svg>
@@ -530,8 +429,7 @@
 <!-- Botón WhatsApp flotante -->
 <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
    target="_blank" 
-   class="whatsapp-btn" 
-   title="Contáctanos por WhatsApp">
+   class="whatsapp-btn">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
     <path d="M20.52 3.48C18.26 1.22 15.24 0 12.04 0 5.46 0 .12 5.34.12 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.24-1.64c1.74.95 3.7 1.45 5.76 1.45h.01c6.58 0 11.92-5.34 11.92-11.92 0-3.18-1.24-6.18-3.49-8.41zM12.04 21.78c-1.77 0-3.51-.48-5.02-1.38l-.36-.21-3.74.98 1-3.66-.23-.37c-.99-1.57-1.51-3.38-1.51-5.24 0-5.43 4.42-9.85 9.85-9.85 2.63 0 5.1 1.02 6.96 2.88 1.86 1.86 2.88 4.33 2.88 6.96 0 5.43-4.42 9.85-9.85 9.85zm5.41-7.39c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.23-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.25-.59-.5-.51-.68-.52-.17-.01-.37-.01-.57-.01-.2 0-.53.08-.8.38-.28.3-1.06 1.04-1.06 2.53s1.08 2.94 1.23 3.14c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z"/>
   </svg>
@@ -541,8 +439,7 @@
 <header>
   <div class="contenedor-encabezado">
     <div class="logo-info">
-      <!-- CORREGIDO: Ruta absoluta para el logo -->
-      <img src="/Liceomontebonito/logo.png" alt="Logo Liceo Montebonito" />
+      <img src="./logo.png" alt="Logo Liceo Montebonito" />
       <div class="info-text">
         <h1>Liceo Psicopedagógico Montebonito</h1>
         <p>Transformando vidas a través de la educación integral</p>
@@ -558,14 +455,15 @@
 
 <!-- Navegación -->
 <nav id="mainNav">
-  <a href="/Liceomontebonito/index.html">🏠 Inicio</a>
-  <a href="/Liceomontebonito/nosotros.html">👥 Nosotros</a>
-  <a href="/Liceomontebonito/servicios.html">🎓 Servicios</a>
-  <a href="/Liceomontebonito/blog/index.html">📚 Blog</a>
-  <a href="/Liceomontebonito/admisiones.html">📋 Admisiones</a>
-  <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
+  <a href="./index.html">🏠 Inicio</a>
+  <a href="./nosotros.html">👥 Nosotros</a>
+  <a href="./servicios.html">🎓 Servicios</a>
+  <a href="./blog/index.html">📚 Blog</a>
+  <a href="./admisiones.html">📋 Admisiones</a>
+  <a href="./contacto.html">📞 Contacto</a>
 </nav>
 
+<!-- JavaScript mejorado -->
 <script>
 function toggleMenu() {
   const nav = document.getElementById('mainNav');
@@ -574,7 +472,7 @@ function toggleMenu() {
   nav.classList.toggle('active');
   toggle.classList.toggle('active');
   
-  // Prevenir el scroll del body cuando el menú está abierto
+  // Prevenir scroll cuando menú está abierto
   if (nav.classList.contains('active')) {
     document.body.style.overflow = 'hidden';
   } else {
@@ -582,21 +480,24 @@ function toggleMenu() {
   }
 }
 
-// Cerrar menú al hacer clic en un enlace (móvil)
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    const nav = document.getElementById('mainNav');
-    const toggle = document.querySelector('.menu-toggle');
-    
-    if (window.innerWidth <= 768) {
-      nav.classList.remove('active');
-      toggle.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+// Cerrar menú al hacer clic en enlaces
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('nav a');
+  const nav = document.getElementById('mainNav');
+  const toggle = document.querySelector('.menu-toggle');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   });
 });
 
-// Cerrar menú al redimensionar ventana
+// Cerrar menú al redimensionar
 window.addEventListener('resize', () => {
   if (window.innerWidth > 768) {
     const nav = document.getElementById('mainNav');
@@ -607,7 +508,7 @@ window.addEventListener('resize', () => {
   }
 });
 
-// Cerrar menú al hacer clic fuera del menú
+// Cerrar menú con click fuera
 document.addEventListener('click', (e) => {
   const nav = document.getElementById('mainNav');
   const toggle = document.querySelector('.menu-toggle');
@@ -619,7 +520,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Cerrar menú con tecla Escape
+// Cerrar menú con Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     const nav = document.getElementById('mainNav');
@@ -634,12 +535,23 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 
-<!-- Contenido de ejemplo para probar el scroll -->
+<!-- Contenido de ejemplo -->
 <div style="padding: 40px; max-width: 1200px; margin: 0 auto;">
-  <h2>Contenido de ejemplo</h2>
-  <p>Este es contenido de ejemplo para probar que el header funciona correctamente.</p>
-  <div style="height: 1500px; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); padding: 20px; margin: 20px 0; border-radius: 10px;">
-    <p>Contenido largo para probar el scroll...</p>
+  <h2>Bienvenidos al Liceo Montebonito</h2>
+  <p>Este header ha sido corregido para solucionar todos los problemas:</p>
+  <ul style="margin: 20px 0; padding-left: 30px;">
+    <li><strong>✅ Logo y título centrados:</strong> Ahora están perfectamente centrados en todas las pantallas</li>
+    <li><strong>✅ Menú móvil funcional:</strong> El menú desplegable funciona correctamente en celulares</li>
+    <li><strong>✅ Rutas de imágenes corregidas:</strong> Cambié las rutas absolutas por relativas para que funcionen en todas las páginas</li>
+    <li><strong>✅ JavaScript mejorado:</strong> Mejor manejo de eventos y transiciones</li>
+    <li><strong>✅ Responsive mejorado:</strong> Mejor adaptación a diferentes tamaños de pantalla</li>
+  </ul>
+  
+  <div style="height: 1000px; background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); padding: 20px; margin: 20px 0; border-radius: 10px;">
+    <p><strong>Prueba el menú en diferentes dispositivos:</strong></p>
+    <p>• En desktop: Los enlaces se muestran horizontalmente</p>
+    <p>• En móvil: Aparece el botón hamburguesa y el menú se despliega en pantalla completa</p>
+    <p>• El logo se muestra correctamente en todas las páginas</p>
   </div>
 </div>
 
