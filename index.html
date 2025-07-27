@@ -73,22 +73,25 @@
     }
     
     .highlight-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #FF6B35, #F7931E);
+      display: block;
+      background: linear-gradient(135deg, #7AC943, #6AB82E);
       color: white;
-      padding: 15px 40px;
-      border-radius: 50px;
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 40px;
-      box-shadow: 0 5px 15px rgba(255,107,53,0.3);
-      animation: pulse 2s infinite;
+      padding: 20px 30px;
+      border-radius: 15px;
+      font-size: 1.3em;
+      font-weight: 600;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(122,201,67,0.3);
+      animation: pulse 3s infinite;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); box-shadow: 0 5px 15px rgba(122,201,67,0.3); }
+      50% { transform: scale(1.02); box-shadow: 0 8px 25px rgba(122,201,67,0.4); }
+      100% { transform: scale(1); box-shadow: 0 5px 15px rgba(122,201,67,0.3); }
     }
     
     /* Features grid */
@@ -332,14 +335,14 @@
     
     <!-- Hero content -->
     <div class="hero-content">
-      <h2>¡Bienvenidos!</h2>
+      <h2>Bienvenidos</h2>
+      <div class="highlight-badge">
+        ⭐ Formando desde el pensamiento científico con amor y creatividad
+      </div>
       <p class="welcome-text">
         Explora nuestro jardín infantil y acompáñanos en esta maravillosa aventura 
         de aprendizaje, descubrimiento y amor por la infancia.
       </p>
-      <div class="highlight-badge">
-        ⭐ 9 Años Transformando Vidas
-      </div>
     </div>
     
     <!-- Features grid -->
