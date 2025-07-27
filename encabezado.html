@@ -35,24 +35,21 @@
     50% { transform: translateY(-30px) rotate(180deg); }
   }
   
-  /* CORREGIDO: Contenedor centrado */
   header .contenedor-encabezado {
     display: flex;
     align-items: center;
-    justify-content: center; /* CAMBIADO: de space-between a center */
+    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
   }
   
-  /* CORREGIDO: Logo y título centrados */
   .logo-info {
     display: flex;
     align-items: center;
-    justify-content: center; /* AÑADIDO: centrado */
     gap: 20px;
-    text-align: center; /* AÑADIDO: centrado del texto */
+    flex: 1;
   }
   
   header img {
@@ -67,11 +64,6 @@
   
   header img:hover {
     transform: scale(1.1) rotate(5deg);
-  }
-  
-  /* CORREGIDO: Texto centrado */
-  .info-text {
-    text-align: center; /* AÑADIDO */
   }
   
   .info-text h1 {
@@ -90,7 +82,7 @@
     margin: 0;
   }
 
-  /* CORREGIDO: Menú hamburguesa posicionado correctamente */
+  /* Menú hamburguesa */
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -99,16 +91,12 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     background: rgba(255,255,255,0.1);
-    z-index: 1001; /* AUMENTADO el z-index */
-    position: absolute; /* AÑADIDO: posición absoluta */
-    right: 20px; /* AÑADIDO: posición a la derecha */
-    top: 50%; /* AÑADIDO: centrado vertical */
-    transform: translateY(-50%); /* AÑADIDO: centrado vertical */
+    z-index: 200;
   }
 
   .menu-toggle:hover {
     background: rgba(255,255,255,0.2);
-    transform: translateY(-50%) scale(1.05); /* CORREGIDO: mantener centrado */
+    transform: scale(1.05);
   }
 
   .menu-toggle span {
@@ -342,22 +330,18 @@
     bottom: 80px;
   }
   
-  /* CORREGIDO: Responsive mejorado */
+  /* Responsive */
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
     }
 
-    /* CORREGIDO: Header centrado en móvil */
     header .contenedor-encabezado {
-      justify-content: center; /* MANTENIDO: centrado */
-      position: relative;
+      flex-wrap: nowrap;
     }
 
     .logo-info {
-      justify-content: center; /* AÑADIDO: centrado en móvil */
-      flex-direction: column; /* AÑADIDO: columna en móvil */
-      gap: 15px;
+      flex: 1;
     }
 
     .info-text h1 {
@@ -368,7 +352,6 @@
       font-size: 1em;
     }
 
-    /* CORREGIDO: Menú móvil completamente funcional */
     nav {
       position: fixed;
       top: 0;
@@ -380,13 +363,12 @@
       align-items: center;
       gap: 30px;
       padding: 20px;
-      background: linear-gradient(135deg, rgba(106, 184, 46, 0.98) 0%, rgba(122, 201, 67, 0.98) 100%);
-      backdrop-filter: blur(10px); /* AÑADIDO: efecto blur */
+      background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
       transform: translateX(-100%);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* MEJORADO: transición */
-      z-index: 1000; /* CORREGIDO: z-index mayor */
+      transition: all 0.3s ease;
+      z-index: 150;
     }
 
     nav.active {
@@ -400,27 +382,9 @@
       text-align: center;
       font-size: 18px;
       border-radius: 15px;
-      width: 250px; /* AUMENTADO: ancho */
+      width: 200px;
       margin: 5px 0;
-      display: block; /* AÑADIDO: display block */
-      transform: translateY(30px); /* AÑADIDO: animación inicial */
-      opacity: 0;
-      transition: all 0.3s ease;
     }
-
-    /* AÑADIDO: Animación para los enlaces del menú */
-    nav.active a {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* AÑADIDO: Animación escalonada */
-    nav.active a:nth-child(1) { transition-delay: 0.1s; }
-    nav.active a:nth-child(2) { transition-delay: 0.2s; }
-    nav.active a:nth-child(3) { transition-delay: 0.3s; }
-    nav.active a:nth-child(4) { transition-delay: 0.4s; }
-    nav.active a:nth-child(5) { transition-delay: 0.5s; }
-    nav.active a:nth-child(6) { transition-delay: 0.6s; }
 
     .social-floating {
       left: 10px;
@@ -451,10 +415,6 @@
   }
   
   @media (max-width: 480px) {
-    header {
-      padding: 15px; /* AÑADIDO: padding menor */
-    }
-
     header img {
       height: 60px;
       width: 60px;
@@ -465,12 +425,7 @@
     }
 
     .logo-info {
-      gap: 10px; /* REDUCIDO: gap menor */
-    }
-
-    nav a {
-      width: 200px; /* REDUCIDO: ancho menor */
-      font-size: 16px;
+      gap: 15px;
     }
 
     .social-floating {
@@ -544,8 +499,7 @@
 <header>
   <div class="contenedor-encabezado">
     <div class="logo-info">
-      <!-- CORREGIDO: Ruta relativa para funcionar en todas las páginas -->
-      <img src="./logo.png" alt="Logo Liceo Montebonito" />
+      <img src="logo.png" alt="Logo Liceo Montebonito" />
       <div class="info-text">
         <h1>Liceo Psicopedagógico Montebonito</h1>
         <p>Transformando vidas a través de la educación integral</p>
@@ -561,16 +515,14 @@
 
 <!-- Navegación -->
 <nav id="mainNav">
-  <!-- CORREGIDO: Rutas relativas para funcionar en todas las páginas -->
-  <a href="./index.html">🏠 Inicio</a>
-  <a href="./nosotros.html">👥 Nosotros</a>
-  <a href="./servicios.html">🎓 Servicios</a>
-  <a href="./blog/index.html">📚 Blog</a>
-  <a href="./admisiones.html">📋 Admisiones</a>
-  <a href="./contacto.html">📞 Contacto</a>
+  <a href="/Liceomontebonito/index.html">🏠 Inicio</a>
+  <a href="/Liceomontebonito/nosotros.html">👥 Nosotros</a>
+  <a href="/Liceomontebonito/servicios.html">🎓 Servicios</a>
+  <a href="/Liceomontebonito/blog/index.html">📚 Blog</a>
+  <a href="/Liceomontebonito/admisiones.html">📋 Admisiones</a>
+  <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
 </nav>
 
-<!-- CORREGIDO: JavaScript mejorado -->
 <script>
 function toggleMenu() {
   const nav = document.getElementById('mainNav');
@@ -578,28 +530,18 @@ function toggleMenu() {
   
   nav.classList.toggle('active');
   toggle.classList.toggle('active');
-  
-  // AÑADIDO: Prevenir scroll del body cuando menú está abierto
-  if (nav.classList.contains('active')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
 }
 
-// MEJORADO: Cerrar menú al hacer clic en un enlace (móvil)
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      const nav = document.getElementById('mainNav');
-      const toggle = document.querySelector('.menu-toggle');
-      
-      if (window.innerWidth <= 768) {
-        nav.classList.remove('active');
-        toggle.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
+// Cerrar menú al hacer clic en un enlace (móvil)
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.querySelector('.menu-toggle');
+    
+    if (window.innerWidth <= 768) {
+      nav.classList.remove('active');
+      toggle.classList.remove('active');
+    }
   });
 });
 
@@ -610,11 +552,10 @@ window.addEventListener('resize', () => {
     const toggle = document.querySelector('.menu-toggle');
     nav.classList.remove('active');
     toggle.classList.remove('active');
-    document.body.style.overflow = '';
   }
 });
 
-// MEJORADO: Cerrar menú al hacer clic fuera del menú
+// Cerrar menú al hacer clic fuera del menú
 document.addEventListener('click', (e) => {
   const nav = document.getElementById('mainNav');
   const toggle = document.querySelector('.menu-toggle');
@@ -622,21 +563,6 @@ document.addEventListener('click', (e) => {
   if (!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')) {
     nav.classList.remove('active');
     toggle.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-
-// AÑADIDO: Cerrar menú con tecla Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const nav = document.getElementById('mainNav');
-    const toggle = document.querySelector('.menu-toggle');
-    
-    if (nav.classList.contains('active')) {
-      nav.classList.remove('active');
-      toggle.classList.remove('active');
-      document.body.style.overflow = '';
-    }
   }
 });
 </script>
