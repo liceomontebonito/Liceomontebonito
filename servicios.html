@@ -6,74 +6,440 @@
   <title>Servicios | Liceo Montebonito</title>
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* Misma estructura de diseño */
+    /* Estilos base mejorados */
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      line-height: 1.6;
+      color: #333;
     }
-    header {
-      background-color: #87CEEB;
-      color: #ADD8E6;
+    
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
       padding: 20px;
+      position: relative;
     }
-    header .contenedor-encabezado {
+    
+    .floating-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .floating-icon {
+      position: absolute;
+      font-size: 2.5em;
+      opacity: 0.08;
+      animation: float 8s ease-in-out infinite;
+      color: #87CEEB;
+      display: block;
+    }
+    
+    /* Posicionamiento para escritorio */
+    .floating-icon:nth-child(1) { top: 15vh; left: 8vw; animation-delay: 0s; }
+    .floating-icon:nth-child(2) { top: 30vh; right: 10vw; animation-delay: 1.5s; }
+    .floating-icon:nth-child(3) { top: 50vh; left: 5vw; animation-delay: 3s; }
+    .floating-icon:nth-child(4) { top: 70vh; right: 8vw; animation-delay: 4.5s; }
+    .floating-icon:nth-child(5) { top: 85vh; left: 12vw; animation-delay: 6s; }
+    .floating-icon:nth-child(6) { top: 40vh; right: 18vw; animation-delay: 1s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 0.15; }
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, #87CEEB 0%, #7AC943 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      border-radius: 20px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
+    }
+    
+    .hero-section h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      color: #2c5530;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .hero-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #7AC943, #6AB82E);
+      border-radius: 2px;
+    }
+    
+    .hero-section p {
+      font-size: 1.2em;
+      opacity: 0.9;
+      color: #2c5530;
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #87CEEB, #7AC943);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      font-size: 2.5em;
+      color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 20px rgba(135,206,235,0.3);
+    }
+    
+    .service-card h3 {
+      color: #2c5530;
+      font-size: 1.5em;
+      margin-bottom: 15px;
       text-align: center;
+      font-weight: 600;
     }
-    header img {
-      height: 70px;
+    
+    .service-card p {
+      color: #666;
+      line-height: 1.7;
+      text-align: justify;
+      margin-bottom: 20px;
     }
-    header h1 {
-      color: #7AC943;
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
     }
-    header p {
-      color: #7AC943;
-    }
-    nav {
-      background-color: #6AB82E;
+    
+    .service-features li {
+      background: rgba(135,206,235,0.1);
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border-radius: 10px;
+      border-left: 4px solid #87CEEB;
+      transition: all 0.3s ease;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 12px 0;
+      align-items: center;
+      gap: 10px;
     }
-    nav a {
-      color: orange;
+    
+    .service-features li:hover {
+      background: rgba(122,201,67,0.1);
+      border-left-color: #7AC943;
+      transform: translateX(5px);
+    }
+    
+    .feature-icon {
+      font-size: 1.2em;
+      color: #87CEEB;
+    }
+    
+    .extracurricular-section {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    
+    .extracurricular-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
+    }
+    
+    .extracurricular-section h2 {
+      text-align: center;
+      color: #2c5530;
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .extracurricular-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #87CEEB, #7AC943);
+      border-radius: 2px;
+    }
+    
+    .extracurricular-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .extracurricular-item {
+      background: linear-gradient(135deg, rgba(135,206,235,0.1), rgba(122,201,67,0.1));
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid rgba(135,206,235,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .extracurricular-item:hover {
+      transform: translateY(-5px);
+      border-color: #87CEEB;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .extracurricular-item .icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .extracurricular-item h4 {
+      color: #2c5530;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .extracurricular-item p {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, #87CEEB, #7AC943);
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
+    }
+    
+    .cta-section h3 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #2c5530;
+      font-weight: 700;
+    }
+    
+    .cta-section p {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      opacity: 0.9;
+      color: #2c5530;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255,255,255,0.3);
     }
-    nav a:hover {
-      text-decoration: underline;
-      color: #ffd9a3;
+    
+    .cta-button:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    section {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
+    
+    /* Footer mejorado */
     footer {
-      background-color: #e0e0e0;
+      background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%);
+      color: white;
       text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      color: #555;
+      padding: 30px 20px;
+      font-size: 16px;
+      margin-top: 40px;
     }
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
+    
+    .footer-main {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .footer-sub {
+      opacity: 0.8;
+      font-style: italic;
+      font-size: 14px;
+    }
+    
+    /* Media queries para móvil */
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px 10px;
+        padding: 15px;
       }
-      header .contenedor-encabezado {
-        flex-direction: column;
+      
+      .hero-section h1 {
+        font-size: 2em;
+      }
+      
+      .hero-section {
+        padding: 30px 15px;
+        margin-bottom: 30px;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .service-card {
+        padding: 25px;
+      }
+      
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2em;
+      }
+      
+      .extracurricular-section {
+        padding: 30px 20px;
+      }
+      
+      .extracurricular-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .cta-section {
+        padding: 30px 20px;
+      }
+      
+      /* Ajustes específicos para iconos flotantes en móvil */
+      .floating-icon {
+        font-size: 2em !important;
+        opacity: 0.06 !important;
+      }
+      
+      .floating-icon:nth-child(1) { top: 20vh !important; left: 5vw !important; }
+      .floating-icon:nth-child(2) { top: 35vh !important; right: 5vw !important; }
+      .floating-icon:nth-child(3) { top: 55vh !important; left: 3vw !important; }
+      .floating-icon:nth-child(4) { top: 75vh !important; right: 3vw !important; }
+      .floating-icon:nth-child(5) { top: 90vh !important; left: 8vw !important; }
+      .floating-icon:nth-child(6) { top: 45vh !important; right: 12vw !important; }
+    }
+    
+    /* Para pantallas muy pequeñas */
+    @media (max-width: 480px) {
+      .floating-icon {
+        font-size: 1.8em !important;
+        opacity: 0.05 !important;
+      }
+      
+      .hero-section h1 {
+        font-size: 1.8em;
+      }
+      
+      .service-card {
+        padding: 20px;
+      }
+      
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+      }
+      
+      .cta-section h3 {
+        font-size: 1.5em;
       }
     }
   </style>
@@ -81,24 +447,108 @@
 <body>
   <div id="encabezado-container"></div>
   
-  <section>
-    <h2>Servicios</h2>
-    <ul>
-      <li>Prejardín</li>
-      <li>Jardín</li>
-      <li>Transición</li>
-      <li>Extracurriculares: Robótica y Programación</li>
-    </ul>
-  </section>
+  <div class="container">
+    <div class="floating-elements">
+      <div class="floating-icon">🎓</div>
+      <div class="floating-icon">📚</div>
+      <div class="floating-icon">🧩</div>
+      <div class="floating-icon">🤖</div>
+      <div class="floating-icon">💻</div>
+      <div class="floating-icon">⚗️</div>
+    </div>
+    
+    <div class="hero-section">
+      <h1>🎓 Nuestros Servicios</h1>
+      <p>Descubre nuestra propuesta educativa integral diseñada para formar pequeños científicos, artistas y pensadores críticos desde la primera infancia</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌱</div>
+        <h3>Prejardín</h3>
+        <p>Programa especializado para niños de 3 a 4 años, enfocado en el desarrollo de habilidades básicas a través del juego, la exploración sensorial y la socialización temprana.</p>
+        <ul class="service-features">
+          <li><span class="feature-icon">🎨</span>Estimulación artística y creativa</li>
+          <li><span class="feature-icon">🤝</span>Desarrollo de habilidades sociales</li>
+          <li><span class="feature-icon">🔤</span>Iniciación en lectoescritura</li>
+          <li><span class="feature-icon">🔢</span>Conceptos matemáticos básicos</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌸</div>
+        <h3>Jardín</h3>
+        <p>Dirigido a niños de 4 a 5 años, fortalecemos el pensamiento científico mediante la experimentación, el arte y la literatura como herramientas fundamentales del aprendizaje.</p>
+        <ul class="service-features">
+          <li><span class="feature-icon">🔬</span>Experimentos científicos simples</li>
+          <li><span class="feature-icon">📖</span>Comprensión lectora avanzada</li>
+          <li><span class="feature-icon">🎭</span>Expresión artística y dramática</li>
+          <li><span class="feature-icon">🧮</span>Operaciones matemáticas básicas</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌳</div>
+        <h3>Transición</h3>
+        <p>Preparamos a los niños de 5 a 6 años para la educación primaria, consolidando competencias académicas, emocionales y sociales necesarias para el siguiente nivel educativo.</p>
+        <ul class="service-features">
+          <li><span class="feature-icon">📝</span>Escritura y lectura fluida</li>
+          <li><span class="feature-icon">🧪</span>Método científico básico</li>
+          <li><span class="feature-icon">💭</span>Pensamiento crítico</li>
+          <li><span class="feature-icon">🎯</span>Autonomía y responsabilidad</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="extracurricular-section">
+      <h2>🤖 Actividades Extracurriculares</h2>
+      <div class="extracurricular-grid">
+        <div class="extracurricular-item">
+          <span class="icon">🤖</span>
+          <h4>Robótica Educativa</h4>
+          <p>Introducimos a los niños al mundo de la robótica mediante actividades lúdicas que desarrollan el pensamiento lógico, la creatividad y las habilidades de resolución de problemas.</p>
+        </div>
+        
+        <div class="extracurricular-item">
+          <span class="icon">💻</span>
+          <h4>Programación para Niños</h4>
+          <p>A través de herramientas visuales y juegos interactivos, los pequeños aprenden conceptos básicos de programación, desarrollando competencias digitales desde temprana edad.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3>¿Listo para comenzar esta aventura?</h3>
+      <p>Únete a nuestra comunidad educativa y permite que tu hijo desarrolle todo su potencial en un ambiente lleno de amor, ciencia y creatividad.</p>
+      <a href="contacto.html" class="cta-button">📞 Contáctanos Ahora</a>
+    </div>
+  </div>
+
   <footer>
-    &copy; 2025 Liceo Montebonito. Todos los derechos reservados.
+    <p class="footer-main">&copy; 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
+    <p class="footer-sub">Transformando vidas a través de la educación integral</p>
   </footer>
+  
   <script>
     async function cargarEncabezado() {
       try {
         const response = await fetch('encabezado.html');
         const html = await response.text();
         document.getElementById('encabezado-container').innerHTML = html;
+        
+        // Marcar enlace activo después de cargar el encabezado
+        setTimeout(() => {
+          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+          const navLinks = document.querySelectorAll('nav a, .nav-link, .dropdown-content a');
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage || 
+                (currentPage === 'servicios.html' && link.getAttribute('href') === 'servicios.html')) {
+              link.style.backgroundColor = '#FF6B35';
+              link.style.color = 'white';
+            }
+          });
+        }, 100);
+        
       } catch (error) {
         console.error('Error cargando el encabezado:', error);
       }
@@ -107,567 +557,19 @@
     window.onload = () => {
       cargarEncabezado();
       console.log("Página 'Servicios' cargada correctamente");
+      
+      // Agregar interactividad a las cards
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0) scale(1)';
+        });
+      });
     };
   </script>
 </body>
 </html>
-
-ENCABEZADO <!-- Estilos mejorados para el encabezado -->
-<style>
-  /* Estilos globales mejorados */
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  /* Header mejorado */
-  header {
-    background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
-    color: white;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: headerFloat 8s ease-in-out infinite;
-  }
-  
-  @keyframes headerFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
-  }
-  
-  header .contenedor-encabezado {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-  }
-  
-  header img {
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-    border: 3px solid rgba(255,255,255,0.3);
-  }
-  
-  header img:hover {
-    transform: scale(1.1) rotate(5deg);
-  }
-  
-  header h1 {
-    color: #2c5530;
-    font-size: 2.8em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    margin: 10px 0;
-    font-weight: 700;
-  }
-  
-  header p {
-    color: #2c5530;
-    font-size: 1.2em;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  /* Botones flotantes - Contenedor */
-  .floating-buttons {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  /* Estilo base para botones flotantes */
-  .floating-btn {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 22px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
-  
-  /* WhatsApp */
-  .whatsapp-btn {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    animation-delay: 0s;
-  }
-  
-  .whatsapp-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-  }
-  
-  /* Instagram */
-  .instagram-btn {
-    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
-    color: white;
-    animation-delay: 0.2s;
-  }
-  
-  .instagram-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 6px 25px rgba(228, 64, 95, 0.6);
-  }
-  
-  /* YouTube */
-  .youtube-btn {
-    background: linear-gradient(135deg, #FF0000, #CC0000);
-    color: white;
-    animation-delay: 0.4s;
-    font-size: 20px;
-  }
-  
-  .youtube-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6);
-  }
-  
-  /* TikTok */
-  .tiktok-btn {
-    background: linear-gradient(135deg, #000000, #25F4EE);
-    color: white;
-    animation-delay: 0.6s;
-  }
-  
-  .tiktok-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 6px 25px rgba(37, 244, 238, 0.6);
-  }
-  
-  /* Tooltips para botones flotantes */
-  .floating-btn::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    font-weight: normal;
-  }
-  
-  .floating-btn:hover::after {
-    opacity: 1;
-    visibility: visible;
-    right: 75px;
-  }
-  
-  /* Navegación mejorada con dropdown */
-  nav {
-    background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  /* Enlaces normales de navegación */
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .nav-link:hover::before {
-    left: 100%;
-  }
-  
-  .nav-link:hover {
-    background-color: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    color: #ffd9a3;
-  }
-  
-  /* Dropdown menu */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-btn {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .dropdown-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .dropdown-btn:hover::before {
-    left: 100%;
-  }
-  
-  .dropdown-btn:hover {
-    background-color: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    color: #ffd9a3;
-  }
-  
-  .dropdown-arrow {
-    transition: transform 0.3s ease;
-    font-size: 12px;
-  }
-  
-  .dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-  }
-  
-  /* Dropdown content */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    border-radius: 15px;
-    z-index: 1000;
-    overflow: hidden;
-    margin-top: 10px;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-  
-  .dropdown-content::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid white;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-    opacity: 1;
-    animation: slideDown 0.3s ease;
-  }
-  
-  .dropdown.active .dropdown-content {
-    display: block;
-    opacity: 1;
-  }
-  
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateX(-50%) translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-  
-  .dropdown-content a {
-    color: #2c5530;
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  .dropdown-content a:last-child {
-    border-bottom: none;
-  }
-  
-  .dropdown-content a:hover {
-    background: linear-gradient(135deg, #87CEEB, #98E4FF);
-    color: white;
-    transform: translateX(5px);
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      gap: 15px;
-      padding: 20px;
-    }
-    
-    .nav-link, .dropdown-btn {
-      padding: 10px 20px;
-    }
-    
-    .dropdown-content {
-      position: static;
-      display: none;
-      opacity: 1;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
-      background: rgba(255,255,255,0.15);
-      margin-top: 10px;
-      transform: none;
-      border-radius: 10px;
-    }
-    
-    .dropdown.active .dropdown-content {
-      display: block;
-    }
-    
-    .dropdown-content::before {
-      display: none;
-    }
-    
-    header .contenedor-encabezado {
-      flex-direction: column;
-      gap: 15px;
-    }
-    
-    header h1 {
-      font-size: 2.2em;
-    }
-    
-    header p {
-      font-size: 1em;
-    }
-    
-    .floating-buttons {
-      flex-direction: row;
-      top: 10px;
-      right: 10px;
-      gap: 8px;
-    }
-    
-    .floating-btn {
-      width: 45px;
-      height: 45px;
-      font-size: 18px;
-    }
-    
-    .floating-btn::after {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    header img {
-      height: 60px;
-    }
-    
-    header h1 {
-      font-size: 1.8em;
-    }
-    
-    .floating-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 16px;
-    }
-  }
-</style>
-
-<!-- Botones flotantes de redes sociales -->
-<div class="floating-buttons">
-  <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
-     target="_blank" 
-     class="floating-btn whatsapp-btn" 
-     data-tooltip="Escríbenos">
-    📱
-  </a>
-  
-  <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
-     target="_blank" 
-     class="floating-btn instagram-btn" 
-     data-tooltip="Síguenos">
-    📷
-  </a>
-  
-  <a href="https://youtube.com/@liceomontebonito?feature=shared" 
-     target="_blank" 
-     class="floating-btn youtube-btn" 
-     data-tooltip="Suscríbete">
-    ▶️
-  </a>
-  
-  <a href="https://www.tiktok.com/@liceomontebonito?_t=ZS-8yMv5yL4Z8c&_r=1" 
-     target="_blank" 
-     class="floating-btn tiktok-btn" 
-     data-tooltip="Síguenos">
-    🎵
-  </a>
-</div>
-
-<!-- Header -->
-<header>
-  <div class="contenedor-encabezado">
-    <img id="logo-img" src="logo.png" alt="Logo Liceo Montebonito" />
-    <div>
-      <h1>Liceo Psicopedagógico Montebonito</h1>
-      <p>Transformando vidas a través de la educación integral</p>
-    </div>
-  </div>
-</header>
-
-<!-- Navegación con menú desplegable -->
-<nav>
-  <a href="index.html" class="nav-link">🏠 Inicio</a>
-  <a href="nosotros.html" class="nav-link">👥 Nosotros</a>
-  
-  <!-- Dropdown para Información -->
-  <div class="dropdown">
-    <button class="dropdown-btn">
-      📚 Información
-      <span class="dropdown-arrow">▼</span>
-    </button>
-    <div class="dropdown-content">
-      <a href="servicios.html">🎓 Servicios</a>
-      <a href="admisiones.html">📋 Admisiones</a>
-      <a href="blog/index.html">📝 Blog</a>
-    </div>
-  </div>
-  
-  <a href="contacto.html" class="nav-link">📞 Contacto</a>
-</nav>
-
-<script>
-  // Funcionalidad mejorada para dispositivos móviles y desktop
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // Corregir ruta del logo según la ubicación de la página
-    const logoImg = document.getElementById('logo-img');
-    const currentPath = window.location.pathname;
-    
-    if (currentPath.includes('/blog/')) {
-      logoImg.src = '../logo.png';
-    } else {
-      logoImg.src = 'logo.png';
-    }
-    
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(dropdown => {
-      const btn = dropdown.querySelector('.dropdown-btn');
-      const content = dropdown.querySelector('.dropdown-content');
-      
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Cerrar otros dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-          }
-        });
-        
-        // Toggle el dropdown actual
-        dropdown.classList.toggle('active');
-      });
-    });
-    
-    // Cerrar dropdowns al hacer clic fuera
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    });
-    
-    // Manejar redimensión de ventana
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    });
-  });
-</script>
