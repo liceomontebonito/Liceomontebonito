@@ -312,6 +312,71 @@
     bottom: 80px;
   }
   
+  /* ===== BOTÓN VOLVER ARRIBA ===== */
+  .scroll-to-top {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    background: linear-gradient(135deg, #6AB82E, #5A9B28);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(106, 184, 46, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+  }
+  
+  .scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .scroll-to-top:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 6px 25px rgba(106, 184, 46, 0.6);
+    background: linear-gradient(135deg, #7AC943, #6AB82E);
+  }
+  
+  .scroll-to-top:active {
+    transform: scale(0.95);
+  }
+  
+  /* Tooltip para el botón volver arriba */
+  .scroll-to-top::after {
+    content: 'Volver arriba';
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .scroll-to-top:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 70px;
+  }
+  
   /* Responsive - SOLUCIÓN SIMPLIFICADA SIN MENÚ HAMBURGUESA */
   @media (max-width: 768px) {
     header {
@@ -402,6 +467,20 @@
       font-size: 24px;
       bottom: 20px;
       right: 20px;
+    }
+    
+    /* Botón volver arriba en móvil */
+    .scroll-to-top {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      bottom: 85px;
+      right: 20px;
+    }
+    
+    .scroll-to-top::after {
+      font-size: 11px;
+      padding: 6px 10px;
     }
   }
 
@@ -508,6 +587,15 @@
       bottom: 15px;
       right: 15px;
     }
+    
+    /* Botón volver arriba en pantallas pequeñas */
+    .scroll-to-top {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      bottom: 75px;
+      right: 15px;
+    }
 
     /* Ocultar indicador de scroll en pantallas muy pequeñas */
     nav::after {
@@ -536,6 +624,11 @@
 
   nav::-webkit-scrollbar-thumb:hover {
     background: rgba(255,255,255,0.5);
+  }
+  
+  /* Smooth scrolling para toda la página */
+  html {
+    scroll-behavior: smooth;
   }
 </style>
 
@@ -577,6 +670,13 @@
   </svg>
 </a>
 
+<!-- Botón Volver Arriba -->
+<button class="scroll-to-top" id="scrollToTop" title="Volver arriba">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</button>
+
 <!-- Header -->
 <header>
   <div class="contenedor-encabezado">
@@ -600,3 +700,5 @@
   <a href="/Liceomontebonito/admisiones.html">📋 Admisiones</a>
   <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
 </nav>
+
+<!-- Contenido de ejemplo para
