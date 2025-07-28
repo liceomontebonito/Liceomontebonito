@@ -1,698 +1,705 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liceo Montebonito - Con Botón Volver Arriba</title>
-    <style>
-        /* Estilos globales mejorados */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* Header mejorado - CENTRADO ABSOLUTO CORREGIDO */
-        header {
-            background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
-            color: white;
-            padding: 25px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            min-height: 120px;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: headerFloat 8s ease-in-out infinite;
-        }
-        
-        @keyframes headerFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-        }
-        
-        /* CONTENEDOR PRINCIPAL CORREGIDO */
-        header .contenedor-encabezado {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-        }
-        
-        .logo-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        header img {
-            height: 90px;
-            width: 90px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-            border: 3px solid rgba(255,255,255,0.3);
-            object-fit: cover;
-            flex-shrink: 0;
-            background: #fff;
-        }
-        
-        header img:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .info-text {
-            flex: 1;
-            max-width: 600px;
-        }
-        
-        .info-text h1 {
-            color: #2c5530;
-            font-size: 3.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin: 10px 0;
-            font-weight: 700;
-            line-height: 1.1;
-            word-wrap: break-word;
-        }
-        
-        .info-text p {
-            color: #2c5530;
-            font-size: 1.3em;
-            font-weight: 500;
-            font-style: italic;
-            margin: 0;
-            line-height: 1.3;
-        }
-        
-        /* Navegación mejorada - MENÚ HORIZONTAL FIJO */
-        nav {
-            background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            padding: 15px 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-            flex-shrink: 0;
-            display: inline-block;
-        }
-        
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        nav a:hover::before {
-            left: 100%;
-        }
-        
-        nav a:hover {
-            background-color: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            color: #ffd9a3;
-        }
+<!-- Estilos mejorados para el encabezado -->
+<style>
+  /* Estilos globales mejorados */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Header mejorado - CENTRADO ABSOLUTO CORREGIDO */
+  header {
+    background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
+    color: white;
+    padding: 25px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: headerFloat 8s ease-in-out infinite;
+  }
+  
+  @keyframes headerFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  /* CONTENEDOR PRINCIPAL CORREGIDO */
+  header .contenedor-encabezado {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+  }
+  
+  .logo-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  header img {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    border: 3px solid rgba(255,255,255,0.3);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  header img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .info-text {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .info-text h1 {
+    color: #2c5530;
+    font-size: 3.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.1;
+    word-wrap: break-word;
+  }
+  
+  .info-text p {
+    color: #2c5530;
+    font-size: 1.3em;
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.3;
+  }
+  
+  /* Navegación mejorada - MENÚ HORIZONTAL FIJO */
+  nav {
+    background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 15px 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  nav a:hover::before {
+    left: 100%;
+  }
+  
+  nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #ffd9a3;
+  }
 
-        /* Botones flotantes de redes sociales con iconos SVG */
-        .social-floating {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
-        }
+  /* Botones flotantes de redes sociales con iconos SVG */
+  .social-floating {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
 
-        .social-btn {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
+  .social-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            transform: scale(0);
-            transition: transform 0.3s ease;
-        }
+  .social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+  }
 
-        .social-btn:hover::before {
-            transform: scale(1);
-        }
+  .social-btn:hover::before {
+    transform: scale(1);
+  }
 
-        .social-btn:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-        }
+  .social-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  }
 
-        .youtube-btn {
-            background: linear-gradient(135deg, #FF0000, #CC0000);
-            color: white;
-        }
+  .youtube-btn {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    color: white;
+  }
 
-        .tiktok-btn {
-            background: linear-gradient(135deg, #000000, #333333);
-            color: white;
-        }
+  .tiktok-btn {
+    background: linear-gradient(135deg, #000000, #333333);
+    color: white;
+  }
 
-        .instagram-btn {
-            background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
-            color: white;
-        }
+  .instagram-btn {
+    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+    color: white;
+  }
 
-        /* Iconos SVG para redes sociales */
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
+  /* Iconos SVG para redes sociales */
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
 
-        /* Tooltips para redes sociales */
-        .social-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            left: 70px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
+  /* Tooltips para redes sociales */
+  .social-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
 
-        .social-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-            left: 75px;
-        }
-        
-        /* Botón WhatsApp flotante */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            width: 65px;
-            height: 65px;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            animation: whatsappPulse 2s infinite;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: scale(1.15) rotate(-5deg);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-        }
-        
-        @keyframes whatsappPulse {
-            0% {
-                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6), 0 0 0 15px rgba(37, 211, 102, 0.1);
-            }
-            100% {
-                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-            }
-        }
-        
-        /* Tooltip para el botón WhatsApp */
-        .whatsapp-btn::after {
-            content: 'Escríbenos';
-            position: absolute;
-            bottom: 75px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .whatsapp-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: 80px;
-        }
-        
-        /* ===== BOTÓN VOLVER ARRIBA - MEJORADO ===== */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 110px;
-            right: 30px;
-            background: linear-gradient(135deg, #6AB82E, #5A9B28);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(106, 184, 46, 0.4);
-            transition: all 0.3s ease;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-        }
-        
-        .scroll-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .scroll-to-top:hover {
-            transform: scale(1.1) rotate(-5deg);
-            box-shadow: 0 6px 25px rgba(106, 184, 46, 0.6);
-            background: linear-gradient(135deg, #7AC943, #6AB82E);
-        }
-        
-        .scroll-to-top:active {
-            transform: scale(0.95);
-        }
-        
-        /* Tooltip para el botón volver arriba */
-        .scroll-to-top::after {
-            content: 'Volver arriba';
-            position: absolute;
-            bottom: 65px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .scroll-to-top:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: 70px;
-        }
-        
-        /* Contenido de demostración */
-        .demo-content {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .demo-content h2 {
-            color: #2c5530;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .demo-content p {
-            font-size: 1.1em;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                padding: 20px 15px;
-                min-height: 140px;
-            }
+  .social-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    left: 75px;
+  }
+  
+  /* Botón WhatsApp flotante */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite;
+  }
+  
+  .whatsapp-btn:hover {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+  }
+  
+  @keyframes whatsappPulse {
+    0% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6), 0 0 0 15px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+  }
+  
+  /* Tooltip para el botón WhatsApp */
+  .whatsapp-btn::after {
+    content: 'Escríbenos';
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 80px;
+  }
+  
+  /* ===== BOTÓN VOLVER ARRIBA ===== */
+  .scroll-to-top {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    background: linear-gradient(135deg, #6AB82E, #5A9B28);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(106, 184, 46, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+  }
+  
+  .scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .scroll-to-top:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 6px 25px rgba(106, 184, 46, 0.6);
+    background: linear-gradient(135deg, #7AC943, #6AB82E);
+  }
+  
+  .scroll-to-top:active {
+    transform: scale(0.95);
+  }
+  
+  /* Tooltip para el botón volver arriba */
+  .scroll-to-top::after {
+    content: 'Volver arriba';
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .scroll-to-top:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 70px;
+  }
+  
+  /* Responsive - SOLUCIÓN SIMPLIFICADA SIN MENÚ HAMBURGUESA */
+  @media (max-width: 768px) {
+    header {
+      padding: 20px 15px;
+      min-height: 140px;
+    }
 
-            .logo-info {
-                flex-direction: column;
-                gap: 15px;
-            }
+    .logo-info {
+      flex-direction: column;
+      gap: 15px;
+    }
 
-            header img {
-                height: 70px;
-                width: 70px;
-            }
+    header img {
+      height: 70px;
+      width: 70px;
+    }
 
-            .info-text h1 {
-                font-size: 2.4em;
-                text-align: center;
-                line-height: 1.1;
-            }
+    .info-text h1 {
+      font-size: 2.4em;
+      text-align: center;
+      line-height: 1.1;
+    }
 
-            .info-text p {
-                font-size: 1.1em;
-                text-align: center;
-            }
+    .info-text p {
+      font-size: 1.1em;
+      text-align: center;
+    }
 
-            nav {
-                justify-content: flex-start;
-                gap: 15px;
-                padding: 12px 15px;
-            }
-            
-            nav a {
-                padding: 10px 18px;
-                font-size: 14px;
-                min-width: auto;
-                flex-shrink: 0;
-            }
+    /* NAVEGACIÓN MÓVIL - SCROLL HORIZONTAL */
+    nav {
+      justify-content: flex-start;
+      gap: 15px;
+      padding: 12px 15px;
+      background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    
+    nav a {
+      padding: 10px 18px;
+      font-size: 14px;
+      min-width: auto;
+      flex-shrink: 0;
+    }
 
-            .social-floating {
-                left: 10px;
-                top: 35%;
-                gap: 12px;
-            }
+    /* Indicador de scroll */
+    nav::after {
+      content: '→';
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.7);
+      font-size: 18px;
+      pointer-events: none;
+      z-index: 101;
+      animation: scrollHint 2s infinite;
+    }
 
-            .social-btn {
-                width: 45px;
-                height: 45px;
-            }
+    @keyframes scrollHint {
+      0%, 100% { opacity: 0.7; transform: translateY(-50%) translateX(0); }
+      50% { opacity: 1; transform: translateY(-50%) translateX(5px); }
+    }
 
-            .social-icon {
-                width: 24px;
-                height: 24px;
-            }
+    .social-floating {
+      left: 10px;
+      top: 35%;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-            .social-btn::after {
-                display: none;
-            }
-            
-            .whatsapp-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 24px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .scroll-to-top {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                bottom: 85px;
-                right: 20px;
-            }
-            
-            .scroll-to-top::after {
-                font-size: 11px;
-                padding: 6px 10px;
-            }
-        }
+    .social-btn {
+      width: 45px;
+      height: 45px;
+    }
 
-        @media (max-width: 480px) {
-            .scroll-to-top {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-                bottom: 75px;
-                right: 15px;
-            }
+    .social-icon {
+      width: 24px;
+      height: 24px;
+    }
 
-            .whatsapp-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-        
-        /* Smooth scrolling para toda la página */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
-<body>
-    <!-- Redes sociales flotantes -->
-    <div class="social-floating">
-        <a href="https://youtube.com/@liceomontebonito?feature=shared" 
-           target="_blank" 
-           class="social-btn youtube-btn" 
-           data-tooltip="YouTube">
-            <svg class="social-icon" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-        </a>
-        <a href="https://vt.tiktok.com/ZSSYQMhke/" 
-           target="_blank" 
-           class="social-btn tiktok-btn" 
-           data-tooltip="TikTok">
-            <svg class="social-icon" viewBox="0 0 24 24">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-            </svg>
-        </a>
-        <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
-           target="_blank" 
-           class="social-btn instagram-btn" 
-           data-tooltip="Instagram">
-            <svg class="social-icon" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-        </a>
+    .social-btn::after {
+      display: none;
+    }
+    
+    .whatsapp-btn {
+      width: 55px;
+      height: 55px;
+      font-size: 24px;
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    /* Botón volver arriba en móvil */
+    .scroll-to-top {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      bottom: 85px;
+      right: 20px;
+    }
+    
+    .scroll-to-top::after {
+      font-size: 11px;
+      padding: 6px 10px;
+    }
+  }
+
+  /* MÓVIL HORIZONTAL */
+  @media (max-width: 768px) and (orientation: landscape) {
+    header {
+      padding: 15px;
+      min-height: 100px;
+    }
+
+    .logo-info {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+    }
+
+    .info-text h1 {
+      font-size: 2em;
+      text-align: left;
+    }
+
+    .info-text p {
+      font-size: 1em;
+      text-align: left;
+    }
+
+    nav {
+      padding: 10px 15px;
+    }
+
+    nav a {
+      padding: 8px 15px;
+      font-size: 13px;
+    }
+
+    .social-floating {
+      top: 30%;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      padding: 15px 10px;
+      min-height: 130px;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+    }
+    
+    .info-text h1 {
+      font-size: 2em;
+      line-height: 1.1;
+    }
+
+    .info-text p {
+      font-size: 1em;
+    }
+
+    .logo-info {
+      gap: 12px;
+    }
+
+    nav {
+      gap: 12px;
+      padding: 10px 12px;
+    }
+
+    nav a {
+      padding: 8px 15px;
+      font-size: 13px;
+    }
+
+    .social-floating {
+      position: fixed;
+      left: 10px;
+      bottom: 50%;
+      transform: translateY(50%);
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .whatsapp-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      bottom: 15px;
+      right: 15px;
+    }
+    
+    /* Botón volver arriba en pantallas pequeñas */
+    .scroll-to-top {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      bottom: 75px;
+      right: 15px;
+    }
+
+    /* Ocultar indicador de scroll en pantallas muy pequeñas */
+    nav::after {
+      display: none;
+    }
+  }
+
+  /* Smooth scrolling para la navegación móvil */
+  nav {
+    scroll-behavior: smooth;
+  }
+
+  /* Webkit scrollbar styling para el menú */
+  nav::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  nav::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+  }
+
+  nav::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+  }
+
+  nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+  }
+  
+  /* Smooth scrolling para toda la página */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<!-- Redes sociales flotantes con iconos SVG reales -->
+<div class="social-floating">
+  <a href="https://youtube.com/@liceomontebonito?feature=shared" 
+     target="_blank" 
+     class="social-btn youtube-btn" 
+     data-tooltip="YouTube">
+    <svg class="social-icon" viewBox="0 0 24 24">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+  </a>
+  <a href="https://vt.tiktok.com/ZSSYQMhke/" 
+     target="_blank" 
+     class="social-btn tiktok-btn" 
+     data-tooltip="TikTok">
+    <svg class="social-icon" viewBox="0 0 24 24">
+      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/liceomontebonito?igsh=MWt3ejZmbGs5MGV6Nw==" 
+     target="_blank" 
+     class="social-btn instagram-btn" 
+     data-tooltip="Instagram">
+    <svg class="social-icon" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
+   target="_blank" 
+   class="whatsapp-btn" 
+   title="Contáctanos por WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.52 3.48C18.26 1.22 15.24 0 12.04 0 5.46 0 .12 5.34.12 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.24-1.64c1.74.95 3.7 1.45 5.76 1.45h.01c6.58 0 11.92-5.34 11.92-11.92 0-3.18-1.24-6.18-3.49-8.41zM12.04 21.78c-1.77 0-3.51-.48-5.02-1.38l-.36-.21-3.74.98 1-3.66-.23-.37c-.99-1.57-1.51-3.38-1.51-5.24 0-5.43 4.42-9.85 9.85-9.85 2.63 0 5.1 1.02 6.96 2.88 1.86 1.86 2.88 4.33 2.88 6.96 0 5.43-4.42 9.85-9.85 9.85zm5.41-7.39c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.23-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.25-.59-.5-.51-.68-.52-.17-.01-.37-.01-.57-.01-.2 0-.53.08-.8.38-.28.3-1.06 1.04-1.06 2.53s1.08 2.94 1.23 3.14c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z"/>
+  </svg>
+</a>
+
+<!-- Botón Volver Arriba -->
+<button class="scroll-to-top" id="scrollToTop" title="Volver arriba">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</button>
+
+<!-- Header -->
+<header>
+  <div class="contenedor-encabezado">
+    <div class="logo-info">
+      <img src="logo.png" alt="Logo Liceo Montebonito" 
+           onerror="this.onerror=null; this.src='../logo.png';" />
+      <div class="info-text">
+        <h1>Liceo Psicopedagógico Montebonito</h1>
+        <p>Transformando vidas a través de la educación integral</p>
+      </div>
     </div>
+  </div>
+</header>
 
-    <!-- Botón WhatsApp flotante -->
-    <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20el%20Liceo%20Montebonito" 
-       target="_blank" 
-       class="whatsapp-btn" 
-       title="Contáctanos por WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.52 3.48C18.26 1.22 15.24 0 12.04 0 5.46 0 .12 5.34.12 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.24-1.64c1.74.95 3.7 1.45 5.76 1.45h.01c6.58 0 11.92-5.34 11.92-11.92 0-3.18-1.24-6.18-3.49-8.41zM12.04 21.78c-1.77 0-3.51-.48-5.02-1.38l-.36-.21-3.74.98 1-3.66-.23-.37c-.99-1.57-1.51-3.38-1.51-5.24 0-5.43 4.42-9.85 9.85-9.85 2.63 0 5.1 1.02 6.96 2.88 1.86 1.86 2.88 4.33 2.88 6.96 0 5.43-4.42 9.85-9.85 9.85zm5.41-7.39c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.23-.64.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.25-.59-.5-.51-.68-.52-.17-.01-.37-.01-.57-.01-.2 0-.53.08-.8.38-.28.3-1.06 1.04-1.06 2.53s1.08 2.94 1.23 3.14c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z"/>
-        </svg>
-    </a>
+<!-- Navegación -->
+<nav>
+  <a href="/Liceomontebonito/index.html">🏠 Inicio</a>
+  <a href="/Liceomontebonito/nosotros.html">👥 Nosotros</a>
+  <a href="/Liceomontebonito/servicios.html">🎓 Servicios</a>
+  <a href="/Liceomontebonito/blog/index.html">📚 Blog</a>
+  <a href="/Liceomontebonito/admisiones.html">📋 Admisiones</a>
+  <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
+</nav>
 
-    <!-- Botón Volver Arriba -->
-    <button class="scroll-to-top" id="scrollToTop" title="Volver arriba">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-        </svg>
-    </button>
-
-    <!-- Header -->
-    <header>
-        <div class="contenedor-encabezado">
-            <div class="logo-info">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Ccircle cx='45' cy='45' r='45' fill='%236AB82E'/%3E%3Ctext x='45' y='55' text-anchor='middle' fill='white' font-size='36' font-weight='bold'%3ELM%3C/text%3E%3C/svg%3E" alt="Logo Liceo Montebonito" />
-                <div class="info-text">
-                    <h1>Liceo Psicopedagógico Montebonito</h1>
-                    <p>Transformando vidas a través de la educación integral</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navegación -->
-    <nav>
-        <a href="#inicio">🏠 Inicio</a>
-        <a href="#nosotros">👥 Nosotros</a>
-        <a href="#servicios">🎓 Servicios</a>
-        <a href="#blog">📚 Blog</a>
-        <a href="#admisiones">📋 Admisiones</a>
-        <a href="#contacto">📞 Contacto</a>
-    </nav>
-
-    <!-- Contenido de demostración -->
-    <div class="demo-content" id="inicio">
-        <h2>Bienvenidos al Liceo Montebonito</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-
-    <div class="demo-content" id="nosotros">
-        <h2>Sobre Nosotros</h2>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-    </div>
-
-    <div class="demo-content" id="servicios">
-        <h2>Nuestros Servicios</h2>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-        <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-    </div>
-
-    <div class="demo-content" id="blog">
-        <h2>Blog Educativo</h2>
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-    </div>
-
-    <div class="demo-content" id="admisiones">
-        <h2>Proceso de Admisiones</h2>
-        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
-    </div>
-
-    <div class="demo-content" id="contacto">
-        <h2>Contáctanos</h2>
-        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat.</p>
-        <p>Facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet.</p>
-    </div>
-
-    <div class="demo-content">
-        <h2>Más Contenido</h2>
-        <p>Este es contenido adicional para demostrar el funcionamiento del botón "Volver arriba". Cuando desplaces hacia abajo y veas aparecer el botón verde en la esquina inferior derecha, podrás hacer clic en él para volver rápidamente al inicio de la página.</p>
-        <p>El botón tiene las siguientes características:</p>
-        <ul>
-            <li>✅ Aparece automáticamente cuando haces scroll hacia abajo</li>
-            <li>✅ Se oculta cuando estás en la parte superior</li>
-            <li>✅ Tiene efectos de hover suaves y atractivos</li>
-            <li>✅ Incluye un tooltip que dice "Volver arriba"</li>
-            <li>✅ Es completamente responsive (se adapta a móviles)</li>
-            <li>✅ Usa scroll suave para una mejor experiencia</li>
-        </ul>
-        <p>El diseño está perfectamente integrado con el resto de tu página web, usando los mismos colores verdes del tema de tu institución educativa.</p>
-    </div>
-
-    <!-- JavaScript para el botón "Volver arriba" -->
-    <script>
-        // Obtener el botón
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        // Mostrar/ocultar el botón basado en la posición del scroll
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        // Funcionalidad del botón para volver arriba
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Funcionalidad adicional: mostrar/ocultar el botón con una animación más suave
-        let isScrolling = false;
-        
-        window.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(function() {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    if (scrollTop > 300) {
-                        scrollToTopBtn.classList.add('show');
-                    } else {
-                        scrollToTopBtn.classList.remove('show');
-                    }
-                    
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-        });
-
-        // Mejorar la navegación del menú para que también use scroll suave
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+<!-- Contenido de ejemplo para probar el scroll -->
+<div style="height: 2000px; padding: 50px; background: #f8
