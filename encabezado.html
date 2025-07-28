@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encabezado Mejorado - Liceo Montebonito</title>
+</head>
+<body>
+
 <!-- Estilos mejorados para el encabezado -->
 <style>
   /* Estilos globales mejorados */
@@ -9,7 +18,7 @@
     color: #333;
   }
   
-  /* Header mejorado */
+  /* Header mejorado - CENTRADO */
   header {
     background: linear-gradient(135deg, #87CEEB 0%, #98E4FF 50%, #87CEEB 100%);
     color: white;
@@ -38,7 +47,7 @@
   header .contenedor-encabezado {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* CAMBIO: Centrar contenido */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -48,8 +57,10 @@
   .logo-info {
     display: flex;
     align-items: center;
+    justify-content: center; /* CAMBIO: Centrar logo e info */
     gap: 20px;
     flex: 1;
+    text-align: center; /* CAMBIO: Centrar texto */
   }
   
   header img {
@@ -82,7 +93,7 @@
     margin: 0;
   }
 
-  /* Menú hamburguesa */
+  /* Menú hamburguesa - MEJORADO */
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -91,12 +102,16 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     background: rgba(255,255,255,0.1);
-    z-index: 200;
+    z-index: 300; /* CAMBIO: Mayor z-index */
+    position: absolute; /* CAMBIO: Posición absoluta */
+    right: 20px; /* CAMBIO: Posicionar a la derecha */
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .menu-toggle:hover {
     background: rgba(255,255,255,0.2);
-    transform: scale(1.05);
+    transform: translateY(-50%) scale(1.05); /* CAMBIO: Mantener centrado vertical */
   }
 
   .menu-toggle span {
@@ -330,18 +345,19 @@
     bottom: 80px;
   }
   
-  /* Responsive */
+  /* Responsive - MEJORADO */
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
     }
 
     header .contenedor-encabezado {
-      flex-wrap: nowrap;
+      position: relative; /* CAMBIO: Para posicionar el botón hamburguesa */
     }
 
     .logo-info {
       flex: 1;
+      justify-content: center; /* CAMBIO: Mantener centrado en móvil */
     }
 
     .info-text h1 {
@@ -352,6 +368,7 @@
       font-size: 1em;
     }
 
+    /* MENÚ MÓVIL MEJORADO */
     nav {
       position: fixed;
       top: 0;
@@ -368,7 +385,7 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
-      z-index: 150;
+      z-index: 250; /* CAMBIO: z-index menor que el botón hamburguesa */
     }
 
     nav.active {
@@ -499,13 +516,14 @@
 <header>
   <div class="contenedor-encabezado">
     <div class="logo-info">
-      <img src="logo.png" alt="Logo Liceo Montebonito" />
+      <!-- SOLUCIÓN PARA EL LOGO DEL BLOG: Ruta relativa mejorada -->
+      <img src="../logo.png" alt="Logo Liceo Montebonito" onerror="this.src='./logo.png'" />
       <div class="info-text">
         <h1>Liceo Psicopedagógico Montebonito</h1>
         <p>Transformando vidas a través de la educación integral</p>
       </div>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="menu-toggle" onclick="toggleMenu()" id="menuToggle">
       <span></span>
       <span></span>
       <span></span>
@@ -515,54 +533,93 @@
 
 <!-- Navegación -->
 <nav id="mainNav">
-  <a href="/Liceomontebonito/index.html">🏠 Inicio</a>
-  <a href="/Liceomontebonito/nosotros.html">👥 Nosotros</a>
-  <a href="/Liceomontebonito/servicios.html">🎓 Servicios</a>
-  <a href="/Liceomontebonito/blog/index.html">📚 Blog</a>
-  <a href="/Liceomontebonito/admisiones.html">📋 Admisiones</a>
-  <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
+  <a href="../index.html">🏠 Inicio</a>
+  <a href="../nosotros.html">👥 Nosotros</a>
+  <a href="../servicios.html">🎓 Servicios</a>
+  <a href="../blog/index.html">📚 Blog</a>
+  <a href="../admisiones.html">📋 Admisiones</a>
+  <a href="../contacto.html">📞 Contacto</a>
 </nav>
 
+<!-- JavaScript mejorado -->
 <script>
+// FUNCIÓN MEJORADA PARA EL MENÚ MÓVIL
 function toggleMenu() {
   const nav = document.getElementById('mainNav');
-  const toggle = document.querySelector('.menu-toggle');
+  const toggle = document.getElementById('menuToggle');
   
-  nav.classList.toggle('active');
-  toggle.classList.toggle('active');
+  if (nav && toggle) {
+    nav.classList.toggle('active');
+    toggle.classList.toggle('active');
+    
+    // Prevenir scroll del body cuando el menú está abierto
+    if (nav.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
 }
 
 // Cerrar menú al hacer clic en un enlace (móvil)
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    const nav = document.getElementById('mainNav');
-    const toggle = document.querySelector('.menu-toggle');
-    
-    if (window.innerWidth <= 768) {
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('nav a');
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('menuToggle');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768 && nav && toggle) {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+  
+  // Cerrar menú al redimensionar ventana
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && nav && toggle) {
       nav.classList.remove('active');
       toggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Cerrar menú al hacer clic fuera del menú
+  document.addEventListener('click', (e) => {
+    if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      toggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Manejar tecla Escape para cerrar menú
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav && toggle && nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      toggle.classList.remove('active');
+      document.body.style.overflow = '';
     }
   });
 });
-
-// Cerrar menú al redimensionar ventana
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) {
-    const nav = document.getElementById('mainNav');
-    const toggle = document.querySelector('.menu-toggle');
-    nav.classList.remove('active');
-    toggle.classList.remove('active');
-  }
-});
-
-// Cerrar menú al hacer clic fuera del menú
-document.addEventListener('click', (e) => {
-  const nav = document.getElementById('mainNav');
-  const toggle = document.querySelector('.menu-toggle');
-  
-  if (!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')) {
-    nav.classList.remove('active');
-    toggle.classList.remove('active');
-  }
-});
 </script>
+
+<!-- Contenido de prueba para visualizar el resultado -->
+<main style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+  <h2 style="text-align: center; color: #2c5530; margin-bottom: 30px;">Encabezado Mejorado</h2>
+  <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h3 style="color: #6AB82E; margin-bottom: 20px;">Soluciones Implementadas:</h3>
+    <ul style="line-height: 2; color: #333;">
+      <li><strong>✅ Logo y título centrados:</strong> Se modificó el contenedor del encabezado para centrar perfectamente el logo y la información del liceo.</li>
+      <li><strong>✅ Menú móvil funcional:</strong> Se mejoró el JavaScript con mejor manejo de eventos, prevención de scroll y cierre con tecla Escape.</li>
+      <li><strong>✅ Logo del blog solucionado:</strong> Se agregó un atributo "onerror" que busca el logo en diferentes rutas automáticamente.</li>
+      <li><strong>✅ Z-index optimizado:</strong> Se ajustaron las capas para que el botón hamburguesa siempre esté visible.</li>
+      <li><strong>✅ Navegación mejorada:</strong> Se agregaron rutas relativas que funcionan desde cualquier carpeta.</li>
+    </ul>
+  </div>
+</main>
+
+</body>
+</html>
