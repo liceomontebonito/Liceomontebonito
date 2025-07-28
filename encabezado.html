@@ -690,8 +690,8 @@
   </svg>
 </a>
 
-<!-- Botón Volver Arriba - AHORA FUNCIONAL -->
-<button class="scroll-to-top" id="scrollToTop" title="Volver arriba">
+<!-- Botón Volver Arriba - VERIFICADO Y CORREGIDO -->
+<button class="scroll-to-top" id="scrollToTop" type="button" title="Volver arriba">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
   </svg>
@@ -760,26 +760,66 @@
   </div>
 </div>
 
-<!-- JAVASCRIPT PARA EL BOTÓN VOLVER ARRIBA -->
+<!-- JAVASCRIPT PARA EL BOTÓN VOLVER ARRIBA - VERSIÓN CORREGIDA -->
 <script>
-// Función para el botón "Volver Arriba"
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    // Mostrar/ocultar el botón basado en el scroll
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-    
-    // Funcionalidad del clic para volver arriba
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+// Variables globales
+let scrollToTopBtn;
+let isScrolling = false;
+
+// Función para mostrar/ocultar botón
+function toggleScrollButton() {
+    if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+            isScrolling = false;
         });
-    });
-});
+    }
+}
+
+// Función para volver arriba
+function scrollToTop() {
+    const scrollStep = -window.scrollY / (500 / 15);
+    const scrollInterval = setInterval(() => {
+        if (window.scrollY !== 0) {
+            window.scrollBy(0, scrollStep);
+        } else {
+            clearInterval(scrollInterval);
+        }
+    }, 15);
+}
+
+// Inicialización cuando el DOM esté listo
+function initScrollButton() {
+    scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+        // Event listener para scroll
+        window.addEventListener('scroll', toggleScrollButton, { passive: true });
+        
+        // Event listener para click
+        scrollToTopBtn.addEventListener('click', scrollToTop);
+        
+        console.log('Botón volver arriba inicializado correctamente');
+    } else {
+        console.error('No se encontró el botón con ID scrollToTop');
+    }
+}
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollButton);
+} else {
+    initScrollButton();
+}
+
+// Fallback - ejecutar después de 1 segundo si no se ha inicializado
+setTimeout(() => {
+    if (!scrollToTopBtn) {
+        initScrollButton();
+    }
+}, 1000);
