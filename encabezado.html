@@ -312,7 +312,7 @@
     bottom: 80px;
   }
   
-  /* ===== BOTÓN VOLVER ARRIBA - FUNCIONAL ===== */
+  /* ===== BOTÓN VOLVER ARRIBA ===== */
   .scroll-to-top {
     position: fixed;
     bottom: 110px;
@@ -630,26 +630,6 @@
   html {
     scroll-behavior: smooth;
   }
-
-  /* Contenido demo para probar el scroll */
-  .demo-content {
-    height: 2000px;
-    padding: 50px;
-    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-    font-size: 18px;
-    line-height: 1.8;
-  }
-
-  .demo-section {
-    margin: 100px 0;
-    padding: 40px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
 </style>
 
 <!-- Redes sociales flotantes con iconos SVG reales -->
@@ -690,8 +670,8 @@
   </svg>
 </a>
 
-<!-- Botón Volver Arriba - VERIFICADO Y CORREGIDO -->
-<button class="scroll-to-top" id="scrollToTop" type="button" title="Volver arriba">
+<!-- Botón Volver Arriba -->
+<button class="scroll-to-top" id="scrollToTop" title="Volver arriba">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
   </svg>
@@ -721,105 +701,5 @@
   <a href="/Liceomontebonito/contacto.html">📞 Contacto</a>
 </nav>
 
-<!-- Contenido demo para probar el scroll -->
-<div class="demo-content">
-  <div class="demo-section">
-    <h2>¡Botón "Volver Arriba" Ahora Funcional!</h2>
-    <p>El botón verde con la flecha hacia arriba ahora funciona perfectamente. Aparece cuando bajas más de 300px y desaparece cuando estás en la parte superior.</p>
-    <p><strong>Características:</strong></p>
-    <ul>
-      <li>✅ Aparece automáticamente al hacer scroll hacia abajo</li>
-      <li>✅ Se oculta cuando estás en la parte superior</li>
-      <li>✅ Animaciones suaves de entrada y salida</li>
-      <li>✅ Tooltip que dice "Volver arriba"</li>
-      <li>✅ Posicionado arriba del botón de WhatsApp</li>
-      <li>✅ Responsive para móviles</li>
-    </ul>
-  </div>
-
-  <div class="demo-section">
-    <h2>Sección 2 - Sigue bajando para probar</h2>
-    <p>Continúa desplazándote hacia abajo para ver cómo aparece el botón "Volver Arriba". Notarás que aparece suavemente cuando has bajado lo suficiente.</p>
-  </div>
-
-  <div class="demo-section">
-    <h2>Sección 3 - El botón ya debería estar visible</h2>
-    <p>En este punto, el botón verde "Volver Arriba" debería estar visible en la esquina inferior derecha, justo arriba del botón de WhatsApp.</p>
-    <p>¡Haz clic en él para volver al inicio de la página instantáneamente!</p>
-  </div>
-
-  <div class="demo-section">
-    <h2>Sección 4 - Prueba final</h2>
-    <p>Esta es la sección final para probar. El botón de "Volver Arriba" te llevará directamente al header de la página.</p>
-    <p><strong>Instrucciones de implementación:</strong></p>
-    <ol>
-      <li>Copia todo el código HTML completo</li>
-      <li>Reemplaza tu encabezado actual</li>
-      <li>¡El botón funcionará inmediatamente!</li>
-    </ol>
-  </div>
-</div>
-
-<!-- JAVASCRIPT PARA EL BOTÓN VOLVER ARRIBA - VERSIÓN CORREGIDA -->
-<script>
-// Variables globales
-let scrollToTopBtn;
-let isScrolling = false;
-
-// Función para mostrar/ocultar botón
-function toggleScrollButton() {
-    if (!isScrolling) {
-        isScrolling = true;
-        requestAnimationFrame(() => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-            isScrolling = false;
-        });
-    }
-}
-
-// Función para volver arriba
-function scrollToTop() {
-    const scrollStep = -window.scrollY / (500 / 15);
-    const scrollInterval = setInterval(() => {
-        if (window.scrollY !== 0) {
-            window.scrollBy(0, scrollStep);
-        } else {
-            clearInterval(scrollInterval);
-        }
-    }, 15);
-}
-
-// Inicialización cuando el DOM esté listo
-function initScrollButton() {
-    scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    if (scrollToTopBtn) {
-        // Event listener para scroll
-        window.addEventListener('scroll', toggleScrollButton, { passive: true });
-        
-        // Event listener para click
-        scrollToTopBtn.addEventListener('click', scrollToTop);
-        
-        console.log('Botón volver arriba inicializado correctamente');
-    } else {
-        console.error('No se encontró el botón con ID scrollToTop');
-    }
-}
-
-// Ejecutar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollButton);
-} else {
-    initScrollButton();
-}
-
-// Fallback - ejecutar después de 1 segundo si no se ha inicializado
-setTimeout(() => {
-    if (!scrollToTopBtn) {
-        initScrollButton();
-    }
-}, 1000);
+<!-- Contenido de ejemplo para probar el scroll -->
+<div style="height: 2000px; padding: 50px; background: #f8
