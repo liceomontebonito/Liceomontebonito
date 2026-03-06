@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda | Liceo Montebonito</title>
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title h2 {
+      font-size: 2.5em;
+      color: #2c5530;
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .producto-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .producto-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+    }
+
+    .producto-info {
+      padding: 20px;
+    }
+
+    .producto-info h3 {
+      margin: 0 0 8px;
+      color: #2c5530;
+      font-size: 1.2em;
+    }
+
+    .producto-info p {
+      margin: 0 0 15px;
+      color: #666;
+      font-size: 0.95em;
+    }
+
+    .producto-precio {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #6AB82E;
+      margin-bottom: 15px;
+    }
+
+    .btn-comprar {
+      display: inline-block;
+      background: linear-gradient(135deg, #6AB82E, #7AC943);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .btn-comprar:hover {
+      background: linear-gradient(135deg, #5A9B28, #6AB82E);
+      box-shadow: 0 4px 15px rgba(106,184,46,0.4);
+      transform: translateY(-1px);
+    }
+
+    .aviso {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      color: #555;
+    }
+
+    .aviso strong {
+      color: #2c5530;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado y navegación -->
+  <div id="encabezado"></div>
+  <script>
+    fetch('/Liceomontebonito/encabezado.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('encabezado').innerHTML = html; });
+  </script>
+
+  <div class="container">
+    <div class="page-title">
+      <h2>🛒 Tienda</h2>
+      <p>Productos y materiales del Liceo Psicopedagógico Montebonito</p>
+    </div>
+
+    <div class="productos-grid">
+
+      <div class="producto-card">
+        <div class="producto-img">📚</div>
+        <div class="producto-info">
+          <h3>Kit Escolar</h3>
+          <p>Conjunto completo de útiles escolares para el año lectivo.</p>
+          <div class="producto-precio">Consultar precio</div>
+          <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20el%20Kit%20Escolar" target="_blank" class="btn-comprar">Solicitar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img">👕</div>
+        <div class="producto-info">
+          <h3>Uniforme Oficial</h3>
+          <p>Uniforme completo con logo bordado del liceo.</p>
+          <div class="producto-precio">Consultar precio</div>
+          <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20el%20Uniforme%20Oficial" target="_blank" class="btn-comprar">Solicitar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img">🎒</div>
+        <div class="producto-info">
+          <h3>Morral Institucional</h3>
+          <p>Morral resistente con logo del Liceo Montebonito.</p>
+          <div class="producto-precio">Consultar precio</div>
+          <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20el%20Morral%20Institucional" target="_blank" class="btn-comprar">Solicitar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img">📓</div>
+        <div class="producto-info">
+          <h3>Agenda Escolar</h3>
+          <p>Agenda oficial del año con el sello del liceo.</p>
+          <div class="producto-precio">Consultar precio</div>
+          <a href="https://wa.me/573178728659?text=Hola%2C%20me%20interesa%20la%20Agenda%20Escolar" target="_blank" class="btn-comprar">Solicitar por WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="aviso">
+      <p><strong>¿No encuentras lo que buscas?</strong><br>
+      Contáctanos por WhatsApp y con gusto te asesoramos sobre todos nuestros productos disponibles.</p>
+      <a href="https://wa.me/573178728659?text=Hola%2C%20quiero%20información%20sobre%20la%20tienda" target="_blank" class="btn-comprar" style="display:inline-block; width:auto; margin-top:10px;">Contactar por WhatsApp</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Botón volver arriba
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scrollToTop');
+      if (btn) {
+        if (window.scrollY > 300) btn.classList.add('show');
+        else btn.classList.remove('show');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.id === 'scrollToTop') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
