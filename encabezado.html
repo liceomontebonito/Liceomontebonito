@@ -96,60 +96,60 @@
     line-height: 1.3;
   }
   
-  /* Navegación mejorada - MENÚ HORIZONTAL FIJO */
+  /* Navegación - barra limpia escritorio / hamburguesa móvil */
   nav {
     background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    padding: 15px 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: all 0.3s ease;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
   }
-  
-  nav a {
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 6px 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    font-size: 16px;
-    padding: 12px 20px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    font-size: 15.5px;
+    letter-spacing: 0.3px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: background 0.25s ease;
     position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    flex-shrink: 0;
-    display: inline-block;
   }
-  
-  nav a::before {
+
+  .nav-links a::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
+    left: 18px;
+    right: 18px;
+    bottom: 7px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
   }
-  
-  nav a:hover::before {
-    left: 100%;
+
+  .nav-links a:hover {
+    background: rgba(255,255,255,0.14);
   }
-  
-  nav a:hover {
-    background-color: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    color: #ffd9a3;
+
+  .nav-links a:hover::after {
+    transform: scaleX(1);
   }
+
+  .nav-toggle { display: none; }
 
   /* Botones flotantes de redes sociales con iconos SVG */
   .social-floating {
@@ -405,39 +405,66 @@
       text-align: center;
     }
 
-    /* NAVEGACIÓN MÓVIL - SCROLL HORIZONTAL */
-    nav {
-      justify-content: flex-start;
-      gap: 15px;
-      padding: 12px 15px;
-      background: linear-gradient(135deg, #6AB82E 0%, #7AC943 100%);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    }
-    
-    nav a {
-      padding: 10px 18px;
-      font-size: 14px;
-      min-width: auto;
-      flex-shrink: 0;
+    /* NAVEGACIÓN MÓVIL - MENÚ DESPLEGABLE */
+    .nav-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: white;
+      font-family: inherit;
+      padding: 14px 20px;
+      cursor: pointer;
     }
 
-    /* Indicador de scroll */
-    nav::after {
-      content: '→';
-      position: fixed;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255,255,255,0.7);
-      font-size: 18px;
-      pointer-events: none;
-      z-index: 101;
-      animation: scrollHint 2s infinite;
+    .nav-toggle span {
+      display: none;
     }
 
-    @keyframes scrollHint {
-      0%, 100% { opacity: 0.7; transform: translateY(-50%) translateX(0); }
-      50% { opacity: 1; transform: translateY(-50%) translateX(5px); }
+    .nav-toggle::before {
+      content: '☰';
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-toggle.activo::before {
+      content: '✕';
+    }
+
+    .nav-toggle em {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0 0 8px;
+    }
+
+    .nav-links.abierto {
+      display: flex;
+    }
+
+    .nav-links a {
+      padding: 14px 24px;
+      border-radius: 0;
+      font-size: 16px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .nav-links a::after { display: none; }
+
+    .nav-links a:active {
+      background: rgba(255,255,255,0.22);
+    }
+
     }
 
     .social-floating {
@@ -515,11 +542,6 @@
       padding: 10px 15px;
     }
 
-    nav a {
-      padding: 8px 15px;
-      font-size: 13px;
-    }
-
     .social-floating {
       top: 30%;
       flex-direction: column;
@@ -549,16 +571,6 @@
 
     .logo-info {
       gap: 12px;
-    }
-
-    nav {
-      gap: 12px;
-      padding: 10px 12px;
-    }
-
-    nav a {
-      padding: 8px 15px;
-      font-size: 13px;
     }
 
     .social-floating {
@@ -598,14 +610,6 @@
     }
 
     /* Ocultar indicador de scroll en pantallas muy pequeñas */
-    nav::after {
-      display: none;
-    }
-  }
-
-  /* Smooth scrolling para la navegación móvil */
-  nav {
-    scroll-behavior: smooth;
   }
 
   /* Webkit scrollbar styling para el menú */
@@ -693,13 +697,19 @@
 
 <!-- Navegación -->
 <nav>
-  <a href="/index.html">🏠 Inicio</a>
-  <a href="/nosotros.html">👥 Nosotros</a>
-  <a href="/servicios.html">🎓 Servicios</a>
-  <a href="/blog/index.html">📚 Blog</a>
-<a href="/club-de-ciencia.html">🔬 Club de Ciencia</a>
-<a href="/tienda.html">🛒 Tienda</a>
-  <a href="/contacto.html">📞 Contacto</a>
+  <button class="nav-toggle" onclick="document.querySelector('nav .nav-links').classList.toggle('abierto'); this.classList.toggle('activo');" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+    <em>Menú</em>
+  </button>
+  <div class="nav-links">
+    <a href="/index.html">Inicio</a>
+    <a href="/nosotros.html">Nosotros</a>
+    <a href="/servicios.html">Servicios</a>
+    <a href="/club-de-ciencia.html">Club de Ciencia</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/tienda.html">Tienda</a>
+    <a href="/contacto.html">Contacto</a>
+  </div>
 </nav>
 
 <!-- Contenido de ejemplo para probar el scroll -->
