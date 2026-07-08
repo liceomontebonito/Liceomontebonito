@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://liceomontebonito.github.io/Liceomontebonito/sitemap.xml
+Sitemap: https://liceomontebonito.com/sitemap.xml
