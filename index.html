@@ -479,7 +479,7 @@
   <script>
     async function cargarEncabezado() {
       try {
-        const response = await fetch('encabezado.html');
+        const response = await fetch('encabezado.html', {cache: 'no-cache'});
         const html = await response.text();
         document.getElementById('encabezado-container').innerHTML = html;
         

@@ -150,7 +150,7 @@
   <!-- Encabezado y navegación -->
   <div id="encabezado"></div>
   <script>
-    fetch('encabezado.html')
+    fetch('encabezado.html', {cache: 'no-cache'})
       .then(r => r.text())
       .then(html => { document.getElementById('encabezado').innerHTML = html; });
   </script>

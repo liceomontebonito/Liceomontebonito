@@ -155,7 +155,7 @@
   </footer>
 
   <script>
-    fetch('encabezado.html')
+    fetch('encabezado.html', {cache: 'no-cache'})
       .then(r => r.text())
       .then(html => { document.getElementById('encabezado-container').innerHTML = html; })
       .catch(e => console.error('Error cargando encabezado:', e));
