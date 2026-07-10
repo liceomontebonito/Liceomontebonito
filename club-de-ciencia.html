@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Club de Ciencia | Liceo Montebonito - Sábados sin pantallas</title>
-  <meta name="description" content="Club de Ciencia Montebonito: sábados sin pantallas para niños de 3 a 8 años en Dosquebradas. Experimentos, inventos y creación real. 4 horas cada sábado, $200.000/mes. Cupos limitados." />
+  <meta name="description" content="¿Otro sábado frente a la pantalla? Club de Ciencia Montebonito para niños de 5 a 10 años en Dosquebradas: cohetes, laboratorio, casos de detective y ADN real. Cupos limitados." />
   <link rel="canonical" href="https://liceomontebonito.com/club-de-ciencia.html" />
-  <meta property="og:title" content="Club de Ciencia Montebonito - Sábados sin pantallas" />
-  <meta property="og:description" content="Mientras otros niños pasan el sábado frente a una pantalla, el tuyo está inventando. Niños de 3 a 8 años. Cupos limitados." />
+  <meta property="og:title" content="¿Otro sábado frente a la pantalla? — Club de Ciencia Montebonito" />
+  <meta property="og:description" content="Mientras otros niños ven videos, el tuyo puede estar lanzando cohetes y extrayendo ADN de verdad. 5 a 10 años. Cupos limitados." />
   <meta property="og:url" content="https://liceomontebonito.com/club-de-ciencia.html" />
   <meta property="og:image" content="https://liceomontebonito.com/logo.png" />
   <meta property="og:type" content="website" />
@@ -20,7 +20,7 @@
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Club de Ciencia Montebonito - Sábados sin pantallas",
-    "description": "Club sabatino de ciencia e invención para niños de 3 a 8 años. Experimentos, construcción y creación sin pantallas.",
+    "description": "Club sabatino de ciencia para niños de 5 a 10 años: ingeniería, química, ciencia forense y biología molecular. 100% sin pantallas.",
     "eventSchedule": {"@type": "Schedule", "byDay": "Saturday", "startTime": "08:00", "endTime": "12:00"},
     "location": {"@type": "Place", "name": "Liceo Psicopedagógico Montebonito", "address": {"@type": "PostalAddress", "streetAddress": "Manzana 35 Casa 2, Montebonito", "addressLocality": "Dosquebradas", "addressRegion": "Risaralda", "addressCountry": "CO"}},
     "organizer": {"@type": "Organization", "name": "Liceo Psicopedagógico Montebonito", "url": "https://liceomontebonito.com"},
@@ -45,59 +45,66 @@
       background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
     }
     .hero { text-align: center; }
-    .hero h2 { font-size: 2.6em; color: #2c5530; margin: 10px 0; }
-    .hero .eslogan {
-      display: inline-block; background: linear-gradient(135deg, #FF6B35, #ff8c5a);
-      color: white; padding: 10px 25px; border-radius: 50px; font-weight: 700;
-      font-size: 1.15em; margin: 10px 0 20px; box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+    .hero .pregunta {
+      font-size: 2.4em; color: #2c5530; margin: 5px 0 10px; line-height: 1.25; font-weight: 800;
     }
-    .hero p.intro { font-size: 1.2em; color: #555; max-width: 650px; margin: 0 auto 10px; }
+    .hero .pregunta em { color: #FF6B35; font-style: normal; }
+    .hero .respuesta { font-size: 1.35em; color: #444; max-width: 640px; margin: 0 auto 8px; }
+    .hero .marca {
+      display: inline-block; background: linear-gradient(135deg, #7AC943, #6AB82E);
+      color: white; padding: 10px 26px; border-radius: 50px; font-weight: 700;
+      font-size: 1.15em; margin: 18px 0 8px; box-shadow: 0 5px 15px rgba(122,201,67,0.3);
+    }
     .datos-rapidos {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px; margin: 30px 0 10px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px; margin: 25px 0 5px;
     }
     .dato {
       background: linear-gradient(135deg, rgba(135,206,235,0.12), rgba(122,201,67,0.12));
-      border-radius: 15px; padding: 18px 10px; text-align: center;
+      border-radius: 15px; padding: 16px 10px; text-align: center;
     }
-    .dato .icono { font-size: 2em; display: block; margin-bottom: 6px; }
-    .dato strong { color: #2c5530; display: block; font-size: 1.05em; }
-    .dato span { color: #666; font-size: 0.9em; }
-    h3.seccion { color: #2c5530; font-size: 1.7em; text-align: center; margin: 0 0 20px; }
-    .semana {
-      display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px;
-      background: #f8fbf6; border-left: 4px solid #7AC943; border-radius: 12px; padding: 16px 18px;
+    .dato .icono { font-size: 1.9em; display: block; margin-bottom: 5px; }
+    .dato strong { color: #2c5530; display: block; font-size: 1.02em; }
+    .dato span { color: #666; font-size: 0.88em; }
+    h3.seccion { color: #2c5530; font-size: 1.7em; text-align: center; margin: 0 0 8px; }
+    p.sub-seccion { text-align: center; color: #666; margin: 0 0 24px; }
+    .misiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .mision {
+      background: linear-gradient(135deg, rgba(135,206,235,0.1), rgba(122,201,67,0.1));
+      border-radius: 15px; padding: 22px 16px; text-align: center;
+      border: 2px solid transparent; transition: all 0.3s ease;
     }
-    .semana .num {
-      background: linear-gradient(135deg, #7AC943, #6AB82E); color: white; font-weight: 800;
-      min-width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; font-size: 1.2em; flex-shrink: 0;
-    }
-    .semana h4 { margin: 0 0 5px; color: #2c5530; font-size: 1.15em; }
-    .semana p { margin: 0; color: #555; font-size: 0.98em; }
-    .porque { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .porque .item { text-align: center; padding: 20px 15px; border-radius: 15px;
-      background: linear-gradient(135deg, rgba(135,206,235,0.1), rgba(122,201,67,0.1)); }
-    .porque .item .icono { font-size: 2.5em; display: block; margin-bottom: 10px; }
-    .porque .item h4 { color: #2c5530; margin: 0 0 8px; }
-    .porque .item p { color: #666; font-size: 0.93em; margin: 0; }
+    .mision:hover { transform: translateY(-5px); border-color: rgba(122,201,67,0.4); }
+    .mision .icono { font-size: 2.6em; display: block; margin-bottom: 8px; }
+    .mision h4 { color: #2c5530; margin: 0 0 6px; font-size: 1.1em; }
+    .mision p { color: #555; font-size: 0.93em; margin: 0; }
+    .misterio { text-align: center; color: #FF6B35; font-weight: 700; margin-top: 20px; }
+    .culpa { text-align: center; }
+    .culpa p { font-size: 1.15em; color: #444; max-width: 640px; margin: 0 auto 14px; }
+    .culpa .fuerte { font-size: 1.3em; color: #2c5530; font-weight: 800; }
     .precio-box { text-align: center; }
     .precio-box .precio { font-size: 3em; color: #2c5530; font-weight: 800; margin: 5px 0; }
     .precio-box .detalle { color: #666; font-size: 1.05em; }
     .cta-button {
       display: inline-block; background: linear-gradient(135deg, #25D366, #1ebe5d);
-      color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none;
-      font-weight: bold; font-size: 1.2em; margin-top: 25px;
+      color: white; padding: 18px 42px; border-radius: 50px; text-decoration: none;
+      font-weight: bold; font-size: 1.25em; margin-top: 22px;
       box-shadow: 0 5px 20px rgba(37,211,102,0.4); transition: all 0.3s ease;
+      animation: latido 2.5s infinite;
     }
     .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37,211,102,0.5); }
-    .cupos { color: #FF6B35; font-weight: 700; margin-top: 15px; }
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .cupos { color: #FF6B35; font-weight: 700; margin-top: 15px; font-size: 1.05em; }
     footer {
       background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%); color: white;
       text-align: center; padding: 30px 20px; margin-top: 40px;
     }
     @media (max-width: 768px) {
-      .hero h2 { font-size: 1.9em; }
+      .hero .pregunta { font-size: 1.7em; }
+      .hero .respuesta { font-size: 1.1em; }
       .card { padding: 30px 18px; }
       .precio-box .precio { font-size: 2.3em; }
     }
@@ -108,45 +115,44 @@
 
   <div class="container">
     <section class="card hero">
-      <span style="font-size:3em;">🔬</span>
-      <h2>Club de Ciencia Montebonito</h2>
-      <div class="eslogan">📵 Sábados sin pantallas</div>
-      <p class="intro"><strong>Mientras otros niños pasan el sábado frente a una pantalla, el tuyo está inventando.</strong></p>
-      <p class="intro">Un club sabatino donde niños de 3 a 8 años experimentan, construyen y crean con sus propias manos — y cada sábado vuelven a casa con su invento.</p>
+      <span style="font-size:2.6em;">📱</span>
+      <h2 class="pregunta">Este sábado tu hijo va a pasar <em>5 horas frente a una pantalla</em>.<br>¿Y si en vez de eso extrajera ADN de verdad?</h2>
+      <p class="respuesta">Cohetes que suben 20 metros. Casos de detective con huellas y evidencias reales. Pociones de laboratorio. Un collar con ADN que él mismo extrajo.</p>
+      <div class="marca">🔬 Club de Ciencia Montebonito — Sábados sin pantallas</div>
       <div class="datos-rapidos">
-        <div class="dato"><span class="icono">👧👦</span><strong>3 a 8 años</strong><span>grupos por edades</span></div>
+        <div class="dato"><span class="icono">👧👦</span><strong>5 a 10 años</strong><span>con bata y todo</span></div>
         <div class="dato"><span class="icono">📅</span><strong>Sábados</strong><span>8:00 AM – 12:00 M</span></div>
-        <div class="dato"><span class="icono">🎟️</span><strong>15 cupos</strong><span>por temporada</span></div>
-        <div class="dato"><span class="icono">🏫</span><strong>En el Liceo</strong><span>Dosquebradas</span></div>
+        <div class="dato"><span class="icono">📵</span><strong>Cero pantallas</strong><span>4 horas de mundo real</span></div>
+        <div class="dato"><span class="icono">🎟️</span><strong>Cupos limitados</strong><span>por orden de reserva</span></div>
       </div>
+      <a class="cta-button" href="https://wa.me/573178728659?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">💬 Quiero mi cupo</a>
     </section>
 
     <section class="card">
-      <h3 class="seccion">🧪 Un mes en el laboratorio</h3>
-      <p style="text-align:center; color:#555; margin-top:-8px; margin-bottom:22px;">El primer sábado cada científico recibe su <strong>bata, sus gafas y su carné de científico</strong>. Desde ese momento, el liceo es su laboratorio.</p>
-      <div class="semana"><div class="num">1</div><div><h4>Laboratorio de Reacciones 💥</h4><p>El día de las explosiones (seguras): cada niño fabrica y hace erupcionar su propio volcán, lanzamos cohetes de laboratorio en el patio, y cerramos con dos clásicos mundiales: la <strong>pasta de dientes de elefante</strong> — una torre de espuma gigante — y el <strong>géiser de Mentos</strong> de 3 metros. Se llevan a casa: su volcán.</p></div></div>
-      <div class="semana"><div class="num">2</div><div><h4>Laboratorio de Pociones 🧪</h4><p>Química con magia: pociones que cambian de color al soplarles (el secreto está en la col morada), leche que baila con colores, el arcoíris que camina entre vasos, y cada científico fabrica su propia <strong>lámpara de lava</strong>. Se llevan a casa: su lámpara de lava.</p></div></div>
-      <div class="semana"><div class="num">3</div><div><h4>Laboratorio de Física Loca 🫧</h4><p>Materia que se porta raro: una piscina de <strong>oobleck</strong> — el líquido que se vuelve sólido si lo golpeas —, burbujas gigantes más grandes que ellos en el patio, globos cohete y cómo doblar un chorro de agua sin tocarlo. Se llevan a casa: su slime fabricado por ellos.</p></div></div>
-      <div class="semana"><div class="num">4</div><div><h4>La Gran Feria Científica 🏆</h4><p>El día que los niños son los profesores: cada científico monta su stand y le presenta <strong>a las familias</strong> su experimento favorito — él lo hace, él lo explica. Cierre con erupción colectiva, entrega de <strong>diploma de científico</strong> y foto de graduación con bata.</p></div></div>
-      <p style="text-align:center; color:#555; margin-top:20px;">Todos los experimentos los hacen <strong>los niños con sus propias manos</strong> — nada de mirar a un adulto hacerlo. Cada edad participa a su nivel: los pequeños mezclan y descubren, los grandes miden, predicen y anotan en su <strong>bitácora de científico</strong>.</p>
+      <h3 class="seccion">🚀 Las 4 misiones del mes</h3>
+      <p class="sub-seccion">Cada sábado, tu hijo es un científico diferente. No te contamos todo — la sorpresa es parte de la ciencia.</p>
+      <div class="misiones">
+        <div class="mision"><span class="icono">🚀</span><h4>Misión Aeroespacial</h4><p>Diseñará y lanzará sus propios cohetes... y verá uno subir más alto que la casa.</p></div>
+        <div class="mision"><span class="icono">🧪</span><h4>Misión Química</h4><p>Pociones que cambian de color, torres de líquidos imposibles y una explosión de espuma gigante.</p></div>
+        <div class="mision"><span class="icono">🔍</span><h4>Misión Detective</h4><p>Un caso real que resolver: huellas, evidencias y técnicas forenses de verdad. ¿Podrá descubrir al culpable?</p></div>
+        <div class="mision"><span class="icono">🧬</span><h4>Misión ADN</h4><p>Extraerá ADN de verdad con sus propias manos... y se lo llevará al cuello para mostrárselo a todos.</p></div>
+      </div>
+      <p class="misterio">⚡ Y al final del mes: la Gran Feria, donde TU HIJO te explica la ciencia a ti.</p>
     </section>
 
-    <section class="card">
-      <h3 class="seccion">💡 ¿Por qué traerlo?</h3>
-      <div class="porque">
-        <div class="item"><span class="icono">🧠</span><h4>Recupera la atención</h4><p>Un niño de 2 a 3 años expuesto a pantallas tiene 3,5 veces más riesgo de retraso en el lenguaje. El juego real reconstruye la concentración y la paciencia.</p></div>
-        <div class="item"><span class="icono">🔬</span><h4>Aprende ciencia de verdad</h4><p>Método científico vivido: diseñar, probar, fallar y mejorar. La base del pensamiento que necesitará toda la vida.</p></div>
-        <div class="item"><span class="icono">🏠</span><h4>Llega con el invento en la mano</h4><p>Nunca preguntarás "¿qué hiciste hoy?". Lo verás entrar cargando su catapulta, su slime o su juego inventado.</p></div>
-        <div class="item"><span class="icono">☕</span><h4>Y tú recuperas tu sábado</h4><p>4 horas para ti, con tu hijo en un lugar seguro, profesional y con propósito.</p></div>
-      </div>
+    <section class="card culpa">
+      <h3 class="seccion">Lo que la pantalla no le puede dar</h3>
+      <p>Ya lo sabes: cada hora de pantalla es una hora que tu hijo no pasa creando, preguntando, ensuciándose las manos y descubriendo de qué es capaz.</p>
+      <p>Aquí no mira videos de experimentos. <strong>Los hace.</strong> Con bata, gafas, bitácora de científico y método científico de verdad — hipótesis, datos, conclusiones — guiado por profesionales en educación con 9 años de experiencia.</p>
+      <p class="fuerte">El lunes, tu hijo no va a contar lo que vio.<br>Va a mostrar lo que hizo.</p>
     </section>
 
     <section class="card precio-box">
-      <h3 class="seccion">🎟️ Reserva el cupo</h3>
+      <h3 class="seccion">🎟️ Reserva antes de que se acaben</h3>
       <div class="precio">$200.000<span style="font-size:0.4em; color:#666;">/mes</span></div>
-      <p class="detalle">4 sábados · 4 horas cada uno · materiales y merienda incluidos<br>Sale a $12.500 la hora — menos que una niñera, con ciencia incluida.</p>
-      <a class="cta-button" href="https://wa.me/573178728659?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">💬 Reservar por WhatsApp</a>
-      <p class="cupos">⚡ Solo 15 cupos por temporada — se asignan por orden de reserva</p>
+      <p class="detalle">4 sábados · 4 horas · materiales, bata y merienda incluidos<br>$12.500 la hora — menos que una niñera, y sale siendo científico.</p>
+      <a class="cta-button" href="https://wa.me/573178728659?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">💬 Reservar mi cupo ahora</a>
+      <p class="cupos">⚡ Cupos limitados — grupos pequeños para atención real. Se asignan por orden de reserva.</p>
     </section>
   </div>
 
