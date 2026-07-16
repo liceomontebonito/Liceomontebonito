@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Club de Ciencia | Liceo Montebonito - Sábados sin pantallas</title>
-  <meta name="description" content="¿Otro sábado frente a la pantalla? Club de Ciencia Montebonito para niños de 5 a 10 años en Dosquebradas: cohetes, laboratorio, casos de detective y ADN real. Cupos limitados." />
+  <meta name="description" content="Club de Ciencia Montebonito para niños de 5 a 10 años en Dosquebradas. Experimentos reales, curiosidad y aprendizaje que despierta mentes. Sábados sin pantallas. Cupos limitados." />
   <link rel="canonical" href="https://liceomontebonito.com/club-de-ciencia.html" />
-  <meta property="og:title" content="Menos pantallas, más ciencia | Club de Ciencia Montebonito" />
-  <meta property="og:description" content="Ingeniería aeroespacial, química de laboratorio, ciencia forense y biología molecular para niños de 5 a 10 años. Sábados sin pantallas. Cupos limitados." />
+  <meta property="og:title" content="Club de Ciencia Montebonito - Sábados sin pantallas" />
+  <meta property="og:description" content="Mientras otros niños pasan el sábado en la pantalla, el tuyo descubre cómo funciona el mundo con experimentos reales. 5 a 10 años. Cupos limitados." />
   <meta property="og:url" content="https://liceomontebonito.com/club-de-ciencia.html" />
   <meta property="og:image" content="https://liceomontebonito.com/logo.png" />
   <meta property="og:type" content="website" />
@@ -19,157 +19,102 @@
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "Club de Ciencia Montebonito - Sábados sin pantallas",
-    "description": "Club sabatino de ciencia para niños de 5 a 10 años: ingeniería, química, ciencia forense y biología molecular. 100% sin pantallas.",
+    "name": "Club de Ciencia Montebonito - Sabados sin pantallas",
+    "description": "Club sabatino de ciencia para ninos de 5 a 10 anos: experimentos reales que despiertan la curiosidad y el pensamiento cientifico. 100% sin pantallas.",
     "eventSchedule": {"@type": "Schedule", "byDay": "Saturday", "startTime": "08:00", "endTime": "12:00"},
-    "location": {"@type": "Place", "name": "Liceo Psicopedagógico Montebonito", "address": {"@type": "PostalAddress", "streetAddress": "Manzana 35 Casa 2, Montebonito", "addressLocality": "Dosquebradas", "addressRegion": "Risaralda", "addressCountry": "CO"}},
-    "organizer": {"@type": "Organization", "name": "Liceo Psicopedagógico Montebonito", "url": "https://liceomontebonito.com"},
-    "offers": {"@type": "Offer", "price": "200000", "priceCurrency": "COP", "description": "Mensualidad: 4 sábados, 4 horas cada uno"}
+    "location": {"@type": "Place", "name": "Liceo Psicopedagogico Montebonito", "address": {"@type": "PostalAddress", "streetAddress": "Manzana 35 Casa 2, Montebonito", "addressLocality": "Dosquebradas", "addressRegion": "Risaralda", "addressCountry": "CO"}},
+    "organizer": {"@type": "Organization", "name": "Liceo Psicopedagogico Montebonito", "url": "https://liceomontebonito.com"},
+    "offers": {"@type": "Offer", "price": "200000", "priceCurrency": "COP", "description": "Mensualidad: 4 sabados, 4 horas cada uno"}
   }
   </script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      line-height: 1.6;
-      color: #333;
-    }
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); line-height: 1.6; color: #333; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
-    .card {
-      background: white; border-radius: 20px; padding: 40px 30px; margin: 30px 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden;
-    }
-    .card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-      background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35);
-    }
+    .card { background: white; border-radius: 20px; padding: 40px 30px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #87CEEB, #7AC943, #FF6B35); }
     .hero { text-align: center; }
-    .hero .pregunta {
-      font-size: 2.4em; color: #2c5530; margin: 5px 0 10px; line-height: 1.25; font-weight: 800;
-    }
+    .hero .pregunta { font-size: 2.3em; color: #2c5530; margin: 5px 0 12px; line-height: 1.25; font-weight: 800; }
     .hero .pregunta em { color: #FF6B35; font-style: normal; }
-    .hero .respuesta { font-size: 1.35em; color: #444; max-width: 640px; margin: 0 auto 8px; }
-    .hero .marca {
-      display: inline-block; background: linear-gradient(135deg, #7AC943, #6AB82E);
-      color: white; padding: 10px 26px; border-radius: 50px; font-weight: 700;
-      font-size: 1.15em; margin: 18px 0 8px; box-shadow: 0 5px 15px rgba(122,201,67,0.3);
-    }
-    .datos-rapidos {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px; margin: 25px 0 5px;
-    }
-    .dato {
-      background: linear-gradient(135deg, rgba(135,206,235,0.12), rgba(122,201,67,0.12));
-      border-radius: 15px; padding: 16px 10px; text-align: center;
-    }
+    .hero .respuesta { font-size: 1.3em; color: #444; max-width: 640px; margin: 0 auto 8px; }
+    .hero .marca { display: inline-block; background: linear-gradient(135deg, #7AC943, #6AB82E); color: white; padding: 10px 26px; border-radius: 50px; font-weight: 700; font-size: 1.15em; margin: 18px 0 8px; box-shadow: 0 5px 15px rgba(122,201,67,0.3); }
+    .datos-rapidos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 25px 0 5px; }
+    .dato { background: linear-gradient(135deg, rgba(135,206,235,0.12), rgba(122,201,67,0.12)); border-radius: 15px; padding: 16px 10px; text-align: center; }
     .dato .icono { font-size: 1.9em; display: block; margin-bottom: 5px; }
     .dato strong { color: #2c5530; display: block; font-size: 1.02em; }
     .dato span { color: #666; font-size: 0.88em; }
     h3.seccion { color: #2c5530; font-size: 1.7em; text-align: center; margin: 0 0 8px; }
-    p.sub-seccion { text-align: center; color: #666; margin: 0 0 24px; }
-    .misiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-    .mision {
-      background: linear-gradient(135deg, rgba(135,206,235,0.1), rgba(122,201,67,0.1));
-      border-radius: 15px; padding: 22px 16px; text-align: center;
-      border: 2px solid transparent; transition: all 0.3s ease;
-    }
-    .mision:hover { transform: translateY(-5px); border-color: rgba(122,201,67,0.4); }
-    .mision .icono { font-size: 2.6em; display: block; margin-bottom: 8px; }
-    .mision h4 { color: #2c5530; margin: 0 0 6px; font-size: 1.1em; }
-    .mision p { color: #555; font-size: 0.93em; margin: 0; }
-    .misterio { text-align: center; color: #FF6B35; font-weight: 700; margin-top: 20px; }
-    .culpa { text-align: center; }
-    .culpa p { font-size: 1.15em; color: #444; max-width: 640px; margin: 0 auto 14px; }
-    .culpa .fuerte { font-size: 1.3em; color: #2c5530; font-weight: 800; }
+    p.sub-seccion { text-align: center; color: #666; margin: 0 auto 24px; max-width: 620px; }
+    .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+    .pilar { background: linear-gradient(135deg, rgba(135,206,235,0.1), rgba(122,201,67,0.1)); border-radius: 15px; padding: 24px 18px; text-align: center; border: 2px solid transparent; transition: all 0.3s ease; }
+    .pilar:hover { transform: translateY(-5px); border-color: rgba(122,201,67,0.4); }
+    .pilar .icono { font-size: 2.7em; display: block; margin-bottom: 10px; }
+    .pilar h4 { color: #2c5530; margin: 0 0 8px; font-size: 1.12em; }
+    .pilar p { color: #555; font-size: 0.94em; margin: 0; }
+    .cierre-seccion { text-align: center; color: #FF6B35; font-weight: 700; margin-top: 22px; font-size: 1.05em; }
+    .valor { text-align: center; }
+    .valor p { font-size: 1.15em; color: #444; max-width: 640px; margin: 0 auto 14px; }
+    .valor .fuerte { font-size: 1.28em; color: #2c5530; font-weight: 800; }
+    .metodo-box { background: linear-gradient(135deg, rgba(135,206,235,0.12), rgba(122,201,67,0.12)); border-radius: 15px; padding: 20px 22px; max-width: 640px; margin: 6px auto 18px; }
     .precio-box { text-align: center; }
     .precio-box .precio { font-size: 3em; color: #2c5530; font-weight: 800; margin: 5px 0; }
     .precio-box .detalle { color: #666; font-size: 1.05em; }
-    .cta-button {
-      display: inline-block; background: linear-gradient(135deg, #25D366, #1ebe5d);
-      color: white; padding: 18px 42px; border-radius: 50px; text-decoration: none;
-      font-weight: bold; font-size: 1.25em; margin-top: 22px;
-      box-shadow: 0 5px 20px rgba(37,211,102,0.4); transition: all 0.3s ease;
-      animation: latido 2.5s infinite;
-    }
+    .cta-button { display: inline-block; background: linear-gradient(135deg, #25D366, #1ebe5d); color: white; padding: 18px 42px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.25em; margin-top: 22px; box-shadow: 0 5px 20px rgba(37,211,102,0.4); transition: all 0.3s ease; animation: latido 2.5s infinite; }
     .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37,211,102,0.5); }
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
+    @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
     .cupos { color: #FF6B35; font-weight: 700; margin-top: 15px; font-size: 1.05em; }
-    footer {
-      background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%); color: white;
-      text-align: center; padding: 30px 20px; margin-top: 40px;
-    }
-    @media (max-width: 768px) {
-      .hero .pregunta { font-size: 1.7em; }
-      .hero .respuesta { font-size: 1.1em; }
-      .card { padding: 30px 18px; }
-      .precio-box .precio { font-size: 2.3em; }
-    }
+    footer { background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%); color: white; text-align: center; padding: 30px 20px; margin-top: 40px; }
+    @media (max-width: 768px) { .hero .pregunta { font-size: 1.65em; } .hero .respuesta { font-size: 1.1em; } .card { padding: 30px 18px; } .precio-box .precio { font-size: 2.3em; } }
   </style>
 </head>
 <body>
   <div id="encabezado-container"></div>
-
   <div class="container">
     <section class="card hero">
-      <span style="font-size:2.6em;">📱</span>
-      <h2 class="pregunta">Menos pantallas.<br><em>Más ciencia de verdad.</em></h2>
-      <p class="respuesta">Un club sabatino donde tu hijo hace <strong>ingeniería aeroespacial, química de laboratorio, ciencia forense y biología molecular</strong>, con sus propias manos, como un científico de verdad.</p>
-      <div class="marca">🔬 Club de Ciencia Montebonito · Sábados sin pantallas</div>
+      <span style="font-size:2.6em;">&#128300;</span>
+      <h2 class="pregunta">Este sabado, tu hijo puede estar en la pantalla...<br><em>o descubriendo como funciona el mundo.</em></h2>
+      <p class="respuesta">Un club de ciencia donde los ninos experimentan de verdad: mezclan, construyen, prueban, se equivocan y descubren. Con bata, con las manos, con asombro.</p>
+      <div class="marca">&#128300; Club de Ciencia Montebonito &middot; Sabados sin pantallas</div>
       <div class="datos-rapidos">
-        <div class="dato"><span class="icono">👧👦</span><strong>5 a 10 años</strong><span>con bata y todo</span></div>
-        <div class="dato"><span class="icono">📅</span><strong>Sábados</strong><span>8:00 AM – 12:00 M</span></div>
-        <div class="dato"><span class="icono">📵</span><strong>Cero pantallas</strong><span>4 horas de mundo real</span></div>
-        <div class="dato"><span class="icono">🎟️</span><strong>Cupos limitados</strong><span>por orden de reserva</span></div>
+        <div class="dato"><span class="icono">&#128103;&#128102;</span><strong>5 a 10 anos</strong><span>con bata y todo</span></div>
+        <div class="dato"><span class="icono">&#128197;</span><strong>Sabados</strong><span>8:00 AM a 12:00 M</span></div>
+        <div class="dato"><span class="icono">&#128245;</span><strong>Cero pantallas</strong><span>4 horas de mundo real</span></div>
+        <div class="dato"><span class="icono">&#127915;</span><strong>Cupos limitados</strong><span>grupos pequenos</span></div>
       </div>
-      <a class="cta-button" href="https://wa.me/573126540548?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">💬 Quiero mi cupo</a>
+      <a class="cta-button" href="https://wa.me/573126540548?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">&#128172; Quiero mi cupo</a>
     </section>
-
     <section class="card">
-      <h3 class="seccion">🚀 Las 4 misiones del mes</h3>
-      <p class="sub-seccion">Cada sábado, tu hijo es un científico diferente. No te contamos todo: la sorpresa es parte de la ciencia.</p>
-      <div class="misiones">
-        <div class="mision"><span class="icono">🚀</span><h4>Ingeniería Aeroespacial</h4><p>Diseñará y lanzará sus propios cohetes... y verá uno subir más alto que la casa.</p></div>
-        <div class="mision"><span class="icono">🧪</span><h4>Química de Laboratorio</h4><p>Pociones que cambian de color, torres de líquidos imposibles y una explosión de espuma gigante.</p></div>
-        <div class="mision"><span class="icono">🔍</span><h4>Ciencia Forense</h4><p>Un caso real que resolver: huellas, evidencias y técnicas forenses de verdad. ¿Podrá descubrir al culpable?</p></div>
-        <div class="mision"><span class="icono">🧬</span><h4>Biología Molecular</h4><p>Extraerá ADN de verdad con sus propias manos... y se lo llevará al cuello para mostrárselo a todos.</p></div>
+      <h3 class="seccion">&#127775; Lo que tu hijo desarrolla</h3>
+      <p class="sub-seccion">No es una tarde de manualidades. Es un espacio pensado para despertar mentes curiosas, como los mejores clubes de ciencia del mundo.</p>
+      <div class="pilares">
+        <div class="pilar"><span class="icono">&#129504;</span><h4>Curiosidad</h4><p>Aprende a hacerse preguntas y a no quedarse con la duda. La curiosidad es el motor de todo aprendizaje.</p></div>
+        <div class="pilar"><span class="icono">&#9995;</span><h4>Aprender haciendo</h4><p>No memoriza: experimenta con sus propias manos. Lo que se vive nunca se olvida.</p></div>
+        <div class="pilar"><span class="icono">&#128270;</span><h4>Pensamiento cientifico</h4><p>Observa, predice, prueba y concluye. Aprende a razonar como un verdadero cientifico.</p></div>
+        <div class="pilar"><span class="icono">&#128640;</span><h4>Confianza</h4><p>Se atreve a intentar, a equivocarse y a volverlo a probar. Descubre de lo que es capaz.</p></div>
       </div>
-      <p class="misterio">⚡ Y al final del mes: la Gran Feria, donde TU HIJO te explica la ciencia a ti.</p>
+      <p class="cierre-seccion">&#9889; Cada sabado, un descubrimiento nuevo. Cada mes, un pequeno cientifico mas seguro de si mismo.</p>
     </section>
-
-    <section class="card culpa">
+    <section class="card valor">
       <h3 class="seccion">No es lo mismo verlo que hacerlo</h3>
-      <p>Aquí tu hijo no observa la ciencia: la <strong>vive</strong>. Se pone la bata, se hace preguntas, experimenta con sus propias manos, mide, registra y descubre por qué pasan las cosas.</p>
-      <p>Porque un niño no aprende a pensar mirando: aprende <strong>haciendo, equivocándose y volviéndolo a intentar</strong>.</p>
-      <div style="background: linear-gradient(135deg, rgba(135,206,235,0.12), rgba(122,201,67,0.12)); border-radius: 15px; padding: 20px 22px; max-width: 640px; margin: 6px auto 18px;">
+      <p>Aqui tu hijo no observa la ciencia: la <strong>vive</strong>. Se pone la bata, se hace preguntas, experimenta, mide y descubre por que pasan las cosas.</p>
+      <p>Porque un nino no aprende a pensar mirando: aprende <strong>haciendo, equivocandose y volviendolo a intentar</strong>.</p>
+      <div class="metodo-box">
         <p style="margin:0 0 8px; font-weight:700; color:#2c5530; font-size:1.05em;">Aprender haciendo ciencia de verdad</p>
-        <p style="margin:0; font-size:1.08em; color:#2c5530; font-weight:700;">Pregunta → Hipótesis → Experimento → Datos → Conclusión</p>
-        <p style="margin:8px 0 0; font-size:0.92em; color:#666;">El mismo camino que recorre un verdadero científico, en cada actividad.</p>
+        <p style="margin:0; font-size:1.08em; color:#2c5530; font-weight:700;">Pregunta &rarr; Hipotesis &rarr; Experimento &rarr; Datos &rarr; Conclusion</p>
+        <p style="margin:8px 0 0; font-size:0.92em; color:#666;">El mismo camino que recorre un verdadero cientifico, en cada actividad.</p>
       </div>
-      <p class="fuerte">El lunes, cuando le pregunten qué hizo el fin de semana,<br>tu hijo va a responder: "hice ciencia".</p>
+      <p class="fuerte">El lunes, cuando le pregunten que hizo el fin de semana,<br>tu hijo va a responder: "hice ciencia".</p>
     </section>
-
     <section class="card precio-box">
-      <h3 class="seccion">🎟️ Reserva antes de que se acaben</h3>
+      <h3 class="seccion">&#127915; Reserva antes de que se acaben</h3>
       <div class="precio">$200.000<span style="font-size:0.4em; color:#666;">/mes</span></div>
-      <p class="detalle">4 sábados · 4 horas · materiales, bata y merienda incluidos</p>
-      <a class="cta-button" href="https://wa.me/573126540548?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">💬 Reservar mi cupo ahora</a>
-      <p class="cupos">⚡ Cupos limitados · grupos pequeños</p>
+      <p class="detalle">4 sabados &middot; 4 horas &middot; materiales, bata y merienda incluidos</p>
+      <a class="cta-button" href="https://wa.me/573126540548?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20el%20Club%20de%20Ciencia%20para%20mi%20hijo%2Fa%20de%20___%20a%C3%B1os" target="_blank">&#128172; Reservar mi cupo ahora</a>
+      <p class="cupos">&#9889; Cupos limitados &middot; grupos pequenos</p>
     </section>
   </div>
-
-  <footer>
-    <p>&copy; 2025 Liceo Psicopedagógico Montebonito. Todos los derechos reservados.</p>
-  </footer>
-
+  <footer><p>&copy; 2025 Liceo Psicopedagogico Montebonito. Todos los derechos reservados.</p></footer>
   <script>
-    fetch('encabezado.html', {cache: 'no-cache'})
-      .then(r => r.text())
-      .then(html => { document.getElementById('encabezado-container').innerHTML = html; })
-      .catch(e => console.error('Error cargando encabezado:', e));
+    fetch('encabezado.html', {cache: 'no-cache'}).then(r => r.text()).then(html => { document.getElementById('encabezado-container').innerHTML = html; }).catch(e => console.error('Error cargando encabezado:', e));
   </script>
 </body>
 </html>
