@@ -111,10 +111,20 @@ SK.forEach(function(s,i){
 });
 SK.forEach(function(s,i){ var r=document.getElementById('sk'+i); r.addEventListener('input',function(){ document.getElementById('skv'+i).textContent=r.value; }); });
 document.getElementById('verSkills').addEventListener('click', function(){
-  var vals={}, min=6, mi=0;
-  SK.forEach(function(s,i){ var v=parseInt(document.getElementById('sk'+i).value); vals[i]=v; if(v<min){min=v;mi=i;} });
+  var vals={}, min=6;
+  SK.forEach(function(s,i){ var v=parseInt(document.getElementById('sk'+i).value); vals[i]=v; if(v<min)min=v; });
   CURSO.save('skills', JSON.stringify(vals));
-  var t=document.getElementById('skillTip'); t.innerHTML='<span class="lab">Tu habilidad para reforzar ('+SK[mi][0]+'):</span> '+TIPSK[mi]; t.style.display='block';
+  var bajos=[]; SK.forEach(function(s,i){ if(vals[i]<=2) bajos.push(i); });
+  if(bajos.length===0){ SK.forEach(function(s,i){ if(vals[i]===min) bajos.push(i); }); }
+  var t=document.getElementById('skillTip'), html='';
+  if(min>=4){
+    html='<span class="lab">¡Muy bien!</span> Te calificaste alto en las cinco habilidades. Se mantienen usándolas: sigue explorando, insistiendo, adaptándote y animándote a probar.';
+  } else {
+    html='<span class="lab">Habilidades para reforzar'+(bajos.length>1?' ('+bajos.length+')':'')+':</span><ul style="margin:8px 0 0 18px">';
+    bajos.forEach(function(i){ html+='<li style="margin-bottom:6px"><strong>'+SK[i][0]+':</strong> '+TIPSK[i]+'</li>'; });
+    html+='</ul>';
+  }
+  t.innerHTML=html; t.style.display='block';
 });
 
 // Resumen
