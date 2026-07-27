@@ -38,6 +38,11 @@
     <span class="badge">Dinámica · Matriz de decisión</span>
     <h3>⚖️ Compara tus finalistas con criterios</h3>
     <p>Escribe hasta 3 opciones (carreras). Ajusta el <strong>peso</strong> de cada criterio según lo importante que sea para ti (1 = poco, 3 = mucho) y califica cada opción de 1 a 5. La herramienta calcula el puntaje ponderado.</p>
+    <div style="background:#eef6fb;border-radius:10px;padding:12px 15px;margin:12px 0;font-size:.9rem;color:#33475a">
+      <strong>¿Qué es el "Peso"?</strong> Es qué tan importante es ese criterio <em>para ti</em>: 1 = poco importante, 3 = muy importante.<br>
+      <strong>¿Y la calificación (1–5)?</strong> Qué tan bien crees que cada opción cumple ese criterio: 1 = muy mal, 5 = excelente.<br>
+      <strong>¿Cómo se obtiene el puntaje?</strong> En cada casilla se multiplica <strong>Peso × Calificación</strong>, y se suman todas. <em>Ejemplo:</em> si "salidas laborales" tiene peso 3 y calificas una carrera con 4 → aporta 3×4 = 12 puntos.
+    </div>
     <div style="overflow-x:auto">
       <table id="matriz" style="width:100%;border-collapse:collapse;min-width:520px;margin-top:10px"></table>
     </div>
@@ -89,7 +94,7 @@ function pintarMatriz(){
       '<td style="text-align:center"><select id="w'+ci+'" style="width:56px;padding:5px">'+
       [1,2,3].map(function(w){return '<option value="'+w+'" '+(w===c[1]?'selected':'')+'>'+w+'</option>';}).join('')+'</select></td>';
     for(var o=0;o<3;o++){ html+='<td style="text-align:center"><select id="s'+ci+'_'+o+'" style="width:52px;padding:5px">'+
-      [0,1,2,3,4,5].map(function(v){return '<option value="'+v+'">'+(v||'-')+'</option>';}).join('')+'</select></td>'; }
+      [1,2,3,4,5].map(function(v){return '<option value="'+v+'"'+(v===3?' selected':'')+'>'+v+'</option>';}).join('')+'</select></td>'; }
     html+='</tr>';
   });
   html+='</tbody>'; tabla.innerHTML=html;
@@ -106,15 +111,28 @@ document.getElementById('calcular').addEventListener('click', function(){
   if(!algo){ alert('Califica al menos una opción.'); return; }
   var rank=[0,1,2].map(function(o){return {n:nombres[o],t:totales[o]};}).sort(function(a,b){return b.t-a.t;});
   var maxT=rank[0].t||1;
-  var v=document.getElementById('veredicto'); 
-  var html='<h3 style="color:#2c5530">Resultado ponderado</h3><div class="bars">';
-  rank.forEach(function(r,i){
+  var top=rank[0].t;
+  var empatados=rank.filter(function(r){return r.t===top;});
+  var hayEmpate=empatados.length>1;
+  var v=document.getElementById('veredicto');
+  var html='<h3 style="color:#2c5530">Resultado ponderado</h3>';
+  html+='<p style="font-size:.88rem;color:#556;margin-bottom:8px"><strong>Cómo se calculó:</strong> en cada casilla multiplicamos <strong>Peso del criterio × tu calificación</strong>, sumamos todo y esa es la puntuación de cada opción.</p>';
+  html+='<div class="bars">';
+  rank.forEach(function(r){
     var pct=Math.round(r.t/maxT*100);
-    html+='<div class="bar-row"><div class="lbl">'+(i===0?'🏆 ':'')+r.n+'</div><div class="bar-track"><div class="bar-fill" style="width:'+Math.max(pct,10)+'%;background:'+(i===0?'#2c5530':'#7AC943')+'">'+r.t+'</div></div></div>';
+    var lider=(r.t===top);
+    html+='<div class="bar-row"><div class="lbl">'+((lider&&!hayEmpate)?'🏆 ':'')+r.n+'</div><div class="bar-track"><div class="bar-fill" style="width:'+Math.max(pct,10)+'%;background:'+(lider?'#2c5530':'#7AC943')+'">'+r.t+' pts</div></div></div>';
   });
-  html+='</div><div class="dato" style="margin-top:12px"><span class="lab">Tu opción mejor puntuada:</span> <strong>'+rank[0].n+'</strong>. Ojo: la matriz <em>ordena tus ideas</em>, no decide por ti. Si el resultado te incomoda, eso también es información valiosa sobre lo que de verdad quieres.</div>';
+  html+='</div>';
+  if(hayEmpate){
+    html+='<div class="dato" style="margin-top:12px"><span class="lab">Empate ('+top+' pts):</span> '+empatados.map(function(r){return '<strong>'+r.n+'</strong>';}).join(' y ')+' quedaron iguales. Según tus criterios, encajan parecido — eso no es un error, es información. <strong>Para desempatar:</strong> imagina un día completo en cada una y nota cuál te emociona más, o agrega un criterio que te importe (dónde vivir, cuánto quieres estudiar, cuánto se gana…).</div>';
+    CURSO.save('decision', empatados.map(function(r){return r.n;}).join(' / '));
+  } else {
+    var cerca=((rank[0].t-rank[1].t)<=2)?(' Aun así, <strong>'+rank[1].n+'</strong> quedó muy cerca ('+rank[1].t+' pts): vale la pena mirar las dos.'):'';
+    html+='<div class="dato" style="margin-top:12px"><span class="lab">Tu opción mejor puntuada:</span> <strong>'+rank[0].n+'</strong> ('+top+' pts).'+cerca+' Ojo: la matriz <em>ordena tus ideas</em>, no decide por ti. Si el resultado te incomoda, eso también es información valiosa sobre lo que de verdad quieres.</div>';
+    CURSO.save('decision', rank[0].n);
+  }
   v.innerHTML=html; v.style.display='block'; v.scrollIntoView({behavior:'smooth'});
-  CURSO.save('decision', rank[0].n);
   matrizHecha=true; chequear();
 });
 
