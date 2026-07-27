@@ -87,6 +87,13 @@ document.getElementById('analizar').addEventListener('click', function(){
   var interes=JSON.parse(CURSO.load('riasec_scores')||'null');
   var mapa=document.getElementById('mapa'); mapa.innerHTML='';
   var cats={fort:[],pot:[],rec:[],baja:[]};
+  var cv=AREAS.map(function(a){return conf[a[0]];});
+  var maxC=Math.max.apply(null,cv), minC=Math.min.apply(null,cv), rangoC=maxC-minC;
+  var estilo='background:#fff7e6;border:1.5px solid #f0c674;border-left:5px solid #e6a700;border-radius:12px;padding:12px 15px;margin:0 0 12px';
+  var aviso='';
+  if(minC>=85){ aviso='<div style="'+estilo+'"><strong>💡 Te calificaste muy capaz en casi todo.</strong> ¡Buena autoconfianza! Pero para orientarte necesitamos <strong>contraste</strong>: es raro sentirse igual de capaz en todo. Vuelve a mover las barras comparando en cuáles te sientes <em>aún más</em> seguro y en cuáles un poco menos.</div>'; }
+  else if(maxC<=15){ aviso='<div style="'+estilo+'"><strong>💡 Te calificaste bajo en casi todo.</strong> Ojo con esto: <strong>baja confianza no significa baja capacidad</strong> — casi siempre es miedo o falta de práctica, y la autoeficacia <strong>se entrena</strong>. Intenta reconocer al menos un área donde te defiendes mejor que en las otras.</div>'; }
+  else if(rangoC<=15){ aviso='<div style="'+estilo+'"><strong>💡 Te calificaste casi igual en todo.</strong> Para que el mapa te sirva, <strong>diferéncialas</strong>: seguramente hay áreas donde te sientes más capaz que en otras. Compáralas entre sí y vuelve a mover las barras.</div>'; }
   AREAS.forEach(function(a){
     var t=a[0];
     var iHigh = interes ? (interes[t]>=6) : (conf[t]>=60);
@@ -100,7 +107,7 @@ document.getElementById('analizar').addEventListener('click', function(){
     if(!lista.length) return '';
     return '<div style="border-left:4px solid '+color+';background:#fbfdf9;border-radius:10px;padding:12px 15px;margin:10px 0"><strong>'+emoji+' '+titulo+'</strong> <span style="color:#667;font-size:.9rem">— '+desc+'</span><br>'+lista.join(', ')+'</div>';
   }
-  mapa.innerHTML =
+  mapa.innerHTML = aviso +
     bloque('💪','Tus fortalezas','te gusta y te crees capaz. ¡Explótalas!',cats.fort,'#2e9e44')+
     bloque('🌱','Potencial a desarrollar','te interesa pero aún no te crees capaz. No lo descartes: la confianza se entrena.',cats.pot,'#e6a700')+
     bloque('🔧','Recursos','te sientes capaz aunque no te apasione. Te pueden dar ventaja.',cats.rec,'#3a7ca5')+
