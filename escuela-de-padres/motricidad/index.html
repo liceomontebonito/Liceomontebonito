@@ -1310,7 +1310,7 @@ El curso especializado basado en la psicología del desarrollo para potenciar ha
 <p class="module-description">
 Conoce las bases neurológicas y psicológicas del desarrollo motor en la infancia temprana.
 </p>
-<div style="text-align:center;margin-top:14px"><a class="btn" href="modulo1/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
+<div style="text-align:center;margin-top:14px"><a class="btn" id="btnMod1" href="modulo1/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
 </div>
 <div class="module-card" id="modulo2">
 <div class="module-icon">
@@ -1320,7 +1320,7 @@ Conoce las bases neurológicas y psicológicas del desarrollo motor en la infanc
 <p class="module-description">
 Técnicas y actividades para desarrollar habilidades de precisión y coordinación fina.
 </p>
-<div style="text-align:center;margin-top:14px"><a class="btn" href="modulo2/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
+<div style="text-align:center;margin-top:14px"><a class="btn" id="btnMod2" href="modulo2/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
 </div>
 <div class="module-card" id="modulo3">
 <div class="module-icon">
@@ -1330,7 +1330,7 @@ Técnicas y actividades para desarrollar habilidades de precisión y coordinaci�
 <p class="module-description">
 Ejercicios para potenciar el control corporal, equilibrio y coordinación general.
 </p>
-<div style="text-align:center;margin-top:14px"><a class="btn" href="modulo3/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
+<div style="text-align:center;margin-top:14px"><a class="btn" id="btnMod3" href="modulo3/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
 </div>
 <div class="module-card" id="modulo4">
 <div class="module-icon">
@@ -1340,7 +1340,7 @@ Ejercicios para potenciar el control corporal, equilibrio y coordinación genera
 <p class="module-description">
 Actividades lúdicas diseñadas para estimular el desarrollo integral a través del juego.
 </p>
-<div style="text-align:center;margin-top:14px"><a class="btn" href="modulo4/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
+<div style="text-align:center;margin-top:14px"><a class="btn" id="btnMod4" href="modulo4/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
 </div>
 <div class="module-card" id="modulo5">
 <div class="module-icon">
@@ -1350,7 +1350,7 @@ Actividades lúdicas diseñadas para estimular el desarrollo integral a través 
 <p class="module-description">
 Herramientas para medir el progreso y adaptar las intervenciones a cada niño.
 </p>
-<div style="text-align:center;margin-top:14px"><a class="btn" href="modulo5/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
+<div style="text-align:center;margin-top:14px"><a class="btn" id="btnMod5" href="modulo5/index.html" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#ff8c42);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:700">Ver m&oacute;dulo &rarr;</a></div>
 </div>
 </div>
 </section>
@@ -1896,6 +1896,31 @@ opacity: 0;
 }
 `;
 document.head.appendChild(style);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  for(var i=1;i<=5;i++){ (function(i){
+    var btn=document.getElementById('btnMod'+i);
+    if(!btn) return;
+    var unlocked=(i===1)||localStorage.getItem('modulo'+(i-1)+'Completado')==='true';
+    var completed=localStorage.getItem('modulo'+i+'Completado')==='true';
+    var card=document.getElementById('modulo'+i);
+    if(!unlocked){
+      var lock=document.createElement('span');
+      lock.className='btn';
+      lock.style.cssText='display:inline-block;background:#b7b7b7;color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;cursor:not-allowed';
+      lock.innerHTML='\ud83d\udd12 Completa el m\u00f3dulo '+(i-1);
+      btn.parentNode.replaceChild(lock,btn);
+      if(card) card.style.opacity='0.6';
+    } else if(completed){
+      btn.innerHTML='Repasar m\u00f3dulo \u2192';
+      var badge=document.createElement('div');
+      badge.style.cssText='margin-top:8px;color:#2c5530;font-weight:700;font-size:.9rem';
+      badge.innerHTML='\u2713 Completado';
+      btn.parentNode.appendChild(badge);
+    }
+  })(i); }
+});
 </script>
 </body>
 </html>

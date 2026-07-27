@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <script>try{localStorage.setItem("cursoAcceso","autorizado")}catch(e){}</script>
+<script>if(localStorage.getItem("modulo4Completado")!=="true"){alert("\ud83d\udd12 Debes completar el M\u00f3dulo 4 antes de acceder al M\u00f3dulo 5");location.replace("../modulo4/index.html");}</script>
   <meta charset="UTF-8">
   <title>Módulo 5: Recursos y Materiales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1021,6 +1022,9 @@
     </section>
     
     <!-- Navegación entre módulos -->
+    <div style="text-align:center;margin:34px 0">
+      <button class="complete-btn" id="completeModule5" style="background:linear-gradient(135deg,#7AC943,#2c5530);color:#fff;border:none;padding:15px 36px;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(44,85,48,0.3)"><i class="fas fa-trophy"></i> Finalizar el curso</button>
+    </div>
     <div class="navigation">
       <a href="../modulo4/index.html" class="btn btn-secondary">
         <i class="fas fa-arrow-left"></i>
@@ -1148,6 +1152,18 @@
     // Toggle para menú móvil
     document.getElementById('navbar-toggle').addEventListener('click', () => {
       document.getElementById('navbar-menu').classList.toggle('active');
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var b=document.getElementById('completeModule5');
+      if(!b) return;
+      if(localStorage.getItem('modulo5Completado')==='true'){ b.disabled=true; b.innerHTML='<i class="fas fa-check"></i> ¡Curso Completado!'; }
+      b.addEventListener('click', function(){
+        localStorage.setItem('modulo5Completado','true');
+        this.disabled=true; this.innerHTML='<i class="fas fa-check"></i> ¡Curso Completado!';
+        alert('🎉 ¡Felicitaciones! Completaste el curso de Motricidad Fina y Gruesa.');
+      });
     });
   </script>
 </body>

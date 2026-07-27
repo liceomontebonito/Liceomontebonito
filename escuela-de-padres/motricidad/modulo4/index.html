@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <script>try{localStorage.setItem("cursoAcceso","autorizado")}catch(e){}</script>
+<script>if(localStorage.getItem("modulo3Completado")!=="true"){alert("\ud83d\udd12 Debes completar el M\u00f3dulo 3 antes de acceder al M\u00f3dulo 4");location.replace("../modulo3/index.html");}</script>
   <meta charset="UTF-8">
   <title>Módulo 4: Evaluación y Seguimiento</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -895,8 +896,51 @@
             </li>
           </ul>
           
-          <table class="evaluation-table">
+          <table class="evaluation-table" style="width:100%;border-collapse:collapse;margin-top:10px">
             <thead>
-              <tr>
-                <th>Actividad</th>
-                <th>Semana 1</th
+              <tr style="background:#7AC943;color:#fff">
+                <th style="padding:8px;text-align:left">Actividad</th>
+                <th style="padding:8px">Semana 1</th>
+                <th style="padding:8px">Semana 2</th>
+                <th style="padding:8px">Semana 3</th>
+                <th style="padding:8px">Semana 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px;border-bottom:1px solid #eee">Recortar con tijeras</td><td style="text-align:center">😐</td><td style="text-align:center">😊</td><td style="text-align:center">😊</td><td style="text-align:center">😊</td></tr>
+              <tr><td style="padding:8px;border-bottom:1px solid #eee">Saltar en un pie</td><td style="text-align:center">😐</td><td style="text-align:center">😐</td><td style="text-align:center">😊</td><td style="text-align:center">😊</td></tr>
+              <tr><td style="padding:8px;border-bottom:1px solid #eee">Abrochar botones</td><td style="text-align:center">😐</td><td style="text-align:center">😐</td><td style="text-align:center">😐</td><td style="text-align:center">😊</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center;margin:34px 0">
+      <button class="complete-btn" id="completeModule4" style="background:linear-gradient(135deg,#7AC943,#2c5530);color:#fff;border:none;padding:15px 36px;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(44,85,48,0.3)"><i class="fas fa-check-circle"></i> Completar M&oacute;dulo 4</button>
+    </div>
+
+    <div class="navigation">
+      <a href="../modulo3/index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver al M&oacute;dulo 3</a>
+      <a href="../modulo5/index.html" class="btn btn-info" id="nextModuleBtn"><i class="fas fa-arrow-right"></i> Siguiente m&oacute;dulo</a>
+    </div>
+  </div>
+
+  <footer class="footer" style="text-align:center;padding:26px;color:#777">
+    <p>Escuela de Padres &middot; Liceo Montebonito &copy; 2025</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var btn=document.getElementById('completeModule4');
+      if(localStorage.getItem('modulo4Completado')==='true'){ btn.disabled=true; btn.innerHTML='<i class="fas fa-check"></i> M&oacute;dulo Completado'; }
+      btn.addEventListener('click', function(){
+        localStorage.setItem('modulo4Completado','true');
+        localStorage.setItem('modulo5Acceso','autorizado');
+        this.disabled=true; this.innerHTML='<i class="fas fa-check"></i> M&oacute;dulo Completado';
+        alert('¡Módulo 4 completado! Ahora puedes acceder al Módulo 5.');
+      });
+    });
+  </script>
+</body>
+</html>
