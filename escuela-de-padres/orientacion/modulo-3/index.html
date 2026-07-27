@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3 · Aptitudes y confianza | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(3);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 3 de 6</span>
+  <h1>Mis aptitudes y mi confianza</h1>
+  <p>No basta con que algo te guste: también influye cuánto te crees capaz. Aquí separas una cosa de la otra.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · Teoría Sociocognitiva de la Carrera</span>
+    <h2>La confianza también decide tu vocación</h2>
+    <p>Robert <strong>Lent</strong>, Steven <strong>Brown</strong> y Gail <strong>Hackett</strong>, apoyándose en el trabajo de <strong>Albert Bandura</strong>, mostraron que tus intereses y decisiones dependen de dos creencias:</p>
+    <ul>
+      <li><strong>Autoeficacia:</strong> "¿me creo capaz de hacer esto?"</li>
+      <li><strong>Expectativas de resultado:</strong> "¿qué creo que voy a conseguir si lo hago?"</li>
+    </ul>
+    <p>Aquí está lo importante para ti: muchas veces <strong>evitamos un área no porque no nos guste, sino porque no nos creemos capaces… todavía.</strong> Y la buena noticia es que la autoeficacia <strong>se entrena</strong>: crece con la práctica, con pequeños logros y con buenos modelos. Por eso no debes descartar un camino solo por miedo a no ser bueno.</p>
+    <div class="cita">"Las personas desarrollan interés por aquello en lo que se sienten eficaces y esperan buenos resultados." — Lent, Brown y Hackett (1994)</div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Escala de confianza</span>
+    <h3>💪 ¿Qué tan capaz te sientes en cada área?</h3>
+    <p>Mueve cada barra según lo <strong>capaz</strong> que te sientes hoy (no si te gusta, eso ya lo medimos). Luego cruzaremos tu confianza con tus intereses del Módulo 2.</p>
+    <div id="sliders"></div>
+    <button class="btn btn-verde" id="analizar" style="margin-top:16px">Analizar mi perfil</button>
+    <div id="analisis" style="display:none;margin-top:20px">
+      <h3 style="color:#2c5530">Tu mapa de intereses × confianza</h3>
+      <div id="mapa"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprueba lo que aprendiste</h2>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>Completar Módulo 3</button>
+    <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../modulo-4/index.html" style="display:none">Continuar al Módulo 4 →</a></div>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Lent, R. W., Brown, S. D., & Hackett, G. (1994). Toward a unifying social cognitive theory of career and academic interest, choice, and performance. <em>Journal of Vocational Behavior, 45</em>(1), 79–122.</li>
+      <li>Bandura, A. (1997). <em>Self-Efficacy: The Exercise of Control</em>. Freeman.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 3 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+var AREAS=[['R','Realista','Manualidades, técnica, deporte, aire libre'],['I','Investigador','Ciencia, análisis, resolver problemas'],['A','Artístico','Crear, diseñar, expresarte'],['S','Social','Enseñar, ayudar, trato con personas'],['E','Emprendedor','Liderar, convencer, emprender'],['C','Convencional','Organizar, datos, orden y detalle']];
+var COL={R:'#7AC943',I:'#3a7ca5',A:'#9b5de5',S:'#FF6B35',E:'#e6a700',C:'#2c9d8f'};
+var cont=document.getElementById('sliders');
+var prev=JSON.parse(CURSO.load('confianza')||'{}');
+AREAS.forEach(function(a){
+  var wrap=document.createElement('div'); wrap.style.margin='16px 0';
+  var val=(prev[a[0]]!==undefined)?prev[a[0]]:50;
+  wrap.innerHTML='<label class="field" style="margin-bottom:2px">'+a[1]+' <span style="font-weight:400;color:#778;font-size:.85rem">— '+a[2]+'</span></label>'+
+    '<div style="display:flex;align-items:center;gap:12px"><input type="range" min="0" max="100" value="'+val+'" id="s_'+a[0]+'" style="flex:1;accent-color:'+COL[a[0]]+'"><b id="v_'+a[0]+'" style="width:44px;text-align:right;color:'+COL[a[0]]+'">'+val+'</b></div>';
+  cont.appendChild(wrap);
+});
+AREAS.forEach(function(a){ var s=document.getElementById('s_'+a[0]); s.addEventListener('input',function(){ document.getElementById('v_'+a[0]).textContent=s.value; }); });
+
+document.getElementById('analizar').addEventListener('click', function(){
+  var conf={}; AREAS.forEach(function(a){ conf[a[0]]=parseInt(document.getElementById('s_'+a[0]).value); });
+  CURSO.save('confianza', JSON.stringify(conf));
+  var interes=JSON.parse(CURSO.load('riasec_scores')||'null');
+  var mapa=document.getElementById('mapa'); mapa.innerHTML='';
+  var cats={fort:[],pot:[],rec:[],baja:[]};
+  AREAS.forEach(function(a){
+    var t=a[0];
+    var iHigh = interes ? (interes[t]>=6) : (conf[t]>=60);
+    var cHigh = conf[t]>=60;
+    if(iHigh&&cHigh) cats.fort.push(a[1]);
+    else if(iHigh&&!cHigh) cats.pot.push(a[1]);
+    else if(!iHigh&&cHigh) cats.rec.push(a[1]);
+    else cats.baja.push(a[1]);
+  });
+  function bloque(emoji,titulo,desc,lista,color){
+    if(!lista.length) return '';
+    return '<div style="border-left:4px solid '+color+';background:#fbfdf9;border-radius:10px;padding:12px 15px;margin:10px 0"><strong>'+emoji+' '+titulo+'</strong> <span style="color:#667;font-size:.9rem">— '+desc+'</span><br>'+lista.join(', ')+'</div>';
+  }
+  mapa.innerHTML =
+    bloque('💪','Tus fortalezas','te gusta y te crees capaz. ¡Explótalas!',cats.fort,'#2e9e44')+
+    bloque('🌱','Potencial a desarrollar','te interesa pero aún no te crees capaz. No lo descartes: la confianza se entrena.',cats.pot,'#e6a700')+
+    bloque('🔧','Recursos','te sientes capaz aunque no te apasione. Te pueden dar ventaja.',cats.rec,'#3a7ca5')+
+    bloque('➖','Menos prioritarias','ni mucho interés ni mucha confianza por ahora.',cats.baja,'#999') +
+    (interes?'':'<p style="color:#a5302c;font-size:.85rem">Nota: completa el test del Módulo 2 para un cruce más preciso.</p>');
+  document.getElementById('analisis').style.display='block';
+  document.getElementById('analisis').scrollIntoView({behavior:'smooth'});
+});
+
+CURSO.quiz('quiz', [
+  { q:'La "autoeficacia" es...', opts:['El dinero que ganarás','La creencia de que eres capaz de hacer algo','Tu promedio de notas','La opinión de tus papás'], correct:1, fb:'Es tu confianza en tu propia capacidad.' },
+  { q:'Si un área te interesa pero no te crees capaz, lo mejor es...', opts:['Descartarla de inmediato','Ignorar el interés','Darle una oportunidad: la confianza se entrena con práctica','Elegirla solo si es fácil'], correct:2, fb:'La autoeficacia crece con logros y práctica.' },
+  { q:'Según la Teoría Sociocognitiva, tus intereses crecen donde...', opts:['Te sientes eficaz y esperas buenos resultados','Hay menos competencia','Te obligan','No hay que estudiar'], correct:0, fb:'Autoeficacia + expectativas positivas alimentan el interés.' }
+], function(){ document.getElementById('completar').disabled=false; });
+
+CURSO.setupComplete(3,'completar','../modulo-4/index.html');
+</script>
+</body>
+</html>

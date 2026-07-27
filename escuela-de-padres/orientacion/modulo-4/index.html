@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4 · El mundo de las profesiones | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(4);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 4 de 6</span>
+  <h1>El mundo de las profesiones</h1>
+  <p>Ahora que te conoces, explora carreras reales con datos confiables — no con rumores.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · Ajuste persona-ambiente + O*NET</span>
+    <h2>Explora con evidencia, no con mitos</h2>
+    <p>La teoría de Holland dice que buscamos ambientes que encajen con nuestro tipo. Pero para saber si una profesión encaja de verdad, hay que <strong>investigarla con fuentes serias</strong>, no con "dicen que…". Las mejores fuentes del mundo son gratuitas:</p>
+    <ul>
+      <li><strong>O*NET / My Next Move</strong> (Departamento de Trabajo de EE.&nbsp;UU.): describe cientos de profesiones, qué hacen y qué habilidades exigen.</li>
+      <li><strong>SNIES</strong> (Ministerio de Educación de Colombia): qué programas existen y en qué universidades.</li>
+      <li><strong>Entrevistas informativas:</strong> hablar con alguien que ya ejerce la profesión.</li>
+    </ul>
+    <div class="dato"><span class="lab">Tu código del Módulo 2:</span> <span id="codeShow" style="font-weight:800;color:#FF6B35">—</span>. Estas familias de carreras suelen encajar con tu perfil:</div>
+    <div id="sugerencias"></div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Investiga 3 carreras</span>
+    <h3>🔎 Ficha de exploración</h3>
+    <p>Elige <strong>3 carreras</strong> que te llamen la atención (de las sugeridas o cualquier otra) e investígalas. Llena la ficha con lo que encuentres en fuentes confiables.</p>
+    <div id="fichas"></div>
+    <button class="btn btn-verde" id="guardarFichas" style="margin-top:14px">Guardar mis fichas</button>
+    <span id="fichaOk" style="display:none;color:#1e7a32;font-weight:700;margin-left:10px">✓ Guardado</span>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Entrevista informativa</span>
+    <h3>🎙️ Habla con alguien que ya la ejerce</h3>
+    <p>Nada reemplaza escuchar a quien vive la profesión. Usa estas preguntas con un profesional (familiar, conocido, egresado):</p>
+    <ul>
+      <li>¿Cómo es un día normal en tu trabajo?</li>
+      <li>¿Qué es lo que más y lo que menos te gusta?</li>
+      <li>¿Qué estudiaste y qué te habría gustado saber antes?</li>
+      <li>¿Cómo es conseguir empleo y cómo son los ingresos al inicio?</li>
+      <li>¿Qué le recomendarías a alguien que empieza?</li>
+    </ul>
+    <label class="field">Anota aquí lo más valioso que te dijeron (opcional):</label>
+    <textarea id="entrevista" placeholder="Lo que aprendí de la entrevista..."></textarea>
+    <button class="btn btn-verde" id="guardarEnt" style="margin-top:12px">Guardar</button>
+    <span id="entOk" style="display:none;color:#1e7a32;font-weight:700;margin-left:10px">✓ Guardado</span>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprueba lo que aprendiste</h2>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>Completar Módulo 4</button>
+    <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../modulo-5/index.html" style="display:none">Continuar al Módulo 5 →</a></div>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Holland, J. L. (1997). <em>Making Vocational Choices</em> (3.ª ed.). PAR.</li>
+      <li>U.S. Department of Labor. <em>O*NET / My Next Move</em>. mynextmove.org.</li>
+      <li>Ministerio de Educación Nacional de Colombia. <em>SNIES</em> — Sistema Nacional de Información de la Educación Superior.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 4 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+var NOMBRES={R:'Realista',I:'Investigador',A:'Artístico',S:'Social',E:'Emprendedor',C:'Convencional'};
+var FAM={
+ R:'Ingeniería mecánica/civil · Agronomía · Veterinaria · Técnico electricista · Educación física y deporte',
+ I:'Medicina · Biología/Química · Ingeniería de sistemas · Ciencia de datos · Economía · Investigación',
+ A:'Diseño gráfico/industrial · Comunicación social y publicidad · Música · Artes visuales · Cine y multimedia',
+ S:'Licenciaturas (docencia) · Psicología · Enfermería · Trabajo social · Fonoaudiología · Medicina',
+ E:'Administración de empresas · Derecho · Mercadeo · Negocios internacionales · Emprendimiento',
+ C:'Contaduría · Finanzas · Ingeniería industrial · Logística · Administración pública · Sistemas de información'
+};
+var code=CURSO.load('riasec_code')||'';
+document.getElementById('codeShow').textContent=code||'(haz el Módulo 2 para verlo)';
+var sug=document.getElementById('sugerencias');
+if(code){ code.split('').forEach(function(t){
+  var d=document.createElement('div'); d.style.cssText='margin:8px 0;padding:10px 14px;background:#fbfdf9;border-radius:10px';
+  d.innerHTML='<strong>'+NOMBRES[t]+' ('+t+'):</strong> '+FAM[t]; sug.appendChild(d);
+}); } else { sug.innerHTML='<p style="color:#a5302c">Completa el Módulo 2 para ver sugerencias personalizadas.</p>'; }
+
+// Fichas
+var prevF=JSON.parse(CURSO.load('fichas')||'[]');
+var fichas=document.getElementById('fichas');
+for(var i=0;i<3;i++){ (function(i){
+  var f=prevF[i]||{};
+  var box=document.createElement('div'); box.style.cssText='border:1.5px solid #e0e9d7;border-radius:12px;padding:14px 16px;margin:12px 0;background:#fff';
+  box.innerHTML='<strong style="color:#2c5530">Carrera '+(i+1)+'</strong>'+
+   '<label class="field">Nombre de la carrera</label><input type="text" id="f'+i+'_n" value="'+(f.n||'')+'">'+
+   '<label class="field">¿Qué hace un profesional de esto?</label><textarea id="f'+i+'_h">'+(f.h||'')+'</textarea>'+
+   '<label class="field">¿Qué se estudia y dónde (universidad/ciudad)?</label><textarea id="f'+i+'_e">'+(f.e||'')+'</textarea>'+
+   '<label class="field">¿Qué me atrae y qué me preocupa de ella?</label><textarea id="f'+i+'_m">'+(f.m||'')+'</textarea>';
+  fichas.appendChild(box);
+})(i); }
+document.getElementById('guardarFichas').addEventListener('click', function(){
+  var arr=[]; for(var i=0;i<3;i++){ arr.push({n:val('f'+i+'_n'),h:val('f'+i+'_h'),e:val('f'+i+'_e'),m:val('f'+i+'_m')}); }
+  CURSO.save('fichas', JSON.stringify(arr));
+  document.getElementById('fichaOk').style.display='inline';
+});
+function val(id){ return document.getElementById(id).value; }
+
+// Entrevista
+var pe=CURSO.load('entrevista'); if(pe) document.getElementById('entrevista').value=pe;
+document.getElementById('guardarEnt').addEventListener('click', function(){ CURSO.save('entrevista', document.getElementById('entrevista').value); document.getElementById('entOk').style.display='inline'; });
+
+CURSO.quiz('quiz', [
+  { q:'¿Cuál es la mejor forma de saber si una carrera te conviene?', opts:['Lo que dicen en redes sociales','Investigarla en fuentes confiables y hablar con quien la ejerce','Elegir la que suene más bonita','Preguntarle a un solo amigo'], correct:1, fb:'Datos serios + entrevistas informativas.' },
+  { q:'Una "entrevista informativa" es...', opts:['Un examen','Conversar con alguien que ya ejerce la profesión','Una entrevista de trabajo','Un video de YouTube'], correct:1, fb:'Te da la realidad del día a día.' },
+  { q:'O*NET y SNIES son...', opts:['Redes sociales','Fuentes oficiales para explorar profesiones y programas','Aplicaciones de juegos','Marcas de ropa'], correct:1, fb:'Fuentes confiables (EE.UU. y Colombia).' }
+], function(){ document.getElementById('completar').disabled=false; });
+
+CURSO.setupComplete(4,'completar','../modulo-5/index.html');
+</script>
+</body>
+</html>

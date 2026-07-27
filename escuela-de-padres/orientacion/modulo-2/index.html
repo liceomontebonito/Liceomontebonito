@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2 · Mis intereses (RIASEC) | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(2);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 2 de 6</span>
+  <h1>Mis intereses: el modelo RIASEC</h1>
+  <p>Descubre tu código de intereses con el modelo más usado y validado del mundo para la orientación vocacional.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · John Holland</span>
+    <h2>Seis tipos, un mapa de tus intereses</h2>
+    <p>El psicólogo <strong>John Holland</strong> propuso que casi todos podemos describirnos como una combinación de <strong>seis tipos de intereses</strong>, resumidos en la sigla <strong>RIASEC</strong>. Su idea central: te sentirás más satisfecho y rendirás mejor cuando tu trabajo <strong>encaje con tu tipo</strong> (lo que llamó "ajuste persona-ambiente").</p>
+    <ul>
+      <li><strong>R — Realista</strong> (el "hacedor"): cosas concretas, herramientas, máquinas, aire libre, deporte.</li>
+      <li><strong>I — Investigador</strong> (el "pensador"): analizar, entender, investigar, ciencia y datos.</li>
+      <li><strong>A — Artístico</strong> (el "creador"): expresarte, crear, diseñar, valorar la estética.</li>
+      <li><strong>S — Social</strong> (el "ayudador"): enseñar, cuidar, acompañar, trabajar con personas.</li>
+      <li><strong>E — Emprendedor</strong> (el "persuasor"): liderar, convencer, vender, emprender.</li>
+      <li><strong>C — Convencional</strong> (el "organizador"): ordenar, seguir sistemas, datos y detalle.</li>
+    </ul>
+    <div class="dato"><span class="lab">Dato:</span> este mismo modelo es la base del <strong>O*NET Interest Profiler</strong> del Departamento de Trabajo de EE.&nbsp;UU., usado por millones de personas para explorar más de 900 profesiones.</div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Test de intereses</span>
+    <h3>🧭 Responde con sinceridad</h3>
+    <p>Para cada actividad, marca cuánto te gustaría hacerla (no si sabes hacerla, sino si te <em>atrae</em>). Son 30 frases.</p>
+    <div id="test"></div>
+    <button class="btn btn-verde" id="verResultado" style="margin-top:16px">Ver mi resultado</button>
+    <div id="resultado" style="display:none;margin-top:22px">
+      <h3 style="color:#2c5530">Tu perfil de intereses</h3>
+      <div class="bars" id="bars"></div>
+      <div class="dato" style="margin-top:16px"><span class="lab">Tu código Holland:</span> <span id="codigo" style="font-size:1.3rem;font-weight:800;color:#FF6B35"></span>
+        <div id="codeDesc" style="margin-top:8px"></div></div>
+      <p style="font-size:.85rem;color:#667">Guardamos tu código para usarlo en el Módulo 4 (explorar profesiones). Recuerda: es una brújula, no una sentencia.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprueba lo que aprendiste</h2>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>Completar Módulo 2</button>
+    <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../modulo-3/index.html" style="display:none">Continuar al Módulo 3 →</a></div>
+    <p id="reqMsg" style="color:#a5302c;font-size:.85rem;margin-top:10px">Para completar: haz el test y aprueba el quiz.</p>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Holland, J. L. (1997). <em>Making Vocational Choices</em> (3.ª ed.). Psychological Assessment Resources.</li>
+      <li>Nauta, M. M. (2010). The development, evolution, and status of Holland's theory. <em>Journal of Counseling Psychology, 57</em>(1).</li>
+      <li>U.S. Department of Labor, O*NET Resource Center. <em>Interest Profiler Manual</em>.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 2 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+var ITEMS={
+ R:['Armar, reparar o construir cosas con mis manos','Trabajar con herramientas, máquinas o motores','Hacer actividades al aire libre o con animales','Practicar deporte o trabajo físico','Entender cómo funcionan los aparatos'],
+ I:['Resolver problemas de matemáticas o ciencia','Investigar por qué ocurren las cosas','Hacer experimentos y analizar resultados','Leer sobre ciencia, tecnología o naturaleza','Analizar datos para sacar conclusiones'],
+ A:['Dibujar, pintar o diseñar','Escribir, actuar o tocar música','Crear cosas originales e inventar','Decorar o cuidar la estética de un espacio','Expresar mis ideas de forma creativa'],
+ S:['Enseñar o explicarle algo a alguien','Ayudar a personas con sus problemas','Cuidar o acompañar a quien lo necesita','Hacer voluntariado o servicio social','Escuchar y aconsejar a los demás'],
+ E:['Liderar un equipo o un proyecto','Convencer, vender o negociar','Organizar eventos o emprender un negocio','Hablar en público y defender ideas','Tomar decisiones y asumir riesgos'],
+ C:['Organizar información, archivos o agendas','Seguir procedimientos claros y ordenados','Trabajar con números, cuentas o presupuestos','Llevar registros y planillas al detalle','Poner orden donde hay desorden']
+};
+var NOMBRES={R:'Realista',I:'Investigador',A:'Artístico',S:'Social',E:'Emprendedor',C:'Convencional'};
+var COLORES={R:'#7AC943',I:'#3a7ca5',A:'#9b5de5',S:'#FF6B35',E:'#e6a700',C:'#2c9d8f'};
+var DESC={
+ R:'Prefieres lo concreto y práctico: herramientas, movimiento y resultados que se ven y se tocan.',
+ I:'Te mueve entender el porqué de las cosas: analizar, investigar y resolver.',
+ A:'Necesitas crear y expresarte; valoras la originalidad y la belleza.',
+ S:'Te realizas ayudando, enseñando y trabajando con y para las personas.',
+ E:'Disfrutas liderar, convencer y emprender; te gusta influir y dirigir.',
+ C:'Te sientes bien con el orden, los sistemas, los datos y el detalle.'
+};
+var CARRERAS={
+ R:'ingeniería, mecánica, agronomía, arquitectura técnica, deporte',
+ I:'medicina, ciencias, tecnología, investigación, análisis de datos',
+ A:'diseño, arte, música, publicidad, comunicación, arquitectura',
+ S:'docencia, psicología, enfermería, trabajo social, medicina',
+ E:'administración, derecho, mercadeo, emprendimiento, política',
+ C:'contaduría, finanzas, logística, sistemas de información'
+};
+var orden=['R','I','A','S','E','C'];
+var cont=document.getElementById('test');
+var idx=0;
+orden.forEach(function(t){
+  ITEMS[t].forEach(function(frase){
+    idx++;
+    var q=document.createElement('div'); q.className='q'; q.dataset.tipo=t;
+    var p=document.createElement('p'); p.className='enunciado'; p.textContent=idx+'. '+frase; q.appendChild(p);
+    var wrap=document.createElement('div'); wrap.style.cssText='display:flex;gap:8px;flex-wrap:wrap';
+    [['No me gustaría',0],['Me da igual',1],['Me gustaría',2]].forEach(function(o){
+      var b=document.createElement('span'); b.className='opt'; b.textContent=o[0]; b.style.flex='1'; b.style.textAlign='center'; b.style.minWidth='90px';
+      b.addEventListener('click', function(){
+        Array.prototype.forEach.call(wrap.children,function(x){x.classList.remove('sel');});
+        b.classList.add('sel'); q.dataset.val=o[1];
+      });
+      wrap.appendChild(b);
+    });
+    q.appendChild(wrap); cont.appendChild(q);
+  });
+});
+
+var testHecho=false, quizOk=false;
+function chequear(){ document.getElementById('completar').disabled=!(testHecho&&quizOk);
+  if(testHecho&&quizOk) document.getElementById('reqMsg').style.display='none'; }
+
+document.getElementById('verResultado').addEventListener('click', function(){
+  var qs=cont.querySelectorAll('.q'); var faltan=0; var punt={R:0,I:0,A:0,S:0,E:0,C:0};
+  Array.prototype.forEach.call(qs,function(q){ if(q.dataset.val===undefined){faltan++;} else { punt[q.dataset.tipo]+=parseInt(q.dataset.val); } });
+  if(faltan>0){ alert('Te faltan '+faltan+' frases por responder.'); return; }
+  var arr=orden.map(function(t){return {t:t,v:punt[t]};}).sort(function(a,b){return b.v-a.v;});
+  var bars=document.getElementById('bars'); bars.innerHTML='';
+  arr.forEach(function(o){
+    var pct=Math.round(o.v/10*100);
+    var row=document.createElement('div'); row.className='bar-row';
+    row.innerHTML='<div class="lbl">'+NOMBRES[o.t]+' ('+o.t+')</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+COLORES[o.t]+'">'+o.v+'/10</div></div>';
+    bars.appendChild(row);
+    setTimeout(function(){ row.querySelector('.bar-fill').style.width=Math.max(pct,8)+'%'; },50);
+  });
+  var code=arr.slice(0,3).map(function(o){return o.t;}).join('');
+  document.getElementById('codigo').textContent=code;
+  document.getElementById('codeDesc').innerHTML='<strong>'+NOMBRES[arr[0].t]+':</strong> '+DESC[arr[0].t]+'<br><span style="font-size:.9rem;color:#556">Profesiones donde suele encajar: '+CARRERAS[arr[0].t]+'.</span>';
+  CURSO.save('riasec_code', code);
+  CURSO.save('riasec_scores', JSON.stringify(punt));
+  document.getElementById('resultado').style.display='block';
+  document.getElementById('resultado').scrollIntoView({behavior:'smooth'});
+  testHecho=true; chequear();
+});
+
+CURSO.quiz('quiz', [
+  { q:'¿Qué significa RIASEC?', opts:['Seis países','Seis tipos de intereses vocacionales','Un examen de admisión','Seis materias del colegio'], correct:1, fb:'Realista, Investigador, Artístico, Social, Emprendedor, Convencional.' },
+  { q:'La idea central de Holland es el...', opts:['Ajuste entre la persona y su ambiente de trabajo','Azar','Nivel de dinero','Coeficiente intelectual'], correct:0, fb:'Encajar tu tipo con el ambiente aumenta la satisfacción.' },
+  { q:'Tu código Holland de 3 letras representa...', opts:['Tu nota final','Tus 3 tipos de interés más fuertes','Tu signo zodiacal','Las 3 peores opciones'], correct:1, fb:'Son tus tres intereses dominantes combinados.' }
+], function(){ quizOk=true; chequear(); });
+
+CURSO.setupComplete(2,'completar','../modulo-3/index.html');
+</script>
+</body>
+</html>

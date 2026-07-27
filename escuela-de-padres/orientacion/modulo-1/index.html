@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1 · ¿Quién soy? | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(1);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 1 de 6</span>
+  <h1>¿Quién soy? El punto de partida</h1>
+  <p>Antes de elegir una carrera hay que conocerse. Aquí construyes la base: tus valores y tu autoconcepto.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · Donald Super</span>
+    <h2>Elegir una carrera es expresar quién eres</h2>
+    <p>El psicólogo <strong>Donald Super</strong> demostró que elegir una profesión no es un acto aislado, sino la forma de <strong>poner en práctica tu autoconcepto</strong>: la imagen que tienes de tus capacidades, valores, intereses y personalidad. Cuanto mejor te conoces, mejores decisiones tomas.</p>
+    <p>Super describió el desarrollo de la carrera como un proceso que dura toda la vida, dividido en etapas. Tú, como adolescente, estás en la etapa de <strong>Exploración (15 a 24 años)</strong>: el momento ideal para examinar opciones, probar, equivocarte y ir precisando tus preferencias. No se trata de acertar hoy para siempre, sino de <em>explorar con método</em>.</p>
+    <div class="dato"><span class="lab">Idea clave:</span> tu vocación no se "descubre" de un golpe ni cae del cielo. Se <strong>construye</strong> a medida que te conoces y exploras el mundo.</div>
+    <div class="cita">"Al elegir una ocupación, la persona expresa su concepto de sí misma." — D. E. Super</div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica 1</span>
+    <h3>🪞 Las 3 preguntas espejo</h3>
+    <p>Responde con sinceridad. Nadie más lo ve: se guarda solo en este dispositivo y lo usaremos en los próximos módulos.</p>
+    <label class="field">1. ¿Con qué actividad pierdes la noción del tiempo?</label>
+    <textarea id="p1" placeholder="Cuando hago... se me pasan las horas"></textarea>
+    <label class="field">2. ¿Qué problema del mundo te gustaría ayudar a resolver?</label>
+    <textarea id="p2" placeholder="Me molesta / me importa..."></textarea>
+    <label class="field">3. ¿Para qué te buscan tus amigos o tu familia? ¿En qué eres "el que sabe"?</label>
+    <textarea id="p3" placeholder="La gente me pide ayuda con..."></textarea>
+    <button class="btn btn-verde" id="guardarRef" style="margin-top:14px">Guardar mis respuestas</button>
+    <span id="refOk" style="display:none;color:#1e7a32;font-weight:700;margin-left:10px">✓ Guardado</span>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica 2</span>
+    <h3>💎 Tus valores de trabajo</h3>
+    <p>Los valores son la brújula de las decisiones. Elige los <strong>5 que más importan</strong> para tu futuro trabajo. Toca para seleccionar; toca de nuevo para quitar.</p>
+    <div id="valores" style="display:flex;flex-wrap:wrap;gap:9px;margin:14px 0"></div>
+    <p style="font-weight:600;color:#2c5530">Elegidos (<span id="valCount">0</span>/5): <span id="valList">—</span></p>
+    <button class="btn btn-verde" id="guardarVal" disabled>Guardar mis 5 valores</button>
+    <span id="valOk" style="display:none;color:#1e7a32;font-weight:700;margin-left:10px">✓ Guardado</span>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprueba lo que aprendiste</h2>
+    <p>Responde para poder completar el módulo (necesitas 70%).</p>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>Completar Módulo 1</button>
+    <div style="margin-top:14px">
+      <a id="nextLink" class="btn btn-verde" href="../modulo-2/index.html" style="display:none">Continuar al Módulo 2 →</a>
+    </div>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Super, D. E. (1990). A life-span, life-space approach to career development. En D. Brown & L. Brooks (Eds.), <em>Career Choice and Development</em> (2.ª ed.). Jossey-Bass.</li>
+      <li>Savickas, M. L. (2013). Career construction theory and practice. En <em>Career Development and Counseling</em>. Wiley.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 1 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+// Preguntas espejo
+['p1','p2','p3'].forEach(function(id){ var el=document.getElementById(id); var v=CURSO.load('ref_'+id); if(v) el.value=v; });
+document.getElementById('guardarRef').addEventListener('click', function(){
+  ['p1','p2','p3'].forEach(function(id){ CURSO.save('ref_'+id, document.getElementById(id).value); });
+  document.getElementById('refOk').style.display='inline';
+});
+
+// Valores
+var VALORES=['Ayudar a otros','Autonomía / independencia','Estabilidad y seguridad','Creatividad','Buen salario','Reconocimiento','Aprender siempre','Liderar equipos','Equilibrio vida-trabajo','Aventura y variedad','Justicia social','Trabajar con las manos','Orden y estructura','Naturaleza / aire libre','Tecnología e innovación','Prestigio profesional'];
+var elegidos=JSON.parse(CURSO.load('valores')||'[]');
+var cont=document.getElementById('valores');
+function pintarValores(){
+  cont.innerHTML='';
+  VALORES.forEach(function(v){
+    var chip=document.createElement('span');
+    var on=elegidos.indexOf(v)>=0;
+    chip.textContent=v;
+    chip.style.cssText='padding:8px 14px;border-radius:50px;cursor:pointer;font-size:.9rem;font-weight:600;border:1.5px solid '+(on?'#2c5530':'#cfe0c0')+';background:'+(on?'linear-gradient(135deg,#7AC943,#2c5530)':'#fff')+';color:'+(on?'#fff':'#3f5540')+';';
+    chip.addEventListener('click', function(){
+      var i=elegidos.indexOf(v);
+      if(i>=0){ elegidos.splice(i,1); }
+      else { if(elegidos.length>=5){ alert('Ya elegiste 5. Quita uno para cambiarlo.'); return; } elegidos.push(v); }
+      actualizar();
+    });
+    cont.appendChild(chip);
+  });
+}
+function actualizar(){
+  pintarValores();
+  document.getElementById('valCount').textContent=elegidos.length;
+  document.getElementById('valList').textContent=elegidos.length?elegidos.join(' · '):'—';
+  document.getElementById('guardarVal').disabled=(elegidos.length!==5);
+}
+document.getElementById('guardarVal').addEventListener('click', function(){
+  CURSO.save('valores', JSON.stringify(elegidos));
+  document.getElementById('valOk').style.display='inline';
+});
+actualizar();
+
+// Quiz
+CURSO.quiz('quiz', [
+  { q:'Según Donald Super, elegir una carrera es sobre todo...', opts:['Adivinar qué está de moda','Poner en práctica tu autoconcepto (quién eres)','Elegir lo que más dinero da','Hacer lo que hicieron tus papás'], correct:1, fb:'La carrera expresa tu autoconcepto.' },
+  { q:'La etapa de Exploración (15-24 años) sirve para...', opts:['Decidir de una vez y para siempre','Dejar de pensar en el futuro','Examinar opciones, probar y precisar preferencias','Copiar la decisión de un amigo'], correct:2, fb:'Explorar con método es lo esperado a tu edad.' },
+  { q:'¿Para qué sirven tus valores en esta decisión?', opts:['Para nada, son cursis','Son la brújula que guía tus decisiones','Solo importan después de graduarte','Son iguales para todos'], correct:1, fb:'Los valores orientan qué te hará sentir realizado.' }
+], function(){ document.getElementById('completar').disabled=false; });
+
+CURSO.setupComplete(1,'completar','../modulo-2/index.html');
+</script>
+</body>
+</html>

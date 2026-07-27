@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 6 · Mi plan de acción | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(6);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 6 de 6 · Final</span>
+  <h1>Mi plan de acción</h1>
+  <p>Una decisión sin plan es un deseo. Aquí conviertes lo aprendido en pasos concretos.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · SCCT + Krumboltz</span>
+    <h2>Metas claras y mente abierta</h2>
+    <p>La Teoría Sociocognitiva muestra que las <strong>metas</strong> convierten tus intereses en acción. Pero John <strong>Krumboltz</strong> añadió algo clave con su <strong>Teoría del Azar Planificado</strong>: gran parte de las carreras exitosas surgen de <strong>eventos no planeados</strong> que la persona supo aprovechar. No se trata de tenerlo todo resuelto, sino de <strong>actuar y mantenerte abierto a las oportunidades</strong>.</p>
+    <p>Krumboltz identificó <strong>5 habilidades</strong> que ayudan a crear y aprovechar la buena suerte: <strong>curiosidad, persistencia, flexibilidad, optimismo</strong> y <strong>tomar riesgos</strong>.</p>
+    <div class="cita">"No decidas tu futuro de una vez; da el siguiente paso y crea oportunidades." — idea central de J. Krumboltz</div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Meta SMART</span>
+    <h3>🎯 Define tu próximo paso</h3>
+    <p>Una buena meta es <strong>SMART</strong>: eSpecífica, Medible, Alcanzable, Relevante y con Tiempo. Arma la tuya:</p>
+    <label class="field">Mi meta (¿qué quiero lograr en los próximos 6-12 meses?)</label>
+    <textarea id="meta" placeholder="Ej: Investigar y visitar 2 universidades que tengan la carrera que elegí"></textarea>
+    <label class="field">3 pasos concretos para lograrla</label>
+    <textarea id="pasos" placeholder="1. ...\n2. ...\n3. ..."></textarea>
+    <label class="field">¿Con quién voy a hablar o pedir ayuda?</label>
+    <input type="text" id="apoyo" placeholder="Ej: mi profe de..., un egresado de la carrera">
+    <label class="field">Fecha límite del primer paso</label>
+    <input type="text" id="fecha" placeholder="Ej: antes de fin de mes">
+    <button class="btn btn-verde" id="guardarPlan" style="margin-top:14px">Guardar mi plan</button>
+    <span id="planOk" style="display:none;color:#1e7a32;font-weight:700;margin-left:10px">✓ Guardado</span>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Tus 5 habilidades</span>
+    <h3>🍀 Prepárate para la buena suerte</h3>
+    <p>Califícate de 1 a 5 en cada habilidad del azar planificado. Te daremos un consejo para la más baja.</p>
+    <div id="skills"></div>
+    <button class="btn btn-verde" id="verSkills" style="margin-top:14px">Ver mi consejo</button>
+    <div id="skillTip" style="display:none;margin-top:12px" class="dato"></div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Cierre</span>
+    <h3>📄 Tu resumen vocacional</h3>
+    <p>Reúne todo tu recorrido en un solo lugar. Puedes imprimirlo o guardarlo como PDF.</p>
+    <button class="btn btn-naranja" id="verResumen">Generar mi resumen</button>
+    <div id="resumen" style="display:none;margin-top:16px;background:#fff;border:1.5px solid #e0e9d7;border-radius:12px;padding:18px"></div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprobación final</h2>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>🏆 Finalizar el curso</button>
+    <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../index.html" style="display:none">Volver al índice ✓</a></div>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Krumboltz, J. D. (2009). The Happenstance Learning Theory. <em>Journal of Career Assessment, 17</em>(2), 135–154.</li>
+      <li>Mitchell, K. E., Levin, A. S., & Krumboltz, J. D. (1999). Planned happenstance. <em>Journal of Counseling & Development, 77</em>.</li>
+      <li>Lent, R. W., & Brown, S. D. (2013). Social cognitive model of career self-management. <em>Journal of Counseling Psychology, 60</em>.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 6 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+// Plan
+['meta','pasos','apoyo','fecha'].forEach(function(id){ var v=CURSO.load('plan_'+id); if(v) document.getElementById(id).value=v; });
+document.getElementById('guardarPlan').addEventListener('click', function(){
+  ['meta','pasos','apoyo','fecha'].forEach(function(id){ CURSO.save('plan_'+id, document.getElementById(id).value); });
+  document.getElementById('planOk').style.display='inline';
+});
+
+// Skills
+var SK=[['Curiosidad','explorar cosas nuevas'],['Persistencia','seguir pese a los tropiezos'],['Flexibilidad','adaptarte a los cambios'],['Optimismo','creer que hay posibilidades'],['Tomar riesgos','actuar aun sin certeza total']];
+var TIPSK=['Prueba algo nuevo cada semana: un club, un video-tutorial, una charla. La curiosidad abre puertas que no sabías que existían.',
+ 'Los "no" y los errores son parte del camino. Divide las metas grandes en pasos pequeños y celebra cada avance.',
+ 'Los planes cambian y está bien. Ten un plan B y míralo como una oportunidad, no como un fracaso.',
+ 'Enfócate en lo que sí puedes hacer. Hablar contigo mismo con amabilidad mejora tus decisiones.',
+ 'Empieza con riesgos pequeños y seguros: inscríbete, pregunta, postúlate. Actuar genera oportunidades.'];
+var sc=document.getElementById('skills');
+var prevS=JSON.parse(CURSO.load('skills')||'{}');
+SK.forEach(function(s,i){
+  var val=(prevS[i]!==undefined)?prevS[i]:3;
+  var w=document.createElement('div'); w.style.margin='14px 0';
+  w.innerHTML='<label class="field" style="margin-bottom:2px">'+s[0]+' <span style="font-weight:400;color:#778;font-size:.85rem">— '+s[1]+'</span></label>'+
+    '<div style="display:flex;align-items:center;gap:12px"><input type="range" min="1" max="5" value="'+val+'" id="sk'+i+'" style="flex:1;accent-color:#7AC943"><b id="skv'+i+'" style="width:24px;text-align:right;color:#2c5530">'+val+'</b></div>';
+  sc.appendChild(w);
+});
+SK.forEach(function(s,i){ var r=document.getElementById('sk'+i); r.addEventListener('input',function(){ document.getElementById('skv'+i).textContent=r.value; }); });
+document.getElementById('verSkills').addEventListener('click', function(){
+  var vals={}, min=6, mi=0;
+  SK.forEach(function(s,i){ var v=parseInt(document.getElementById('sk'+i).value); vals[i]=v; if(v<min){min=v;mi=i;} });
+  CURSO.save('skills', JSON.stringify(vals));
+  var t=document.getElementById('skillTip'); t.innerHTML='<span class="lab">Tu habilidad para reforzar ('+SK[mi][0]+'):</span> '+TIPSK[mi]; t.style.display='block';
+});
+
+// Resumen
+document.getElementById('verResumen').addEventListener('click', function(){
+  var code=CURSO.load('riasec_code')||'—';
+  var valores=JSON.parse(CURSO.load('valores')||'[]');
+  var decision=CURSO.load('decision')||'—';
+  var meta=CURSO.load('plan_meta')||document.getElementById('meta').value||'—';
+  var pasos=CURSO.load('plan_pasos')||document.getElementById('pasos').value||'—';
+  var apoyo=CURSO.load('plan_apoyo')||document.getElementById('apoyo').value||'—';
+  var r=document.getElementById('resumen');
+  r.innerHTML='<h3 style="color:#2c5530;margin-top:0">Mi resumen vocacional</h3>'+
+    '<p><strong>Mis valores:</strong> '+(valores.length?valores.join(' · '):'(Módulo 1)')+'</p>'+
+    '<p><strong>Mi código de intereses (RIASEC):</strong> '+code+'</p>'+
+    '<p><strong>Mi opción preferida:</strong> '+decision+'</p>'+
+    '<p><strong>Mi meta:</strong> '+meta+'</p>'+
+    '<p><strong>Mis pasos:</strong><br>'+pasos.replace(/\n/g,'<br>')+'</p>'+
+    '<p><strong>Mi apoyo:</strong> '+apoyo+'</p>'+
+    '<button class="btn btn-verde" onclick="window.print()" style="margin-top:8px">🖨️ Imprimir / Guardar PDF</button>';
+  r.style.display='block'; r.scrollIntoView({behavior:'smooth'});
+});
+
+CURSO.quiz('quiz', [
+  { q:'Una meta SMART debe ser...', opts:['Vaga y enorme','eSpecífica, Medible, Alcanzable, Relevante y con Tiempo','Secreta','Imposible'], correct:1, fb:'Así se vuelve accionable.' },
+  { q:'La Teoría del Azar Planificado de Krumboltz dice que...', opts:['Todo está predestinado','Debes aprovechar y crear oportunidades no planeadas','No sirve planear','La suerte no existe'], correct:1, fb:'Actúa y mantente abierto a lo inesperado.' },
+  { q:'¿Cuál NO es una de las 5 habilidades de Krumboltz?', opts:['Curiosidad','Persistencia','Pesimismo','Flexibilidad'], correct:2, fb:'Son curiosidad, persistencia, flexibilidad, optimismo y tomar riesgos.' }
+], function(){ document.getElementById('completar').disabled=false; });
+
+CURSO.setupComplete(6,'completar','../index.html');
+</script>
+</body>
+</html>

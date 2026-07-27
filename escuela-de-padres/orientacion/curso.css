@@ -1,0 +1,96 @@
+/* ===== Curso de Orientación Vocacional — Liceo Montebonito ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:#2b3a2e; line-height:1.65;
+  background:linear-gradient(135deg,#f4f8fb 0%,#eaf3e0 100%); }
+a{ color:#2c5530; }
+.wrap{ max-width:860px; margin:0 auto; padding:0 18px; }
+
+/* Barra superior del curso */
+.curso-top{ background:linear-gradient(135deg,#2c5530 0%,#1e3d23 100%); color:#fff; padding:10px 0; position:sticky; top:0; z-index:500; box-shadow:0 2px 10px rgba(0,0,0,.15); }
+.curso-top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.curso-top .marca{ font-weight:700; font-size:.98rem; display:flex; align-items:center; gap:8px; }
+.curso-top .marca .dot{ width:24px;height:24px;border-radius:50%;background:#7AC943;display:inline-flex;align-items:center;justify-content:center;font-size:14px; }
+.curso-top nav a{ color:#cfe6c0; text-decoration:none; font-size:.85rem; margin-left:14px; }
+.curso-top nav a:hover{ color:#fff; }
+@media(max-width:640px){ .curso-top nav{ display:none; } }
+
+/* Hero de módulo */
+.hero{ background:linear-gradient(135deg,#87CEEB 0%,#7AC943 55%,#2c5530 100%); color:#fff; padding:46px 0 40px; text-align:center; }
+.hero .kicker{ display:inline-block; background:rgba(255,255,255,.22); padding:5px 16px; border-radius:50px; font-weight:600; font-size:.85rem; margin-bottom:12px; }
+.hero h1{ color:#fff; font-size:2.05rem; line-height:1.15; margin-bottom:8px; text-shadow:1px 2px 4px rgba(0,0,0,.15); }
+.hero p{ font-size:1.08rem; max-width:640px; margin:0 auto; opacity:.97; }
+
+/* Barra de progreso del módulo */
+.prog{ background:#e8efe1; height:10px; border-radius:50px; overflow:hidden; margin:22px 0 4px; }
+.prog > i{ display:block; height:100%; width:0; background:linear-gradient(90deg,#7AC943,#2c5530); transition:width .5s; }
+.prog-txt{ text-align:center; font-size:.82rem; color:#5a6b5e; margin-bottom:10px; }
+
+/* Tarjetas de contenido */
+.card{ background:#fff; border-radius:16px; padding:26px 24px; margin:22px 0; box-shadow:0 6px 20px rgba(0,0,0,.07); }
+.card h2{ color:#2c5530; font-size:1.4rem; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+.card h3{ color:#3f7d2e; font-size:1.12rem; margin:16px 0 6px; }
+.card p{ margin-bottom:12px; }
+.card ul,.card ol{ margin:0 0 12px 22px; }
+.card li{ margin-bottom:6px; }
+.tag-teoria{ display:inline-block; background:#eef7e4; color:#3f7d2e; font-weight:700; font-size:.72rem; letter-spacing:.03em; padding:3px 10px; border-radius:50px; text-transform:uppercase; margin-bottom:8px; }
+.dato{ background:linear-gradient(135deg,rgba(122,201,67,.12),rgba(135,206,235,.14)); border-left:4px solid #7AC943; border-radius:10px; padding:14px 16px; margin:14px 0; }
+.dato .lab{ font-weight:700; color:#2c5530; }
+.cita{ font-style:italic; color:#48604d; border-left:3px solid #FF6B35; padding-left:14px; margin:14px 0; }
+
+/* Actividad interactiva */
+.act{ background:#fbfdf9; border:2px dashed #b7d79a; border-radius:16px; padding:24px 22px; margin:22px 0; }
+.act .badge{ display:inline-block; background:#FF6B35; color:#fff; font-weight:700; font-size:.72rem; padding:4px 12px; border-radius:50px; text-transform:uppercase; margin-bottom:10px; }
+.act h3{ color:#2c5530; margin:0 0 6px; font-size:1.2rem; }
+label.field{ display:block; font-weight:600; color:#33473a; margin:12px 0 4px; }
+input[type=text],input[type=number],textarea,select{ width:100%; padding:11px 13px; border:1.5px solid #d7e3cd; border-radius:10px; font-family:inherit; font-size:.98rem; background:#fff; }
+textarea{ min-height:80px; resize:vertical; }
+input:focus,textarea:focus,select:focus{ outline:none; border-color:#7AC943; box-shadow:0 0 0 3px rgba(122,201,67,.18); }
+
+/* Botones */
+.btn{ display:inline-block; border:none; cursor:pointer; text-decoration:none; text-align:center;
+  padding:12px 26px; border-radius:50px; font-weight:700; font-size:1rem; font-family:inherit; transition:transform .15s, filter .15s; }
+.btn:hover{ transform:translateY(-2px); }
+.btn-naranja{ background:linear-gradient(135deg,#FF6B35,#ff8c42); color:#fff; box-shadow:0 5px 14px rgba(255,107,53,.3); }
+.btn-verde{ background:linear-gradient(135deg,#7AC943,#2c5530); color:#fff; box-shadow:0 5px 14px rgba(44,85,48,.3); }
+.btn-gris{ background:#e7ece2; color:#4a5a4d; }
+.btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; filter:grayscale(.3); }
+
+/* Quiz */
+.quiz .q{ background:#fff; border:1.5px solid #e6eede; border-radius:12px; padding:16px 18px; margin:14px 0; }
+.quiz .q p.enunciado{ font-weight:600; color:#2b3a2e; margin-bottom:10px; }
+.quiz .opt{ display:block; padding:10px 14px; border:1.5px solid #dbe6d1; border-radius:10px; margin:7px 0; cursor:pointer; transition:.15s; }
+.quiz .opt:hover{ border-color:#7AC943; background:#f5fbef; }
+.quiz .opt.sel{ border-color:#3a7ca5; background:#eef6fb; }
+.quiz .opt.ok{ border-color:#2e9e44; background:#e8f7ea; }
+.quiz .opt.bad{ border-color:#d9534f; background:#fbeaea; }
+.quiz .fb{ margin-top:8px; font-size:.9rem; padding:8px 12px; border-radius:8px; display:none; }
+.quiz .fb.show{ display:block; }
+.quiz .fb.ok{ background:#e8f7ea; color:#1e7a32; }
+.quiz .fb.bad{ background:#fbeaea; color:#a5302c; }
+
+/* Resultado / barras RIASEC */
+.bars .bar-row{ display:flex; align-items:center; gap:10px; margin:8px 0; }
+.bars .bar-row .lbl{ width:130px; font-size:.9rem; font-weight:600; }
+.bars .bar-track{ flex:1; background:#eef2e9; border-radius:50px; height:22px; overflow:hidden; }
+.bars .bar-fill{ height:100%; border-radius:50px; display:flex; align-items:center; justify-content:flex-end; color:#fff; font-size:.78rem; font-weight:700; padding-right:8px; transition:width .8s; }
+
+/* Navegación entre módulos */
+.nav-mod{ display:flex; justify-content:space-between; gap:12px; margin:26px 0 10px; flex-wrap:wrap; }
+.completo-box{ text-align:center; margin:28px 0; }
+
+/* Bibliografía */
+.biblio{ background:#f3f6ef; border-radius:14px; padding:20px 22px; margin:22px 0; font-size:.86rem; color:#4a5a4d; }
+.biblio h3{ color:#2c5530; margin-bottom:8px; }
+.biblio ol{ margin-left:20px; }
+.biblio li{ margin-bottom:7px; }
+
+footer.pie{ background:linear-gradient(135deg,#2c5530,#1e3d23); color:#cfe6c0; text-align:center; padding:24px; margin-top:34px; font-size:.9rem; }
+footer.pie a{ color:#fff; }
+
+/* Botón flotante volver */
+#liceo-volver{ position:fixed; left:16px; bottom:16px; z-index:9999; display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(135deg,#2c5530,#1e3d23); color:#fff!important; text-decoration:none; padding:11px 18px;
+  border-radius:50px; font-size:14px; font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,.25); }
+#liceo-volver:hover{ transform:translateY(-2px); }
+#liceo-volver .lv-logo{ width:24px;height:24px;border-radius:50%;background:#7AC943;display:inline-flex;align-items:center;justify-content:center; }
+@media(max-width:600px){ #liceo-volver .lv-t{ display:none; } }

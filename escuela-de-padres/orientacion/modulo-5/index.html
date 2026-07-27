@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 5 · Tomar la decisión | Orientación Vocacional</title>
+<link rel="stylesheet" href="../curso.css">
+<script src="../curso.js"></script>
+<script>CURSO.guard(5);</script>
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">🎓</span><span class="lv-t">Escuela de Padres · </span>Volver</a>
+<div class="curso-top"><div class="wrap">
+  <span class="marca"><span class="dot">🎯</span> Orientación Vocacional</span>
+  <nav><a href="../index.html">Índice del curso</a></nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="kicker">Módulo 5 de 6</span>
+  <h1>Tomar la decisión</h1>
+  <p>Decidir no es un salto al vacío: es un método. Aquí lo aplicas con una herramienta real.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="card">
+    <span class="tag-teoria">Base científica · Modelo PIC de Gati</span>
+    <h2>Decidir en 3 pasos (modelo PIC)</h2>
+    <p>Itamar <strong>Gati</strong> tradujo la teoría de la decisión a la orientación vocacional con el modelo <strong>PIC</strong>, que ordena la decisión en tres etapas:</p>
+    <ol>
+      <li><strong>P — Preselección:</strong> de muchísimas opciones, reduce a un grupo pequeño y manejable de alternativas prometedoras.</li>
+      <li><strong>I — Exploración en profundidad:</strong> investiga a fondo esas pocas alternativas (lo hiciste en el Módulo 4).</li>
+      <li><strong>C — Elección:</strong> compara en detalle las finalistas y elige la más compatible contigo.</li>
+    </ol>
+    <div class="dato"><span class="lab">Por qué importa:</span> intentar comparar 30 carreras a la vez agota y bloquea. Preseleccionar unas pocas y compararlas bien es lo que hace la mente de forma eficaz.</div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · Matriz de decisión</span>
+    <h3>⚖️ Compara tus finalistas con criterios</h3>
+    <p>Escribe hasta 3 opciones (carreras). Ajusta el <strong>peso</strong> de cada criterio según lo importante que sea para ti (1 = poco, 3 = mucho) y califica cada opción de 1 a 5. La herramienta calcula el puntaje ponderado.</p>
+    <div style="overflow-x:auto">
+      <table id="matriz" style="width:100%;border-collapse:collapse;min-width:520px;margin-top:10px"></table>
+    </div>
+    <button class="btn btn-verde" id="calcular" style="margin-top:16px">Calcular resultado</button>
+    <div id="veredicto" style="display:none;margin-top:18px"></div>
+  </div>
+
+  <div class="act">
+    <span class="badge">Dinámica · ¿Qué te traba?</span>
+    <h3>🧩 Diagnóstico de dificultades</h3>
+    <p>Gati también estudió por qué cuesta decidir. Marca lo que más te pasa:</p>
+    <div id="cddq"></div>
+    <div id="cddqTip" style="display:none;margin-top:12px" class="dato"></div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Comprueba lo que aprendiste</h2>
+    <div class="quiz" id="quiz"></div>
+  </div>
+
+  <div class="completo-box">
+    <button class="btn btn-naranja" id="completar" disabled>Completar Módulo 5</button>
+    <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../modulo-6/index.html" style="display:none">Continuar al Módulo 6 →</a></div>
+  </div>
+
+  <div class="biblio">
+    <h3>Fuentes de este módulo</h3>
+    <ol>
+      <li>Gati, I., & Asher, I. (2001). Prescreening, In-Depth Exploration, and Choice. <em>The Career Development Quarterly, 50</em>(2), 140–157.</li>
+      <li>Gati, I., Krausz, M., & Osipow, S. H. (1996). A taxonomy of difficulties in career decision making. <em>Journal of Counseling Psychology, 43</em>(4).</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="pie">Módulo 5 · Orientación Vocacional — Liceo Psicopedagógico Montebonito</footer>
+
+<script>
+// Matriz
+var CRIT=[['Me interesa (Módulo 2)',3],['Me creo capaz (Módulo 3)',2],['Buenas salidas laborales',2],['Puedo estudiarla (costo/lugar)',2],['Encaja con mis valores',3]];
+var fichas=JSON.parse(CURSO.load('fichas')||'[]');
+var opciones=[fichas[0]&&fichas[0].n||'',fichas[1]&&fichas[1].n||'',fichas[2]&&fichas[2].n||''];
+var tabla=document.getElementById('matriz');
+function pintarMatriz(){
+  var html='<thead><tr style="background:#2c5530;color:#fff"><th style="padding:8px;text-align:left">Criterio</th><th style="padding:8px">Peso</th>';
+  for(var o=0;o<3;o++){ html+='<th style="padding:6px"><input type="text" id="opt'+o+'" value="'+opciones[o]+'" placeholder="Opción '+(o+1)+'" style="width:120px;padding:6px;border-radius:8px;border:none"></th>'; }
+  html+='</tr></thead><tbody>';
+  CRIT.forEach(function(c,ci){
+    html+='<tr style="border-bottom:1px solid #eee"><td style="padding:8px">'+c[0]+'</td>'+
+      '<td style="text-align:center"><select id="w'+ci+'" style="width:56px;padding:5px">'+
+      [1,2,3].map(function(w){return '<option value="'+w+'" '+(w===c[1]?'selected':'')+'>'+w+'</option>';}).join('')+'</select></td>';
+    for(var o=0;o<3;o++){ html+='<td style="text-align:center"><select id="s'+ci+'_'+o+'" style="width:52px;padding:5px">'+
+      [0,1,2,3,4,5].map(function(v){return '<option value="'+v+'">'+(v||'-')+'</option>';}).join('')+'</select></td>'; }
+    html+='</tr>';
+  });
+  html+='</tbody>'; tabla.innerHTML=html;
+}
+pintarMatriz();
+document.getElementById('calcular').addEventListener('click', function(){
+  var totales=[0,0,0], nombres=[];
+  for(var o=0;o<3;o++){ nombres.push(document.getElementById('opt'+o).value||('Opción '+(o+1))); }
+  var algo=false;
+  CRIT.forEach(function(c,ci){
+    var w=parseInt(document.getElementById('w'+ci).value);
+    for(var o=0;o<3;o++){ var s=parseInt(document.getElementById('s'+ci+'_'+o).value); if(s>0)algo=true; totales[o]+=w*s; }
+  });
+  if(!algo){ alert('Califica al menos una opción.'); return; }
+  var rank=[0,1,2].map(function(o){return {n:nombres[o],t:totales[o]};}).sort(function(a,b){return b.t-a.t;});
+  var maxT=rank[0].t||1;
+  var v=document.getElementById('veredicto'); 
+  var html='<h3 style="color:#2c5530">Resultado ponderado</h3><div class="bars">';
+  rank.forEach(function(r,i){
+    var pct=Math.round(r.t/maxT*100);
+    html+='<div class="bar-row"><div class="lbl">'+(i===0?'🏆 ':'')+r.n+'</div><div class="bar-track"><div class="bar-fill" style="width:'+Math.max(pct,10)+'%;background:'+(i===0?'#2c5530':'#7AC943')+'">'+r.t+'</div></div></div>';
+  });
+  html+='</div><div class="dato" style="margin-top:12px"><span class="lab">Tu opción mejor puntuada:</span> <strong>'+rank[0].n+'</strong>. Ojo: la matriz <em>ordena tus ideas</em>, no decide por ti. Si el resultado te incomoda, eso también es información valiosa sobre lo que de verdad quieres.</div>';
+  v.innerHTML=html; v.style.display='block'; v.scrollIntoView({behavior:'smooth'});
+  CURSO.save('decision', rank[0].n);
+  matrizHecha=true; chequear();
+});
+
+// CDDQ mini
+var DIF=[
+ ['Todavía no me siento con ganas o listo para decidir','readiness'],
+ ['Me falta información sobre mí o sobre las carreras','info'],
+ ['Tengo información pero es confusa o contradictoria','inconsist']
+];
+var TIPS={
+ readiness:'Falta de disposición. Es normal. Empieza por lo pequeño: no tienes que decidir toda tu vida hoy, solo el siguiente paso. Vuelve a tus valores (Módulo 1).',
+ info:'Falta de información. Tu tarea es investigar más: repite la ficha del Módulo 4 y haz una entrevista informativa. La duda baja cuando sube la información.',
+ inconsist:'Información inconsistente. Cuando las fuentes se contradicen, prioriza las oficiales (O*NET, SNIES, universidades) y a quien ejerce la profesión, por encima de rumores.'
+};
+var cddq=document.getElementById('cddq');
+DIF.forEach(function(d){
+  var o=document.createElement('div'); o.className='opt'; o.textContent=d[0];
+  o.addEventListener('click', function(){
+    Array.prototype.forEach.call(cddq.children,function(x){x.classList.remove('sel');});
+    o.classList.add('sel');
+    var tip=document.getElementById('cddqTip'); tip.innerHTML='<span class="lab">Consejo:</span> '+TIPS[d[1]]; tip.style.display='block';
+  });
+  cddq.appendChild(o);
+});
+
+var matrizHecha=false, quizOk=false;
+function chequear(){ document.getElementById('completar').disabled=!(matrizHecha&&quizOk); }
+
+CURSO.quiz('quiz', [
+  { q:'El modelo PIC de Gati ordena la decisión en...', opts:['Un solo paso','Preselección, exploración en profundidad y elección','Copiar a un amigo','Lanzar una moneda'], correct:1, fb:'P-I-C: reducir, investigar, elegir.' },
+  { q:'¿Por qué preseleccionar pocas opciones?', opts:['Porque comparar demasiadas a la vez bloquea','Para ahorrar papel','Porque no hay más carreras','Para elegir la más fácil'], correct:0, fb:'La mente decide mejor con pocas finalistas.' },
+  { q:'Si te falta información y por eso no decides, lo mejor es...', opts:['Decidir a ciegas','Investigar más antes de elegir','No decidir nunca','Elegir la de más dinero'], correct:1, fb:'La indecisión por falta de info se cura investigando.' }
+], function(){ quizOk=true; chequear(); });
+
+CURSO.setupComplete(5,'completar','../modulo-6/index.html');
+</script>
+</body>
+</html>
