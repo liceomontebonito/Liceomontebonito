@@ -56,17 +56,17 @@ input:focus,textarea:focus,select:focus{ outline:none; border-color:#7AC943; box
 .btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; filter:grayscale(.3); }
 
 /* Quiz */
-.quiz .q{ background:#fff; border:1.5px solid #e6eede; border-radius:12px; padding:16px 18px; margin:14px 0; }
-.quiz .q p.enunciado{ font-weight:600; color:#2b3a2e; margin-bottom:10px; }
-.quiz .opt{ display:block; padding:10px 14px; border:1.5px solid #dbe6d1; border-radius:10px; margin:7px 0; cursor:pointer; transition:.15s; }
-.quiz .opt:hover{ border-color:#7AC943; background:#f5fbef; }
-.quiz .opt.sel{ border-color:#3a7ca5; background:#eef6fb; }
-.quiz .opt.ok{ border-color:#2e9e44; background:#e8f7ea; }
-.quiz .opt.bad{ border-color:#d9534f; background:#fbeaea; }
-.quiz .fb{ margin-top:8px; font-size:.9rem; padding:8px 12px; border-radius:8px; display:none; }
-.quiz .fb.show{ display:block; }
-.quiz .fb.ok{ background:#e8f7ea; color:#1e7a32; }
-.quiz .fb.bad{ background:#fbeaea; color:#a5302c; }
+.q{ background:#fff; border:1.5px solid #e6eede; border-radius:12px; padding:16px 18px; margin:14px 0; }
+.q p.enunciado{ font-weight:600; color:#2b3a2e; margin-bottom:10px; }
+.opt{ display:block; padding:10px 14px; border:1.5px solid #dbe6d1; border-radius:10px; margin:7px 0; cursor:pointer; transition:.15s; }
+.opt:hover{ border-color:#7AC943; background:#f5fbef; }
+.opt.sel{ border-color:#3a7ca5; background:#eef6fb; }
+.opt.ok{ border-color:#2e9e44; background:#e8f7ea; }
+.opt.bad{ border-color:#d9534f; background:#fbeaea; }
+.fb{ margin-top:8px; font-size:.9rem; padding:8px 12px; border-radius:8px; display:none; }
+.fb.show{ display:block; }
+.fb.ok{ background:#e8f7ea; color:#1e7a32; }
+.fb.bad{ background:#fbeaea; color:#a5302c; }
 
 /* Resultado / barras RIASEC */
 .bars .bar-row{ display:flex; align-items:center; gap:10px; margin:8px 0; }
