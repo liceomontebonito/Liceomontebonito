@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 5: Plan Personalizado - Estimulación del Lenguaje</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 2rem 2rem;
+        }
+
+        .module-header {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .module-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scientific-info {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .scientific-info h4 {
+            color: #155724;
+            margin-bottom: 1rem;
+        }
+
+        .scientific-info ul {
+            margin-left: 1.5rem;
+        }
+
+        .scientific-info li {
+            margin-bottom: 0.5rem;
+            color: #155724;
+        }
+
+        .evaluation-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .objective-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .objective-card p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+        }
+
+        .calendar-day:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .calendar-day.has-activity {
+            background: #d4edda;
+            border: 2px solid #27ae60;
+        }
+
+        .activity-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .activity-modal.show {
+            display: flex;
+        }
+
+        .activity-modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .activity-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .activity-modal-body {
+            padding: 2rem;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .chart {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            padding: 1rem;
+        }
+
+        .chart-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 40px;
+            border-radius: 5px 5px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .module-header h1 {
+                font-size: 2rem;
+            }
+            
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day {
+                padding: 0.5rem;
+                min-height: 60px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="/escuela-de-padres/tema-liceo.css">
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">&#127891;</span><span><span class="lv-texto-largo">Escuela de Padres &middot; </span>Volver</span></a>
+
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <span>📋</span>
+                <span>Módulo 5: Plan Personalizado</span>
+            </div>
+            <div class="nav-links">
+                <a href="../dashboard/index.html">← Dashboard</a>
+                <a href="../modulo4/index.html">Módulo 4</a>
+                <a href="#" onclick="showProgress()">Mi Progreso</a>
+                <a href="#" onclick="showHelp()">Ayuda</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="module-header">
+            <h1>📋 Plan Personalizado de Estimulación del Lenguaje</h1>
+            <p>Diseña un plan individualizado basado en la ciencia del desarrollo infantil</p>
+            <p><strong>Duración estimada: 40 minutos</strong></p>
+        </div>
+
+        <!-- Sección 1: Evaluación Inicial -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span>🔍</span>
+                Evaluación Inicial Simplificada
+            </h2>
+            
+            <div class="scientific-info">
+                <h4>🧠 Base Científica</h4>
+                <p>La evaluación inicial es fundamental para conocer el punto de partida del niño y diseñar intervenciones apropiadas. No se trata de un diagnóstico clínico, sino de una observación estructurada que permita identificar fortalezas y áreas de mejora.</p>
+            </div>
+
+            <div class="evaluation-form">
+                <h3>Información del Niño</h3>
+                <div class="form-group">
+                    <label for="childName">Nombre del niño:</label>
+                    <input type="text" id="childName" placeholder="Ej: María">
+                </div>
+                
+                <div class="form-group">
+                    <label for="childAge">Edad:</label>
+                    <select id="childAge">
+                        <option value="">Selecciona la edad</option>
+                        <option value="12-18">12-18 meses</option>
+                        <option value="18-24">18-24 meses</option>
+                        <option value="2-3">2-3 años</option>
+                        <option value="3-4">3-4 años</option>
+                        <option value="4-5">4-5 años</option>
+                    </select>
+                </div>
+
+                <h3>Evaluación por Áreas</h3>
+                
+                <div class="form-group">
+                    <label>Desarrollo Fonológico (Sonidos del habla):</label>
+                    <select id="phonologicalLevel">
+                        <option value="">Selecciona el nivel</option>
+                        <option value="basic">Básico: /p/, /b/, /m/, /t/, /d/</option>
+                        <option value="intermediate">Intermedio: /k/, /g/, /f/, /s/</option>
+                        <option value="advanced">Avanzado: Grupos consonánticos</option>
+                        <option value="complex">Complejo: /r/, /rr/</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Desarrollo Léxico (Vocabulario):</label>
+                    <select id="lexicalLevel">
+                        <option value="">Selecciona el nivel</option>
+                        <option value="10-50">10-50 palabras</option>
+                        <option value="50-200">50-200 palabras</option>
+                        <option value="200-600">200-600 palabras</option>
+                        <option value="600-1000">600-1000 palabras</option>
+                        <option value="1000+">1000+ palabras</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Desarrollo Morfosintáctico (Gramática):</label>
+                    <select id="grammarLevel">
+                        <option value="">Selecciona el nivel</option>
+                        <option value="2words">2 palabras combinadas</option>
+                        <option value="3-4words">3-4 palabras</option>
+                        <option value="complex">Oraciones complejas</option>
+                        <option value="mature">Estructuras maduras</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Desarrollo Pragmático (Uso social):</label>
+                    <select id="pragmaticLevel">
+                        <option value="">Selecciona el nivel</option>
+                        <option value="gestures">Señala y pide con gestos</option>
+                        <option value="simple">Inicia interacciones simples</option>
+                        <option value="conversational">Mantiene turnos conversacionales</option>
+                        <option value="adaptive">Adapta lenguaje según interlocutor</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success" onclick="generateProfile()">Generar Perfil y Objetivos</button>
+            </div>
+        </div>
+
+        <!-- Sección 2: Objetivos SMART -->
+        <div class="content-section" id="objectivesSection" style="display: none;">
+            <h2 class="section-title">
+                <span>🎯</span>
+                Objetivos SMART Personalizados
+            </h2>
+            
+            <div class="scientific-info">
+                <h4>📚 Metodología SMART</h4>
+                <p>Los objetivos deben ser <strong>Específicos, Medibles, Alcanzables, Relevantes y con Tiempo definido</strong> para maximizar la efectividad de la intervención.</p>
+            </div>
+
+            <div class="objectives-grid" id="objectivesGrid">
+                <!-- Se llenará dinámicamente -->
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-info" onclick="customizeObjectives()">Personalizar Objetivos</button>
+                <button class="btn btn-success" onclick="generatePlan()">Generar Plan Semanal</button>
+            </div>
+        </div>
+
+        <!-- Sección 3: Plan Semanal -->
+        <div class="content-section" id="weeklyPlanSection" style="display: none;">
+            <h2 class="section-title">
+                <span>📅</span>
+                Plan Semanal Personalizado
+            </h2>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>Plan de Actividades</h3>
+                    <button class="btn btn-warning" onclick="addActivity()">+ Agregar Actividad</button>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-info" onclick="printPlan()">📄 Imprimir Plan</button>
+                <button class="btn btn-success" onclick="startTracking()">🚀 Comenzar Seguimiento</button>
+            </div>
+        </div>
+
+        <!-- Sección 4: Seguimiento y Evaluación -->
+        <div class="content-section" id="trackingSection" style="display: none;">
+            <h2 class="section-title">
+                <span>📊</span>
+                Seguimiento y Evaluación
+            </h2>
+            
+            <div class="progress-section">
+                <h3>Progreso General</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="overallProgress"></div>
+                </div>
+                <p><span id="progressText">0% completado</span></p>
+            </div>
+
+            <div class="chart-container">
+                <h3>Evolución Semanal</h3>
+                <div class="chart" id="progressChart">
+                    <!-- Gráfico de barras -->
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-info" onclick="updateProgress()">📝 Actualizar Progreso</button>
+                <button class="btn btn-success" onclick="generateReport()">📊 Generar Reporte</button>
+                <button class="btn btn-warning" onclick="generateCertificate()">🏆 Generar Certificado</button>
+            </div>
+        </div>
+
+        <!-- Modal para actividades -->
+        <div class="activity-modal" id="activityModal">
+            <div class="activity-modal-content">
+                <div class="activity-modal-header">
+                    <h3 id="modalTitle">Agregar Actividad</h3>
+                    <button class="activity-modal-close" onclick="closeActivityModal()">×</button>
+                </div>
+                <div class="activity-modal-body">
+                    <div class="form-group">
+                        <label for="activityName">Nombre de la actividad:</label>
+                        <input type="text" id="activityName" placeholder="Ej: Juego de vocabulario">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activityDay">Día:</label>
+                        <select id="activityDay">
+                            <option value="lunes">Lunes</option>
+                            <option value="martes">Martes</option>
+                            <option value="miércoles">Miércoles</option>
+                            <option value="jueves">Jueves</option>
+                            <option value="viernes">Viernes</option>
+                            <option value="sábado">Sábado</option>
+                            <option value="domingo">Domingo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activityDuration">Duración (minutos):</label>
+                        <input type="number" id="activityDuration" min="5" max="60" value="15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activityDescription">Descripción:</label>
+                        <textarea id="activityDescription" rows="3" placeholder="Describe la actividad..."></textarea>
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="saveActivity()">Guardar Actividad</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navegación del módulo -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <a href="../modulo4/index.html" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                ← Módulo 4: Dificultades
+            </a>
+            <span style="color: #666;">Módulo 5 de 5 - ¡Curso Completado!</span>
+            <a href="../dashboard/index.html" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                🎓 Finalizar Curso
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let childProfile = {};
+        let weeklyPlan = {};
+        let progressData = [];
+        let currentWeek = 1;
+        let smartObjectives = {};
+
+        // Inicialización
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('📋 Iniciando Módulo 5: Plan Personalizado');
+            loadSavedData();
+            
+            // Hacer funciones disponibles globalmente para debugging
+            window.generateProfile = generateProfile;
+            window.generateObjectives = generateObjectives;
+            window.generatePlan = generatePlan;
+            window.customizeObjectives = customizeObjectives;
+            window.showProgress = showProgress;
+            window.showHelp = showHelp;
+            
+            console.log('✅ Módulo 5 inicializado. Funciones disponibles globalmente.');
+        });
+
+        // Función de prueba para debugging
+        window.testModule5 = function() {
+            console.log('=== PRUEBA MÓDULO 5 ===');
+            
+            // Verificar elementos HTML
+            const childName = document.getElementById('childName');
+            const childAge = document.getElementById('childAge');
+            const generateBtn = document.querySelector('button[onclick="generateProfile()"]');
+            
+            console.log('Elementos encontrados:');
+            console.log('- childName:', childName);
+            console.log('- childAge:', childAge);
+            console.log('- generateBtn:', generateBtn);
+            
+            // Llenar formulario de prueba
+            if (childName) childName.value = 'Prueba Test';
+            if (childAge) childAge.value = '3-4';
+            
+            console.log('Formulario llenado, llamando generateProfile...');
+            generateProfile();
+        };
+
+        // Cargar datos guardados
+        function loadSavedData() {
+            const saved = localStorage.getItem('module5_data');
+            if (saved) {
+                const data = JSON.parse(saved);
+                childProfile = data.profile || {};
+                weeklyPlan = data.plan || {};
+                progressData = data.progress || [];
+                currentWeek = data.currentWeek || 1;
+                
+                // Restaurar formulario si hay datos
+                if (childProfile.name) {
+                    document.getElementById('childName').value = childProfile.name;
+                    document.getElementById('childAge').value = childProfile.age;
+                    document.getElementById('phonologicalLevel').value = childProfile.phonological;
+                    document.getElementById('lexicalLevel').value = childProfile.lexical;
+                    document.getElementById('grammarLevel').value = childProfile.grammar;
+                    document.getElementById('pragmaticLevel').value = childProfile.pragmatic;
+                }
+            }
+        }
+
+        // Guardar datos
+        function saveData() {
+            const data = {
+                profile: childProfile,
+                plan: weeklyPlan,
+                progress: progressData,
+                currentWeek: currentWeek
+            };
+            localStorage.setItem('module5_data', JSON.stringify(data));
+        }
+
+        // Generar perfil del niño
+        function generateProfile() {
+            console.log('🎯 generateProfile llamada');
+            
+            const name = document.getElementById('childName').value;
+            const age = document.getElementById('childAge').value;
+            const phonological = document.getElementById('phonologicalLevel').value;
+            const lexical = document.getElementById('lexicalLevel').value;
+            const grammar = document.getElementById('grammarLevel').value;
+            const pragmatic = document.getElementById('pragmaticLevel').value;
+
+            console.log('Datos del formulario:', {name, age, phonological, lexical, grammar, pragmatic});
+
+            if (!name || !age) {
+                alert('Por favor completa al menos el nombre y la edad del niño');
+                return;
+            }
+
+            childProfile = {
+                name: name,
+                age: age,
+                phonological: phonological,
+                lexical: lexical,
+                grammar: grammar,
+                pragmatic: pragmatic
+            };
+
+            saveData();
+            generateObjectives();
+            document.getElementById('objectivesSection').style.display = 'block';
+            document.getElementById('objectivesSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generar objetivos SMART
+        function generateObjectives() {
+            const objectivesGrid = document.getElementById('objectivesGrid');
+            objectivesGrid.innerHTML = '';
+
+            const objectives = [
+                {
+                    title: 'Objetivo Fonológico',
+                    description: `${childProfile.name} mejorará su producción de sonidos ${getPhonologicalGoal()} en 6 semanas mediante actividades diarias de 10 minutos.`,
+                    area: 'Fonología'
+                },
+                {
+                    title: 'Objetivo Léxico',
+                    description: `${childProfile.name} aumentará su vocabulario en 30 nuevas palabras durante 8 semanas mediante juegos de categorización diarios.`,
+                    area: 'Vocabulario'
+                },
+                {
+                    title: 'Objetivo Gramatical',
+                    description: `${childProfile.name} construirá oraciones de ${getGrammarGoal()} palabras incluyendo sujeto-verbo-complemento en 4 semanas.`,
+                    area: 'Gramática'
+                },
+                {
+                    title: 'Objetivo Pragmático',
+                    description: `${childProfile.name} iniciará 8 interacciones comunicativas espontáneas durante actividades de juego en 5 semanas.`,
+                    area: 'Comunicación'
+                }
+            ];
+
+            smartObjectives = objectives;
+
+            objectives.forEach(obj => {
+                const card = document.createElement('div');
+                card.className = 'objective-card';
+                card.innerHTML = `
+                    <h4>${obj.title}</h4>
+                    <p><strong>Área:</strong> ${obj.area}</p>
+                    <p>${obj.description}</p>
+                `;
+                objectivesGrid.appendChild(card);
+            });
+        }
+
+        // Obtener meta fonológica según edad
+        function getPhonologicalGoal() {
+            const age = childProfile.age;
+            if (age === '12-18') return 'básicos (/p/, /b/, /m/)';
+            if (age === '18-24') return 'intermedios (/k/, /g/, /f/)';
+            if (age === '2-3') return 'avanzados (grupos consonánticos)';
+            return 'complejos (/r/, /rr/)';
+        }
+
+        // Obtener meta gramatical según edad
+        function getGrammarGoal() {
+            const age = childProfile.age;
+            if (age === '12-18') return '2';
+            if (age === '18-24') return '3-4';
+            if (age === '2-3') return '4-5';
+            return '6-8';
+        }
+
+        // Personalizar objetivos
+        function customizeObjectives() {
+            alert('Función de personalización en desarrollo. Por ahora, usa los objetivos generados automáticamente.');
+        }
+
+        // Generar plan semanal
+        function generatePlan() {
+            generateWeeklyPlan();
+            document.getElementById('weeklyPlanSection').style.display = 'block';
+            document.getElementById('weeklyPlanSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generar plan semanal automático
+        function generateWeeklyPlan() {
+            const days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+            const activities = [
+                { name: 'Exploración sensorial', duration: 15, description: 'Actividades con diferentes texturas y sonidos' },
+                { name: 'Juego de imitación vocal', duration: 10, description: 'Reproducir sonidos de animales y objetos' },
+                { name: 'Clasificación por categorías', duration: 20, description: 'Agrupar objetos por color, forma o función' },
+                { name: 'Lectura interactiva', duration: 15, description: 'Cuentos con preguntas y participación activa' },
+                { name: 'Juego libre dirigido', duration: 25, description: 'Juego espontáneo con intervención estratégica' },
+                { name: 'Actividad familiar', duration: 30, description: 'Juego en familia con objetivos comunicativos' },
+                { name: 'Repaso y evaluación', duration: 15, description: 'Revisar logros de la semana' }
+            ];
+
+            weeklyPlan = {};
+            days.forEach((day, index) => {
+                weeklyPlan[day] = {
+                    name: activities[index].name,
+                    duration: activities[index].duration,
+                    description: activities[index].description
+                };
+            });
+
+            saveData();
+            renderCalendar();
+        }
+
+        // Renderizar calendario
+        function renderCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+
+            const days = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+            const fullDays = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+
+            days.forEach((day, index) => {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'calendar-day';
+                if (weeklyPlan[fullDays[index]]) {
+                    dayDiv.classList.add('has-activity');
+                }
+
+                dayDiv.innerHTML = `
+                    <strong>${day}</strong>
+                    ${weeklyPlan[fullDays[index]] ? `
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">
+                            ${weeklyPlan[fullDays[index]].name}
+                        </div>
+                    ` : ''}
+                `;
+
+                dayDiv.onclick = () => editDayActivity(fullDays[index]);
+                calendarGrid.appendChild(dayDiv);
+            });
+        }
+
+        // Editar actividad del día
+        function editDayActivity(day) {
+            if (weeklyPlan[day]) {
+                document.getElementById('activityName').value = weeklyPlan[day].name;
+                document.getElementById('activityDay').value = day;
+                document.getElementById('activityDuration').value = weeklyPlan[day].duration;
+                document.getElementById('activityDescription').value = weeklyPlan[day].description;
+            } else {
+                document.getElementById('activityName').value = '';
+                document.getElementById('activityDay').value = day;
+                document.getElementById('activityDuration').value = 15;
+                document.getElementById('activityDescription').value = '';
+            }
+            
+            document.getElementById('modalTitle').textContent = `Editar Actividad - ${day.charAt(0).toUpperCase() + day.slice(1)}`;
+            document.getElementById('activityModal').classList.add('show');
+        }
+
+        // Agregar nueva actividad
+        function addActivity() {
+            document.getElementById('activityName').value = '';
+            document.getElementById('activityDay').value = 'lunes';
+            document.getElementById('activityDuration').value = 15;
+            document.getElementById('activityDescription').value = '';
+            
+            document.getElementById('modalTitle').textContent = 'Agregar Nueva Actividad';
+            document.getElementById('activityModal').classList.add('show');
+        }
+
+        // Guardar actividad
+        function saveActivity() {
+            const name = document.getElementById('activityName').value;
+            const day = document.getElementById('activityDay').value;
+            const duration = document.getElementById('activityDuration').value;
+            const description = document.getElementById('activityDescription').value;
+
+            if (!name) {
+                alert('Por favor ingresa el nombre de la actividad');
+                return;
+            }
+
+            weeklyPlan[day] = {
+                name: name,
+                duration: parseInt(duration),
+                description: description
+            };
+
+            saveData();
+            renderCalendar();
+            closeActivityModal();
+        }
+
+        // Cerrar modal
+        function closeActivityModal() {
+            document.getElementById('activityModal').classList.remove('show');
+        }
+
+        // Imprimir plan
+        function printPlan() {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Plan Personalizado - ${childProfile.name}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; }
+                            .header { text-align: center; margin-bottom: 30px; }
+                            .day { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+                            .activity { background: #f0f0f0; padding: 10px; border-radius: 5px; margin: 10px 0; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>Plan Personalizado de Estimulación del Lenguaje</h1>
+                            <h2>${childProfile.name} - ${childProfile.age}</h2>
+                            <p>Generado el ${new Date().toLocaleDateString()}</p>
+                        </div>
+                        
+                        <h3>Plan Semanal</h3>
+                        ${Object.entries(weeklyPlan).map(([day, activity]) => `
+                            <div class="day">
+                                <h4>${day.charAt(0).toUpperCase() + day.slice(1)}</h4>
+                                <div class="activity">
+                                    <strong>${activity.name}</strong><br>
+                                    <strong>Duración:</strong> ${activity.duration} minutos<br>
+                                    <strong>Descripción:</strong> ${activity.description}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Comenzar seguimiento
+        function startTracking() {
+            document.getElementById('trackingSection').style.display = 'block';
+            document.getElementById('trackingSection').scrollIntoView({ behavior: 'smooth' });
+            
+            // Inicializar datos de progreso si no existen
+            if (progressData.length === 0) {
+                progressData = [
+                    { week: 1, phonological: 0, lexical: 0, grammar: 0, pragmatic: 0 },
+                    { week: 2, phonological: 0, lexical: 0, grammar: 0, pragmatic: 0 },
+                    { week: 3, phonological: 0, lexical: 0, grammar: 0, pragmatic: 0 },
+                    { week: 4, phonological: 0, lexical: 0, grammar: 0, pragmatic: 0 }
+                ];
+                saveData();
+            }
+            
+            renderProgressChart();
+            updateOverallProgress();
+        }
+
+        // Renderizar gráfico de progreso
+        function renderProgressChart() {
+            const chart = document.getElementById('progressChart');
+            chart.innerHTML = '';
+
+            const areas = ['Fonología', 'Vocabulario', 'Gramática', 'Pragmática'];
+            const colors = ['#667eea', '#27ae60', '#f39c12', '#e74c3c'];
+
+            areas.forEach((area, index) => {
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = '20px';
+                bar.style.background = colors[index];
+                bar.title = `${area}: 0%`;
+                chart.appendChild(bar);
+            });
+        }
+
+        // Actualizar progreso general
+        function updateOverallProgress() {
+            const totalProgress = progressData.reduce((sum, week) => {
+                return sum + (week.phonological + week.lexical + week.grammar + week.pragmatic) / 4;
+            }, 0) / progressData.length;
+
+            document.getElementById('overallProgress').style.width = `${totalProgress}%`;
+            document.getElementById('progressText').textContent = `${Math.round(totalProgress)}% completado`;
+        }
+
+        // Actualizar progreso
+        function updateProgress() {
+            const week = parseInt(prompt('¿Qué semana quieres actualizar? (1-4)')) || 1;
+            if (week < 1 || week > 4) {
+                alert('Por favor ingresa una semana válida (1-4)');
+                return;
+            }
+
+            const phonological = parseInt(prompt('Progreso en Fonología (0-100):')) || 0;
+            const lexical = parseInt(prompt('Progreso en Vocabulario (0-100):')) || 0;
+            const grammar = parseInt(prompt('Progreso en Gramática (0-100):')) || 0;
+            const pragmatic = parseInt(prompt('Progreso en Pragmática (0-100):')) || 0;
+
+            progressData[week - 1] = {
+                week: week,
+                phonological: phonological,
+                lexical: lexical,
+                grammar: grammar,
+                pragmatic: pragmatic
+            };
+
+            saveData();
+            renderProgressChart();
+            updateOverallProgress();
+            alert('Progreso actualizado correctamente');
+        }
+
+        // Generar reporte
+        function generateReport() {
+            const reportWindow = window.open('', '_blank');
+            reportWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Reporte de Progreso - ${childProfile.name}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; }
+                            .header { text-align: center; margin-bottom: 30px; }
+                            .progress-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            .progress-table th, .progress-table td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+                            .progress-table th { background: #f0f0f0; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>Reporte de Progreso</h1>
+                            <h2>${childProfile.name} - ${childProfile.age}</h2>
+                            <p>Generado el ${new Date().toLocaleDateString()}</p>
+                        </div>
+                        
+                        <h3>Progreso por Semana</h3>
+                        <table class="progress-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th>
+                                    <th>Fonología</th>
+                                    <th>Vocabulario</th>
+                                    <th>Gramática</th>
+                                    <th>Pragmática</th>
+                                    <th>Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${progressData.map(week => `
+                                    <tr>
+                                        <td>${week.week}</td>
+                                        <td>${week.phonological}%</td>
+                                        <td>${week.lexical}%</td>
+                                        <td>${week.grammar}%</td>
+                                        <td>${week.pragmatic}%</td>
+                                        <td>${Math.round((week.phonological + week.lexical + week.grammar + week.pragmatic) / 4)}%</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </body>
+                </html>
+            `);
+            reportWindow.document.close();
+        }
+
+        // Generar certificado
+        function generateCertificate() {
+            const certificateWindow = window.open('', '_blank');
+            certificateWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Certificado - ${childProfile.name}</title>
+                        <style>
+                            body { 
+                                font-family: 'Times New Roman', serif; 
+                                padding: 40px; 
+                                text-align: center;
+                                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                                min-height: 100vh;
+                            }
+                            .certificate { 
+                                background: white; 
+                                padding: 60px; 
+                                border-radius: 20px;
+                                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                                max-width: 800px;
+                                margin: 0 auto;
+                                border: 10px solid #667eea;
+                            }
+                            .title { 
+                                font-size: 2.5rem; 
+                                color: #2c3e50; 
+                                margin-bottom: 30px;
+                                font-weight: bold;
+                            }
+                            .subtitle { 
+                                font-size: 1.5rem; 
+                                color: #667eea; 
+                                margin-bottom: 40px;
+                            }
+                            .content { 
+                                font-size: 1.2rem; 
+                                line-height: 1.8; 
+                                margin-bottom: 40px;
+                                color: #2c3e50;
+                            }
+                            .signature { 
+                                margin-top: 60px; 
+                                border-top: 2px solid #667eea; 
+                                padding-top: 20px;
+                                display: inline-block;
+                                min-width: 200px;
+                            }
+                            .date { 
+                                margin-top: 30px; 
+                                color: #7f8c8d; 
+                                font-style: italic;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="certificate">
+                            <div class="title">🏆 Certificado de Completitud</div>
+                            <div class="subtitle">Plan Personalizado de Estimulación del Lenguaje</div>
+                            
+                            <div class="content">
+                                Se certifica que <strong>${childProfile.name}</strong> ha completado exitosamente 
+                                la evaluación inicial y el diseño de un plan personalizado de estimulación del lenguaje 
+                                adaptado a su edad de <strong>${childProfile.age}</strong>.
+                            </div>
+                            
+                            <div class="content">
+                                Este certificado reconoce el compromiso de los padres/cuidadores con el desarrollo 
+                                óptimo del lenguaje del niño, basado en principios científicos y metodologías 
+                                probadas de estimulación temprana.
+                            </div>
+                            
+                            <div class="signature">
+                                <strong>Curso de Estimulación del Lenguaje</strong><br>
+                                Módulo 5: Plan Personalizado
+                            </div>
+                            
+                            <div class="date">
+                                Emitido el ${new Date().toLocaleDateString('es-ES', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })}
+                            </div>
+                        </div>
+                    </body>
+                </html>
+            `);
+            certificateWindow.document.close();
+        }
+
+        // Funciones de utilidad
+        function showProgress() {
+            const hasProfile = childProfile.name;
+            const hasObjectives = Object.keys(smartObjectives).length > 0;
+            const hasWeeklyPlan = Object.keys(weeklyPlan).length > 0;
+            const hasTracking = progressData.length > 0;
+            
+            let progressText = '📊 PROGRESO DEL MÓDULO 5:\n\n';
+            progressText += `✅ Evaluación inicial: ${hasProfile ? 'Completada' : 'Pendiente'}\n`;
+            progressText += `✅ Objetivos SMART: ${hasObjectives ? 'Generados' : 'Pendientes'}\n`;
+            progressText += `✅ Plan semanal: ${hasWeeklyPlan ? 'Creado' : 'Pendiente'}\n`;
+            progressText += `✅ Seguimiento: ${hasTracking ? 'En progreso' : 'No iniciado'}\n\n`;
+            
+            const completedSteps = [hasProfile, hasObjectives, hasWeeklyPlan, hasTracking].filter(Boolean).length;
+            progressText += `🎯 Progreso general: ${completedSteps}/4 pasos completados (${Math.round(completedSteps/4*100)}%)`;
+            
+            alert(progressText);
+        }
+
+        function showHelp() {
+            const helpText = `🆘 AYUDA - MÓDULO 5: PLAN PERSONALIZADO
+
+📋 PASOS A SEGUIR:
+
+1️⃣ EVALUACIÓN INICIAL:
+   • Completa la información del niño
+   • Evalúa cada área del desarrollo
+   • Haz clic en "Generar Perfil"
+
+2️⃣ OBJETIVOS SMART:
+   • Revisa los objetivos generados automáticamente
+   • Personalízalos si es necesario
+   • Genera el plan semanal
+
+3️⃣ PLAN SEMANAL:
+   • Revisa las actividades propuestas
+   • Modifica horarios y actividades
+   • Imprime el plan para seguimiento
+
+4️⃣ SEGUIMIENTO:
+   • Registra el progreso semanal
+   • Actualiza evaluaciones
+   • Genera certificado al completar
+
+💡 CONSEJOS:
+• Sé honesto en la evaluación inicial
+• Adapta los objetivos a tu rutina familiar
+• Registra el progreso regularmente
+• Celebra cada logro pequeño`;
+
+            alert(helpText);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Fundamentos del Desarrollo del Lenguaje</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 2rem 2rem;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .module-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .module-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .interactive-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .interactive-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .age-calculator {
+            background: #e3f2fd;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .calculator-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .input-group select,
+        .input-group input {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .result-box {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .checklist {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #e9ecef;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 1rem;
+            transform: scale(1.2);
+        }
+
+        .checklist-item.checked {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .module-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .nav-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1rem;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .module-header h1 {
+                font-size: 2rem;
+            }
+            
+            .calculator-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="/escuela-de-padres/tema-liceo.css">
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">&#127891;</span><span><span class="lv-texto-largo">Escuela de Padres &middot; </span>Volver</span></a>
+
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">🧠 Módulo 1: Fundamentos</div>
+            <div class="nav-links">
+                <a href="../dashboard/index.html">← Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="progress-section">
+            <h3>Tu Progreso en el Módulo 1</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <p><span id="progressText">0% completado</span> • <span id="completedSections">0 de 6 secciones</span></p>
+        </div>
+
+        <div class="module-header">
+            <h1>🧠 Fundamentos del Desarrollo del Lenguaje</h1>
+            <p>Comprende cómo funciona el cerebro de tu hijo y las bases científicas de la comunicación infantil</p>
+        </div>
+
+        <div class="content-section" data-section="1">
+            <h2 class="section-title">
+                <span class="section-icon">⏰</span>
+                El Momento Crítico: ¿Por qué 3-5 años es CRUCIAL?
+            </h2>
+            
+            <p>Los primeros años de vida son fundamentales para el desarrollo del lenguaje. Durante este período, el cerebro de tu hijo está creando millones de conexiones neurales que determinarán su capacidad comunicativa futura.</p>
+
+            <div class="interactive-box">
+                <h3>💡 Dato Científico Clave</h3>
+                <p>Entre los 3 y 5 años, el cerebro infantil procesa el lenguaje a una velocidad 3 veces mayor que el cerebro adulto. Es literalmente una "súper autopista" de aprendizaje que no volverá a repetirse.</p>
+            </div>
+
+            <h3>Las Ventanas Neurológicas Críticas</h3>
+            <p>Existen períodos específicos donde el cerebro está especialmente receptivo para diferentes aspectos del lenguaje:</p>
+            
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>0-3 años:</strong> Desarrollo de la comprensión básica</li>
+                <li><strong>3-5 años:</strong> Explosión del vocabulario y estructuras gramaticales</li>
+                <li><strong>5-7 años:</strong> Refinamiento y habilidades pre-lectoras</li>
+            </ul>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ Importante:</strong> Aunque el aprendizaje continúa toda la vida, las conexiones neurales formadas en estos períodos críticos son las más fuertes y duraderas.
+            </div>
+
+            <button class="btn" onclick="completeSection(1)">✓ Completar Sección</button>
+        </div>
+
+        <div class="content-section" data-section="2">
+            <h2 class="section-title">
+                <span class="section-icon">📊</span>
+                Evaluador de Desarrollo: ¿Cómo está tu hijo?
+            </h2>
+
+            <div class="age-calculator">
+                <h3>🎯 Calculadora Inteligente de Desarrollo</h3>
+                <p>Ingresa los datos de tu hijo para obtener una evaluación personalizada:</p>
+                
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label>Edad actual:</label>
+                        <select id="childAge">
+                            <option value="">Selecciona edad</option>
+                            <option value="36">3 años (36 meses)</option>
+                            <option value="42">3.5 años (42 meses)</option>
+                            <option value="48">4 años (48 meses)</option>
+                            <option value="54">4.5 años (54 meses)</option>
+                            <option value="60">5 años (60 meses)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Género:</label>
+                        <select id="childGender">
+                            <option value="">Selecciona</option>
+                            <option value="male">Niño</option>
+                            <option value="female">Niña</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="generateEvaluation()">🔍 Generar Evaluación Personalizada</button>
+
+                <div id="evaluationResult" class="result-box"></div>
+            </div>
+
+            <button class="btn" onclick="completeSection(2)">✓ Completar Sección</button>
+        </div>
+        <div class="content-section" data-section="3">
+            <h2 class="section-title">
+                <span class="section-icon">✅</span>
+                Checklist: Habilidades de tu Hijo
+            </h2>
+
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('tab-3years')">3 años</button>
+                <button class="tab" onclick="showTab('tab-4years')">4 años</button>
+                <button class="tab" onclick="showTab('tab-5years')">5 años</button>
+            </div>
+
+            <div id="tab-3years" class="tab-content active">
+                <h3>Habilidades esperadas a los 3 años:</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Dice frases de 3-4 palabras ("Quiero más agua")</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Hace preguntas simples ("¿Qué es eso?")</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Cuenta hasta 3</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Nombra colores básicos</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Se entiende el 75% de lo que dice</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-4years" class="tab-content">
+                <h3>Habilidades esperadas a los 4 años:</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Forma oraciones de 5-6 palabras</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Cuenta historias simples</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Usa pasado y futuro correctamente</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Hace preguntas complejas ("¿Por qué...?")</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Se entiende completamente</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-5years" class="tab-content">
+                <h3>Habilidades esperadas a los 5 años:</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Usa oraciones complejas con conectores</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Narra experiencias con detalles</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Entiende conceptos abstractos</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Reconoce letras y algunos sonidos</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" onchange="updateChecklistProgress()">
+                        <span>Sigue instrucciones de 3 pasos</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn" onclick="completeSection(3)">✓ Completar Evaluación</button>
+        </div>
+
+        <!-- Resultado del Checklist -->
+        <div id="checklistResults" class="result-box" style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); margin-top: 2rem;">
+            <h3>📊 Diagnóstico del Desarrollo del Lenguaje</h3>
+            <div id="diagnosticContent"></div>
+        </div>
+
+        <div class="content-section" data-section="4">
+            <h2 class="section-title">
+                <span class="section-icon">🎯</span>
+                Las 4 Dimensiones del Lenguaje
+            </h2>
+
+            <p>Para estimular efectivamente a tu hijo, debes entender que el lenguaje tiene 4 componentes interconectados:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 10px;">
+                    <h4>👂 1. COMPRENSIÓN</h4>
+                    <p>Lo que tu hijo entiende cuando le hablas</p>
+                    <small>Ejemplo: Entiende "Trae tus zapatos rojos"</small>
+                </div>
+                
+                <div style="background: #f3e5f5; padding: 1.5rem; border-radius: 10px;">
+                    <h4>🗣️ 2. EXPRESIÓN</h4>
+                    <p>Lo que tu hijo puede decir</p>
+                    <small>Ejemplo: "Mamá, quiero agua por favor"</small>
+                </div>
+                
+                <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 10px;">
+                    <h4>🤝 3. PRAGMÁTICA</h4>
+                    <p>Cómo usa el lenguaje socialmente</p>
+                    <small>Ejemplo: Dice "por favor" y "gracias"</small>
+                </div>
+                
+                <div style="background: #fff3e0; padding: 1.5rem; border-radius: 10px;">
+                    <h4>🔤 4. FONOLOGÍA</h4>
+                    <p>Cómo pronuncia los sonidos</p>
+                    <small>Ejemplo: Pronuncia claramente la "r"</small>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>💡 Clave del Éxito:</strong> Un desarrollo equilibrado requiere trabajar las 4 dimensiones simultáneamente, no solo una.
+            </div>
+
+            <button class="btn" onclick="completeSection(4)">✓ Entendido</button>
+        </div>
+
+        <div class="content-section" data-section="5">
+            <h2 class="section-title">
+                <span class="section-icon">🚨</span>
+                Señales de Alerta: Cuándo Actuar
+            </h2>
+
+            <div class="alert alert-danger">
+                <strong>⚠️ Busca ayuda profesional SI tu hijo:</strong>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>A los 3 años no forma frases de 2-3 palabras</li>
+                    <li>A los 4 años no se le entiende a extraños</li>
+                    <li>A los 5 años no puede contar una historia simple</li>
+                    <li>Retrocede en habilidades ya adquiridas</li>
+                    <li>Muestra frustración extrema al comunicarse</li>
+                </ul>
+            </div>
+
+            <h3>🟡 Señales de Precaución (Observar y Estimular)</h3>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li>Vocabulario limitado para su edad</li>
+                <li>Dificultad para seguir instrucciones</li>
+                <li>Pronunciación poco clara</li>
+                <li>Timidez extrema para hablar</li>
+            </ul>
+
+            <div class="interactive-box">
+                <h3>🎯 Plan de Acción Inmediato</h3>
+                <p>Si identificaste señales de alerta, no esperes. Los próximos módulos te darán técnicas específicas para abordar cada problema, pero considera también:</p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>Consulta con tu pediatra</li>
+                    <li>Solicita evaluación con fonoaudiólogo</li>
+                    <li>Implementa las estrategias de este curso inmediatamente</li>
+                </ul>
+            </div>
+
+            <button class="btn" onclick="completeSection(5)">✓ Revisado</button>
+        </div>
+
+        <div class="content-section" data-section="6">
+            <h2 class="section-title">
+                <span class="section-icon">📋</span>
+                Tu Plan Personalizado de Acción
+            </h2>
+
+            <p>Basándome en la evaluación de tu hijo, aquí está tu plan personalizado:</p>
+
+            <!-- Botón para generar plan automático -->
+            <button class="btn" onclick="generatePersonalizedPlan()" style="background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);">
+                🎯 Generar Mi Plan Personalizado
+            </button>
+
+            <!-- Contenedor del plan generado -->
+            <div id="generatedPlan" class="result-box" style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin: 2rem 0; display: none;">
+                <div id="planContent"></div>
+            </div>
+
+            <!-- Área de notas personales -->
+            <div style="background: #fff; padding: 2rem; border-radius: 10px; margin: 1rem 0; border: 2px solid #e9ecef;">
+                <h4>📝 Mis Notas y Observaciones:</h4>
+                <textarea id="personalNotes" placeholder="Agrega aquí observaciones específicas sobre tu hijo que quieras recordar..." 
+                    style="width: 100%; height: 100px; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; margin: 1rem 0;"></textarea>
+                
+                <button class="btn" onclick="savePlan()">💾 Guardar Mi Plan Completo</button>
+                
+                <div id="planSaved" class="alert alert-success" style="display: none; margin-top: 1rem;">
+                    <strong>✅ Plan guardado exitosamente!</strong> Puedes revisarlo en cualquier momento.
+                </div>
+            </div>
+
+            <button class="btn" onclick="completeSection(6)">✓ Completar Módulo 1</button>
+        </div>
+
+        <div class="module-navigation">
+            <a href="../index.html" class="btn nav-btn-secondary">← Regresar al Dashboard</a>
+            <div>
+                <button class="btn" onclick="generateCertificate()" id="certificateBtn" style="display: none;">🏆 Obtener Certificado</button>
+                <a href="../modulo2/index.html" class="btn" id="nextModuleBtn" style="display: none;">Módulo 2: Técnicas →</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Variables globales
+    let completedSections = new Set();
+    let totalSections = 6;
+
+    // Verificar sesión al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar progreso guardado
+        loadSavedProgress();
+        
+        // Cargar plan guardado si existe
+        loadSavedPlan();
+        
+        // Inicializar eventos de los checkboxes
+        initializeCheckboxes();
+        
+        // Cargar estado del checklist
+        setTimeout(() => {
+            loadChecklistState();
+        }, 500);
+    });
+
+    // Función para cargar progreso guardado
+    function loadSavedProgress() {
+        const savedProgress = localStorage.getItem('module1Progress');
+        if (savedProgress) {
+            try {
+                const progress = JSON.parse(savedProgress);
+                if (progress.completedSections && Array.isArray(progress.completedSections)) {
+                    progress.completedSections.forEach(section => {
+                        completedSections.add(section);
+                        markSectionAsCompleted(section);
+                    });
+                    updateProgressBar();
+                    
+                    if (completedSections.size === totalSections) {
+                        showCompletionButtons();
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading progress:', e);
+            }
+        }
+    }
+
+    // Función para cargar plan guardado
+    function loadSavedPlan() {
+        const savedPlan = localStorage.getItem('childCompletePlan');
+        if (savedPlan) {
+            try {
+                const plan = JSON.parse(savedPlan);
+                if (plan.personalNotes) {
+                    const notesField = document.getElementById('personalNotes');
+                    if (notesField) {
+                        notesField.value = plan.personalNotes;
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading plan:', e);
+            }
+        }
+    }
+
+    // Función para inicializar checkboxes
+    function initializeCheckboxes() {
+        const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateChecklistProgress);
+        });
+    }
+
+    // Función para mostrar tabs
+    function showTab(tabId) {
+        // Ocultar todos los contenidos de tabs
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Desactivar todos los tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Mostrar el tab seleccionado
+        document.getElementById(tabId).classList.add('active');
+        
+        // Activar el botón del tab
+        event.target.classList.add('active');
+    }
+
+    // Función para completar sección
+    function completeSection(sectionNumber) {
+        if (!completedSections.has(sectionNumber)) {
+            completedSections.add(sectionNumber);
+            saveProgress();
+            markSectionAsCompleted(sectionNumber);
+            updateProgressBar();
+            
+            // Mensaje de éxito específico
+            if (sectionNumber === 6) {
+                showSuccessMessage('🎉 ¡MÓDULO 1 COMPLETADO! El Módulo 2 se ha desbloqueado en el dashboard.');
+                completeModule(); // Marcar inmediatamente al completar la última sección
+            } else {
+                showSuccessMessage(`¡Sección ${sectionNumber} completada!`);
+            }
+            
+            // Si completó todas las secciones
+            if (completedSections.size === totalSections) {
+                completeModule();
+            }
+        } else {
+            showInfoMessage('Esta sección ya está completada');
+        }
+    }
+
+    // Función para marcar visualmente una sección como completada
+    function markSectionAsCompleted(sectionNumber) {
+        const section = document.querySelector(`[data-section="${sectionNumber}"]`);
+        if (section) {
+            section.style.opacity = '0.9';
+            section.style.border = '3px solid #28a745';
+            section.style.background = 'linear-gradient(to right, #d4edda 0%, white 5%)';
+            
+            // Cambiar texto del botón
+            const button = section.querySelector('.btn');
+            if (button && button.textContent.includes('Completar')) {
+                button.textContent = '✓ Completado';
+                button.style.background = '#28a745';
+            }
+        }
+    }
+
+    // Función para actualizar barra de progreso
+    function updateProgressBar() {
+        const progress = (completedSections.size / totalSections) * 100;
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const completedSectionsText = document.getElementById('completedSections');
+        
+        if (progressFill) {
+            progressFill.style.width = progress + '%';
+        }
+        if (progressText) {
+            progressText.textContent = Math.round(progress) + '% completado';
+        }
+        if (completedSectionsText) {
+            completedSectionsText.textContent = `${completedSections.size} de ${totalSections} secciones`;
+        }
+    }
+
+    // Función mejorada para actualizar progreso del checklist
+    function updateChecklistProgress() {
+        const activeTab = document.querySelector('.tab-content.active');
+        if (!activeTab) return;
+        
+        const checkboxes = activeTab.querySelectorAll('input[type="checkbox"]');
+        
+        checkboxes.forEach(checkbox => {
+            const item = checkbox.closest('.checklist-item');
+            if (checkbox.checked) {
+                item.classList.add('checked');
+            } else {
+                item.classList.remove('checked');
+            }
+        });
+        
+        // Guardar estado de checkboxes
+        saveChecklistState();
+        
+        // Generar diagnóstico automático
+        generateDiagnostic();
+    }
+
+    // NUEVA FUNCIÓN: Generar diagnóstico basado en checklist
+    function generateDiagnostic() {
+        const activeTab = document.querySelector('.tab-content.active');
+        if (!activeTab) return;
+        
+        const checkboxes = activeTab.querySelectorAll('input[type="checkbox"]');
+        const total = checkboxes.length;
+        const checked = activeTab.querySelectorAll('input[type="checkbox"]:checked').length;
+        const percentage = (checked / total) * 100;
+        
+        // Obtener la edad REAL del niño del evaluador
+        const evaluation = JSON.parse(localStorage.getItem('lastEvaluation') || '{}');
+        const realAge = evaluation.age || 0;
+        
+        // Determinar edad del tab activo
+        let checklistAge = 36; // Por defecto 3 años
+        if (activeTab.id.includes('3years')) checklistAge = 36;
+        if (activeTab.id.includes('4years')) checklistAge = 48;
+        if (activeTab.id.includes('5years')) checklistAge = 60;
+        
+        // NUEVO: Ajustar el diagnóstico según la edad real vs checklist evaluado
+        let ageAdjustment = 0;
+        let ageMessage = '';
+        
+        if (realAge > 0) {
+            if (realAge > checklistAge) {
+                // El niño es MAYOR que el checklist evaluado - PROBLEMA
+                ageAdjustment = -20; // Penalización
+                ageMessage = `⚠️ IMPORTANTE: Tu hijo tiene ${realAge} meses pero estás evaluando habilidades de ${checklistAge} meses. Esto indica que requiere atención.`;
+            } else if (realAge < checklistAge) {
+                // El niño es MENOR que el checklist evaluado - ADELANTADO
+                ageAdjustment = 20; // Bonus
+                ageMessage = `🌟 EXCELENTE: Tu hijo tiene ${realAge} meses y estás evaluando habilidades de ${checklistAge} meses. ¡Está adelantado!`;
+            } else {
+                // Edad correcta
+                ageMessage = `✅ Evaluando las habilidades correspondientes a la edad actual (${realAge} meses).`;
+            }
+        }
+        
+        // Ajustar porcentaje final
+        const adjustedPercentage = Math.max(0, Math.min(100, percentage + ageAdjustment));
+        
+        // Generar diagnóstico basado en porcentaje ajustado
+        let nivel, color, mensaje, recomendaciones;
+        
+        if (adjustedPercentage >= 80) {
+            nivel = "DESARROLLO ESPERADO";
+            color = "#28a745";
+            mensaje = "¡Excelente! El desarrollo del lenguaje está dentro de lo esperado para la edad.";
+            recomendaciones = [
+                "Continúa con las actividades actuales",
+                "Introduce gradualmente retos más complejos",
+                "Fomenta la creatividad verbal con cuentos inventados",
+                "Practica conversaciones más largas"
+            ];
+        } else if (adjustedPercentage >= 60) {
+            nivel = "DESARROLLO EN PROGRESO";
+            color = "#ffc107";
+            mensaje = "El desarrollo muestra algunas áreas que necesitan refuerzo.";
+            recomendaciones = [
+                "Dedica 20 minutos diarios a actividades de lenguaje",
+                "Enfócate en las habilidades no marcadas",
+                "Lee cuentos interactivos diariamente",
+                "Practica las áreas débiles con juegos"
+            ];
+        } else if (adjustedPercentage >= 40) {
+            nivel = "NECESITA APOYO ADICIONAL";
+            color = "#ff9800";
+            mensaje = "Se recomienda implementar estrategias de estimulación más intensivas.";
+            recomendaciones = [
+                "Implementa rutinas diarias de estimulación",
+                "Considera una evaluación profesional",
+                "Trabaja una habilidad a la vez",
+                "Usa refuerzo positivo constantemente"
+            ];
+        } else {
+            nivel = "REQUIERE ATENCIÓN ESPECIALIZADA";
+            color = "#f44336";
+            mensaje = "Es importante buscar orientación profesional para un plan específico.";
+            recomendaciones = [
+                "Consulta con un especialista en lenguaje urgentemente",
+                "Mantén un registro diario de avances",
+                "Implementa las actividades del curso inmediatamente",
+                "Busca apoyo adicional profesional"
+            ];
+        }
+        
+        // Si hay desajuste de edad, modificar el nivel
+        if (realAge > checklistAge && percentage < 80) {
+            nivel = "REQUIERE ATENCIÓN - DESFASE DE EDAD";
+            color = "#f44336";
+        }
+        
+        // Identificar áreas específicas
+        const uncheckedItems = [];
+        activeTab.querySelectorAll('input[type="checkbox"]:not(:checked)').forEach(cb => {
+            uncheckedItems.push(cb.parentElement.textContent.trim());
+        });
+        
+        // Mostrar resultados
+        const resultsDiv = document.getElementById('checklistResults');
+        const diagnosticContent = document.getElementById('diagnosticContent');
+        
+        diagnosticContent.innerHTML = `
+            ${ageMessage ? `
+            <div style="background: ${realAge > checklistAge ? '#f8d7da' : realAge < checklistAge ? '#d4edda' : '#d1ecf1'}; 
+                        padding: 1rem; border-radius: 10px; margin-bottom: 1rem; 
+                        border: 2px solid ${realAge > checklistAge ? '#f5c6cb' : realAge < checklistAge ? '#c3e6cb' : '#bee5eb'};">
+                ${ageMessage}
+            </div>
+            ` : ''}
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="font-size: 3rem; font-weight: bold; color: ${color};">
+                    ${Math.round(adjustedPercentage)}%
+                </div>
+                <div style="font-size: 1.2rem; color: ${color}; font-weight: bold;">
+                    ${nivel}
+                </div>
+                <p style="margin-top: 1rem;">${mensaje}</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                <div style="background: white; padding: 1.5rem; border-radius: 10px;">
+                    <h4 style="color: #28a745;">✅ Habilidades Logradas</h4>
+                    <p style="font-size: 2rem; font-weight: bold; color: #28a745;">${checked}/${total}</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px;">
+                    <h4 style="color: #ff9800;">🎯 Áreas a Trabajar</h4>
+                    <p style="font-size: 2rem; font-weight: bold; color: #ff9800;">${total - checked}</p>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <h4>📌 Recomendaciones Específicas:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    ${recomendaciones.map(r => `<li style="margin: 0.5rem 0;">${r}</li>`).join('')}
+                </ul>
+            </div>
+            
+            ${uncheckedItems.length > 0 ? `
+            <div style="background: #fff3cd; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <h4 style="color: #856404;">⚠️ Habilidades a Desarrollar:</h4>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    ${uncheckedItems.slice(0, 3).map(item => `<li style="margin: 0.5rem 0;">${item}</li>`).join('')}
+                    ${uncheckedItems.length > 3 ? `<li style="margin: 0.5rem 0;">... y ${uncheckedItems.length - 3} más</li>` : ''}
+                </ul>
+            </div>
+            ` : ''}
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn" onclick="saveDiagnostic()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    💾 Guardar Este Diagnóstico
+                </button>
+            </div>
+        `;
+        
+        resultsDiv.style.display = 'block';
+        
+        // Guardar diagnóstico en localStorage con el porcentaje ajustado
+        localStorage.setItem('lastDiagnostic', JSON.stringify({
+            ageGroup: checklistAge,
+            realAge: realAge,
+            percentage: adjustedPercentage,
+            nivel: nivel,
+            date: new Date().toISOString()
+        }));
+        
+        setTimeout(() => {
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // NUEVA FUNCIÓN: Generar plan personalizado automático
+    function generatePersonalizedPlan() {
+        // Obtener datos guardados
+        const diagnostic = JSON.parse(localStorage.getItem('lastDiagnostic') || '{}');
+        const evaluation = JSON.parse(localStorage.getItem('lastEvaluation') || '{}');
+        
+        if (!diagnostic.percentage && !evaluation.age) {
+            showWarningMessage('Por favor completa primero la evaluación y el checklist');
+            return;
+        }
+        
+        const age = evaluation.age || 48;
+        const percentage = diagnostic.percentage || 50;
+        const nivel = diagnostic.nivel || 'DESARROLLO EN PROGRESO';
+        
+        // Generar plan basado en los resultados
+        let planHTML = `
+            <h3>🎯 Tu Plan Personalizado - ${new Date().toLocaleDateString('es-ES')}</h3>
+            
+            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <h4>📊 Resumen de Evaluación:</h4>
+                <p>• Edad: ${age} meses</p>
+                <p>• Nivel de desarrollo: ${nivel}</p>
+                <p>• Progreso actual: ${Math.round(percentage)}%</p>
+            </div>
+        `;
+        
+        // Plan semanal según nivel
+        if (percentage >= 80) {
+            planHTML += `
+                <div style="background: #d4edda; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                    <h4>✅ Plan de Mantenimiento y Avance</h4>
+                    <p><strong>Objetivo:</strong> Mantener el excelente progreso y agregar complejidad</p>
+                    
+                    <h5 style="margin-top: 1rem;">📅 Rutina Diaria (15-20 minutos):</h5>
+                    <ul>
+                        <li><strong>Lunes:</strong> Inventar cuentos juntos (10 min) + Describir emociones (10 min)</li>
+                        <li><strong>Martes:</strong> Juegos de palabras y rimas (15 min)</li>
+                        <li><strong>Miércoles:</strong> Teatro de títeres con diálogos (20 min)</li>
+                        <li><strong>Jueves:</strong> Contar experiencias del día con detalles (15 min)</li>
+                        <li><strong>Viernes:</strong> Lectura interactiva avanzada (20 min)</li>
+                        <li><strong>Fin de semana:</strong> Actividades creativas libres</li>
+                    </ul>
+                </div>
+            `;
+        } else if (percentage >= 60) {
+            planHTML += `
+                <div style="background: #fff3cd; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                    <h4>🎯 Plan de Estimulación Progresiva</h4>
+                    <p><strong>Objetivo:</strong> Fortalecer áreas débiles y consolidar habilidades</p>
+                    
+                    <h5 style="margin-top: 1rem;">📅 Rutina Diaria (25-30 minutos):</h5>
+                    <ul>
+                        <li><strong>Mañana (10 min):</strong> Nombrar objetos y sus características durante el desayuno</li>
+                        <li><strong>Medio día (10 min):</strong> Cantar canciones con movimientos</li>
+                        <li><strong>Tarde (10 min):</strong> Lectura de cuentos con preguntas</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 1rem;">🎮 Actividades Semanales Específicas:</h5>
+                    <ul>
+                        <li><strong>Lunes y Miércoles:</strong> Juegos de imitación y roles (doctor, cocinero)</li>
+                        <li><strong>Martes y Jueves:</strong> Describir imágenes y contar historias</li>
+                        <li><strong>Viernes:</strong> Repaso jugando con lo aprendido</li>
+                    </ul>
+                </div>
+            `;
+        } else {
+            planHTML += `
+                <div style="background: #f8d7da; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                    <h4>🚀 Plan Intensivo de Estimulación</h4>
+                    <p><strong>Objetivo:</strong> Estimulación diaria estructurada para acelerar el desarrollo</p>
+                    
+                    <h5 style="margin-top: 1rem;">📅 Rutina Diaria OBLIGATORIA (45 minutos):</h5>
+                    <div style="background: white; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+                        <p><strong>🌅 Mañana (15 min):</strong></p>
+                        <ul>
+                            <li>5 min: Nombrar todo lo que ve</li>
+                            <li>5 min: Repetir palabras nuevas</li>
+                            <li>5 min: Formar frases simples</li>
+                        </ul>
+                        
+                        <p><strong>☀️ Medio día (15 min):</strong></p>
+                        <ul>
+                            <li>10 min: Canciones infantiles con gestos</li>
+                            <li>5 min: Identificar sonidos y palabras</li>
+                        </ul>
+                        
+                        <p><strong>🌙 Noche (15 min):</strong></p>
+                        <ul>
+                            <li>10 min: Cuento interactivo</li>
+                            <li>5 min: Resumen del día</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #ffeaa7; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+                        <p><strong>⚠️ IMPORTANTE:</strong> Considera consultar con un especialista mientras implementas este plan.</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Agregar recursos y materiales
+        planHTML += `
+            <div style="background: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; border: 2px solid #667eea;">
+                <h4>📚 Materiales Necesarios (todos en casa):</h4>
+                <ul>
+                    <li>Libros de cuentos con imágenes</li>
+                    <li>Juguetes para juego simbólico</li>
+                    <li>Música infantil</li>
+                    <li>Papel y colores para dibujar</li>
+                    <li>Objetos cotidianos para nombrar</li>
+                </ul>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <h4>🎯 Metas para los próximos 30 días:</h4>
+                <ol>
+                    <li>Implementar la rutina diaria sin fallar</li>
+                    <li>Documentar 3 nuevas palabras/frases por semana</li>
+                    <li>Celebrar cada pequeño avance</li>
+                    <li>Evaluar progreso cada domingo</li>
+                </ol>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn" onclick="printPlan()" style="background: #28a745;">
+                    🖨️ Imprimir Plan
+                </button>
+                <button class="btn" onclick="downloadPlan()" style="background: #ff6b6b;">
+                    📥 Descargar Plan
+                </button>
+            </div>
+        `;
+        
+        // Mostrar el plan
+        document.getElementById('planContent').innerHTML = planHTML;
+        document.getElementById('generatedPlan').style.display = 'block';
+        
+        // Guardar plan generado
+        localStorage.setItem('generatedPlan', JSON.stringify({
+            html: planHTML,
+            date: new Date().toISOString(),
+            diagnostic: diagnostic,
+            evaluation: evaluation
+        }));
+        
+        setTimeout(() => {
+            document.getElementById('generatedPlan').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // Función para guardar diagnóstico
+    function saveDiagnostic() {
+        const diagnostic = localStorage.getItem('lastDiagnostic');
+        if (diagnostic) {
+            const blob = new Blob([JSON.stringify(JSON.parse(diagnostic), null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Diagnostico_${new Date().toLocaleDateString('es-ES').replace(/\//g, '-')}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showSuccessMessage('Diagnóstico guardado en tu dispositivo');
+        }
+    }
+
+    // Función para imprimir plan
+    function printPlan() {
+        const planContent = document.getElementById('planContent').innerHTML;
+        const printWindow = window.open('', '', 'height=600,width=800');
+        printWindow.document.write('<html><head><title>Mi Plan Personalizado</title>');
+        printWindow.document.write('<style>body{font-family: Arial, sans-serif; padding: 20px;}</style>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(planContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+
+    // Función para descargar plan
+    function downloadPlan() {
+        const planData = localStorage.getItem('generatedPlan');
+        if (planData) {
+            const plan = JSON.parse(planData);
+            const textContent = document.getElementById('planContent').innerText;
+            const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Plan_Personalizado_${new Date().toLocaleDateString('es-ES').replace(/\//g, '-')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showSuccessMessage('Plan descargado exitosamente');
+        }
+    }
+
+    // Función para guardar plan con notas personales
+    function savePlan() {
+        const notes = document.getElementById('personalNotes').value.trim();
+        const generatedPlan = localStorage.getItem('generatedPlan');
+        
+        if (!notes && !generatedPlan) {
+            showWarningMessage('Genera primero tu plan personalizado y/o agrega notas');
+            return;
+        }
+        
+        const fullPlan = {
+            generated: generatedPlan ? JSON.parse(generatedPlan) : null,
+            personalNotes: notes,
+            dateCreated: new Date().toLocaleDateString('es-ES'),
+            lastModified: new Date().toISOString()
+        };
+        
+        localStorage.setItem('childCompletePlan', JSON.stringify(fullPlan));
+        
+        document.getElementById('planSaved').style.display = 'block';
+        showSuccessMessage('¡Plan completo guardado exitosamente!');
+        
+        setTimeout(() => {
+            document.getElementById('planSaved').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // Función para guardar estado del checklist
+    function saveChecklistState() {
+        const checklistState = {};
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            const tabId = tab.id;
+            checklistState[tabId] = [];
+            tab.querySelectorAll('input[type="checkbox"]').forEach((checkbox, index) => {
+                checklistState[tabId][index] = checkbox.checked;
+            });
+        });
+        localStorage.setItem('module1Checklist', JSON.stringify(checklistState));
+    }
+
+    // Función para cargar estado del checklist
+    function loadChecklistState() {
+        const saved = localStorage.getItem('module1Checklist');
+        if (saved) {
+            try {
+                const checklistState = JSON.parse(saved);
+                Object.keys(checklistState).forEach(tabId => {
+                    const tab = document.getElementById(tabId);
+                    if (tab) {
+                        tab.querySelectorAll('input[type="checkbox"]').forEach((checkbox, index) => {
+                            checkbox.checked = checklistState[tabId][index] || false;
+                            if (checkbox.checked) {
+                                checkbox.closest('.checklist-item').classList.add('checked');
+                            }
+                        });
+                    }
+                });
+            } catch (e) {
+                console.error('Error loading checklist:', e);
+            }
+        }
+    }
+
+    // Función para generar evaluación
+    function generateEvaluation() {
+        const age = document.getElementById('childAge').value;
+        const gender = document.getElementById('childGender').value;
+        const resultBox = document.getElementById('evaluationResult');
+        
+        if (!age || !gender) {
+            showWarningMessage('Por favor completa todos los campos');
+            return;
+        }
+        
+        const genderText = gender === 'male' ? 'tu hijo' : 'tu hija';
+        const ageMonths = parseInt(age);
+        let evaluation = '';
+        
+        if (ageMonths <= 42) {
+            evaluation = `
+                <h4>📊 Evaluación para ${genderText} de ${ageMonths} meses:</h4>
+                <div class="alert alert-success">
+                    <strong>Enfoque Principal:</strong> Estimulación del vocabulario y primeras estructuras
+                </div>
+                <p><strong>Lo esperado a esta edad:</strong></p>
+                <ul>
+                    <li>Vocabulario de 200-1000 palabras</li>
+                    <li>Frases de 2-3 palabras</li>
+                    <li>Comprende instrucciones simples</li>
+                    <li>Usa "no" frecuentemente</li>
+                </ul>
+                <p><strong>🎯 Actividades recomendadas:</strong></p>
+                <ul>
+                    <li>Lectura diaria de cuentos</li>
+                    <li>Canciones con movimientos</li>
+                    <li>Nombrar objetos constantemente</li>
+                    <li>Juegos de imitación</li>
+                </ul>
+                <div class="alert alert-warning">
+                    <strong>📝 Nota:</strong> Esta es una edad de grandes cambios. Sé paciente y consistente.
+                </div>
+            `;
+        } else if (ageMonths <= 54) {
+            evaluation = `
+                <h4>📊 Evaluación para ${genderText} de ${ageMonths} meses:</h4>
+                <div class="alert alert-success">
+                    <strong>Enfoque Principal:</strong> Desarrollo gramatical y narrativa simple
+                </div>
+                <p><strong>Lo esperado a esta edad:</strong></p>
+                <ul>
+                    <li>Frases de 4-6 palabras</li>
+                    <li>Hace preguntas constantemente</li>
+                    <li>Cuenta experiencias simples</li>
+                    <li>Usa plural y pasado básico</li>
+                </ul>
+                <p><strong>🎯 Actividades recomendadas:</strong></p>
+                <ul>
+                    <li>Conversaciones extendidas durante comidas</li>
+                    <li>Juegos de roles y disfraces</li>
+                    <li>Cuentos interactivos</li>
+                    <li>Canciones con acciones complejas</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>🌟 Oportunidad:</strong> Edad perfecta para establecer rutinas de comunicación.
+                </div>
+            `;
+        } else {
+            evaluation = `
+                <h4>📊 Evaluación para ${genderText} de ${ageMonths} meses:</h4>
+                <div class="alert alert-success">
+                    <strong>Enfoque Principal:</strong> Preparación escolar y habilidades complejas
+                </div>
+                <p><strong>Lo esperado a esta edad:</strong></p>
+                <ul>
+                    <li>Oraciones complejas con conectores</li>
+                    <li>Narrativa detallada de eventos</li>
+                    <li>Comprensión de conceptos abstractos</li>
+                    <li>Reconocimiento de letras y sonidos</li>
+                </ul>
+                <p><strong>🎯 Actividades recomendadas:</strong></p>
+                <ul>
+                    <li>Debates simples sobre temas cotidianos</li>
+                    <li>Escritura de letras y números</li>
+                    <li>Juegos de lógica verbal</li>
+                    <li>Lectura compartida avanzada</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>🎓 Preparación:</strong> Momento crucial para habilidades pre-académicas.
+                </div>
+            `;
+        }
+        
+        resultBox.innerHTML = evaluation;
+        resultBox.classList.add('show');
+        
+        // Guardar evaluación
+        localStorage.setItem('lastEvaluation', JSON.stringify({
+            age: ageMonths,
+            gender: gender,
+            date: new Date().toISOString()
+        }));
+        // AUTO-SELECCIONAR el tab correcto del checklist según la edad
+        if (ageMonths <= 42) {
+            document.querySelector('.tab[onclick*="3years"]').click();
+        } else if (ageMonths <= 54) {
+            document.querySelector('.tab[onclick*="4years"]').click();
+        } else {
+            document.querySelector('.tab[onclick*="5years"]').click();
+        }
+        
+        // Mostrar mensaje
+        showInfoMessage(`Se ha seleccionado automáticamente el checklist de ${ageMonths <= 42 ? '3 años' : ageMonths <= 54 ? '4 años' : '5 años'} según la edad ingresada.`);
+        setTimeout(() => {
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // Función para guardar progreso
+    function saveProgress() {
+        const progressData = {
+            completedSections: Array.from(completedSections),
+            lastAccess: new Date().toISOString(),
+            percentComplete: Math.round((completedSections.size / totalSections) * 100)
+        };
+        localStorage.setItem('module1Progress', JSON.stringify(progressData));
+        
+        // Verificar si el módulo está completo
+        checkModuleCompletion();
+    }
+
+    // Verificar si el módulo está completo automáticamente
+    function checkModuleCompletion() {
+        // Verificar si todas las secciones críticas están completadas
+        const criticalSections = [1, 2, 3, 4]; // Evaluador, Checklist, Dimensiones, Plan
+        const completedCritical = criticalSections.filter(section => completedSections.has(section));
+        
+        // Si completó al menos 3 de las 4 secciones críticas, marcar como completado
+        if (completedCritical.length >= 3) {
+            const alreadyCompleted = localStorage.getItem('modulo1_completed') === 'true';
+            if (!alreadyCompleted) {
+                completeModule();
+            }
+        }
+    }
+
+    // Función para completar el módulo
+    function completeModule() {
+        // Marcar módulo como completado para el dashboard
+        localStorage.setItem('modulo1_completed', 'true');
+        
+        // Actualizar progreso del curso (mantener compatibilidad)
+        let courseProgress = JSON.parse(localStorage.getItem('courseProgress') || '[false,false,false,false,false]');
+        courseProgress[0] = true;
+        localStorage.setItem('courseProgress', JSON.stringify(courseProgress));
+        
+        // Mostrar botones de finalización
+        showCompletionButtons();
+        
+        console.log('✅ Módulo 1 marcado como completado');
+        
+        // Mensaje de felicitación con opción de ir al dashboard
+        setTimeout(() => {
+            const goToDashboard = confirm('🎉 ¡FELICITACIONES! Has completado el Módulo 1.\n\n' +
+                  '✅ Ahora entiendes los fundamentos del desarrollo del lenguaje\n' +
+                  '✅ Conoces las señales de alerta\n' +
+                  '✅ Tienes tu plan personalizado\n\n' +
+                  '¿Quieres ir al Dashboard para ver tu progreso y acceder al Módulo 2?');
+            
+            if (goToDashboard) {
+                window.location.href = '../dashboard/index.html';
+            }
+        }, 1000);
+    }
+
+    // Función para mostrar botones de completación
+    function showCompletionButtons() {
+        const certificateBtn = document.getElementById('certificateBtn');
+        const nextModuleBtn = document.getElementById('nextModuleBtn');
+        
+        if (certificateBtn) certificateBtn.style.display = 'inline-block';
+        if (nextModuleBtn) nextModuleBtn.style.display = 'inline-block';
+    }
+
+    // Función para generar certificado
+    function generateCertificate() {
+        const userName = prompt('¿Cuál es tu nombre para el certificado?') || 'Estudiante';
+        
+        const certificate = `
+╔════════════════════════════════════════════════════╗
+║                                                    ║
+║         🏆 CERTIFICADO DE COMPLETACIÓN 🏆          ║
+║                                                    ║
+║         Escuela de Padres · Liceo Montebonito Infantil           ║
+║                                                    ║
+╠════════════════════════════════════════════════════╣
+║                                                    ║
+║  Certificamos que:                                 ║
+║                                                    ║
+║            ${userName.toUpperCase()}               ║
+║                                                    ║
+║  Ha completado exitosamente el MÓDULO 1:          ║
+║                                                    ║
+║    "Fundamentos del Desarrollo del Lenguaje"      ║
+║                                                    ║
+║  Logros alcanzados:                               ║
+║  ✅ Comprende los períodos críticos               ║
+║  ✅ Conoce las 4 dimensiones del lenguaje         ║
+║  ✅ Identifica señales de alerta                  ║
+║  ✅ Ha creado un plan personalizado               ║
+║                                                    ║
+║  Fecha: ${new Date().toLocaleDateString('es-ES')} ║
+║                                                    ║
+║  Curso: Estimulación del Lenguaje en Casa         ║
+║                                                    ║
+╚════════════════════════════════════════════════════╝
+
+        ¡Continúa al Módulo 2 para más aprendizajes!
+        `;
+        
+        // Crear archivo descargable
+        const blob = new Blob([certificate], { type: 'text/plain;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Certificado_Modulo1_${userName.replace(/\s/g, '_')}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        
+        showSuccessMessage('¡Certificado descargado! Revisa tu carpeta de descargas.');
+    }
+
+    // Función para mostrar progreso
+    function showProgress() {
+        const progress = (completedSections.size / totalSections) * 100;
+        const sections = ['Momento Crítico', 'Evaluador', 'Checklist', 'Dimensiones', 'Señales', 'Plan'];
+        const completedList = Array.from(completedSections).map(s => sections[s-1]).join('\n✓ ');
+        
+        alert(`📊 TU PROGRESO EN MÓDULO 1:\n\n` +
+              `📈 Progreso: ${Math.round(progress)}% completado\n` +
+              `📚 Secciones completadas: ${completedSections.size} de ${totalSections}\n\n` +
+              `✓ ${completedList || 'Ninguna sección completada aún'}\n\n` +
+              `${progress === 100 ? '🎉 ¡MÓDULO COMPLETADO!' : '💪 ¡Sigue adelante!'}`);
+    }
+
+    // Función para logout
+    function logout() {
+        if (confirm('¿Estás seguro que quieres salir? Tu progreso se guardará automáticamente.')) {
+            saveProgress();
+            saveChecklistState();
+            window.location.href = '../index.html';
+        }
+    }
+
+    // Funciones de mensajes
+    function showSuccessMessage(message) {
+        console.log('✅', message);
+        // Notificación visual
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.style.cssText = 'position:fixed;top:80px;right:20px;z-index:9999;animation:slideIn 0.5s;padding:1rem 2rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.2)';
+        notification.innerHTML = `✅ ${message}`;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    }
+
+    function showWarningMessage(message) {
+        console.warn('⚠️', message);
+        alert('⚠️ ' + message);
+    }
+
+    function showInfoMessage(message) {
+        console.info('ℹ️', message);
+        alert('ℹ️ ' + message);
+    }
+
+    // Auto-guardado de notas mientras escribe
+    let saveTimeout;
+    const personalNotesField = document.getElementById('personalNotes');
+    if (personalNotesField) {
+        personalNotesField.addEventListener('input', function() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                if (this.value.trim()) {
+                    const draft = {
+                        personalNotes: this.value,
+                        lastModified: new Date().toISOString()
+                    };
+                    localStorage.setItem('childPlanDraft', JSON.stringify(draft));
+                    console.log('Auto-guardado de notas');
+                }
+            }, 2000);
+        });
+    }
+
+    console.log('🧠 Módulo 1: Sistema completo cargado correctamente');
+    </script>
+</body>
+</html>

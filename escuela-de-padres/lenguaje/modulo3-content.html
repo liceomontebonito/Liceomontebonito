@@ -1,0 +1,3687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Actividades y Juegos - Estimulación del Lenguaje</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 2rem 2rem;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .module-header {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .module-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Contexto educativo */
+        .educational-context {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #28a745;
+        }
+
+        .educational-context h3 {
+            color: #155724;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .educational-context p {
+            color: #155724;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .educational-context ul {
+            color: #155724;
+            margin-left: 1.5rem;
+        }
+
+        .educational-context li {
+            margin-bottom: 0.5rem;
+        }
+
+        .age-selector {
+            background: linear-gradient(135deg, #f093fb20 0%, #f5576c20 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #f093fb;
+        }
+
+        .age-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .age-btn {
+            background: white;
+            color: #764ba2;
+            padding: 1rem 2rem;
+            border: 2px solid #764ba2;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .age-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+        }
+
+        .age-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Instrucciones de actividades mejoradas */
+        .activity-instructions {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 2px solid #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        .activity-instructions h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .activity-instructions .steps {
+            counter-reset: step-counter;
+        }
+
+        .activity-instructions .step {
+            counter-increment: step-counter;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 3rem;
+            border-left: 3px solid #28a745;
+            color: #2c3e50;
+        }
+
+        .activity-instructions .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0.8rem;
+            top: 1rem;
+            background: #28a745;
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Tarjetas de actividad mejoradas */
+        .activity-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+            animation: subtlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(118, 75, 162, 0.2);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 8px 25px rgba(118, 75, 162, 0.3);
+            }
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(118, 75, 162, 0.5);
+            border-color: #ffd700;
+            animation: none;
+        }
+
+        .activity-card::before {
+            content: '👆 Haz clic para aprender';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .activity-card:hover::before {
+            opacity: 1;
+        }
+
+        .activity-card.completed {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-color: #28a745;
+            animation: none;
+        }
+
+        .activity-card.completed::after {
+            content: '✓ Completado';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #28a745;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .activity-card.completed::before {
+            display: none;
+        }
+
+        /* Efecto de clic */
+        .activity-card:active {
+            transform: translateY(-2px) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-description {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        /* Etiqueta "PARA HACER EN CASA" */
+        .home-activity-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Sistema de Modales */
+        .activity-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .activity-modal.show {
+            display: flex;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .activity-modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 900px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .activity-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .activity-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .activity-modal-body {
+            padding: 2rem;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlideIn {
+            from { 
+                transform: scale(0.8) translateY(-50px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: scale(1) translateY(0); 
+                opacity: 1; 
+            }
+        }
+
+        .game-container {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 3px solid #667eea;
+        }
+
+        .demo-label {
+            background: #ffc107;
+            color: #212529;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .game-area {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .interactive-element {
+            display: inline-block;
+            padding: 1rem;
+            margin: 0.5rem;
+            background: linear-gradient(135deg, #ffd93d 0%, #ffb300 100%);
+            color: #333;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .interactive-element:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 183, 0, 0.4);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem 1rem 0;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        /* Estilos para límites de selección */
+        .selection-counter {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .food-item {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .food-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .food-item.selected {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .food-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .food-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-selector {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .quiz-container {
+            background: #f0f8ff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #4a90e2;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #e9ecef;
+            border-color: #4a90e2;
+        }
+
+        .quiz-option.selected {
+            background: #d1ecf1;
+            border-color: #0c5460;
+        }
+
+        .quiz-option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .quiz-option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .feedback-box {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        .feedback-correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback-incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            font-weight: 600;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-badge.unlocked {
+            opacity: 1;
+            animation: bounce 0.5s ease;
+        }
+
+        .timer {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #ffd93d 0%, #ffb300 100%);
+            color: #333;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .drag-item {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            background: #fff;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+
+        .drop-zone {
+            min-height: 100px;
+            padding: 1rem;
+            border: 3px dashed #667eea;
+            border-radius: 10px;
+            margin: 1rem 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .drop-zone.drag-over {
+            background: #e8f4f8;
+            border-color: #28a745;
+        }
+
+        .module-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .age-specific-content {
+            display: none;
+        }
+
+        .age-specific-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .module-header h1 {
+                font-size: 2rem;
+            }
+            
+            .age-buttons {
+                flex-direction: column;
+            }
+            
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .activity-modal {
+                padding: 1rem;
+            }
+
+            .activity-modal-content {
+                max-height: 95vh;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="/escuela-de-padres/tema-liceo.css">
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">&#127891;</span><span><span class="lv-texto-largo">Escuela de Padres &middot; </span>Volver</span></a>
+
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <span>🎮</span>
+                <span>Módulo 3: Actividades y Juegos</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">← Dashboard</a>
+                <a href="../modulo2/index.html">Módulo 2</a>
+                <a href="#" onclick="showProgress()">Mi Progreso</a>
+                <a href="#" onclick="showHelp()">Ayuda</a>
+                <a href="#" onclick="logout()">Salir</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="progress-section">
+            <h3>Tu Progreso en el Módulo 3</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p><span id="progressText">0% completado</span> • <span id="activitiesCompleted">0 de 12 actividades</span></p>
+            <div id="achievementsList" style="margin-top: 1rem;">
+                <span class="achievement-badge" id="badge1">🎯 Primera Actividad</span>
+                <span class="achievement-badge" id="badge2">🎮 5 Juegos</span>
+                <span class="achievement-badge" id="badge3">🎵 Maestro Musical</span>
+                <span class="achievement-badge" id="badge4">📚 Contador de Cuentos</span>
+                <span class="achievement-badge" id="badge5">🏆 Módulo Completo</span>
+            </div>
+        </div>
+
+        <div class="module-header">
+            <h1>🎮 Actividades y Juegos para Estimular el Lenguaje</h1>
+            <p>Aprende técnicas profesionales para desarrollar el lenguaje de tu hijo en casa</p>
+        </div>
+
+        <!-- Contexto Educativo Principal -->
+        <div class="educational-context">
+            <h3>
+                <span>🏠</span>
+                ¿Cómo usar este módulo?
+            </h3>
+            <p><strong>Este módulo te enseña actividades para recrear en casa con tu hijo.</strong></p>
+            <p>Los juegos interactivos que verás aquí son <strong>ejemplos demostrativos</strong> para que:</p>
+            <ul>
+                <li><strong>Aprendas la metodología:</strong> Cómo estructurar cada actividad paso a paso</li>
+                <li><strong>Veas el objetivo:</strong> Qué habilidades específicas desarrolla cada juego</li>
+                <li><strong>Entiendas la adaptación:</strong> Cómo ajustar la dificultad según la edad</li>
+                <li><strong>Practiques la técnica:</strong> Qué decir y cómo interactuar con tu hijo</li>
+            </ul>
+            <p><strong>💡 Tu objetivo:</strong> Convertirte en el mejor estimulador del lenguaje de tu hijo, usando estas técnicas científicamente respaldadas en la vida diaria.</p>
+        </div>
+
+        <div class="module-header" style="padding: 2rem; margin-bottom: 1rem;">
+            <div class="age-selector">
+                <h3>📌 Selecciona la edad de tu hijo para ver actividades personalizadas:</h3>
+                <div class="age-buttons">
+                    <button class="age-btn" onclick="selectAge(3)">3 años</button>
+                    <button class="age-btn" onclick="selectAge(4)">4 años</button>
+                    <button class="age-btn" onclick="selectAge(5)">5 años</button>
+                </div>
+                <p id="ageMessage" style="margin-top: 1rem; display: none; text-align: center; font-weight: bold; color: #667eea;">
+                    ✨ Actividades adaptadas para <span id="selectedAge"></span> años
+                </p>
+            </div>
+        </div>
+
+        <!-- Contenido para 3 años -->
+        <div id="content-age-3" class="age-specific-content">
+            
+            <!-- Sección 1: Juegos de Vocabulario -->
+            <div class="content-section" data-section="vocab-3">
+                <h2 class="section-title">
+                    <span>🎯</span>
+                    Juegos de Vocabulario (3 años)
+                </h2>
+                
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> A los 3 años, los niños aprenden mejor a través de la repetición y asociación visual. Pueden aprender 5-10 palabras nuevas por día a través del juego estructurado.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>👨‍🏫</span>
+                        Lo que aprenderás en esta sección:
+                    </h3>
+                    <ul>
+                        <li><strong>Técnica del "Veo-Veo":</strong> Cómo usar colores y objetos para expandir vocabulario</li>
+                        <li><strong>Método onomatopéyico:</strong> Usar sonidos de animales para mejorar pronunciación</li>
+                        <li><strong>Aprendizaje corporal:</strong> Incorporar movimiento para fijar vocabulario
+                            <li><strong>Rutinas diarias:</strong> Convertir momentos cotidianos en oportunidades de aprendizaje</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <!-- Actividad 1 -->
+                    <div class="activity-card" onclick="startVocabGame3()" data-activity="vocab-game-3">
+                        <div class="activity-icon">🖼️</div>
+                        <div class="activity-title">Veo-Veo de Colores</div>
+                        <div class="activity-description">Aprende la técnica para enseñar vocabulario usando colores y objetos cotidianos</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Cómo hacer esta actividad en casa:</h4>
+                            <div class="steps">
+                                <div class="step">Reúne 6-8 objetos de diferentes colores que tu hijo conozca</div>
+                                <div class="step">Di: "Veo, veo... algo de color [nombre del color]"</div>
+                                <div class="step">Espera que tu hijo señale o nombre el objeto correcto</div>
+                                <div class="step">Celebra cada acierto y repite el nombre del objeto</div>
+                                <div class="step">Aumenta la dificultad agregando características: "algo rojo y redondo"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actividad 2 -->
+                    <div class="activity-card" onclick="startAnimalSounds3()" data-activity="animal-sounds-3">
+                        <div class="activity-icon">🐶</div>
+                        <div class="activity-title">Sonidos de Animales</div>
+                        <div class="activity-description">Domina la técnica de onomatopeyas para mejorar pronunciación y vocabulario</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Cómo producir sonidos en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Prepara imágenes o juguetes</strong> de animales comunes (perro, gato, vaca, pato)</div>
+                                <div class="step"><strong>Modela el sonido claramente:</strong> "El perro hace GUAU-GUAU" (exagera la pronunciación)</div>
+                                <div class="step"><strong>Pide imitación:</strong> "¿Cómo hace el perro?" y espera la respuesta</div>
+                                <div class="step"><strong>Asocia sonido con nombre:</strong> "¡Correcto! GUAU-GUAU dice el PERRO"</div>
+                                <div class="step"><strong>Juega adivinanzas:</strong> Haz el sonido y que adivine el animal</div>
+                            </div>
+                            <p><strong>🔊 Sonidos a practicar:</strong> GUAU-GUAU (perro), MIAU (gato), MUU (vaca), CUAC-CUAC (pato), PÍO-PÍO (pollito)</p>
+                        </div>
+                    </div>
+
+                    <!-- Actividad 3 -->
+                    <div class="activity-card" onclick="startBodyParts3()" data-activity="body-parts-3">
+                        <div class="activity-icon">👶</div>
+                        <div class="activity-title">Mi Cuerpo</div>
+                        <div class="activity-description">Aprende a usar el juego "Simón dice" para enseñar partes del cuerpo</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología "Simón dice" en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Posiciónate frente a tu hijo</strong> para que pueda imitarte</div>
+                                <div class="step"><strong>Usa el comando:</strong> "Simón dice: toca tu [parte del cuerpo]"</div>
+                                <div class="step"><strong>Demuestra primero:</strong> Toca tu propia nariz mientras dices "nariz"</div>
+                                <div class="step"><strong>Guía físicamente si es necesario:</strong> Ayuda a tocar la parte correcta</div>
+                                <div class="step"><strong>Repite el nombre:</strong> "¡Muy bien! Esa es tu NARIZ"</div>
+                                <div class="step"><strong>Varía la velocidad:</strong> Lento al principio, más rápido cuando domine</div>
+                            </div>
+                            <p><strong>📝 Partes a enseñar:</strong> cabeza, ojos, nariz, boca, orejas, manos, pies, barriga</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Cuentos Interactivos -->
+            <div class="content-section" data-section="stories-3">
+                <h2 class="section-title">
+                    <span>📚</span>
+                    Cuentos Interactivos (3 años)
+                </h2>
+
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> Los cuentos con repetición y sonidos onomatopéyicos mejoran la memoria auditiva y la comprensión narrativa. La participación activa aumenta la retención en un 70%.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>📖</span>
+                        Técnicas de narración interactiva que aprenderás:
+                    </h3>
+                    <ul>
+                        <li><strong>Pausas estratégicas:</strong> Dónde parar para que tu hijo complete la frase</li>
+                        <li><strong>Incorporación de movimientos:</strong> Cómo usar el cuerpo para contar</li>
+                        <li><strong>Repetición estructurada:</strong> Frases que se repiten para fijar vocabulario</li>
+                        <li><strong>Preguntas guía:</strong> Qué preguntar durante el cuento para mantener atención</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startStory3_1()" data-activity="story-3-1">
+                        <div class="activity-icon">🐰</div>
+                        <div class="activity-title">El Conejito Saltarín</div>
+                        <div class="activity-description">Aprende a contar cuentos con movimientos y sonidos que tu hijo puede imitar</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Cómo narrar este cuento en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Prepara el ambiente:</strong> Siéntense en un lugar cómodo, frente a frente</div>
+                                <div class="step"><strong>Usa tu voz:</strong> Cambia el tono para diferentes personajes</div>
+                                <div class="step"><strong>Incorpora movimientos:</strong> Salta cuando el conejo salta, haz sonidos de comer</div>
+                                <div class="step"><strong>Pausa para participación:</strong> "¿Cómo hace el conejo?" "¡HOP!"</div>
+                                <div class="step"><strong>Repite frases clave:</strong> "Saltaba por aquí... HOP! Saltaba por allá... HOP!"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startStory3_2()" data-activity="story-3-2">
+                        <div class="activity-icon">🌙</div>
+                        <div class="activity-title">La Luna y las Estrellas</div>
+                        <div class="activity-description">Técnica de "completar frases" para desarrollar predicción y vocabulario</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de completar frases:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Lee despacio:</strong> "La luna brillaba en el..." (pausa)</div>
+                                <div class="step"><strong>Espera la respuesta:</strong> Deja que complete con "cielo"</div>
+                                <div class="step"><strong>Refuerza:</strong> "¡Sí! En el CIELO. Muy bien"</div>
+                                <div class="step"><strong>Si no responde:</strong> Da la primera letra "ci..." y espera</div>
+                                <div class="step"><strong>Celebra intentos:</strong> Aunque no sea perfecta la respuesta</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3: Canciones Educativas -->
+            <div class="content-section" data-section="songs-3">
+                <h2 class="section-title">
+                    <span>🎵</span>
+                    Canciones Educativas (3 años)
+                </h2>
+
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> El ritmo y la melodía facilitan la memorización de palabras y mejoran la pronunciación. Las canciones activan múltiples áreas cerebrales simultáneamente.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🎼</span>
+                        Técnicas musicales que dominarás:
+                    </h3>
+                    <ul>
+                        <li><strong>Creación de melodías simples:</strong> Cómo inventar tonadas pegajosas para cualquier tema</li>
+                        <li><strong>Ritmo corporal:</strong> Usar palmadas y movimientos para marcar el compás</li>
+                        <li><strong>Repetición musical:</strong> Estructura de estrofas que facilitan memorización</li>
+                        <li><strong>Adaptación instantánea:</strong> Cambiar letras según situaciones cotidianas</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startSong3_1()" data-activity="song-3-1">
+                        <div class="activity-icon">🎶</div>
+                        <div class="activity-title">Los Números Bailarines</div>
+                        <div class="activity-description">Aprende a crear canciones de números con movimientos que tu hijo recordará</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Cómo crear canciones de números en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Inventa melodía simple:</strong> Usa tonos que suben y bajan gradualmente</div>
+                                <div class="step"><strong>Agrega movimientos:</strong> Un movimiento específico para cada número</div>
+                                <div class="step"><strong>Canta despacio primero:</strong> Que pueda seguir el ritmo</div>
+                                <div class="step"><strong>Repite muchas veces:</strong> La repetición crea memoria musical</div>
+                                <div class="step"><strong>Varía las actividades:</strong> "saltar", "aplaudir", "marchar" con cada número</div>
+                            </div>
+                            <p><strong>🎵 Ejemplo de letra:</strong> "Uno saltito, dos saltitos, tres pataditas al suelo..."</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startSong3_2()" data-activity="song-3-2">
+                        <div class="activity-icon">🌈</div>
+                        <div class="activity-title">El Arcoíris Musical</div>
+                        <div class="activity-description">Técnica para enseñar colores a través de canciones que puedes crear sobre cualquier tema</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de canciones de colores:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Busca objetos de cada color</strong> en tu casa mientras cantas</div>
+                                <div class="step"><strong>Crea rimas simples:</strong> "Rojo como el tomate, rojo como el corazón"</div>
+                                <div class="step"><strong>Usa gestos descriptivos:</strong> Señala cosas del color mencionado</div>
+                                <div class="step"><strong>Cambia la velocidad:</strong> Lento para aprender, rápido para divertir</div>
+                                <div class="step"><strong>Deja espacios:</strong> "Verde como la..." (que complete "hierba")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 4: Actividades Diarias -->
+            <div class="content-section" data-section="daily-3">
+                <h2 class="section-title">
+                    <span>🏠</span>
+                    Actividades de la Vida Diaria (3 años)
+                </h2>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>⏰</span>
+                        Convierte rutinas diarias en oportunidades de lenguaje:
+                    </h3>
+                    <ul>
+                        <li><strong>Hora de comer:</strong> Nombrar alimentos, texturas, sabores</li>
+                        <li><strong>Vestirse:</strong> Vocabulario de ropa, acciones (ponerse, quitarse)</li>
+                        <li><strong>Baño:</strong> Partes del cuerpo, acciones de higiene</li>
+                        <li><strong>Juego libre:</strong> Narrar lo que hace, expandir vocabulario</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startDailyActivity3()" data-activity="daily-3">
+                        <div class="activity-icon">🍎</div>
+                        <div class="activity-title">Hora de la Merienda</div>
+                        <div class="activity-description">Aprende a maximizar el vocabulario durante las comidas con técnicas específicas</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnicas para la hora de comer:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Nombra antes de dar:</strong> "Aquí tienes tu MANZANA roja"</div>
+                                <div class="step"><strong>Describe sabores:</strong> "¿Está dulce? ¿Está sabroso?"</div>
+                                <div class="step"><strong>Enseña acciones:</strong> "Vamos a MASTICAR la manzana"</div>
+                                <div class="step"><strong>Usa cantidades:</strong> "Dos pedazos de plátano"</div>
+                                <div class="step"><strong>Haz preguntas simples:</strong> "¿Quieres MÁS agua?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido para 4 años -->
+        <div id="content-age-4" class="age-specific-content">
+            
+            <!-- Sección 1: Juegos de Construcción de Frases -->
+            <div class="content-section" data-section="sentences-4">
+                <h2 class="section-title">
+                    <span>🏗️</span>
+                    Construcción de Frases (4 años)
+                </h2>
+                
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> A los 4 años, los niños pueden formar frases de 4-5 palabras y comprenden estructuras gramaticales básicas. Es el momento ideal para trabajar sintaxis simple.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🔧</span>
+                        Técnicas de construcción de oraciones que dominarás:
+                    </h3>
+                    <ul>
+                        <li><strong>Método de expansión:</strong> Cómo tomar una palabra y convertirla en oración completa</li>
+                        <li><strong>Estructura sujeto-verbo-objeto:</strong> Plantillas para crear oraciones correctas</li>
+                        <li><strong>Preguntas guía:</strong> Qué, quién, dónde, cuándo para desarrollar comprensión</li>
+                        <li><strong>Secuencias temporales:</strong> Primero, después, luego para organizar ideas</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startSentenceBuilder4()" data-activity="sentence-4">
+                        <div class="activity-icon">🧩</div>
+                        <div class="activity-title">Constructor de Oraciones</div>
+                        <div class="activity-description">Aprende la técnica de "palabras móviles" para enseñar estructura de oraciones</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de palabras móviles en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Prepara tarjetas de palabras:</strong> Escritas en papel o cartón con letra grande</div>
+                                <div class="step"><strong>Empieza con 3 palabras:</strong> "Niño come manzana"</div>
+                                <div class="step"><strong>Deja que las mueva:</strong> Físicamente reorganice las tarjetas</div>
+                                <div class="step"><strong>Lee juntos el resultado:</strong> "¿Qué dice aquí?"</div>
+                                <div class="step"><strong>Corrige con modelo:</strong> Si está mal, muestra la forma correcta</div>
+                                <div class="step"><strong>Agrega complejidad gradual:</strong> "El niño come la manzana roja"</div>
+                            </div>
+                            <p><strong>💡 Materiales necesarios:</strong> Tarjetas, marcadores, mesa para organizar</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startQuestionGame4()" data-activity="questions-4">
+                        <div class="activity-icon">❓</div>
+                        <div class="activity-title">¿Qué? ¿Dónde? ¿Cuándo?</div>
+                        <div class="activity-description">Domina el arte de hacer preguntas que desarrollen comprensión y expresión</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de preguntas estructuradas:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Usa situaciones reales:</strong> "Papá fue al trabajo en auto"</div>
+                                <div class="step"><strong>Pregunta gradualmente:</strong> "¿QUIÉN fue al trabajo?"</div>
+                                <div class="step"><strong>Espera respuesta completa:</strong> No aceptes solo "papá", busca "Papá fue"</div>
+                                <div class="step"><strong>Sigue la secuencia:</strong> ¿Dónde? ¿Cómo? ¿Cuándo?</div>
+                                <div class="step"><strong>Refuerza con repetición:</strong> "Sí, PAPÁ fue al TRABAJO en AUTO"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startSequenceGame4()" data-activity="sequence-4">
+                        <div class="activity-icon">📅</div>
+                        <div class="activity-title">Primero, Luego, Después</div>
+                        <div class="activity-description">Enseña secuencias temporales para organizar el pensamiento y la expresión</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de secuencias temporales:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Usa rutinas conocidas:</strong> Lavarse los dientes, vestirse, desayunar</div>
+                                <div class="step"><strong>Introduce palabras clave:</strong> "PRIMERO me levanto"</div>
+                                <div class="step"><strong>Pide que continue:</strong> "¿Qué haces DESPUÉS?"</div>
+                                <div class="step"><strong>Actúen la secuencia:</strong> Hagan los movimientos mientras narran</div>
+                                <div class="step"><strong>Cambia el orden a propósito:</strong> "¿Puedo desayunar antes de levantarme?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Cuentos con Comprensión -->
+            <div class="content-section" data-section="comprehension-4">
+                <h2 class="section-title">
+                    <span>📖</span>
+                    Cuentos con Comprensión (4 años)
+                </h2>
+
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> Los niños de 4 años pueden seguir historias con 3-4 eventos y responder preguntas simples sobre causa-efecto. La comprensión narrativa es fundamental para el desarrollo cognitivo.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🎯</span>
+                        Técnicas de comprensión lectora que aprenderás:
+                    </h3>
+                    <ul>
+                        <li><strong>Preguntas durante la lectura:</strong> Cuándo parar y qué preguntar</li>
+                        <li><strong>Predicción guiada:</strong> "¿Qué crees que pasará después?"</li>
+                        <li><strong>Conexión con experiencias:</strong> "¿Te pasó algo parecido?"</li>
+                        <li><strong>Retelling (re-narración):</strong> Que cuente la historia con sus palabras</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startComprehensionStory4()" data-activity="comp-story-4">
+                        <div class="activity-icon">🦁</div>
+                        <div class="activity-title">El León y el Ratón</div>
+                        <div class="activity-description">Aprende técnicas profesionales de lectura con comprensión y preguntas estratégicas</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de lectura con comprensión:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Lee despacio y con expresión:</strong> Cambia voces para personajes</div>
+                                <div class="step"><strong>Pausa estratégicamente:</strong> Al final de cada párrafo importante</div>
+                                <div class="step"><strong>Haz preguntas específicas:</strong> "¿Quién era pequeño?" "¿Quién era grande?"</div>
+                                <div class="step"><strong>Espera respuestas completas:</strong> "El ratón era pequeño" (no solo "ratón")</div>
+                                <div class="step"><strong>Conecta con la vida real:</strong> "¿Has visto un ratón? ¿Era pequeño?"</div>
+                                <div class="step"><strong>Pide que re-cuente:</strong> "Ahora cuéntame tú la historia"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3: Rimas y Trabalenguas -->
+            <div class="content-section" data-section="rhymes-4">
+                <h2 class="section-title">
+                    <span>🎭</span>
+                    Rimas y Trabalenguas (4 años)
+                </h2>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🎵</span>
+                        Técnicas de conciencia fonológica que dominarás:
+                    </h3>
+                    <ul>
+                        <li><strong>Identificación de rimas:</strong> Cómo hacer que escuche sonidos finales iguales</li>
+                        <li><strong>Creación de rimas:</strong> Inventar palabras que suenen parecido</li>
+                        <li><strong>Trabalenguas graduales:</strong> De fácil a difícil para mejorar articulación</li>
+                        <li><strong>Juegos de sonidos:</strong> Actividades que hagan consciente la pronunciación</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startRhymeGame4()" data-activity="rhyme-4">
+                        <div class="activity-icon">🎪</div>
+                        <div class="activity-title">Encuentra la Rima</div>
+                        <div class="activity-description">Aprende técnicas para desarrollar conciencia fonológica a través de rimas</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de enseñanza de rimas:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Empieza con palabras conocidas:</strong> "casa" - busca que termine igual</div>
+                                <div class="step"><strong>Exagera el sonido final:</strong> "ca-SA, pa-SA" (enfatiza el final)</div>
+                                <div class="step"><strong>Usa objetos reales:</strong> Muestra una casa, una masa, una tasa</div>
+                                <div class="step"><strong>Crea rimas inventadas:</strong> "¿Qué rima con gato? ¡Zapato!"</div>
+                                <div class="step"><strong>Haz rimas corporales:</strong> "Cabeza rima con... ¡cerveza!" (aunque sea absurdo)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startTongueTwister4()" data-activity="tongue-4">
+                        <div class="activity-icon">👅</div>
+                        <div class="activity-title">Trabalenguas Fáciles</div>
+                        <div class="activity-description">Técnicas para mejorar articulación y fluidez del habla con ejercicios progresivos</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Progresión de trabalenguas en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Empieza súper lento:</strong> "Tres-tres-tres tri-stes ti-gres"</div>
+                                <div class="step"><strong>Separa por sílabas:</strong> Aplaude en cada sílaba</div>
+                                <div class="step"><strong>Modela claramente:</strong> Exagera los movimientos de tu boca</div>
+                                <div class="step"><strong>Acepta intentos:</strong> No importa si no sale perfecto al principio</div>
+                                <div class="step"><strong>Aumenta velocidad gradualmente:</strong> Solo cuando domine el lento</div>
+                                <div class="step"><strong>Hazlo divertido:</strong> Ríanse juntos de los errores</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido para 5 años -->
+        <div id="content-age-5" class="age-specific-content">
+            
+            <!-- Sección 1: Narración y Creatividad -->
+            <div class="content-section" data-section="narration-5">
+                <h2 class="section-title">
+                    <span>🎨</span>
+                    Narración y Creatividad (5 años)
+                </h2>
+                
+                <div class="alert alert-info">
+                    <strong>🧠 Base científica:</strong> A los 5 años, los niños pueden crear historias simples con inicio, desarrollo y final, usando frases de 6-8 palabras. La creatividad narrativa potencia todas las áreas del lenguaje.
+                </div>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>✨</span>
+                        Técnicas de estimulación creativa que dominarás:
+                    </h3>
+                    <ul>
+                        <li><strong>Estructura narrativa básica:</strong> Inicio-problema-solución-final</li>
+                        <li><strong>Generación de ideas:</strong> Técnicas para que invente historias originales</li>
+                        <li><strong>Descripción detallada:</strong> Cómo hacer que use adjetivos y detalles</li>
+                        <li><strong>Diálogos y roles:</strong> Técnicas teatrales para expresión oral</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startStoryCreator5()" data-activity="create-story-5">
+                        <div class="activity-icon">✍️</div>
+                        <div class="activity-title">Crea tu Cuento</div>
+                        <div class="activity-description">Aprende el método profesional para que tu hijo invente historias completas y coherentes</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Método de creación de historias en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Prepara elementos visuales:</strong> Imágenes de revistas, juguetes, dibujos</div>
+                                <div class="step"><strong>Establece estructura:</strong> "Primero vamos a elegir el personaje"</div>
+                                <div class="step"><strong>Haz preguntas guía:</strong> "¿Dónde vive? ¿Qué problema tiene?"</div>
+                                <div class="step"><strong>Anima a describir:</strong> "¿Cómo es? ¿Grande o pequeño? ¿De qué color?"</div>
+                                <div class="step"><strong>Graba o escribe:</strong> Registra su historia para que la vuelva a contar</div>
+                                <div class="step"><strong>Celebra la creatividad:</strong> "¡Qué historia tan interesante!"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startDescriptionGame5()" data-activity="describe-5">
+                        <div class="activity-icon">🔍</div>
+                        <div class="activity-title">Describe y Adivina</div>
+                        <div class="activity-description">Técnicas para desarrollar vocabulario descriptivo y expresión detallada</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de descripción detallada:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Elige objetos familiares:</strong> Cosas de la casa que conoce bien</div>
+                                <div class="step"><strong>Enseña categorías descriptivas:</strong> Color, tamaño, forma, textura, uso</div>
+                                <div class="step"><strong>Modela primero:</strong> "Es redondo, rojo, dulce y lo comemos"</div>
+                                <div class="step"><strong>Pide que complete:</strong> "Dime algo más sobre esto"</div>
+                                <div class="step"><strong>Acepta todas las descripciones:</strong> Incluso las creativas o inusuales</div>
+                                <div class="step"><strong>Expande sus ideas:</strong> "Sí, es rojo. ¿Qué más cosas son rojas?"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startDialogGame5()" data-activity="dialog-5">
+                        <div class="activity-icon">💬</div>
+                        <div class="activity-title">Conversaciones</div>
+                        <div class="activity-description">Domina técnicas de role-play para desarrollar habilidades conversacionales avanzadas</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de conversaciones estructuradas:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Elige situaciones reales:</strong> Ir al doctor, comprar en la tienda</div>
+                                <div class="step"><strong>Asigna roles claros:</strong> "Tú eres el vendedor, yo soy el cliente"</div>
+                                <div class="step"><strong>Provee frases modelo:</strong> "Puedes decir: ¿En qué le puedo ayudar?"</div>
+                                <div class="step"><strong>Practica cortesía:</strong> "Por favor", "gracias", "de nada"</div>
+                                <div class="step"><strong>Cambia roles:</strong> Que experimente ambas perspectivas</div>
+                                <div class="step"><strong>Conecta con la vida real:</strong> Usa estas conversaciones cuando salgan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Juegos de Lógica Verbal -->
+            <div class="content-section" data-section="logic-5">
+                <h2 class="section-title">
+                    <span>🧠</span>
+                    Lógica Verbal (5 años)
+                </h2>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🔗</span>
+                        Técnicas de pensamiento lógico verbal que aprenderás:
+                    </h3>
+                    <ul>
+                        <li><strong>Clasificación por categorías:</strong> Cómo enseñar agrupación lógica</li>
+                        <li><strong>Relaciones de oposición:</strong> Técnica de contrastes para vocabulario</li>
+                        <li><strong>Analogías simples:</strong> "Es como... pero diferente en..."</li>
+                        <li><strong>Causa y efecto:</strong> "¿Qué pasa si...?" para pensamiento crítico</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startCategoryGame5()" data-activity="category-5">
+                        <div class="activity-icon">📦</div>
+                        <div class="activity-title">Categorías</div>
+                        <div class="activity-description">Aprende métodos profesionales para enseñar clasificación y organización del pensamiento</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de categorización en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Usa objetos reales:</strong> Juguetes, ropa, comida de la casa</div>
+                                <div class="step"><strong>Empieza con 2 categorías:</strong> "Animales" y "no animales"</div>
+                                <div class="step"><strong>Explica el criterio:</strong> "Esto va aquí porque es un animal"</div>
+                                <div class="step"><strong>Deja que clasifique:</strong> Que ponga cada objeto en su lugar</div>
+                                <div class="step"><strong>Pregunta el por qué:</strong> "¿Por qué pusiste eso ahí?"</div>
+                                <div class="step"><strong>Aumenta complejidad:</strong> "Animales que vuelan" vs "animales que caminan"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startOppositeGame5()" data-activity="opposite-5">
+                        <div class="activity-icon">↔️</div>
+                        <div class="activity-title">Opuestos</div>
+                        <div class="activity-description">Técnicas para desarrollar vocabulario contrastivo y pensamiento comparativo</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de opuestos en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Usa experiencias físicas:</strong> Agua caliente vs fría, sonido alto vs bajo</div>
+                                <div class="step"><strong>Compara objetos reales:</strong> "Esta caja es grande, esta es..."</div>
+                                <div class="step"><strong>Actúa los opuestos:</strong> Caminar rápido vs lento</div>
+                                <div class="step"><strong>Crea juegos de contraste:</strong> "Yo digo alto, tú dices..."</div>
+                                <div class="step"><strong>Conecta con emociones:</strong> "Cuando estoy feliz, lo opuesto es..."</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startAnalogiesGame5()" data-activity="analogies-5">
+                        <div class="activity-icon">🔗</div>
+                        <div class="activity-title">Analogías Simples</div>
+                        <div class="activity-description">Técnicas avanzadas para desarrollar pensamiento relacional y lógico</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de analogías para niños:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Empieza con relaciones obvias:</strong> "Perro es a ladrar como gato es a..."</div>
+                                <div class="step"><strong>Usa gestos y sonidos:</strong> Acompaña con movimientos</div>
+                                <div class="step"><strong>Explica la relación:</strong> "Los dos son sonidos que hacen"</div>
+                                <div class="step"><strong>Permite respuestas creativas:</strong> Acepta variaciones lógicas</div>
+                                <div class="step"><strong>Conecta con conocimiento previo:</strong> "¿Recuerdas cuándo vimos un gato?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3: Teatro y Expresión -->
+            <div class="content-section" data-section="theater-5">
+                <h2 class="section-title">
+                    <span>🎭</span>
+                    Teatro y Expresión (5 años)
+                </h2>
+
+                <div class="educational-context">
+                    <h3>
+                        <span>🎪</span>
+                        Técnicas teatrales para desarrollo del lenguaje:
+                    </h3>
+                    <ul>
+                        <li><strong>Interpretación de roles:</strong> Cómo usar personajes para expandir vocabulario</li>
+                        <li><strong>Expresión emocional:</strong> Técnicas para identificar y verbalizar sentimientos</li>
+                        <li><strong>Improvisación guiada:</strong> Estructurar juegos de actuación educativos</li>
+                        <li><strong>Proyección de voz:</strong> Técnicas para mejorar claridad y confianza</li>
+                    </ul>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="startRolePlay5()" data-activity="roleplay-5">
+                        <div class="activity-icon">👨‍👩‍👧</div>
+                        <div class="activity-title">Juego de Roles</div>
+                        <div class="activity-description">Domina el uso del role-play como herramienta de desarrollo lingüístico</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Técnica de juego de roles en casa:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Elige roles familiares:</strong> Doctor, maestro, chef, papá/mamá</div>
+                                <div class="step"><strong>Provee "herramientas":</strong> Objetos que representen cada rol</div>
+                                <div class="step"><strong>Establece el escenario:</strong> "Estamos en el hospital"</div>
+                                <div class="step"><strong>Guía el diálogo inicial:</strong> "¿Qué dice un doctor?"</div>
+                                <div class="step"><strong>Deja fluir la creatividad:</strong> Permite improvisación</div>
+                                <div class="step"><strong>Introduce vocabulario específico:</strong> Palabras propias de cada profesión</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="startEmotionsGame5()" data-activity="emotions-5">
+                        <div class="activity-icon">😊</div>
+                        <div class="activity-title">Expresando Emociones</div>
+                        <div class="activity-description">Técnicas especializadas para desarrollar inteligencia emocional a través del lenguaje</div>
+                        <div class="home-activity-badge">🏠 PARA RECREAR EN CASA</div>
+                        
+                        <div class="activity-instructions">
+                            <h4>Metodología de expresión emocional:</h4>
+                            <div class="steps">
+                                <div class="step"><strong>Usa tu propio rostro:</strong> Modela expresiones faciales claras</div>
+                                <div class="step"><strong>Conecta con situaciones reales:</strong> "¿Cómo te sientes cuando llueve?"</div>
+                                <div class="step"><strong>Enseña grados de emoción:</strong> "Un poco triste" vs "muy triste"</div>
+                                <div class="step"><strong>Valida sus emociones:</strong> "Es normal sentirse así"</div>
+                                <div class="step"><strong>Enseña vocabulario emocional:</strong> Más allá de "bien" o "mal"</div>
+                                <div class="step"><strong>Practica soluciones:</strong> "¿Qué puedes hacer cuando te sientes así?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Quiz Final del Módulo -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span>🏆</span>
+                Evaluación Final del Módulo
+            </h2>
+            
+            <div class="alert alert-warning">
+                <strong>📝 Importante:</strong> Completa al menos 8 actividades antes de realizar la evaluación final.
+            </div>
+
+            <button class="btn btn-success" onclick="startFinalQuiz()" id="finalQuizBtn" disabled>
+                Comenzar Evaluación Final
+            </button>
+
+            <div id="finalQuizContainer" class="quiz-container hidden">
+                <h3>🏆 Evaluación Final</h3>
+                <div class="timer">Tiempo: <span id="quizTimer">05:00</span></div>
+                <div class="quiz-question" id="finalQuestion">
+                    <!-- Preguntas dinámicas según edad -->
+                </div>
+                <div class="feedback-box" id="finalFeedback"></div>
+                <button class="btn btn-warning" onclick="submitFinalQuiz()">Enviar Respuestas</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="module-navigation">
+            <a href="../modulo2/index.html" class="btn btn-secondary">← Módulo 2</a>
+            <div>
+                <button class="btn" onclick="generateCertificate()" id="certificateBtn" style="display: none;">🏆 Certificado</button>
+                <button class="btn" onclick="printActivities()" style="margin: 0 0.5rem;">📄 Imprimir Plan</button>
+                <a href="../modulo4/index.html" class="btn" id="nextModuleBtn" style="display: none;">Módulo 4 →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let selectedAge = null;
+        let completedActivities = new Set();
+        let totalActivities = 12;
+        let currentScore = 0;
+        let currentQuizQuestion = 0;
+        let quizTimer = null;
+        let storyPage = 0;
+        let achievements = new Set();
+        let selectedFoodCount = 0;
+        let maxFoodSelection = 3;
+
+        // Base de datos de contenido por edad - MEJORADA
+        const contentDatabase = {
+            3: {
+                vocabulary: {
+                    colors: [
+                        {name: 'rojo', items: ['🍎 manzana', '🍓 fresa', '❤️ corazón', '🌹 rosa', '🚗 auto']},
+                        {name: 'azul', items: ['🌊 agua', '🐟 pez', '👕 camisa', '🌌 cielo', '📘 libro']},
+                        {name: 'amarillo', items: ['☀️ sol', '🌻 girasol', '🍌 plátano', '⭐ estrella', '🚕 taxi']},
+                        {name: 'verde', items: ['🌳 árbol', '🥦 brócoli', '🐸 rana', '🌿 hoja', '🍏 manzana']}
+                    ],
+                    animals: [
+                        {emoji: '🐮', name: 'vaca', sound: 'MUU', soundDesc: 'Haz un sonido grave y largo: "MUUUUU"'},
+                        {emoji: '🐶', name: 'perro', sound: 'GUAU-GUAU', soundDesc: 'Ladra fuerte y claro: "GUAU GUAU"'},
+                        {emoji: '🐱', name: 'gato', sound: 'MIAU', soundDesc: 'Sonido suave y melodioso: "MIAAAU"'},
+                        {emoji: '🐷', name: 'cerdo', sound: 'OINK-OINK', soundDesc: 'Sonido nasal divertido: "OINK OINK"'},
+                        {emoji: '🐔', name: 'pollo', sound: 'PÍO-PÍO', soundDesc: 'Sonido agudo y rápido: "PÍO PÍO PÍO"'},
+                        {emoji: '🦆', name: 'pato', sound: 'CUAC-CUAC', soundDesc: 'Sonido nasal: "CUAC CUAC"'}
+                    ],
+                    bodyParts: ['cabeza', 'ojos', 'nariz', 'boca', 'orejas', 'manos', 'pies', 'barriga'],
+                    foods: [
+                        {name: 'manzana', emoji: '🍎', category: 'fruta'},
+                        {name: 'plátano', emoji: '🍌', category: 'fruta'},
+                        {name: 'leche', emoji: '🥛', category: 'bebida'},
+                        {name: 'pan', emoji: '🍞', category: 'cereal'},
+                        {name: 'agua', emoji: '💧', category: 'bebida'},
+                        {name: 'galleta', emoji: '🍪', category: 'dulce'},
+                        {name: 'queso', emoji: '🧀', category: 'lácteo'},
+                        {name: 'huevo', emoji: '🥚', category: 'proteína'}
+                    ],
+                    actions: ['comer', 'dormir', 'jugar', 'correr', 'saltar', 'cantar']
+                },
+                stories: [
+                    {
+                        title: "El Conejito Saltarín",
+                        pages: [
+                            "Había una vez un conejito 🐰 que le gustaba saltar.",
+                            "Saltaba por aquí... ¡HOP! Saltaba por allá... ¡HOP!",
+                            "Un día encontró una zanahoria 🥕 muy grande.",
+                            "¡Ñam, ñam! Qué rica estaba la zanahoria.",
+                            "Y colorín colorado, este cuento se ha acabado."
+                        ],
+                        interactions: [null, 'jump', null, 'eat', null]
+                    }
+                ],
+                songs: [
+                    {
+                        title: "Los Números Bailarines",
+                        lyrics: "Uno, dos, tres - mueve los pies\nCuatro, cinco, seis - salta otra vez\nSiete, ocho, nueve - el cuerpo se mueve\nDiez, diez, diez - ¡baila con los pies!",
+                        instructions: "Canta lentamente y haz los movimientos. Repite hasta que memorice los números del 1 al 10."
+                    },
+                    {
+                        title: "El Arcoíris Musical",
+                        lyrics: "Rojo como el tomate, rojo como el corazón\nAzul como el cielo, azul como el mar\nVerde como la hierba, verde como el limón\nAmarillo como el sol que nos viene a despertar",
+                        instructions: "Señala objetos de cada color mientras cantas. Inventa nuevas estrofas con otros colores."
+                    }
+                ]
+            },
+            4: {
+                sentences: {
+                    subjects: ['El niño', 'La niña', 'El perro', 'Mi mamá', 'Mi papá', 'La maestra'],
+                    verbs: ['come', 'juega', 'corre', 'lee', 'canta', 'dibuja'],
+                    objects: ['la pelota', 'una manzana', 'el libro', 'una canción', 'el juguete', 'un dibujo'],
+                    places: ['en el parque', 'en casa', 'en la escuela', 'en el jardín'],
+                    examples: [
+                        'El niño come la manzana',
+                        'Mi mamá lee el libro',
+                        'La niña juega en el parque'
+                    ]
+                },
+                comprehension: {
+                    story: "Un día, un ratón pequeño 🐭 pasó cerca de un león dormido 🦁. El león se despertó y atrapó al ratón. '¡Por favor, no me comas!', dijo el ratón. 'Un día te ayudaré'. El león se rió pero lo dejó ir. Días después, el león quedó atrapado en una red. El ratón vino y mordió la red hasta liberarlo. 'Gracias, pequeño amigo', dijo el león.",
+                    questions: [
+                        {
+                            question: "¿Quién quedó atrapado primero?",
+                            options: ["El ratón", "El león", "Nadie"],
+                            correct: 0,
+                            explanation: "El león atrapó al ratón al principio de la historia."
+                        },
+                        {
+                            question: "¿Cómo ayudó el ratón al león?",
+                            options: ["Le trajo comida", "Mordió la red", "Llamó ayuda"],
+                            correct: 1,
+                            explanation: "El ratón mordió la red hasta liberar al león."
+                        },
+                        {
+                            question: "¿Qué aprendemos del cuento?",
+                            options: ["Los pequeños pueden ayudar", "Los leones son malos", "Los ratones son rápidos"],
+                            correct: 0,
+                            explanation: "La historia enseña que hasta los más pequeños pueden ayudar a los grandes."
+                        }
+                    ]
+                },
+                rhymes: {
+                    words: [
+                        {word: 'gato', rhymes: ['pato', 'zapato', 'plato'], nonRhymes: ['perro', 'casa']},
+                        {word: 'casa', rhymes: ['pasa', 'masa', 'taza'], nonRhymes: ['auto', 'libro']},
+                        {word: 'pelota', rhymes: ['bota', 'flota', 'gota'], nonRhymes: ['mesa', 'silla']}
+                    ]
+                },
+                tongueTwisters: [
+                    {text: "Tres tristes tigres", instruction: "Repite muy lentamente, separando cada palabra"},
+                    {text: "Pepe pica papas", instruction: "Enfatiza el sonido 'P' en cada palabra"},
+                    {text: "El perro de Rita", instruction: "Practica el sonido 'RR' fuerte"}
+                ]
+            },
+            5: {
+                storyElements: {
+                    characters: [
+                        {emoji: '👸', name: 'princesa', description: 'valiente y amable'},
+                        {emoji: '🦸', name: 'superhéroe', description: 'fuerte y protector'},
+                        {emoji: '🧙', name: 'mago', description: 'sabio y misterioso'},
+                        {emoji: '🐉', name: 'dragón', description: 'grande pero amigable'},
+                        {emoji: '🤖', name: 'robot', description: 'inteligente y útil'}
+                    ],
+                    settings: [
+                        {emoji: '🏰', name: 'castillo', description: 'lugar mágico'},
+                        {emoji: '🌳', name: 'bosque', description: 'lleno de aventuras'},
+                        {emoji: '🏖️', name: 'playa', description: 'junto al mar'},
+                        {emoji: '🌙', name: 'espacio', description: 'entre las estrellas'},
+                        {emoji: '🏔️', name: 'montaña', description: 'muy alta'}
+                    ],
+                    problems: [
+                        'perdió algo importante',
+                        'necesita encontrar el camino a casa',
+                        'está atrapado en un lugar',
+                        'busca un tesoro escondido',
+                        'quiere hacer nuevos amigos'
+                    ],
+                    solutions: [
+                        'encuentra amigos que lo ayudan',
+                        'usa magia especial',
+                        'resuelve un acertijo difícil',
+                        'trabaja en equipo',
+                        'descubre algo sorprendente'
+                    ]
+                },
+                categories: {
+                    animals: ['león', 'tigre', 'elefante', 'jirafa', 'mono', 'pingüino'],
+                    transport: ['auto', 'avión', 'barco', 'tren', 'bicicleta', 'helicóptero'],
+                    clothes: ['camisa', 'pantalón', 'zapatos', 'gorro', 'vestido', 'medias'],
+                    tools: ['martillo', 'tijeras', 'cuchara', 'lápiz', 'pincel', 'llave']
+                },
+                opposites: [
+                    {word: 'grande', opposite: 'pequeño', example: 'Un elefante es grande, un ratón es pequeño'},
+                    {word: 'alto', opposite: 'bajo', example: 'Un adulto es alto, un bebé es bajo'},
+                    {word: 'rápido', opposite: 'lento', example: 'Un auto es rápido, una tortuga es lenta'},
+                    {word: 'caliente', opposite: 'frío', example: 'El fuego es caliente, el hielo es frío'},
+                    {word: 'día', opposite: 'noche', example: 'Jugamos de día, dormimos de noche'}
+                ],
+                analogies: [
+                    {
+                        text: "Pájaro es a volar como pez es a ___",
+                        answer: "nadar",
+                        options: ["caminar", "nadar", "correr", "saltar"],
+                        explanation: "Los pájaros vuelan en el aire, los peces nadan en el agua"
+                    },
+                    {
+                        text: "Día es a sol como noche es a ___",
+                        answer: "luna",
+                        options: ["estrella", "sol", "luna", "nube"],
+                        explanation: "Durante el día vemos el sol, durante la noche vemos la luna"
+                    },
+                    {
+                        text: "Frío es a invierno como calor es a ___",
+                        answer: "verano",
+                        options: ["primavera", "verano", "otoño", "lluvia"],
+                        explanation: "En invierno hace frío, en verano hace calor"
+                    }
+                ],
+                emotions: [
+                    {emoji: '😊', name: 'feliz', situations: ['recibir un regalo', 'jugar con amigos', 'comer algo rico']},
+                    {emoji: '😢', name: 'triste', situations: ['perder un juguete', 'despedirse de alguien', 'no poder jugar']},
+                    {emoji: '😡', name: 'enojado', situations: ['cuando algo no sale bien', 'si alguien te molesta', 'cuando hay injusticia']},
+                    {emoji: '😨', name: 'asustado', situations: ['escuchar truenos', 'ver algo desconocido', 'estar en la oscuridad']},
+                    {emoji: '😲', name: 'sorprendido', situations: ['algo inesperado', 'una sorpresa', 'algo muy grande']},
+                    {emoji: '🤗', name: 'emocionado', situations: ['ir de paseo', 'comenzar algo nuevo', 'ver algo increíble']}
+                ],
+                roleplay: {
+                    scenarios: [
+                        {
+                            name: 'doctor',
+                            phrases: [
+                                "¿Dónde te duele?",
+                                "Voy a revisar tu temperatura",
+                                "Toma esta medicina",
+                                "Pronto te sentirás mejor"
+                            ],
+                            vocabulary: ['medicina', 'temperatura', 'estetoscopio', 'curar', 'salud']
+                        },
+                        {
+                            name: 'maestro',
+                            phrases: [
+                                "Buenos días, clase",
+                                "¿Quién sabe la respuesta?",
+                                "Muy bien, excelente trabajo",
+                                "Vamos a aprender algo nuevo"
+                            ],
+                            vocabulary: ['enseñar', 'aprender', 'pizarra', 'estudiante', 'tarea']
+                        }
+                    ]
+                }
+            }
+        };
+
+        // Inicialización mejorada
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('🎮 Iniciando Módulo 3: Actividades y Juegos');
+            checkModuleAccess();
+            loadSavedProgress();
+            showWelcomeMessage();
+        });
+
+        // Verificar acceso al módulo
+        function checkModuleAccess() {
+            const courseProgress = JSON.parse(localStorage.getItem('courseProgress') || '[false,false,false,false,false]');
+            // En producción descomentar esta validación:
+            // if (!courseProgress[1]) {
+            //     alert('⚠️ Debes completar el Módulo 2 primero');
+            //     window.location.href = '../modulo2/index.html';
+            // }
+        }
+
+        // Mensaje de bienvenida educativo
+        function showWelcomeMessage() {
+            setTimeout(() => {
+                if (!localStorage.getItem('module3_welcome_shown')) {
+                    showNotification(`
+                        🏠 ¡Bienvenido al Módulo 3! 
+                        Aquí aprenderás actividades para hacer en casa con tu hijo. 
+                        Los juegos que veas son ejemplos para que practiques las técnicas.
+                    `, 'info', 8000);
+                    localStorage.setItem('module3_welcome_shown', 'true');
+                }
+            }, 2000);
+        }
+
+        // SISTEMA DE MODALES MEJORADO
+
+        function openActivityModal(title, content) {
+            // Crear modal si no existe
+            let modal = document.getElementById('activityModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'activityModal';
+                modal.className = 'activity-modal';
+                modal.innerHTML = `
+                    <div class="activity-modal-content">
+                        <div class="activity-modal-header">
+                            <h3 id="modalTitle"></h3>
+                            <button class="activity-modal-close" onclick="closeActivityModal()">×</button>
+                        </div>
+                        <div class="activity-modal-body" id="modalBody">
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                
+                // Cerrar con ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('show')) {
+                        closeActivityModal();
+                    }
+                });
+                
+                // Cerrar al hacer clic fuera
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeActivityModal();
+                    }
+                });
+            }
+            
+            // Configurar contenido
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = content;
+            
+            // Mostrar modal
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+        }
+
+        function closeActivityModal() {
+            const modal = document.getElementById('activityModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Selección de edad mejorada
+        function selectAge(age) {
+            selectedAge = age;
+            
+            // Actualizar botones
+            document.querySelectorAll('.age-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Mostrar mensaje
+            document.getElementById('ageMessage').style.display = 'block';
+            document.getElementById('selectedAge').textContent = age;
+            
+            // Ocultar todo el contenido específico de edad
+            document.querySelectorAll('.age-specific-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Mostrar contenido de la edad seleccionada
+            const ageContent = document.getElementById(`content-age-${age}`);
+            if (ageContent) {
+                ageContent.classList.add('active');
+            }
+            
+            // Guardar selección
+            localStorage.setItem('module3SelectedAge', age);
+            
+            // Ajustar total de actividades según edad
+            totalActivities = age === 3 ? 8 : age === 4 ? 10 : 12;
+            updateProgress();
+            
+            showNotification(`✅ Actividades adaptadas para ${age} años cargadas`, 'success');
+        }
+
+        // JUEGOS PARA 3 AÑOS - MEJORADOS CON MODALES
+
+        // Juego Veo-Veo mejorado con modal
+        function startVocabGame3() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🎯 DEMOSTRACIÓN: Aprende la técnica</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa harás esto con:</h3>
+                    <p>Objetos reales de tu hogar: manzana roja, pelota azul, plátano amarillo, hoja verde, etc.</p>
+                </div>
+                
+                <div class="game-area">
+                    <div class="score-display">Objetos identificados: <span id="veoVeoScore">0</span></div>
+                    <p id="veoVeoInstruction" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; text-align: center;">
+                        Veo, veo... algo de color <span id="targetColor" style="color: red;">ROJO</span>
+                    </p>
+                    <div id="veoVeoObjects" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+                        <!-- Se llenarán dinámicamente -->
+                    </div>
+                </div>
+                
+                <div class="feedback-box" id="veoVeoFeedback"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-warning" onclick="nextVeoVeoRound()">Siguiente Ronda</button>
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('vocab-game-3')">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('🖼️ Veo-Veo de Colores', content);
+            setTimeout(() => initializeVeoVeoGame(), 300);
+        }
+
+        function initializeVeoVeoGame() {
+            const colors = contentDatabase[3].vocabulary.colors;
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.getElementById('targetColor').textContent = randomColor.name.toUpperCase();
+            document.getElementById('targetColor').style.color = getColorHex(randomColor.name);
+            
+            const objectsContainer = document.getElementById('veoVeoObjects');
+            objectsContainer.innerHTML = '';
+            
+            // Crear objetos para el juego
+            let allObjects = [...randomColor.items];
+            
+            // Agregar objetos de otros colores como distractores
+            const otherColors = colors.filter(c => c.name !== randomColor.name);
+            otherColors.forEach(color => {
+                const randomItem = color.items[Math.floor(Math.random() * color.items.length)];
+                allObjects.push(randomItem);
+            });
+            
+            // Mezclar y limitar a 6 objetos
+            allObjects = allObjects.sort(() => Math.random() - 0.5).slice(0, 6);
+            
+            allObjects.forEach(obj => {
+                const div = document.createElement('div');
+                div.className = 'interactive-element';
+                div.textContent = obj;
+                div.onclick = () => checkVeoVeoAnswer(obj, randomColor);
+                objectsContainer.appendChild(div);
+            });
+        }
+
+        function checkVeoVeoAnswer(selected, targetColor) {
+            const feedback = document.getElementById('veoVeoFeedback');
+            const isCorrect = targetColor.items.includes(selected);
+            
+            if (isCorrect) {
+                feedback.className = 'feedback-box feedback-correct show';
+                feedback.innerHTML = `
+                    ✅ ¡Muy bien! ${selected} es de color ${targetColor.name}
+                    <br><strong>🏠 En casa:</strong> Busca más objetos de color ${targetColor.name}
+                `;
+                updateScore(10);
+            } else {
+                feedback.className = 'feedback-box feedback-incorrect show';
+                feedback.innerHTML = `
+                    ❌ Intenta otra vez. Busca algo de color ${targetColor.name}
+                    <br><strong>💡 Ayuda:</strong> Mira bien los colores
+                `;
+            }
+        }
+
+        function nextVeoVeoRound() {
+            initializeVeoVeoGame();
+            document.getElementById('veoVeoFeedback').className = 'feedback-box';
+        }
+
+        function getColorHex(color) {
+            const colors = {
+                rojo: '#dc3545',
+                azul: '#007bff',
+                amarillo: '#ffc107',
+                verde: '#28a745'
+            };
+            return colors[color] || '#333';
+        }
+
+        // Juego de Sonidos de Animales mejorado con modal
+        function startAnimalSounds3() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🔊 DEMOSTRACIÓN: Técnica de sonidos</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa necesitarás:</h3>
+                    <ul>
+                        <li>Imágenes de animales o libros ilustrados</li>
+                        <li>Juguetes de animales (opcional)</li>
+                        <li>Tu voz para hacer los sonidos claramente</li>
+                    </ul>
+                    <p><strong>Tip profesional:</strong> Exagera los sonidos y usa expresiones faciales para hacerlo más divertido.</p>
+                </div>
+                
+                <div class="game-area">
+                    <div style="text-align: center;">
+                        <div id="animalImage" style="font-size: 5rem; margin: 1rem;">🐮</div>
+                        <p style="font-size: 1.2rem; margin: 1rem;">Escucha el sonido y adivina el animal</p>
+                        <button class="btn btn-info" onclick="playAnimalSound()">🔊 Hacer Sonido (simula tu voz)</button>
+                    </div>
+                    <div id="animalOptions" style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+                        <!-- Se llenarán dinámicamente -->
+                    </div>
+                </div>
+                
+                <div class="feedback-box" id="animalFeedback"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('animal-sounds-3')">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('🐶 Sonidos de Animales', content);
+            setTimeout(() => initializeAnimalGame(), 300);
+        }
+
+        function initializeAnimalGame() {
+            const animals = contentDatabase[3].vocabulary.animals;
+            const currentAnimal = animals[Math.floor(Math.random() * animals.length)];
+            
+            document.getElementById('animalImage').textContent = currentAnimal.emoji;
+            
+            // Guardar para verificación
+            window.currentAnimal = currentAnimal;
+            
+            const optionsContainer = document.getElementById('animalOptions');
+            optionsContainer.innerHTML = '';
+            
+            // Crear opciones (incluir respuesta correcta + 2 incorrectas)
+            let options = [currentAnimal.name];
+            while (options.length < 3) {
+                const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+                if (!options.includes(randomAnimal.name)) {
+                    options.push(randomAnimal.name);
+                }
+            }
+            
+            // Mezclar opciones
+            options.sort(() => Math.random() - 0.5);
+            
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-info';
+                btn.textContent = opt;
+                btn.onclick = () => checkAnimalAnswer(opt, currentAnimal.name);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function playAnimalSound() {
+            const currentAnimal = window.currentAnimal;
+            
+            // Mostrar instrucciones de sonido
+            const soundInstruction = document.createElement('div');
+            soundInstruction.style.cssText = `
+                background: #fff3cd; 
+                border: 1px solid #ffeaa7; 
+                color: #856404; 
+                padding: 1rem; 
+                border-radius: 10px; 
+                margin: 1rem 0;
+                font-weight: bold;
+                text-align: center;
+            `;
+            soundInstruction.innerHTML = `
+                🔊 ${currentAnimal.soundDesc}
+                <br><strong>Sonido:</strong> "${currentAnimal.sound}"
+            `;
+            
+            const gameArea = document.querySelector('#activityModal .game-area');
+            const existingInstruction = gameArea.querySelector('.sound-instruction');
+            if (existingInstruction) existingInstruction.remove();
+            
+            soundInstruction.className = 'sound-instruction';
+            gameArea.insertBefore(soundInstruction, gameArea.children[1]);
+            
+            // Mostrar texto del sonido animado
+            const soundText = document.createElement('div');
+            soundText.style.cssText = `
+                font-size: 2.5rem; 
+                font-weight: bold; 
+                color: #f093fb; 
+                animation: pulse 2s; 
+                text-align: center;
+                margin: 1rem 0;
+            `;
+            soundText.textContent = currentAnimal.sound;
+            
+            const existing = gameArea.querySelector('.sound-display');
+            if (existing) existing.remove();
+            
+            soundText.className = 'sound-display';
+            gameArea.insertBefore(soundText, gameArea.children[2]);
+            
+            setTimeout(() => {
+                if (soundText.parentNode) soundText.remove();
+            }, 3000);
+        }
+
+        function checkAnimalAnswer(selected, correct) {
+            const feedback = document.getElementById('animalFeedback');
+            const currentAnimal = window.currentAnimal;
+            
+            if (selected === correct) {
+                feedback.className = 'feedback-box feedback-correct show';
+                feedback.innerHTML = `
+                    ✅ ¡Correcto! Es un ${correct} y hace "${currentAnimal.sound}"
+                    <br><strong>🏠 En casa:</strong> ${currentAnimal.soundDesc}
+                `;
+                updateScore(10);
+                
+                setTimeout(() => {
+                    initializeAnimalGame();
+                    feedback.className = 'feedback-box';
+                    // Limpiar instrucciones
+                    const instructions = document.querySelectorAll('.sound-instruction, .sound-display');
+                    instructions.forEach(el => el.remove());
+                }, 3000);
+            } else {
+                feedback.className = 'feedback-box feedback-incorrect show';
+                feedback.innerHTML = `
+                    ❌ No es ${selected}. Escucha otra vez el sonido.
+                    <br><strong>💡 Tip:</strong> Presiona el botón de sonido de nuevo
+                `;
+            }
+        }
+        // Juego de Partes del Cuerpo mejorado con modal
+        function startBodyParts3() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">👶 DEMOSTRACIÓN: Técnica "Simón dice"</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa harás esto:</h3>
+                    <ul>
+                        <li>Ponte frente a tu hijo para que pueda imitarte</li>
+                        <li>Toca la parte de tu cuerpo mientras dices el nombre</li>
+                        <li>Celebra cada intento, aunque no sea perfecto</li>
+                    </ul>
+                    <p><strong>Objetivo:</strong> Que asocie palabras con partes del cuerpo a través del movimiento.</p>
+                </div>
+                
+                <div class="game-area" style="text-align: center;">
+                    <div style="font-size: 6rem;">👦</div>
+                    <p style="font-size: 1.3rem; font-weight: bold; margin: 1rem;">
+                        Simón dice: ¡Toca tu <span id="bodyPartTarget" style="color: #f093fb;">NARIZ</span>!
+                    </p>
+                    <div id="bodyPartsOptions" style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+                        <!-- Se llenarán dinámicamente -->
+                    </div>
+                    <div style="background: #e7f3ff; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong>🏠 En casa:</strong> Dile "Simón dice: toca tu nariz" y ayúdalo físicamente si es necesario.
+                    </div>
+                </div>
+                
+                <div class="feedback-box" id="bodyPartsFeedback"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('body-parts-3')">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('👶 Mi Cuerpo', content);
+            setTimeout(() => startSimonSays(), 300);
+        }
+
+        function startSimonSays() {
+            const parts = contentDatabase[3].vocabulary.bodyParts;
+            const targetPart = parts[Math.floor(Math.random() * parts.length)];
+            
+            document.getElementById('bodyPartTarget').textContent = targetPart.toUpperCase();
+            window.currentBodyPart = targetPart;
+            
+            // Crear botones para partes del cuerpo
+            const container = document.getElementById('bodyPartsOptions');
+            container.innerHTML = '';
+            
+            const bodyPartEmojis = {
+                'cabeza': '👤', 'ojos': '👀', 'nariz': '👃', 'boca': '👄', 
+                'orejas': '👂', 'manos': '👐', 'pies': '👣', 'barriga': '🤰'
+            };
+            
+            // Mostrar solo 4 opciones incluyendo la correcta
+            let options = [targetPart];
+            while (options.length < 4) {
+                const randomPart = parts[Math.floor(Math.random() * parts.length)];
+                if (!options.includes(randomPart)) {
+                    options.push(randomPart);
+                }
+            }
+            
+            options.sort(() => Math.random() - 0.5);
+            
+            options.forEach(part => {
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-info';
+                btn.innerHTML = `${bodyPartEmojis[part] || '👤'} ${part}`;
+                btn.onclick = () => checkBodyPart(part);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkBodyPart(selected) {
+            const feedback = document.getElementById('bodyPartsFeedback');
+            
+            if (selected === window.currentBodyPart) {
+                feedback.className = 'feedback-box feedback-correct show';
+                feedback.innerHTML = `
+                    ✅ ¡Muy bien! Tocaste tu ${selected}
+                    <br><strong>🏠 En casa:</strong> Toca tu propia ${selected} mientras dices la palabra
+                `;
+                updateScore(10);
+                
+                setTimeout(() => {
+                    startSimonSays();
+                    feedback.className = 'feedback-box';
+                }, 2000);
+            } else {
+                feedback.className = 'feedback-box feedback-incorrect show';
+                feedback.innerHTML = `
+                    ❌ Esa no es tu ${window.currentBodyPart}. Intenta de nuevo.
+                    <br><strong>💡 Ayuda:</strong> Busca tu ${window.currentBodyPart}
+                `;
+            }
+        }
+
+        // Actividad de la Merienda MEJORADA con modal
+        function startDailyActivity3() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🍎 DEMOSTRACIÓN: Técnica de merienda</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa aplicarás esto:</h3>
+                    <p>Durante las comidas reales con tu hijo, nombrando cada alimento y practicando el vocabulario de manera natural.</p>
+                    <p><strong>Objetivo:</strong> Que asocie palabras con objetos, sabores y acciones relacionadas con la comida.</p>
+                </div>
+                
+                <div class="game-area">
+                    <div class="selection-counter">
+                        Selecciona máximo 3 alimentos para tu merienda: <span id="selectedCount">0/3</span>
+                    </div>
+                    
+                    <p style="font-size: 1.2rem; text-align: center; margin: 1rem 0;">¿Qué quieres comer hoy?</p>
+                    
+                    <div class="food-grid" id="foodGrid">
+                        <!-- Se llenará dinámicamente con límite de selección -->
+                    </div>
+                    
+                    <div id="mealPlan" style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                        <p><strong>Mi merienda:</strong></p>
+                        <div id="selectedFoods">Selecciona hasta 3 alimentos</div>
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="finalizeMeal()" id="finalizeMealBtn" style="display: none;">
+                        ✅ Terminar Merienda
+                    </button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn" onclick="closeActivityModal()">Cerrar</button>
+                </div>
+            `;
+            
+            openActivityModal('🍎 Hora de la Merienda', content);
+            setTimeout(() => initializeSnackActivity(), 300);
+        }
+
+        function initializeSnackActivity() {
+            selectedFoodCount = 0;
+            const foods = contentDatabase[3].vocabulary.foods;
+            
+            const foodGrid = document.getElementById('foodGrid');
+            foodGrid.innerHTML = '';
+            
+            foods.forEach((food, index) => {
+                const foodDiv = document.createElement('div');
+                foodDiv.className = 'food-item';
+                foodDiv.id = `food-${index}`;
+                foodDiv.innerHTML = `
+                    <div class="food-emoji">${food.emoji}</div>
+                    <div>${food.name}</div>
+                `;
+                foodDiv.onclick = () => selectFood(food, index);
+                foodGrid.appendChild(foodDiv);
+            });
+            
+            updateFoodCounter();
+        }
+
+        function selectFood(food, index) {
+            const foodElement = document.getElementById(`food-${index}`);
+            
+            if (foodElement.classList.contains('selected')) {
+                // Deseleccionar
+                foodElement.classList.remove('selected');
+                const quantitySelector = foodElement.querySelector('.quantity-selector');
+                if (quantitySelector) quantitySelector.remove();
+                selectedFoodCount--;
+                updateSelectedFoods();
+            } else if (selectedFoodCount < maxFoodSelection) {
+                // Seleccionar
+                foodElement.classList.add('selected');
+                
+                // Agregar selector de cantidad
+                const quantitySelector = document.createElement('div');
+                quantitySelector.className = 'quantity-selector';
+                quantitySelector.textContent = '1';
+                foodElement.appendChild(quantitySelector);
+                
+                selectedFoodCount++;
+                updateSelectedFoods();
+            } else {
+                showNotification('⚠️ Solo puedes seleccionar máximo 3 alimentos para una merienda saludable', 'warning');
+            }
+            
+            updateFoodCounter();
+            
+            // Deshabilitar alimentos no seleccionados si se alcanzó el límite
+            if (selectedFoodCount >= maxFoodSelection) {
+                document.querySelectorAll('.food-item:not(.selected)').forEach(item => {
+                    item.classList.add('disabled');
+                });
+            } else {
+                document.querySelectorAll('.food-item').forEach(item => {
+                    item.classList.remove('disabled');
+                });
+            }
+        }
+
+        function updateFoodCounter() {
+            document.getElementById('selectedCount').textContent = `${selectedFoodCount}/${maxFoodSelection}`;
+            
+            const finalizeBtnContainer = document.getElementById('finalizeMealBtn');
+            if (selectedFoodCount > 0) {
+                finalizeBtnContainer.style.display = 'inline-block';
+            } else {
+                finalizeBtnContainer.style.display = 'none';
+            }
+        }
+
+        function updateSelectedFoods() {
+            const selectedContainer = document.getElementById('selectedFoods');
+            const selectedItems = document.querySelectorAll('.food-item.selected');
+            
+            if (selectedItems.length === 0) {
+                selectedContainer.textContent = 'Selecciona hasta 3 alimentos';
+                return;
+            }
+            
+            selectedContainer.innerHTML = '';
+            selectedItems.forEach(item => {
+                const emoji = item.querySelector('.food-emoji').textContent;
+                const name = item.querySelector('div:last-child').textContent;
+                const span = document.createElement('span');
+                span.style.margin = '0.5rem';
+                span.innerHTML = `${emoji} ${name}`;
+                selectedContainer.appendChild(span);
+            });
+        }
+
+        function finalizeMeal() {
+            const selectedItems = document.querySelectorAll('.food-item.selected');
+            updateScore(selectedItems.length * 5);
+            
+            showNotification(`
+                🍎 ¡Excelente merienda! Seleccionaste ${selectedItems.length} alimentos.
+                En casa, habla sobre los sabores, colores y texturas de cada alimento.
+            `, 'success', 5000);
+            
+            closeActivityModal();
+            markActivityComplete('daily-3');
+        }
+
+        // FUNCIONES DE CUENTOS MEJORADAS CON MODALES
+
+        function startStory3_1() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">📚 DEMOSTRACIÓN: Técnica de cuento interactivo</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa necesitarás:</h3>
+                    <ul>
+                        <li>Tu voz expresiva (diferentes tonos)</li>
+                        <li>Espacio para hacer movimientos</li>
+                        <li>Paciencia para repetir las partes favoritas</li>
+                    </ul>
+                    <p><strong>Tip:</strong> Deja que tu hijo "ayude" al conejo a saltar contigo.</p>
+                </div>
+                
+                <div class="game-area">
+                <div id="storyContent" style="font-size: 1.1rem; line-height: 1.8;">
+                        <!-- Contenido del cuento -->
+                    </div>
+                    <div id="storyInteraction" style="margin-top: 2rem;">
+                        <!-- Elementos interactivos -->
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-warning" onclick="nextStoryPage()">Siguiente Página →</button>
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('story-3-1')" style="display: none;" id="completeStoryBtn">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('📖 El Conejito Saltarín', content);
+            storyPage = 0;
+            setTimeout(() => loadStoryPage(), 300);
+        }
+
+        function loadStoryPage() {
+            const story = contentDatabase[3].stories[0];
+            const content = document.getElementById('storyContent');
+            const interaction = document.getElementById('storyInteraction');
+            
+            if (storyPage < story.pages.length) {
+                content.innerHTML = `
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.5rem; margin: 2rem 0;">${story.pages[storyPage]}</p>
+                        <div style="background: #e7f3ff; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                            <strong>🏠 En casa:</strong> Lee con expresión y pausa para que tu hijo participe
+                        </div>
+                    </div>
+                `;
+                
+                // Agregar interacción según la página
+                const interactionType = story.interactions[storyPage];
+                if (interactionType === 'jump') {
+                    interaction.innerHTML = `
+                        <div style="text-align: center;">
+                            <p><strong>¡Momento de participar!</strong></p>
+                            <p>En casa: Haz que tu hijo salte como el conejito mientras dice "¡HOP!"</p>
+                            <button class="btn btn-warning" onclick="jumpLikeRabbit()">🐰 Demostrar SALTO</button>
+                        </div>
+                    `;
+                } else if (interactionType === 'eat') {
+                    interaction.innerHTML = `
+                        <div style="text-align: center;">
+                            <p><strong>¡Momento de participar!</strong></p>
+                            <p>En casa: Haz gestos de comer y sonidos "ÑAM ÑAM" juntos</p>
+                            <button class="btn btn-warning" onclick="makeEatingSound()">🥕 Demostrar ÑAM ÑAM</button>
+                        </div>
+                    `;
+                } else {
+                    interaction.innerHTML = `
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px;">
+                            <strong>💡 En casa:</strong> Pausa aquí y pregunta "¿Qué crees que pasará después?"
+                        </div>
+                    `;
+                }
+            } else {
+                // Final del cuento
+                content.innerHTML = `
+                    <div style="text-align: center;">
+                        <h3>🎉 ¡Cuento terminado!</h3>
+                        <p>¡Excelente! Has aprendido la técnica de cuento interactivo.</p>
+                        <div style="background: #d4edda; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                            <h4>🏠 Para aplicar en casa:</h4>
+                            <ul style="text-align: left; margin: 1rem 0;">
+                                <li>Busca momentos para que tu hijo participe físicamente</li>
+                                <li>Usa diferentes voces para los personajes</li>
+                                <li>Haz sonidos onomatopéyicos exagerados</li>
+                                <li>Repite las partes que más le gusten</li>
+                                <li>Pregunta sobre la historia: "¿Qué comió el conejo?"</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                interaction.innerHTML = '';
+            }
+        }
+
+        function nextStoryPage() {
+            storyPage++;
+            if (storyPage >= contentDatabase[3].stories[0].pages.length) {
+                // Mostrar página de finalización
+                loadStoryPage();
+                document.querySelector('.btn-warning').style.display = 'none';
+                document.getElementById('completeStoryBtn').style.display = 'inline-block';
+            } else {
+                loadStoryPage();
+            }
+        }
+
+        function jumpLikeRabbit() {
+            const btn = event.target;
+            btn.style.animation = 'bounce 0.5s';
+            btn.innerHTML = '🐰 ¡HOP! ¡HOP!';
+            setTimeout(() => {
+                btn.style.animation = '';
+                btn.innerHTML = '🐰 Demostrar SALTO';
+            }, 1000);
+            updateScore(5);
+            showNotification('🐰 ¡Perfecto! En casa, salta junto con tu hijo', 'success');
+        }
+
+        function makeEatingSound() {
+            const btn = event.target;
+            btn.innerHTML = '🥕 ÑAM ÑAM ÑAM!';
+            btn.style.animation = 'pulse 1s';
+            setTimeout(() => {
+                btn.innerHTML = '🥕 Demostrar ÑAM ÑAM';
+                btn.style.animation = '';
+            }, 1500);
+            updateScore(5);
+            showNotification('🥕 ¡Excelente! Haz estos sonidos exagerados en casa', 'success');
+        }
+
+        // Cuento de completar frases
+        function startStory3_2() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🌙 DEMOSTRACIÓN: Técnica de completar frases</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa aplicarás:</h3>
+                    <ul>
+                        <li>Lee despacio hasta la palabra que falta</li>
+                        <li>Haz una pausa larga esperando que complete</li>
+                        <li>Si no responde, da la primera sílaba como pista</li>
+                        <li>Celebra cualquier intento de completar</li>
+                    </ul>
+                </div>
+                
+                <div class="game-area">
+                    <div style="font-size: 1.1rem; line-height: 2; background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <p>La luna 🌙 brillaba en el <input type="text" placeholder="cielo" style="border-bottom: 2px solid #667eea; width: 100px; background: #fff3cd;"> nocturno.</p>
+                        <p>Las estrellas ⭐ eran muy <input type="text" placeholder="brillantes" style="border-bottom: 2px solid #667eea; width: 120px; background: #fff3cd;"> y bonitas.</p>
+                        <p>El niño las miraba desde su <input type="text" placeholder="ventana" style="border-bottom: 2px solid #667eea; width: 100px; background: #fff3cd;"> pequeña.</p>
+                        <p>Y se quedó <input type="text" placeholder="dormido" style="border-bottom: 2px solid #667eea; width: 100px; background: #fff3cd;"> soñando con ellas.</p>
+                    </div>
+                    <div style="background: #e7f3ff; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong>💡 Palabras sugeridas:</strong> cielo, brillantes, ventana, dormido
+                    </div>
+                    <button class="btn btn-success" onclick="checkStoryCompletion()">Verificar Cuento</button>
+                </div>
+                
+                <div class="feedback-box" id="storyCompletionFeedback"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('story-3-2')" style="display: none;" id="completeStory2Btn">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('🌙 La Luna y las Estrellas', content);
+        }
+
+        function checkStoryCompletion() {
+            const inputs = document.querySelectorAll('input[type="text"]');
+            const expectedAnswers = ['cielo', 'brillantes', 'ventana', 'dormido'];
+            let correct = 0;
+            let filled = 0;
+            
+            inputs.forEach((input, index) => {
+                if (input.value.trim().length > 0) {
+                    filled++;
+                    if (input.value.toLowerCase().trim() === expectedAnswers[index]) {
+                        correct++;
+                        input.style.borderColor = '#28a745';
+                        input.style.backgroundColor = '#d4edda';
+                    } else {
+                        input.style.borderColor = '#ffc107';
+                        input.style.backgroundColor = '#fff3cd';
+                    }
+                }
+            });
+            
+            const feedback = document.getElementById('storyCompletionFeedback');
+            
+            if (filled === inputs.length) {
+                feedback.className = 'feedback-box feedback-correct show';
+                feedback.innerHTML = `
+                    ✅ ¡Excelente! Completaste el cuento (${correct}/${inputs.length} perfectas)
+                    <br><strong>🏠 En casa:</strong> Acepta respuestas creativas, no solo las "correctas"
+                `;
+                updateScore(15);
+                document.getElementById('completeStory2Btn').style.display = 'inline-block';
+            } else {
+                feedback.className = 'feedback-box feedback-incorrect show';
+                feedback.innerHTML = `
+                    ❌ Completa todas las palabras (${filled}/${inputs.length} completadas)
+                    <br><strong>💡 Tip:</strong> En casa, da pistas si tu hijo no sabe qué palabra va
+                `;
+            }
+        }
+
+        // FUNCIONES DE CANCIONES MEJORADAS CON MODALES
+
+        function startSong3_1() {
+            if (!checkAgeSelected()) return;
+            
+            const song = contentDatabase[3].songs[0];
+            const content = `
+                <div class="demo-label">🎵 DEMOSTRACIÓN: Técnica de canción con números</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 En casa necesitarás:</h3>
+                    <ul>
+                        <li>Tu voz (no necesitas saber cantar bien)</li>
+                        <li>Espacio para moverse</li>
+                        <li>Paciencia para repetir muchas veces</li>
+                    </ul>
+                    <p><strong>Objetivo:</strong> Que memorice números del 1 al 10 a través del ritmo y movimiento.</p>
+                </div>
+                
+                <div class="game-area" style="text-align: center;">
+                    <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
+                        <pre style="font-size: 1.2rem; line-height: 2; color: #333;">${song.lyrics}</pre>
+                    </div>
+                    <div style="background: #fff3cd; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong>🎼 ${song.instructions}</strong>
+                    </div>
+                    <div style="margin: 2rem 0;">
+                        <button class="btn btn-warning" onclick="playSongAnimation()">🎶 Demostrar Canción</button>
+                    </div>
+                </div>
+                
+                <div class="feedback-box" id="songFeedback"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('song-3-1')">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('🎵 Los Números Bailarines', content);
+        }
+
+        function playSongAnimation() {
+            const btn = event.target;
+            const movements = [
+                '🎵 Uno 🦶', '🎵 Dos 🦶', '🎵 Tres 🦶',
+                '🎵 Cuatro 🦘', '🎵 Cinco 🦘', '🎵 Seis 🦘',
+                '🎵 Siete 💃', '🎵 Ocho 💃', '🎵 Nueve 💃',
+                '🎵 Diez 🎉'
+            ];
+            
+            let count = 0;
+            btn.disabled = true;
+            
+            const interval = setInterval(() => {
+                btn.innerHTML = movements[count];
+                count++;
+                if (count >= movements.length) {
+                    clearInterval(interval);
+                    btn.innerHTML = '🎶 ¡Canción Demostrada!';
+                    btn.disabled = false;
+                    updateScore(10);
+                    
+                    const feedback = document.getElementById('songFeedback');
+                    feedback.className = 'feedback-box feedback-correct show';
+                    feedback.innerHTML = `
+                        ✅ ¡Perfecto! Has visto la técnica completa
+                        <br><strong>🏠 En casa:</strong> Repite esta secuencia diariamente, empezando lento
+                    `;
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = '🎶 Demostrar Canción';
+                    }, 3000);
+                }
+            }, 800);
+        }
+
+        function startSong3_2() {
+            if (!checkAgeSelected()) return;
+            
+            const song = contentDatabase[3].songs[1];
+            const colors = ['rojo', 'azul', 'verde', 'amarillo'];
+            
+            const content = `
+                <div class="demo-label">🌈 DEMOSTRACIÓN: Técnica de canción de colores</div>
+                
+                <div class="educational-context">
+                    <h3>🏠 Instrucciones para casa:</h3>
+                    <p><strong>${song.instructions}</strong></p>
+                    <p>Mientras cantas cada color, señala objetos de ese color en tu casa.</p>
+                </div>
+                
+                <div class="game-area">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin: 2rem 0;">🌈</div>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                            <pre style="font-size: 1.1rem; line-height: 1.8; color: #333;">${song.lyrics}</pre>
+                        </div>
+                        <p style="font-size: 1.2rem;">Haz clic en cada color para demostrar:</p>
+                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
+                            ${colors.map(color => `
+                                <button class="interactive-element" onclick="singColor('${color}')" style="background: ${getColorHex(color)}; color: white;">
+                                    ${color.toUpperCase()}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div id="colorSong" style="text-align: center; font-size: 1.5rem; margin: 2rem 0; min-height: 60px;"></div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('song-3-2')">Entendí la Técnica ✓</button>
+                </div>
+            `;
+            
+            openActivityModal('🌈 El Arcoíris Musical', content);
+        }
+
+        function singColor(color) {
+            const display = document.getElementById('colorSong');
+            const colorExamples = {
+                'rojo': ['tomate 🍅', 'corazón ❤️', 'fresa 🍓'],
+                'azul': ['cielo 🌌', 'agua 🌊', 'mar 🏖️'],
+                'verde': ['hierba 🌿', 'árbol 🌳', 'rana 🐸'],
+                'amarillo': ['sol ☀️', 'plátano 🍌', 'flor 🌻']
+            };
+            
+            const examples = colorExamples[color];
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            
+            display.innerHTML = `
+                <div style="color: ${getColorHex(color)}; font-weight: bold;">
+                    🎵 "${color.toUpperCase()} como ${randomExample}" 🎵
+                </div>
+                <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #666;">
+                    🏠 En casa: Señala objetos ${color}s mientras cantas
+                </div>
+            `;
+            
+            setTimeout(() => {
+                display.innerHTML = '<div style="color: #999;">Haz clic en otro color para continuar la demostración</div>';
+            }, 3000);
+            
+            updateScore(2);
+        }
+
+        // FUNCIONES PARA 4 AÑOS - SIMPLIFICADAS (se pueden expandir según necesidad)
+
+        function startSentenceBuilder4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🧩 DEMOSTRACIÓN: Técnica de construcción</div>
+                <div class="game-area">
+                    <p>🏠 En casa necesitarás tarjetas de palabras para que tu hijo forme oraciones como "El niño come manzana".</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('sentence-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('🧩 Constructor de Oraciones', content);
+        }
+
+        function startQuestionGame4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">❓ DEMOSTRACIÓN: Técnica de preguntas</div>
+                <div class="game-area">
+                    <p>🏠 En casa harás preguntas como: ¿Quién?, ¿Dónde?, ¿Cuándo? durante cuentos y experiencias.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('questions-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('❓ Preguntas y Respuestas', content);
+        }
+
+        function startSequenceGame4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">📅 DEMOSTRACIÓN: Técnica de secuencias</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás secuencias usando palabras como "primero", "después", "luego" con rutinas diarias.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('sequence-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('📅 Secuencias Temporales', content);
+        }
+
+        function startComprehensionStory4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">📚 DEMOSTRACIÓN: Técnica de comprensión</div>
+                <div class="game-area">
+                    <p>🏠 En casa leerás cuentos haciendo pausas para preguntas de comprensión.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('comp-story-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('📚 El León y el Ratón', content);
+        }
+
+        function startRhymeGame4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🎪 DEMOSTRACIÓN: Técnica de rimas</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás rimas exagerando los sonidos finales de las palabras.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('rhyme-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('🎪 Encuentra la Rima', content);
+        }
+
+        function startTongueTwister4() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">👅 DEMOSTRACIÓN: Técnica de trabalenguas</div>
+                <div class="game-area">
+                    <p>🏠 En casa practicarás trabalenguas empezando muy lento y aumentando velocidad gradualmente.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('tongue-4')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('👅 Trabalenguas Fáciles', content);
+        }
+
+        // FUNCIONES PARA 5 AÑOS - SIMPLIFICADAS
+
+        function startStoryCreator5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">✍️ DEMOSTRACIÓN: Método de creación</div>
+                <div class="game-area">
+                    <p>🏠 En casa ayudarás a tu hijo a crear historias con inicio, desarrollo y final usando imágenes o juguetes.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('create-story-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('✍️ Crea tu Cuento', content);
+        }
+
+        function startDescriptionGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🔍 DEMOSTRACIÓN: Técnica descriptiva</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás a describir objetos usando color, tamaño, forma, textura y uso.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('describe-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('🔍 Describe y Adivina', content);
+        }
+
+        function startDialogGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">💬 DEMOSTRACIÓN: Técnica de diálogos</div>
+                <div class="game-area">
+                    <p>🏠 En casa practicarás conversaciones de roles como doctor, maestro, vendedor.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('dialog-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('💬 Conversaciones', content);
+        }
+
+        function startCategoryGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">📦 DEMOSTRACIÓN: Técnica de categorización</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás a clasificar objetos por categorías: animales, transporte, ropa, etc.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('category-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('📦 Categorías', content);
+        }
+
+        function startOppositeGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">↔️ DEMOSTRACIÓN: Técnica de opuestos</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás opuestos usando experiencias físicas: caliente/frío, alto/bajo, etc.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('opposite-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('↔️ Opuestos', content);
+        }
+
+        function startAnalogiesGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🔗 DEMOSTRACIÓN: Técnica de analogías</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás relaciones lógicas: "Pájaro es a volar como pez es a nadar".</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('analogies-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('🔗 Analogías Simples', content);
+        }
+
+        function startRolePlay5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">🎭 DEMOSTRACIÓN: Técnica de roles</div>
+                <div class="game-area">
+                    <p>🏠 En casa jugarás roles de profesiones para expandir vocabulario y habilidades sociales.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('roleplay-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('🎭 Juego de Roles', content);
+        }
+
+        function startEmotionsGame5() {
+            if (!checkAgeSelected()) return;
+            
+            const content = `
+                <div class="demo-label">😊 DEMOSTRACIÓN: Técnica emocional</div>
+                <div class="game-area">
+                    <p>🏠 En casa enseñarás vocabulario emocional y expresión de sentimientos.</p>
+                    <p>Esta función se completará en una próxima actualización.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeActivityModal(); markActivityComplete('emotions-5')">Entendí ✓</button>
+            `;
+            
+            openActivityModal('😊 Expresando Emociones', content);
+        }
+        // FUNCIONES DE SISTEMA
+
+        function checkAgeSelected() {
+            if (!selectedAge) {
+                showNotification('⚠️ Por favor, selecciona primero la edad de tu hijo para ver actividades apropiadas', 'warning');
+                return false;
+            }
+            return true;
+        }
+
+        function markActivityComplete(activityId) {
+            const card = document.querySelector(`[data-activity="${activityId}"]`);
+            if (card && !card.classList.contains('completed')) {
+                card.classList.add('completed');
+                completedActivities.add(activityId);
+                updateProgress();
+                checkAchievements();
+                saveProgress();
+                
+                showNotification(`✅ Actividad completada: ${card.querySelector('.activity-title').textContent}`, 'success');
+            }
+        }
+
+        function updateScore(points) {
+            currentScore += points;
+            showNotification(`+${points} puntos`, 'success', 2000);
+        }
+
+        function updateProgress() {
+            const progress = (completedActivities.size / totalActivities) * 100;
+            
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const activitiesText = document.getElementById('activitiesCompleted');
+            if (progressFill) {
+                progressFill.style.width = progress + '%';
+            }
+            if (progressText) {
+                progressText.textContent = Math.round(progress) + '% completado';
+            }
+            if (activitiesText) {
+                activitiesText.textContent = `${completedActivities.size} de ${totalActivities} actividades`;
+            }
+            
+            // Habilitar evaluación final si se completaron suficientes actividades
+            if (completedActivities.size >= Math.min(8, totalActivities - 2)) {
+                const finalBtn = document.getElementById('finalQuizBtn');
+                if (finalBtn) {
+                    finalBtn.disabled = false;
+                    finalBtn.textContent = '🏆 Comenzar Evaluación Final (Desbloqueado)';
+                }
+            }
+            
+            // Completar módulo si todas las actividades están hechas
+            if (completedActivities.size >= totalActivities) {
+                completeModule();
+            }
+        }
+
+        function checkAchievements() {
+            const completed = completedActivities.size;
+            
+            // Primera actividad
+            if (completed >= 1 && !achievements.has('first')) {
+                achievements.add('first');
+                document.getElementById('badge1').classList.add('unlocked');
+                showNotification('🎯 ¡Logro desbloqueado: Primera Actividad!', 'success');
+            }
+            
+            // 5 Juegos
+            if (completed >= 5 && !achievements.has('games')) {
+                achievements.add('games');
+                document.getElementById('badge2').classList.add('unlocked');
+                showNotification('🎮 ¡Logro desbloqueado: 5 Juegos Completados!', 'success');
+            }
+            
+            // Maestro Musical (completar actividades de canciones)
+            const songActivities = ['song-3-1', 'song-3-2'];
+            const songsCompleted = songActivities.filter(act => completedActivities.has(act)).length;
+            if (songsCompleted >= 1 && !achievements.has('music')) {
+                achievements.add('music');
+                document.getElementById('badge3').classList.add('unlocked');
+                showNotification('🎵 ¡Logro desbloqueado: Maestro Musical!', 'success');
+            }
+            
+            // Contador de Cuentos (completar actividades de cuentos)
+            const storyActivities = ['story-3-1', 'story-3-2', 'comp-story-4', 'create-story-5'];
+            const storiesCompleted = storyActivities.filter(act => completedActivities.has(act)).length;
+            if (storiesCompleted >= 2 && !achievements.has('stories')) {
+                achievements.add('stories');
+                document.getElementById('badge4').classList.add('unlocked');
+                showNotification('📚 ¡Logro desbloqueado: Contador de Cuentos!', 'success');
+            }
+            
+            // Módulo Completo
+            if (completed >= totalActivities && !achievements.has('complete')) {
+                achievements.add('complete');
+                document.getElementById('badge5').classList.add('unlocked');
+                showNotification('🏆 ¡Logro desbloqueado: Módulo Completo!', 'success');
+            }
+        }
+
+        // EVALUACIÓN FINAL
+
+        function startFinalQuiz() {
+            if (!checkAgeSelected()) {
+                showNotification('⚠️ Selecciona la edad de tu hijo primero', 'warning');
+                return;
+            }
+            
+            const minActivities = Math.min(8, totalActivities - 2);
+            if (completedActivities.size < minActivities) {
+                showNotification(`⚠️ Completa al menos ${minActivities} actividades primero`, 'warning');
+                return;
+            }
+            
+            document.getElementById('finalQuizContainer').classList.remove('hidden');
+            initializeFinalQuiz();
+            startQuizTimer();
+        }
+
+        function initializeFinalQuiz() {
+            const questions = getFinalQuizQuestions();
+            window.finalQuizQuestions = questions;
+            window.finalQuizAnswers = [];
+            window.currentFinalQuestion = 0;
+            
+            loadFinalQuestion();
+        }
+
+        function getFinalQuizQuestions() {
+            const questions = {
+                3: [
+                    {
+                        question: "¿Cuál es la mejor manera de enseñar colores a un niño de 3 años?",
+                        options: ["Solo con libros", "Con objetos reales y juego", "Memorizando listas", "Viendo TV"],
+                        correct: 1,
+                        explanation: "Los niños de 3 años aprenden mejor con objetos reales y participación activa"
+                    },
+                    {
+                        question: "¿Cómo debe hacer un padre el sonido 'MUU' de la vaca?",
+                        options: ["Muy bajito", "Normal", "Exagerado y claro", "No importa cómo"],
+                        correct: 2,
+                        explanation: "Los sonidos exagerados ayudan a los niños a distinguir y reproducir mejor los sonidos"
+                    }
+                ],
+                4: [
+                    {
+                        question: "¿Cuál es la estructura básica que debe tener una oración para niños de 4 años?",
+                        options: ["Solo verbo", "Sujeto + verbo + objeto", "Muy complicada", "No importa"],
+                        correct: 1,
+                        explanation: "La estructura sujeto-verbo-objeto es la base del lenguaje a los 4 años"
+                    }
+                ],
+                5: [
+                    {
+                        question: "¿Cuál es la estructura narrativa que debe enseñar a un niño de 5 años?",
+                        options: ["Solo final", "Inicio-problema-solución-final", "Sin estructura", "Solo personajes"],
+                        correct: 1,
+                        explanation: "Esta estructura desarrolla pensamiento lógico y habilidades narrativas"
+                    }
+                ]
+            };
+            
+            return questions[selectedAge] || questions[3];
+        }
+
+        function loadFinalQuestion() {
+            const question = window.finalQuizQuestions[window.currentFinalQuestion];
+            const container = document.getElementById('finalQuestion');
+            
+            container.innerHTML = `
+                <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">
+                    Pregunta ${window.currentFinalQuestion + 1} de ${window.finalQuizQuestions.length}
+                </p>
+                <p style="font-size: 1.1rem; margin: 1rem 0; background: #f8f9fa; padding: 1rem; border-radius: 10px;">
+                    ${question.question}
+                </p>
+                <div class="quiz-options">
+                    ${question.options.map((opt, idx) => `
+                        <div class="quiz-option" onclick="selectFinalAnswer(${idx})">
+                            ${opt}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function selectFinalAnswer(index) {
+            // Guardar respuesta
+            window.finalQuizAnswers[window.currentFinalQuestion] = index;
+            
+            // Marcar opción seleccionada y mostrar feedback inmediato
+            const options = document.querySelectorAll('.quiz-option');
+            const question = window.finalQuizQuestions[window.currentFinalQuestion];
+            
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            
+            if (index === question.correct) {
+                options[index].classList.add('correct');
+                options[index].innerHTML += ' ✅';
+            } else {
+                options[index].classList.add('incorrect');
+                options[index].innerHTML += ' ❌';
+                options[question.correct].classList.add('correct');
+                options[question.correct].innerHTML += ' ✅ (Correcto)';
+            }
+            
+            // Mostrar explicación
+            const explanation = document.createElement('div');
+            explanation.style.cssText = 'background: #e7f3ff; padding: 1rem; border-radius: 8px; margin: 1rem 0;';
+            explanation.innerHTML = `<strong>💡 Explicación:</strong> ${question.explanation}`;
+            document.getElementById('finalQuestion').appendChild(explanation);
+            
+            // Avanzar automáticamente después de 3 segundos
+            setTimeout(() => {
+                window.currentFinalQuestion++;
+                if (window.currentFinalQuestion < window.finalQuizQuestions.length) {
+                    loadFinalQuestion();
+                } else {
+                    submitFinalQuiz();
+                }
+            }, 3000);
+        }
+
+        function startQuizTimer() {
+            let timeLeft = 300; // 5 minutos
+            
+            quizTimer = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                const display = document.getElementById('quizTimer');
+                if (display) {
+                    display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    // Cambiar color cuando quede poco tiempo
+                    if (timeLeft <= 60) {
+                        display.style.color = '#dc3545';
+                    }
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(quizTimer);
+                    submitFinalQuiz();
+                }
+            }, 1000);
+        }
+
+        function submitFinalQuiz() {
+            clearInterval(quizTimer);
+            
+            // Calcular puntuación
+            let correct = 0;
+            window.finalQuizQuestions.forEach((q, idx) => {
+                if (window.finalQuizAnswers[idx] === q.correct) {
+                    correct++;
+                }
+            });
+            
+            const percentage = (correct / window.finalQuizQuestions.length) * 100;
+            
+            const feedback = document.getElementById('finalFeedback');
+            feedback.className = 'feedback-box show';
+            
+            if (percentage >= 80) {
+                feedback.classList.add('feedback-correct');
+                feedback.innerHTML = `
+                    <h3>🎉 ¡EXCELENTE!</h3>
+                    <p><strong>Puntuación:</strong> ${correct}/${window.finalQuizQuestions.length} (${Math.round(percentage)}%)</p>
+                    <p>Has dominado las técnicas de estimulación del lenguaje para ${selectedAge} años.</p>
+                    <p><strong>🏠 Estás listo para aplicar estas técnicas en casa con confianza.</strong></p>
+                `;
+                completeModule();
+            } else if (percentage >= 60) {
+                feedback.classList.add('feedback-correct');
+                feedback.innerHTML = `
+                    <h3>👍 ¡Muy Bien!</h3>
+                    <p><strong>Puntuación:</strong> ${correct}/${window.finalQuizQuestions.length} (${Math.round(percentage)}%)</p>
+                    <p>Buen trabajo. Repasa las técnicas que más te costaron.</p>
+                    <p><strong>💡 Puedes empezar a aplicar lo aprendido, pero revisa el material ocasionalmente.</strong></p>
+                `;
+            } else {
+                feedback.classList.add('feedback-incorrect');
+                feedback.innerHTML = `
+                    <h3>📚 Necesitas Repasar</h3>
+                    <p><strong>Puntuación:</strong> ${correct}/${window.finalQuizQuestions.length} (${Math.round(percentage)}%)</p>
+                    <p>Te recomendamos repasar las actividades antes de continuar.</p>
+                    <p><strong>🔄 Practica más las técnicas y vuelve a intentar la evaluación.</strong></p>
+                `;
+            }
+            
+            // Ocultar el contenedor del quiz
+            setTimeout(() => {
+                document.getElementById('finalQuizContainer').innerHTML = feedback.outerHTML;
+            }, 1000);
+        }
+
+        // FUNCIONES DE SISTEMA FINALES
+
+        function completeModule() {
+            // Mostrar botones de navegación
+            document.getElementById('certificateBtn').style.display = 'inline-block';
+            document.getElementById('nextModuleBtn').style.display = 'inline-block';
+            
+            // Actualizar progreso del curso
+            let courseProgress = JSON.parse(localStorage.getItem('courseProgress') || '[false,false,false,false,false]');
+            courseProgress[2] = true; // Módulo 3 completado
+            localStorage.setItem('courseProgress', JSON.stringify(courseProgress));
+            
+            showNotification('🎉 ¡FELICITACIONES! Has completado el Módulo 3', 'success', 10000);
+            
+            setTimeout(() => {
+                alert(`
+🏆 ¡Módulo 3 Completado!
+
+✅ Has dominado ${completedActivities.size} técnicas de estimulación
+✅ Conoces actividades para ${selectedAge} años
+✅ Puedes crear juegos educativos personalizados
+✅ Sabes cómo usar cuentos, canciones y rutinas diarias
+
+🏠 ¡Ahora puedes aplicar todo esto en casa con tu hijo!
+
+¡Continúa al Módulo 4 para identificar dificultades comunes!
+                `);
+            }, 2000);
+        }
+
+        function generateCertificate() {
+            const userName = prompt('¿Cuál es tu nombre para el certificado?') || 'Estudiante';
+            const currentDate = new Date().toLocaleDateString('es-ES');
+            
+            const certificate = `
+🏆 CERTIFICADO DE ESPECIALIZACIÓN 🏆
+
+ESTIMULACIÓN DEL LENGUAJE INFANTIL - MÓDULO 3
+
+Certificamos que: ${userName.toUpperCase()}
+
+Ha completado exitosamente el MÓDULO 3:
+"ACTIVIDADES Y JUEGOS PARA EL HOGAR"
+
+Competencias Profesionales Adquiridas:
+✅ Técnicas de juegos de vocabulario por edades
+✅ Metodología de cuentos interactivos
+✅ Creación de canciones educativas
+✅ Transformación de rutinas en oportunidades de aprendizaje
+✅ Estimulación de creatividad y narrativa
+
+Especialización: Niños de ${selectedAge ? selectedAge + ' años' : 'todas las edades'}
+Actividades dominadas: ${completedActivities.size}
+Puntuación total: ${currentScore}
+
+Fecha: ${currentDate}
+ID Certificado: MOD3-${Date.now()}
+
+🏠 LISTO PARA APLICAR TÉCNICAS PROFESIONALES EN CASA
+            `;
+            
+            // Crear y descargar el archivo
+            const blob = new Blob([certificate], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Certificado_Modulo3_${userName.replace(/\s/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('🎉 Certificado profesional descargado exitosamente', 'success');
+        }
+
+        function printActivities() {
+            if (!selectedAge) {
+                showNotification('⚠️ Selecciona la edad de tu hijo primero', 'warning');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank');
+            const activities = {
+                3: [
+                    'Veo-Veo de Colores: 10 minutos diarios con objetos reales',
+                    'Sonidos de Animales: 5 minutos con libros o juguetes',
+                    'Simón dice (partes del cuerpo): 5 minutos de juego activo',
+                    'Canciones con números: 10 minutos, repetir hasta memorizar',
+                    'Cuento interactivo: 15 minutos antes de dormir',
+                    'Vocabulario en la merienda: durante comidas principales'
+                ],
+                4: [
+                    'Constructor de Oraciones: 15 minutos con tarjetas de palabras',
+                    'Preguntas de comprensión: durante cualquier cuento o experiencia',
+                    'Secuencias temporales: 10 minutos con rutinas diarias',
+                    'Rimas y trabalenguas: 10 minutos, empezar lento'
+                ],
+                5: [
+                    'Creación de historias: 20 minutos con imágenes o objetos',
+                    'Juego de categorías: 15 minutos clasificando objetos reales',
+                    'Teatro y roles: 20 minutos interpretando profesiones',
+                    'Opuestos y analogías: 15 minutos con experiencias físicas'
+                ]
+            };
+            
+            const content = `
+                <html>
+                <head>
+                    <title>Plan Personalizado de Actividades - ${selectedAge} años</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+                        h1 { color: #667eea; text-align: center; }
+                        h2 { color: #764ba2; }
+                        ul { line-height: 2; }
+                        .header-info { background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 20px 0; }
+                    </style>
+                </head>
+                <body>
+                    <h1>🏠 Plan Personalizado de Estimulación del Lenguaje</h1>
+                    
+                    <div class="header-info">
+                        <h2>Información del Plan</h2>
+                        <p><strong>Edad del niño:</strong> ${selectedAge} años</p>
+                        <p><strong>Actividades completadas:</strong> ${completedActivities.size}</p>
+                        <p><strong>Fecha:</strong> ${new Date().toLocaleDateString('es-ES')}</p>
+                        <p><strong>Nivel:</strong> ✅ Listo para aplicar técnicas profesionales</p>
+                    </div>
+                    
+                    <h2>📋 Actividades Diarias Recomendadas</h2>
+                    <ul>
+                        ${activities[selectedAge].map(act => `<li>☐ ${act}</li>`).join('')}
+                    </ul>
+                    
+                    <h2>⏰ Horario Sugerido</h2>
+                    <ul>
+                        <li>☐ <strong>Mañana (10 min):</strong> Juego de vocabulario</li>
+                        <li>☐ <strong>Tarde (15 min):</strong> Actividad creativa</li>
+                        <li>☐ <strong>Noche (10 min):</strong> Cuento o canción</li>
+                        <li>☐ <strong>Durante comidas:</strong> Vocabulario de alimentos</li>
+                    </ul>
+                    
+                    <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #667eea;">
+                        <p><strong>Creado por:</strong> Módulo 3 - Actividades y Juegos</p>
+                        <p><strong>Próximo paso:</strong> Continuar con Módulo 4</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            printWindow.document.write(content);
+            printWindow.document.close();
+            printWindow.print();
+            
+            showNotification('📄 Plan personalizado enviado a impresión', 'success');
+        }
+
+        function showProgress() {
+            const progress = (completedActivities.size / totalActivities) * 100;
+            const activitiesList = Array.from(completedActivities).join(', ') || 'Ninguna aún';
+            const achievementsList = Array.from(achievements).join(', ') || 'Ninguno aún';
+            
+            const progressMessage = `
+📊 TU PROGRESO EN MÓDULO 3:
+
+📈 Progreso general: ${Math.round(progress)}%
+🎮 Actividades completadas: ${completedActivities.size} de ${totalActivities}
+👶 Edad seleccionada: ${selectedAge ? selectedAge + ' años' : 'No seleccionada'}
+🎯 Puntuación total: ${currentScore} puntos
+
+🏆 Logros desbloqueados: ${achievementsList}
+
+🏠 TÉCNICAS LISTAS PARA APLICAR EN CASA:
+${completedActivities.size > 0 ? '✅ Tienes herramientas profesionales' : '⏳ Completa actividades'}
+
+${progress === 100 ? '🎉 ¡MÓDULO COMPLETADO! Descarga certificado.' : '💪 ¡Sigue aprendiendo!'}
+            `;
+            
+            alert(progressMessage);
+        }
+
+        function showHelp() {
+            const helpMessage = `
+📖 GUÍA DEL MÓDULO 3
+
+🎯 OBJETIVO:
+Aprender técnicas profesionales para estimular el lenguaje de tu hijo en casa.
+
+🏠 FUNCIONAMIENTO:
+Los juegos son DEMOSTRACIONES para que aprendas metodologías que aplicarás en casa.
+
+📋 INSTRUCCIONES:
+1. Selecciona la edad de tu hijo
+2. Haz clic en las actividades para ver demostraciones
+3. Aprende las técnicas mostradas
+4. Aplica lo aprendido en casa con tu hijo
+
+💡 CONSEJOS:
+• Consistencia diaria es clave
+• Usa objetos reales siempre que sea posible
+• Celebra cada pequeño progreso
+• Adapta según el interés del niño
+
+¿Necesitas ayuda? Contacta al instructor del curso.
+            `;
+            
+            alert(helpMessage);
+        }
+
+        function saveProgress() {
+            const progress = {
+                selectedAge: selectedAge,
+                completedActivities: Array.from(completedActivities),
+                achievements: Array.from(achievements),
+                currentScore: currentScore,
+                lastAccess: new Date().toISOString(),
+                version: '2.0'
+            };
+            
+            localStorage.setItem('module3Progress', JSON.stringify(progress));
+        }
+
+        function loadSavedProgress() {
+            try {
+                const saved = localStorage.getItem('module3Progress');
+                if (saved) {
+                    const progress = JSON.parse(saved);
+                    
+                    // Restaurar edad
+                    if (progress.selectedAge) {
+                        selectedAge = progress.selectedAge;
+                        setTimeout(() => selectAge(selectedAge), 500);
+                    }
+                    
+                    // Restaurar actividades completadas
+                    if (progress.completedActivities && Array.isArray(progress.completedActivities)) {
+                        progress.completedActivities.forEach(activity => {
+                            completedActivities.add(activity);
+                            setTimeout(() => {
+                                const card = document.querySelector(`[data-activity="${activity}"]`);
+                                if (card) card.classList.add('completed');
+                            }, 1000);
+                        });
+                    }
+                    
+                    // Restaurar logros
+                    if (progress.achievements && Array.isArray(progress.achievements)) {
+                        progress.achievements.forEach(achievement => {
+                            achievements.add(achievement);
+                        });
+                        
+                        setTimeout(() => {
+                            achievements.forEach(ach => {
+                                const badgeMap = {
+                                    'first': 'badge1', 'games': 'badge2', 'music': 'badge3',
+                                    'stories': 'badge4', 'complete': 'badge5'
+                                };
+                                if (badgeMap[ach]) {
+                                    const badge = document.getElementById(badgeMap[ach]);
+                                    if (badge) badge.classList.add('unlocked');
+                                }
+                            });
+                        }, 1500);
+                    }
+                    
+                    // Restaurar puntuación
+                    if (progress.currentScore) {
+                        currentScore = progress.currentScore;
+                    }
+                    
+                    setTimeout(() => {
+                        updateProgress();
+                        if (completedActivities.size >= totalActivities) {
+                            document.getElementById('certificateBtn').style.display = 'inline-block';
+                            document.getElementById('nextModuleBtn').style.display = 'inline-block';
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Error cargando progreso:', error);
+            }
+        }
+
+        function logout() {
+            if (confirm('¿Estás seguro que quieres salir? Tu progreso se guardará automáticamente.')) {
+                saveProgress();
+                showNotification('💾 Progreso guardado. ¡Hasta pronto!', 'success');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1500);
+            }
+        }
+
+        function showNotification(message, type = 'info', duration = 4000) {
+            // Remover notificaciones existentes
+            const existingNotifications = document.querySelectorAll('.notification-custom');
+            existingNotifications.forEach(notif => notif.remove());
+            
+            // Crear nueva notificación
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} notification-custom`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                z-index: 9999;
+                min-width: 300px;
+                max-width: 500px;
+                animation: slideInNotification 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                border-radius: 10px;
+                font-weight: 500;
+            `;
+            notification.innerHTML = message;
+            document.body.appendChild(notification);
+            
+            // Auto-ocultar
+            setTimeout(() => {
+                notification.style.animation = 'slideOutNotification 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, duration);
+        }
+
+        // Auto-guardado periódico
+        setInterval(() => {
+            if (completedActivities.size > 0) {
+                saveProgress();
+            }
+        }, 30000);
+
+        // Guardar al cerrar/recargar la página
+        window.addEventListener('beforeunload', () => {
+            saveProgress();
+        });
+
+        // Agregar estilos de animación dinámicamente
+        if (!document.getElementById('notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                @keyframes slideInNotification {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutNotification {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+                .notification-custom { transition: all 0.3s ease; }
+                @media (max-width: 768px) {
+                    .notification-custom {
+                        right: 10px; left: 10px; min-width: auto; max-width: none;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Log de inicialización completa
+        console.log('🎮 Módulo 3: Actividades y Juegos - Sistema completo cargado');
+        console.log('🏠 Enfoque: Técnicas para aplicar en casa');
+        console.log('💡 Selecciona la edad de tu hijo para comenzar');
+
+    </script>
+</body>
+</html>

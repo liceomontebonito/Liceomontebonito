@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Módulo 3: Motricidad Gruesa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      /* Paleta de colores consistente con la página principal y módulos anteriores */
+      --primary: #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent: #FFE66D;
+      --light: #F7FFF7;
+      --dark: #2D3436;
+      --success: #6BCF7F;
+      --info: #5DADE2;
+      --warning: #FF9F43;
+      --purple: #9C88FF;
+      --pink: #FF7EB9;
+      --orange: #FF9A56;
+      --teal: #26D0CE;
+      --yellow: #FFD93D;
+      --kid-blue: #4dabf7;
+      --kid-pink: #ff7eb9;
+      --kid-green: #6bcf7f;
+      --kid-purple: #9c88ff;
+      --kid-orange: #ff9a56;
+      --kid-teal: #26d0ce;
+      
+      /* Gradientes consistentes */
+      --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
+      --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+      --gradient-3: linear-gradient(135deg, #9C88FF 0%, #8C7AE6 100%);
+      --gradient-4: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 100%);
+      --gradient-5: linear-gradient(135deg, #FF7EB9 0%, #FF9A56 100%);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #F7FFF7 0%, #E8F8F5 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background 0.6s, color 0.6s;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Animaciones de fondo */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .shape:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+    
+    .shape:nth-child(2) {
+      top: 60%;
+      left: 80%;
+      width: 60px;
+      height: 60px;
+      background: var(--secondary);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation-delay: 2s;
+    }
+    
+    .shape:nth-child(3) {
+      top: 80%;
+      left: 20%;
+      width: 100px;
+      height: 100px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: 4s;
+    }
+    
+    .shape:nth-child(4) {
+      top: 10%;
+      left: 70%;
+      width: 70px;
+      height: 70px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation-delay: 6s;
+    }
+    
+    .shape:nth-child(5) {
+      top: 40%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation-delay: 8s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-30px) rotate(120deg);
+      }
+      66% {
+        transform: translateY(30px) rotate(240deg);
+      }
+    }
+    
+    /* Navbar con animación */
+    .navbar {
+      background: var(--gradient);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 0.8s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .navbar-logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .navbar-logo i {
+      margin-right: 12px;
+      font-size: 2rem;
+      animation: spin 3s linear infinite;
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar-menu li {
+      margin-left: 8px;
+    }
+    
+    .navbar-menu a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .navbar-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    
+    .navbar-menu a:hover::before {
+      width: 100%;
+    }
+    
+    .navbar-menu a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    
+    /* Contenedor principal */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    /* Selector de edad */
+    .age-selector {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .age-selector::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--gradient-2);
+      border-radius: 25px 25px 0 0;
+    }
+    
+    .age-selector h2 {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .age-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .age-btn {
+      background: var(--gradient-2);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .age-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .age-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .age-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .age-btn.active {
+      background: var(--gradient);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+    }
+    
+    .age-info {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      color: var(--secondary);
+      font-weight: 600;
+      display: none;
+    }
+    
+    /* Hero section mejorada */
+    .hero {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 70px 50px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--primary) 0%, var(--pink) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--secondary) 0%, var(--teal) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite 2s;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes titleGlow {
+      from {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      }
+      to {
+        text-shadow: 2px 2px 20px rgba(255,107,107,0.5);
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
+      font-weight: 500;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      animation: slideInLeft 1s ease 0.5s both;
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Animación de niños para motricidad gruesa */
+    .kids-animation {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+      gap: 50px;
+    }
+    
+    .kid {
+      width: 120px;
+      height: 120px;
+      position: relative;
+    }
+    
+    .kid:nth-child(1) {
+      animation: jump 2s infinite ease-in-out;
+    }
+    
+    .kid:nth-child(2) {
+      animation: run 3s infinite ease-in-out;
+    }
+    
+    .kid:nth-child(3) {
+      animation: throw 2.5s infinite ease-in-out;
+    }
+    
+    @keyframes jump {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+    
+    @keyframes run {
+      0% {
+        transform: translateX(-20px);
+      }
+      50% {
+        transform: translateX(20px);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+    
+    @keyframes throw {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(-20deg);
+      }
+      75% {
+        transform: rotate(20deg);
+      }
+    }
+    
+    /* Secciones de contenido con estilo limpio */
+    .content-section {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .content-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--gradient-2);
+      border-radius: 0 0 25px 25px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-2);
+      border-radius: 2px;
+      animation: titleUnderline 2s ease-in-out infinite;
+    }
+    
+    @keyframes titleUnderline {
+      0%, 100% {
+        width: 80px;
+      }
+      50% {
+        width: 120px;
+      }
+    }
+    
+    /* Estilo para secciones de contenido */
+    .content-text {
+      color: #6c757d;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    
+    .content-text:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Ejercicios prácticos para familias - Estilo mejorado */
+    .practical-exercises {
+      margin-top: 30px;
+    }
+    
+    .exercise-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .exercise-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .exercise-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .exercise-item h3 i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    
+    .exercise-item p {
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+    
+    .exercise-item .materials {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-style: italic;
+    }
+    
+    .exercise-item .home-implementation {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--secondary);
+    }
+    
+    .exercise-item .home-implementation h4 {
+      color: var(--secondary);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .exercise-item .home-implementation h4 i {
+      margin-right: 8px;
+    }
+    
+    .exercise-item .home-implementation p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    .exercise-item .sound-context {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .exercise-item .sound-context h4 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .exercise-item .sound-context h4 i {
+      margin-right: 8px;
+    }
+    
+    .exercise-item .sound-context p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+    
+    /* Tips estilo módulo 2 */
+    .tips {
+      background: rgba(94, 114, 228, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 4px solid var(--primary);
+      position: relative;
+    }
+    
+    .tips::before {
+      content: '\f05a';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+    
+    .tips h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .tips p {
+      color: #6c757d;
+      line-height: 1.6;
+    }
+    
+    /* Actividades interactivas - Estilo mejorado */
+    .interactive-activities {
+      margin-top: 30px;
+    }
+    
+    .activity-item {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--secondary);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .activity-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .activity-item h3 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .activity-item h3 i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    
+    .activity-item p {
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+    
+    .activity-item .home-adaptation {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+    }
+    
+    .activity-item .home-adaptation i {
+      margin-right: 5px;
+    }
+    
+    /* FAQ estilo módulo 2 */
+    .faq-list {
+      list-style: none;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .faq-question {
+      background: var(--gradient);
+      color: white;
+      padding: 15px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-answer {
+      background: white;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 20px;
+      max-height: 200px;
+    }
+    
+    .faq-answer p {
+      color: #6c757d;
+      line-height: 1.6;
+    }
+    
+    /* Modal para actividades interactivas */
+    .activity-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .activity-modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      position: relative;
+      animation: modalSlideIn 0.5s ease;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .close-activity-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-activity-modal:hover {
+      color: var(--primary);
+    }
+    
+    .activity-modal-title {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    
+    /* Navegación entre módulos */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 18px 40px;
+      background: var(--gradient);
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+      transition: all 0.4s ease;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      gap: 12px;
+      font-family: 'Montserrat', sans-serif;
+      min-width: 200px;
+      justify-content: center;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+    }
+    
+    .btn i {
+      font-size: 1.3rem;
+    }
+    
+    /* Botón de completar módulo */
+    .complete-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(107, 207, 127, 0.3);
+    }
+    
+    .complete-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(107, 207, 127, 0.4);
+    }
+    
+    .complete-btn:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Footer simplificado */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 25px;
+      margin-top: 60px;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+    
+    .footer p {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    
+    /* Modal de acceso */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      background-color: white;
+      padding: 50px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 550px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      position: relative;
+      animation: modalSlideIn 0.5s ease;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary);
+    }
+    
+    .modal-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    
+    .access-button {
+      width: 100%;
+      padding: 18px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+    }
+    
+    /* Estilos para juegos interactivos */
+    .game-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .game-area {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 15px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .game-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .game-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .game-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 136, 255, 0.3);
+    }
+    
+    .game-feedback {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    
+    .feedback-success {
+      background: rgba(107, 207, 127, 0.1);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+    
+    .feedback-error {
+      background: rgba(255, 107, 107, 0.1);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .feedback-info {
+      background: rgba(93, 173, 226, 0.1);
+      color: var(--info);
+      border: 1px solid var(--info);
+    }
+    
+    .home-activity-guide {
+      background: rgba(255, 230, 109, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .home-activity-guide h4 {
+      color: var(--dark);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .home-activity-guide h4 i {
+      margin-right: 10px;
+      color: var(--accent);
+    }
+    
+    .home-activity-guide ol {
+      padding-left: 20px;
+      color: var(--dark);
+    }
+    
+    .home-activity-guide li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .home-activity-guide .sound-tip {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .home-activity-guide .sound-tip h5 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .home-activity-guide .sound-tip h5 i {
+      margin-right: 8px;
+    }
+    
+    .home-activity-guide .sound-tip p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+    
+    /* Responsive mejorado */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--gradient);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 100;
+      }
+      
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+      
+      .navbar-menu li {
+        margin: 12px 0;
+      }
+      
+      .navbar-toggle {
+        display: block;
+      }
+      
+      .navigation {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 50px 25px;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .content-section {
+        padding: 30px 20px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .modal-content {
+        padding: 40px 25px;
+      }
+      
+      .kids-animation {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .age-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/escuela-de-padres/tema-liceo.css">
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">&#127891;</span><span><span class="lv-texto-largo">Escuela de Padres &middot; </span>Volver</span></a>
+
+  <!-- Formas animadas de fondo -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-child"></i> Escuela de Padres · Liceo Montebonito
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../modulo1/index.html">Módulo 1</a></li>
+        <li><a href="../modulo2/index.html">Módulo 2</a></li>
+        <li><a href="index.html">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html">Módulo 4</a></li>
+        <li><a href="../modulo5/index.html">Módulo 5</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Selector de edad -->
+    <div class="age-selector">
+      <h2>Selecciona la edad de tu hijo/a</h2>
+      <div class="age-buttons">
+        <button class="age-btn" data-age="3">3 años</button>
+        <button class="age-btn" data-age="4">4 años</button>
+        <button class="age-btn" data-age="5">5 años</button>
+      </div>
+      <div class="age-info" id="ageInfo"></div>
+    </div>
+    
+    <!-- Hero section mejorada -->
+    <section class="hero">
+      <h1 class="hero-title">Módulo 3: Motricidad Gruesa</h1>
+      <p class="hero-subtitle" id="heroSubtitle">
+        ¡Descubre el mundo en movimiento! Aprende sobre el desarrollo de las habilidades motrices gruesas en niños de 3 a 5 años.
+      </p>
+      
+      <!-- Animación de niños para motricidad gruesa -->
+      <div class="kids-animation">
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#FF6B6B"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#FF6B6B"/>
+            <rect x="35" y="50" width="10" height="20" rx="5" fill="#FF6B6B"/>
+            <rect x="55" y="50" width="10" height="20" rx="5" fill="#FF6B6B"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#FF6B6B"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#FF6B6B"/>
+          </svg>
+        </div>
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#4ECDC4"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#4ECDC4"/>
+            <path d="M35,50 L25,65 L35,65 Z" fill="#4ECDC4"/>
+            <path d="M65,50 L75,65 L65,65 Z" fill="#4ECDC4"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#4ECDC4"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#4ECDC4"/>
+          </svg>
+        </div>
+        <div class="kid">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="15" fill="#FFE66D"/>
+            <rect x="40" y="45" width="20" height="35" rx="5" fill="#FFE66D"/>
+            <circle cx="30" cy="55" r="8" fill="#FFE66D"/>
+            <circle cx="70" cy="55" r="8" fill="#FFE66D"/>
+            <rect x="40" y="80" width="8" height="15" rx="4" fill="#FFE66D"/>
+            <rect x="52" y="80" width="8" height="15" rx="4" fill="#FFE66D"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: ¿Qué es la motricidad gruesa? -->
+    <section class="content-section">
+      <h2 class="section-title">¿Qué es la motricidad gruesa?</h2>
+      <p class="content-text" id="definicionMotricidad">
+        La motricidad gruesa se refiere a la capacidad de usar los músculos grandes del cuerpo para realizar movimientos como caminar, correr, saltar, lanzar y atrapar. Estas habilidades son fundamentales para la autonomía de los niños y su interacción con el entorno. Se desarrolla progresivamente desde los primeros años de vida y es esencial para el crecimiento físico y la salud general.
+      </p>
+      <p class="content-text" id="desarrolloNeurologico">
+        El desarrollo de la motricidad gruesa está directamente relacionado con la maduración del sistema nervioso. A medida que el cerebro del niño crece, se establecen conexiones neuronales que permiten un mayor control sobre los movimientos del cuerpo. Este proceso es crucial para el desarrollo cognitivo, ya que las áreas del cerebro responsables del movimiento también están involucradas en el pensamiento y el aprendizaje.
+      </p>
+      <p class="content-text" id="etapasDesarrollo">
+        El desarrollo de la motricidad gruesa sigue un proceso progresivo. A los 3 años, los niños comienzan a subir escaleras alternando pies, saltan con ambos pies y corren de manera un poco torpe. A los 4 años, ya pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. A los 5 años, suben y bajan escaleras sin apoyo, patean una pelota con dirección y comienzan a aprender a andar en bicicleta con ruedines.
+      </p>
+    </section>
+    
+    <!-- Sección: Importancia de la motricidad gruesa -->
+    <section class="content-section">
+      <h2 class="section-title">Importancia de la motricidad gruesa</h2>
+      <p class="content-text" id="saludFisica">
+        La motricidad gruesa es fundamental para la salud física de los niños. Fomenta el desarrollo muscular, mejora la resistencia cardiovascular, fortalece los huesos y ayuda a mantener un peso saludable. Los niños con buenas habilidades motrices gruesas suelen tener más energía, mejor postura y menor riesgo de enfermedades relacionadas con el sedentarismo.
+      </p>
+      <p class="content-text" id="autonomiaIndependencia">
+        Las habilidades de motricidad gruesa permiten a los niños realizar tareas cotidianas de forma independiente, como subir escaleras, vestirse, jugar en el parque o participar en actividades deportivas. Esta autonomía no solo aumenta su confianza y autoestima, sino que también fomenta su sentido de responsabilidad y capacidad para cuidar de sí mismos.
+      </p>
+      <p class="content-text" id="interaccionSocial">
+        La motricidad gruesa es esencial para la interacción social. A través del juego físico, los niños aprenden a compartir, turnarse, cooperar y competir de manera saludable. Estas habilidades sociales son fundamentales para establecer amistades, trabajar en equipo y desenvolverse en diferentes entornos sociales. Los niños con buenas habilidades motrices suelen participar más activamente en juegos grupales y actividades deportivas.
+      </p>
+    </section>
+    
+    <!-- Sección: Ejercicios prácticos para familias (Estilo mejorado) -->
+    <section class="content-section">
+      <h2 class="section-title">Ejercicios prácticos para familias</h2>
+      
+      <div class="practical-exercises" id="practicalExercises">
+        <!-- Los ejercicios se cargarán dinámicamente según la edad -->
+      </div>
+      
+      <div class="tips">
+        <h3>Consejo profesional</h3>
+        <p id="consejoProfesional">
+          Dedica 15-20 minutos diarios a estas actividades. La constancia es más importante que la duración. Celebra cada logro, por pequeño que parezca. Recuerda que cada niño tiene su propio ritmo de desarrollo.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Sección: Actividades interactivas (Estilo mejorado) -->
+    <section class="content-section">
+      <h2 class="section-title">Actividades interactivas</h2>
+      
+      <div class="interactive-activities">
+        <div class="activity-item" onclick="showActivityModal('circuit')">
+          <h3><i class="fas fa-route"></i>Constructor de circuitos</h3>
+          <p>Diseña y completa circuitos de motricidad con diferentes estaciones de movimiento</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Adaptable en casa con objetos cotidianos
+          </div>
+        </div>
+        
+        <div class="activity-item" onclick="showActivityModal('obstacles')">
+          <h3><i class="fas fa-mountain"></i>Parque de obstáculos</h3>
+          <p>Navega por un parque de obstáculos mejorando el equilibrio y la agilidad</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Fácil de recrear en espacios interiores o exteriores
+          </div>
+        </div>
+        
+        <div class="activity-item" onclick="showActivityModal('throwing')">
+          <h3><i class="fas fa-baseball-ball"></i>Lanzamiento preciso</h3>
+          <p>Practica diferentes tipos de lanzamientos para mejorar la coordinación</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Utiliza pelotas de diferentes tamaños y texturas
+          </div>
+        </div>
+        
+        <div class="activity-item" onclick="showActivityModal('balance')">
+          <h3><i class="fas fa-balance-scale"></i>Desafío del equilibrio</h3>
+          <p>Completa desafíos de equilibrio para mejorar la estabilidad y el control corporal</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Usa líneas en el suelo o superficies inestables
+          </div>
+        </div>
+        
+        <div class="activity-item" onclick="showActivityModal('sports')">
+          <h3><i class="fas fa-futbol"></i>Mini deportes</h3>
+          <p>Practica versiones adaptadas de deportes populares para niños</p>
+          <div class="home-adaptation">
+            <i class="fas fa-home"></i> Simplifica reglas y adapta espacios para jugar en familia
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Preguntas frecuentes -->
+    <section class="content-section">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿A qué edad deben los niños dominar la motricidad gruesa?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqEdad">
+              El desarrollo de la motricidad gruesa es un proceso gradual que se extiende desde el nacimiento hasta los 7 años aproximadamente. Sin embargo, entre los 3 y 5 años se produce un avance significativo en habilidades como correr, saltar, lanzar y atrapar. Cada niño tiene su propio ritmo, pero existen hitos generales que podemos observar en cada edad.
+            </p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿Qué hacer si mi hijo parece torpe o se cae con frecuencia?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqTorpeza">
+              Es normal que algunos niños sean más torpes que otros, especialmente durante las etapas de crecimiento rápido. Ofrece oportunidades para practicar en un entorno seguro, elogia el esfuerzo más que el resultado y consulta con un pediatra si la torpeza es extrema o persistente. A veces, actividades específicas como caminar sobre líneas o equilibrios pueden ayudar a mejorar la coordinación.
+            </p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            ¿Cuánta actividad física necesitan los niños de 3 a 5 años?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p id="faqActividadFisica">
+              Los niños de 3 a 5 años necesitan al menos 180 minutos de actividad física distribuidos a lo largo del día. Esto no tiene que ser ejercicio estructurado; puede incluir juegos al aire libre, baile, caminatas y otras actividades divertidas. Lo importante es limitar el tiempo sedentario (sentados) a no más de 1 hora continuada, excepto durante el sueño.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Botón para completar módulo -->
+    <button class="complete-btn" id="completeModule3">
+      <i class="fas fa-check-circle"></i> Completar Módulo 3
+    </button>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../modulo2/index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Volver al Módulo 2
+      </a>
+      <a href="../modulo4/index.html" class="btn">
+        Siguiente módulo
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    
+    <!-- Footer mejorado -->
+    <footer class="footer">
+      <p>Escuela de Padres · Liceo Montebonito &copy; 2025</p>
+    </footer>
+  </div>
+  
+  <!-- Modal para actividades interactivas -->
+  <div id="activityModal" class="activity-modal">
+    <div class="activity-modal-content">
+      <span class="close-activity-modal" id="closeActivityModal">&times;</span>
+      <h3 class="activity-modal-title" id="activityModalTitle">Actividad Interactiva</h3>
+      
+      <div id="activityModalContent">
+        <!-- El contenido se cargará dinámicamente según la actividad seleccionada -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
+  <script>
+    // Base de datos de contenido por edad
+    const contenidoPorEdad = {
+      3: {
+        titulo: "¡Descubre el movimiento! Aprende sobre la motricidad gruesa en niños de 3 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 3 años se refiere a la capacidad de usar los músculos grandes para realizar movimientos como caminar, correr y saltar. A esta edad, los niños comienzan a subir escaleras alternando pies, pueden saltar con ambos pies y corren de manera un poco torpe. Estas habilidades son fundamentales para su autonomía y exploración del entorno.",
+        desarrolloNeurologico: "A los 3 años, el cerebro del niño está estableciendo conexiones neuronales cruciales para el control motor. La mielinización de las vías nerviosas permite movimientos más coordinados, sentando las bases para habilidades más complejas como el equilibrio y la coordinación ojo-mano.",
+        etapasDesarrollo: "A los 3 años, los niños comienzan a dominar habilidades como subir escaleras con apoyo, saltar con ambos pies, correr con mayor control y patear una pelota estática. Están desarrollando la conciencia corporal y la capacidad de planificar movimientos simples.",
+        saludFisica: "A los 3 años, la motricidad gruesa contribuye significativamente al desarrollo físico. Fortalece los músculos grandes, mejora la coordinación general y ayuda a desarrollar el equilibrio. Los niños que practican actividades de motricidad gruesa regularmente suelen tener mejor postura y mayor resistencia física.",
+        autonomiaIndependencia: "Los niños de 3 años comienzan a realizar tareas de forma más independiente, como subir escaleras con menos ayuda, correr en espacios abiertos y participar en juegos simples. Esta creciente autonomía fomenta su confianza y deseo de explorar el mundo que les rodea.",
+        interaccionSocial: "A los 3 años, los niños empiezan a participar en juegos grupales simples, aunque todavía les cuesta compartir y turnarse. Las actividades de motricidad gruesa en grupo les ayudan a aprender normas sociales básicas y a desarrollar habilidades de comunicación mientras juegan.",
+        ejerciciosPracticos: [
+          {
+            titulo: "Saltos en colchonetas",
+            descripcion: "Coloca colchonetas en el suelo y anima al niño a saltar de una a otra. Esta actividad fortalece los músculos de las piernas y mejora el equilibrio.",
+            materiales: "Colchonetas o almohadones",
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes usar almohadas, cojines o incluso toallas dobladas para crear una superficie blanda donde el niño pueda saltar con seguridad. Asegúrate de que los objetos estén firmes y no resbalen.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al aterrizar suavemente. En casa, puedes animar al niño a imitar sonidos de animales mientras salta (como una rana: 'croac, croac') o contar en voz alta cada salto para reforzar la actividad auditivamente."
+            }
+          },
+          {
+            titulo: "Carreras cortas",
+            descripcion: "Organiza carreras cortas en un espacio seguro. Esta actividad desarrolla la velocidad, la coordinación y la conciencia espacial.",
+            materiales: "Espacio abierto y seguro",
+            icono: "fas fa-running",
+            implementacion: "En casa, puedes usar el pasillo, el jardín o incluso una habitación despejada. Marca una línea de salida y otra de llegada con cinta adhesiva o tiza. Puedes convertirlo en un juego de persecución suave o una carrera de relevos con otros miembros de la familia.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
+          },
+          {
+            titulo: "Subir escaleras con apoyo",
+            descripcion: "Practica subir escaleras con apoyo, alternando pies cuando sea posible. Esta actividad fortalece las piernas y mejora la coordinación.",
+            materiales: "Escaleras con barandilla",
+            icono: "fas fa-sort-amount-up",
+            implementacion: "En casa, utiliza las escaleras de tu domicilio, siempre con supervisión. Anima al niño a contar cada escalón o a nombrar un color u objeto en cada paso. Puedes convertirlo en un juego diciendo 'subimos como gigantes' o 'bajamos como ratones'.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al subir o bajar los escalones. En casa, puedes añadir un componente rítmico cantando una canción o marcando un ritmo con palmadas mientras suben o bajan. También pueden imitar el sonido de un tren ('chucu-chucu') al subir escaleras."
+            }
+          },
+          {
+            titulo: "Lanzar pelotas grandes",
+            descripcion: "Usa pelotas grandes y suaves para practicar lanzar y rodar. Esta actividad desarrolla la coordinación ojo-mano y la fuerza de los brazos.",
+            materiales: "Pelotas grandes y suaves",
+            icono: "fas fa-circle",
+            implementacion: "En casa, puedes usar pelotas inflables, pelotas de playa o incluso hacer una pelota con medias viejas rellenas de algodón. Siéntense en el suelo frente a frente y rueden la pelota uno al otro. Gradualmente, aumenta la distancia y anima al niño a lanzarla suavemente.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la pelota al ser lanzada o al rodar por el suelo. En casa, puedes añadir sonidos como '¡lanza!' o '¡atrapa!' para marcar la acción. También pueden imitar el sonido de la pelota al rebotar ('boing, boing') cuando la lancen al suelo."
+            }
+          },
+          {
+            titulo: "Baile libre",
+            descripcion: "Pon música y anima al niño a bailar libremente. Esta actividad mejora el ritmo, la coordinación y la expresión corporal.",
+            materiales: "Reproductor de música",
+            icono: "fas fa-music",
+            implementacion: "En casa, utiliza cualquier dispositivo para reproducir música infantil o tus canciones favoritas. Crea un espacio despejado donde el niño pueda moverse sin obstáculos. Anímalo a imitar tus movimientos o a crear los suyos propios. Pueden usar pañuelos o cintas para añadir un elemento visual.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la música y el ritmo. En casa, puedes añadir elementos como palmadas, golpecitos con los pies o incluso instrumentos musicales simples (como una pandereta o tambores caseros). También pueden cantar juntos mientras bailan para reforzar la conexión auditiva y motora."
+            }
+          }
+        ],
+        consejoProfesional: "A los 3 años, enfócate en actividades divertidas y breves (10-15 minutos). Usa equipos grandes y seguros. Celebra el esfuerzo y la participación, no solo los resultados. Recuerda que el juego es la principal forma de aprendizaje a esta edad.",
+        faqEdad: "A los 3 años, los niños están desarrollando habilidades motrices gruesas básicas como correr, saltar con ambos pies y subir escaleras con apoyo. Si tu hijo parece retrasado en comparación con otros niños de su edad, ofrece más oportunidades para practicar en un entorno lúdico y sin presión.",
+        faqTorpeza: "A los 3 años es normal que los niños sean torpes mientras están desarrollando su coordinación. Ofrece actividades que mejoren el equilibrio como caminar sobre líneas o sobre superficies ligeramente inestables. Si la torpeza es extrema o persistente, consulta con un pediatra.",
+        faqActividadFisica: "Los niños de 3 años necesitan al menos 180 minutos de actividad física al día, distribuidos en sesiones cortas. Limita el tiempo sedentario a no más de 1 hora continuada, excepto durante el sueño. Ofrece variedad de actividades para mantener su interés."
+      },
+      4: {
+        titulo: "¡Continúa desarrollando movimiento! Descubre actividades avanzadas para niños de 4 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 4 años se caracteriza por un mayor control y coordinación. Pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota, y mantienen mejor el equilibrio. Estas habilidades les permiten participar en juegos más complejos y deportes simples.",
+        desarrolloNeurologico: "A los 4 años, el cerebro muestra mayor especialización en el control motor. Las áreas responsables de la planificación y ejecución de movimientos están más desarrolladas, permitiendo una mayor coordinación y precisión en las acciones físicas.",
+        etapasDesarrollo: "A los 4 años, los niños pueden saltar en un solo pie brevemente, lanzar y atrapar una pelota con más precisión, mantener el equilibrio en un pie por más tiempo y correr con mayor control. Están desarrollando la capacidad de combinar movimientos de manera más fluida.",
+        saludFisica: "A los 4 años, la motricidad gruesa continúa fortaleciendo el sistema muscular y óseo. Las actividades físicas regulares mejoran la resistencia cardiovascular, la flexibilidad y la fuerza general. Los niños activos suelen tener mejor postura y menor riesgo de obesidad infantil.",
+        autonomiaIndependencia: "Los niños de 4 años pueden realizar más tareas de forma independiente, como subir y bajar escaleras con menos ayuda, vestirse con menor asistencia y participar en juegos más complejos. Esta autonomía creciente aumenta su confianza y sentido de logro.",
+        interaccionSocial: "A los 4 años, los niños comienzan a entender mejor las reglas de los juegos y a participar en actividades grupales más estructuradas. Aprenden a turnarse, compartir y cooperar, habilidades sociales fundamentales que se desarrollan a través del juego físico.",
+        ejerciciosPracticos: [
+          {
+            titulo: "Saltos en un pie",
+            descripcion: "Anima al niño a saltar en un pie, luego en el otro. Esta actividad mejora el equilibrio y la fuerza de las piernas.",
+            materiales: "Espacio plano y seguro",
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes dibujar círculos con tiza en el suelo o usar papel adhesivo para marcar dónde debe apoyar el pie. Comienza con saltos cortos y aumenta gradualmente la distancia. Puedes convertirlo en un juego de 'las estatuas' donde debe mantenerse en un pie cuando la música se detiene.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el del pie al aterrizar después de cada salto. En casa, puedes añadir un componente rítmico contando cada salto o usando una canción con un ritmo marcado. También pueden imitar sonidos de animales que se mueven en un solo pie, como las cigüeñas."
+            }
+          },
+          {
+            titulo: "Carreras con obstáculos",
+            descripcion: "Crea un circuito simple con obstáculos como cojines o cajas. Esta actividad desarrolla la agilidad, la coordinación y la planificación motriz.",
+            materiales: "Cojines, cajas u objetos seguros",
+            icono: "fas fa-running",
+            implementacion: "En casa, puedes usar almohadas, sillas bajas, cajas de cartón vacías o incluso cuerdas tendidas en el suelo para crear un circuito. Asegúrate de que todos los objetos sean estables y seguros. Anima al niño a pasar por encima, alrededor o a través de los obstáculos siguiendo tus instrucciones.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
+          },
+          {
+            titulo: "Subir y bajar escaleras",
+            descripcion: "Practica subir y bajar escaleras alternando pies sin apoyo. Esta actividad fortalece las piernas y mejora la coordinación.",
+            materiales: "Escaleras con barandilla",
+            icono: "fas fa-sort-amount-up",
+            implementacion: "En casa, utiliza las escaleras de tu domicilio con supervisión. Anima al niño a alternar los pies al subir y bajar, como si fuera un juego. Puedes contar los escalones o nombrar un color u objeto en cada peldaño. Gradualmente, reduce la ayuda que le proporcionas.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al contactar con cada escalón. En casa, puedes añadir un componente rítmico cantando una canción o marcando un ritmo con palmadas mientras suben o bajan. También pueden imitar diferentes sonidos según cómo suban (como elefantes lentos o conejos rápidos)."
+            }
+          },
+          {
+            titulo: "Lanzar y atrapar pelotas",
+            descripcion: "Usa pelotas de diferentes tamaños para practicar lanzar y atrapar. Esta actividad mejora la coordinación ojo-mano y la precisión.",
+            materiales: "Pelotas de diferentes tamaños",
+            icono: "fas fa-baseball-ball",
+            implementacion: "En casa, puedes usar pelotas de tenis, pelotas de espuma o incluso medias rellenas y atadas. Comienza con pelotas grandes y suaves, y gradualmente introduce pelotas más pequeñas y pesadas. Siéntense frente a frente a una corta distancia y aumenta la distancia a medida que mejore la habilidad.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de la pelota al ser lanzada y atrapada. En casa, puedes añadir palabras clave como '¡lanza!' y '¡atrapa!' para marcar cada acción. También pueden imitar el sonido de la pelota al rebotar o al ser atrapada ('¡plaf!' cuando la atrapan)."
+            }
+          },
+          {
+            titulo: "Triciclo o bicicleta con ruedines",
+            descripcion: "Enseña al niño a usar un triciclo o bicicleta con ruedines. Esta actividad desarrolla la coordinación, el equilibrio y la fuerza de las piernas.",
+            materiales: "Triciclo o bicicleta con ruedines",
+            icono: "fas fa-bicycle",
+            implementacion: "En casa, asegúrate de que el triciclo o bicicleta sea del tamaño adecuado para el niño. Comienza en un espacio plano y abierto, como un pasillo o jardín. Enseña primero a pedalear y luego a dirigir. Usa palabras de aliento y celebra cada logro, por pequeño que sea.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pedales al girar y las ruedas al moverse. En casa, puedes añadir sonidos de motor ('brrrum, brrrum') o campanillas para hacer la actividad más divertida. También pueden contar cuántas veces pedalean o imitar el sonido de la bocina cuando giran."
+            }
+          }
+        ],
+        consejoProfesional: "A los 4 años, las actividades pueden durar entre 15-20 minutos. Introduce juegos con reglas simples y estructura. Ofrece desafíos gradualmente más complejos y celebra los progresos. Recuerda que el juego sigue siendo la principal forma de aprendizaje.",
+        faqEdad: "A los 4 años, los niños están desarrollando habilidades más avanzadas como saltar en un pie, lanzar y atrapar pelotas, y mantener el equilibrio. Si tu hijo tiene dificultades con estas habilidades, ofrece oportunidades para practicar de manera lúdica y sin presión.",
+        faqTorpeza: "A los 4 años, algunos niños pueden parecer torpes mientras están perfeccionando su coordinación. Actividades como caminar sobre líneas, equilibrarse en un pie o jugar a seguir al líder pueden ayudar a mejorar la coordinación. Si la torpeza persiste, consulta con un especialista.",
+        faqActividadFisica: "Los niños de 4 años necesitan al menos 180 minutos de actividad física al día. Ofrece una mezcla de actividades estructuradas y no estructuradas. Limita el tiempo de pantalla a no más de 1 hora al día y fomenta el juego activo tanto en interiores como en exteriores."
+      },
+      5: {
+        titulo: "¡Domina el movimiento! Actividades especializadas para niños de 5 años.",
+        definicionMotricidad: "La motricidad gruesa en niños de 5 años se caracteriza por movimientos precisos y coordinados. Pueden saltar en un solo pie con facilidad, patear una pelota con dirección, y comienzan a aprender a andar en bicicleta sin ruedines. Estas habilidades les permiten participar en deportes organizados y actividades físicas más complejas.",
+        desarrolloNeurologico: "A los 5 años, el cerebro muestra madurez en las áreas motoras. La mielinización de las vías nerviosas está casi completa, permitiendo un control refinado de los movimientos y mayor velocidad de procesamiento. Esto facilita el aprendizaje de habilidades motoras más complejas.",
+        etapasDesarrollo: "A los 5 años, los niños pueden saltar en un solo pie con facilidad, patear una pelota con dirección, subir y bajar escaleras sin apoyo y comienzan a aprender a andar en bicicleta sin ruedines. Están desarrollando la capacidad de combinar movimientos complejos de manera fluida.",
+        saludFisica: "A los 5 años, la motricidad gruesa contribuye significativamente a la salud física general. Las actividades físicas regulares mejoran la fuerza, la resistencia, la flexibilidad y la coordinación. Los niños activos tienen menor riesgo de obesidad y mejores indicadores de salud general.",
+        autonomiaIndependencia: "Los niños de 5 años pueden realizar la mayoría de las tareas físicas de forma independiente, como vestirse completamente, subir y bajar escaleras sin ayuda, y participar en deportes organizados. Esta autonomía completa fomenta su autoconfianza y preparación para la escuela.",
+        interaccionSocial: "A los 5 años, los niños pueden participar en juegos con reglas complejas y deportes organizados. Entienden conceptos como competencia justa, trabajo en equipo y deportividad. Estas habilidades sociales se desarrollan fundamentalmente a través de actividades físicas grupales.",
+        ejerciciosPracticos: [
+          {
+            titulo: "Saltos coordinados",
+            descripcion: "Practica diferentes tipos de saltos: con pies juntos, alternando pies, hacia adelante y hacia atrás. Esta actividad mejora la coordinación, el equilibrio y la fuerza.",
+            materiales: "Espacio plano y seguro",
+            icono: "fas fa-child",
+            implementacion: "En casa, puedes usar tiza o cinta adhesiva para marcar diferentes zonas de salto en el suelo. Crea un patrón con círculos, cuadrados o líneas y anima al niño a saltar de una marca a otra siguiendo diferentes secuencias. Puedes aumentar la dificultad añadiendo obstáculos bajos o pidiendo que gire en el aire antes de aterrizar.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de los pies al aterrizar después de cada salto. En casa, puedes añadir un componente rítmico contando cada salto o usando una canción con un ritmo marcado. También pueden imitar sonidos de animales que saltan, como las ranas ('croac') o los canguros ('boing')."
+            }
+          },
+          {
+            titulo: "Circuitos de obstáculos",
+            descripcion: "Crea circuitos con diversos desafíos como saltar, gatear, equilibrarse y lanzar. Esta actividad desarrolla la planificación motriz, la agilidad y la coordinación.",
+            materiales: "Diversos objetos seguros",
+            icono: "fas fa-mountain",
+            implementacion: "En casa, puedes crear un circuito con objetos cotidianos: sillas para pasar por debajo, cuerdas para saltar, cojines para saltar encima, cajas para pasar a través de ellas, y una pelota para lanzar a una caja o canasta. Diseña un recorrido con diferentes estaciones y usa tarjetas con dibujos o palabras para indicar qué hacer en cada una.",
+            sonido: {
+              tieneSonido: false,
+              explicacion: ""
+            }
+          },
+          {
+            titulo: "Deportes simples",
+            descripcion: "Introduce deportes simples como fútbol, básquet o atletismo adaptado. Estas actividades mejoran la coordinación, el trabajo en equipo y el seguimiento de reglas.",
+            materiales: "Pelotas, conos u otros materiales deportivos",
+            icono: "fas fa-futbol",
+            implementacion: "En casa, puedes adaptar deportes conocidos usando materiales simples. Para fútbol, usa una pelota ligera y dos objetos como conos o botellas vacías como porterías. Para básquet, usa una pelota pequeña y una caja o cesta como aro. Simplifica las reglas y enfócate en la diversión y la participación más que en la competencia.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado varía según el deporte: el balón al ser pateado en fútbol, al rebotar en básquet, etc. En casa, puedes añadir sonidos de animación como '¡gol!' cuando anotan o '¡encesta!' en básquet. También pueden imitar sonidos de multitudes o comentaristas deportivos para hacer el juego más emocionante."
+            }
+          },
+          {
+            titulo: "Bicicleta sin ruedines",
+            descripcion: "Enseña al niño a andar en bicicleta sin ruedines. Esta actividad desarrolla el equilibrio, la coordinación y la confianza en sí mismo.",
+            materiales: "Bicicleta sin ruedines",
+            icono: "fas fa-bicycle",
+            implementacion: "En casa, elige una bicicleta adecuada para la altura del niño (debe poder tocar el suelo con ambos pies sentado en el sillín). Comienza en un espacio plano y abierto, como un parque o calle sin tráfico. Quítale los pedales inicialmente para que aprenda a equilibrarse impulsándose con los pies. Una vez que domine el equilibrio, vuelve a poner los pedales.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el de las ruedas al moverse y los pedales al girar. En casa, puedes añadir sonidos de animación como '¡rueda!' o '¡más rápido!' para motivar al niño. También pueden imitar el sonido de la bocina o de una moto mientras pedalean para hacer la actividad más divertida."
+            }
+          },
+          {
+            titulo: "Natación básica",
+            descripcion: "Enseña al niño a flotar y moverse en el agua. Esta actividad mejora la coordinación general, la fuerza y la confianza en el agua.",
+            materiales: "Piscina poco profunda",
+            icono: "fas fa-swimmer",
+            implementacion: "En casa, si tienes acceso a una piscina, comienza en la parte poco profunda donde el niño pueda tocar el fondo. Enséñale a soplar burbujas bajo el agua, a flotar boca arriba con tu apoyo y a mover los brazos y piernas para desplazarse. Usa juguetes acuáticos para hacer la actividad más divertida. Si no tienes piscina, una bañera grande puede servir para actividades acuáticas básicas.",
+            sonido: {
+              tieneSonido: true,
+              explicacion: "El sonido esperado es el del agua al moverse y el de la respiración controlada. En casa, puedes añadir juegos con sonidos como 'glug glug' al meter la cabeza bajo el agua o 'splash' al salpicar. También pueden contar cuántos segundos pueden contener la respiración bajo el agua o imitar sonidos de animales acuáticos mientras nadan."
+            }
+          }
+        ],
+        consejoProfesional: "A los 5 años, las actividades pueden durar entre 20-30 minutos. Introduce deportes simples y actividades estructuradas que preparen para la escuela. Usa refuerzos positivos y enfócate en el disfrute y la participación, no solo en el rendimiento.",
+        faqEdad: "A los 5 años, los niños están desarrollando habilidades complejas como andar en bicicleta sin ruedines, patear una pelota con dirección y participar en deportes simples. Si tu hijo muestra dificultades significativas, considera una evaluación con un especialista en desarrollo infantil.",
+        faqTorpeza: "A los 5 años, la mayoría de los niños han superado la torpeza típica de edades anteriores. Si tu hijo sigue siendo muy torpe o se cae con frecuencia, actividades específicas como equilibrio, coordinación y fuerza pueden ayudar. Consulta con un especialista si hay preocupaciones persistentes.",
+        faqActividadFisica: "Los niños de 5 años necesitan al menos 60 minutos de actividad física moderada a vigorosa al día, además de varias horas de actividad ligera. Limita el tiempo de pantalla a no más de 2 horas al día y fomenta una variedad de actividades físicas que incluyan fuerza, flexibilidad y resistencia."
+      }
+    };
+    
+    // Variables globales
+    let edadSeleccionada = null;
+    let actividadActual = null;
+    
+    // Verificar si el usuario tiene acceso al curso y si completó el módulo 2
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      const modulo2Completado = localStorage.getItem('modulo2Completado');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      } else if (modulo2Completado !== 'true') {
+        // Redirigir si no ha completado el módulo 2
+        alert('Debes completar el Módulo 2 antes de acceder al Módulo 3');
+        window.location.href = '../modulo2/index.html';
+      } else {
+        // Si tiene acceso y completó el módulo 2, inicializar el módulo
+        inicializarModulo();
+      }
+    });
+    
+    function inicializarModulo() {
+      // Configurar botones de edad
+      const ageButtons = document.querySelectorAll('.age-btn');
+      ageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remover clase activa de todos los botones
+          ageButtons.forEach(btn => btn.classList.remove('active'));
+          // Agregar clase activa al botón seleccionado
+          this.classList.add('active');
+          
+          // Guardar edad seleccionada
+          edadSeleccionada = parseInt(this.getAttribute('data-age'));
+          
+          // Actualizar contenido según la edad
+          actualizarContenidoEdad(edadSeleccionada);
+          
+          // Mostrar mensaje de confirmación
+          const ageInfo = document.getElementById('ageInfo');
+          ageInfo.textContent = `Has seleccionado ${edadSeleccionada} años. Todo el contenido está adaptado para esta edad.`;
+          ageInfo.style.display = 'block';
+        });
+      });
+      
+      // Configurar FAQ interactiva
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+      
+      // Configurar modal de actividades
+      const modal = document.getElementById('activityModal');
+      const closeBtn = document.getElementById('closeActivityModal');
+      
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+      
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+      
+      // Configurar botón de completar módulo
+      const completeBtn = document.getElementById('completeModule3');
+      completeBtn.addEventListener('click', function() {
+        // Verificar si se ha seleccionado una edad
+        if (!edadSeleccionada) {
+          alert('Por favor, selecciona la edad de tu hijo/a antes de completar el módulo.');
+          return;
+        }
+        
+        // Marcar módulo 3 como completado
+        localStorage.setItem('modulo3Completado', 'true');
+        
+        // Deshabilitar botón y cambiar texto
+        this.disabled = true;
+        this.innerHTML = '<i class="fas fa-check"></i> Módulo Completado';
+        
+        // Mostrar mensaje de éxito
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--success);
+          color: white;
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 10001;
+          font-weight: 600;
+          max-width: 300px;
+          animation: slideInRight 0.5s ease;
+        `;
+        successMsg.innerHTML = `
+          <i class="fas fa-check-circle"></i> 
+          ¡Módulo 3 completado para ${edadSeleccionada} años! Ahora puedes acceder al Módulo 4.
+        `;
+        
+        document.body.appendChild(successMsg);
+        
+        setTimeout(() => {
+          successMsg.style.animation = 'slideOutRight 0.5s ease';
+          setTimeout(() => {
+            document.body.removeChild(successMsg);
+          }, 500);
+        }, 4000);
+      });
+    }
+    
+    function actualizarContenidoEdad(edad) {
+      const contenido = contenidoPorEdad[edad];
+      
+      // Actualizar subtítulo del hero
+      document.getElementById('heroSubtitle').textContent = contenido.titulo;
+      
+      // Actualizar contenido de las secciones
+      document.getElementById('definicionMotricidad').textContent = contenido.definicionMotricidad;
+      document.getElementById('desarrolloNeurologico').textContent = contenido.desarrolloNeurologico;
+      document.getElementById('etapasDesarrollo').textContent = contenido.etapasDesarrollo;
+      document.getElementById('saludFisica').textContent = contenido.saludFisica;
+      document.getElementById('autonomiaIndependencia').textContent = contenido.autonomiaIndependencia;
+      document.getElementById('interaccionSocial').textContent = contenido.interaccionSocial;
+      
+      // Actualizar ejercicios prácticos
+      const practicalExercises = document.getElementById('practicalExercises');
+      practicalExercises.innerHTML = '';
+      
+      contenido.ejerciciosPracticos.forEach((ejercicio, index) => {
+        const exerciseItem = document.createElement('div');
+        exerciseItem.className = 'exercise-item';
+        exerciseItem.style.animationDelay = `${index * 0.2}s`;
+        
+        let soundHTML = '';
+        if (ejercicio.sonido.tieneSonido) {
+          soundHTML = `
+            <div class="sound-context">
+              <h4><i class="fas fa-volume-up"></i> Contexto del sonido</h4>
+              <p>${ejercicio.sonido.explicacion}</p>
+            </div>
+          `;
+        }
+        
+        exerciseItem.innerHTML = `
+          <h3><i class="${ejercicio.icono}"></i>${ejercicio.titulo}</h3>
+          <p>${ejercicio.descripcion}</p>
+          <p class="materials"><strong>Materiales:</strong> ${ejercicio.materiales}</p>
+          <div class="home-implementation">
+            <h4><i class="fas fa-home"></i> Implementación en casa</h4>
+            <p>${ejercicio.implementacion}</p>
+          </div>
+          ${soundHTML}
+        `;
+        
+        practicalExercises.appendChild(exerciseItem);
+      });
+      
+      // Actualizar consejo profesional
+      document.getElementById('consejoProfesional').textContent = contenido.consejoProfesional;
+      
+      // Actualizar FAQs
+      document.getElementById('faqEdad').textContent = contenido.faqEdad;
+      document.getElementById('faqTorpeza').textContent = contenido.faqTorpeza;
+      document.getElementById('faqActividadFisica').textContent = contenido.faqActividadFisica;
+    }
+    
+    // Función para mostrar actividades en un modal
+    function showActivityModal(activityType) {
+      const modal = document.getElementById('activityModal');
+      const modalContent = document.getElementById('activityModalContent');
+      const modalTitle = document.getElementById('activityModalTitle');
+      
+      // Limpiar contenido anterior
+      modalContent.innerHTML = '';
+      
+      // Configurar título según la actividad
+      switch(activityType) {
+        case 'circuit':
+          modalTitle.textContent = 'Constructor de circuitos';
+          modalContent.appendChild(createCircuitGame());
+          break;
+        case 'obstacles':
+          modalTitle.textContent = 'Parque de obstáculos';
+          modalContent.appendChild(createObstaclesGame());
+          break;
+        case 'throwing':
+          modalTitle.textContent = 'Lanzamiento preciso';
+          modalContent.appendChild(createThrowingGame());
+          break;
+        case 'balance':
+          modalTitle.textContent = 'Desafío del equilibrio';
+          modalContent.appendChild(createBalanceGame());
+          break;
+        case 'sports':
+          modalTitle.textContent = 'Mini deportes';
+          modalContent.appendChild(createSportsGame());
+          break;
+      }
+      
+      // Mostrar modal
+      modal.style.display = 'flex';
+    }
+    
+    // Funciones para crear los juegos interactivos
+    function createCircuitGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
+      
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; top: 20px; left: 20px; width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-child"></i>
+        </div>
+        <div style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: var(--gradient-3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-running"></i>
+        </div>
+        <div style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: var(--gradient-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-arrows-alt-h"></i>
+        </div>
+        <div style="position: absolute; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--gradient-4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+          <i class="fas fa-sort-amount-up"></i>
+        </div>
+      `;
+      
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="completeCircuit()">Completar circuito</button>
+        <button class="game-btn" onclick="resetCircuit()">Reiniciar</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'circuitFeedback';
+      feedback.className = 'game-feedback';
+      
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Reúne objetos cotidianos como cojines, sillas, cajas o cuerdas.</li>
+          <li>Diseña un circuito con diferentes estaciones: una para saltar, otra para pasar por debajo, otra para equilibrarse, etc.</li>
+          <li>Demuestra cada estación antes de que el niño intente el circuito completo.</li>
+          <li>Asegúrate de que el espacio sea seguro y sin obstáculos peligrosos.</li>
+          <li>Usa instrucciones verbales claras y sencillas para cada estación.</li>
+          <li>Celebra cada logro y anímale a completar todo el circuito.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade sonidos para cada estación: "¡salta!" para la estación de salto, "¡agáchate!" para pasar por debajo, "¡equilíbrate!" para la estación de equilibrio. Esto ayuda al niño a asociar cada acción con una instrucción verbal.</p>
+        </div>
+      `;
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
+      
+      return gameContainer;
+    }
+    
+    function createObstaclesGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
+      
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 50px; height: 50px; background: var(--gradient); border-radius: 50%; transition: all 0.3s ease;" id="obstacleCharacter"></div>
+        <div style="position: absolute; bottom: 0; left: 150px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+        <div style="position: absolute; bottom: 0; left: 250px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+        <div style="position: absolute; bottom: 0; left: 350px; width: 40px; height: 80px; background: var(--warning); border-radius: 10px;"></div>
+      `;
+      
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="moveCharacter('left')">Izquierda</button>
+        <button class="game-btn" onclick="moveCharacter('jump')">Saltar</button>
+        <button class="game-btn" onclick="moveCharacter('right')">Derecha</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'obstaclesFeedback';
+      feedback.className = 'game-feedback';
+      
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Crea un camino con obstáculos usando cojines, cajas de cartón o juguetes blandos.</li>
+          <li>Asegúrate de que los obstáculos sean estables y seguros para que el niño no se caiga.</li>
+          <li>Enséñale al niño a esquivar los obstáculos saltando o rodeándolos.</li>
+          <li>Comienza con pocos obstáculos y aumenta gradualmente la dificultad.</li>
+          <li>Puedes usar una cuerda o cinta para marcar el camino que debe seguir.</li>
+          <li>Conviértelo en un juego de aventuras donde debe superar diferentes desafíos.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade instrucciones verbales como "¡salta!" o "¡alrededor!" para guiar al niño. También pueden imitar sonidos de diferentes animales mientras superan los obstáculos, como un conejo al saltar o un cangrejo al pasar por debajo.</p>
+        </div>
+      `;
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
+      
+      return gameContainer;
+    }
+    
+    function createThrowingGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
+      
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 40px; height: 40px; background: var(--gradient); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;" id="throwBall"></div>
+        <div style="position: absolute; top: 50%; right: 50px; transform: translateY(-50%); width: 80px; height: 80px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+          <i class="fas fa-bullseye"></i>
+        </div>
+      `;
+      
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="throwBall()">Lanzar</button>
+        <button class="game-btn" onclick="resetThrow()">Reiniciar</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'throwingFeedback';
+      feedback.className = 'game-feedback';
+      
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Reúne diferentes objetos que puedan lanzarse: pelotas pequeñas, pelotas de papel, almohadones pequeños.</li>
+          <li>Crea un blanco usando una caja, cesta o dibujando un círculo en el suelo o pared.</li>
+          <li>Comienza a corta distancia y aumenta gradualmente la distancia al blanco.</li>
+          <li>Enséñe la técnica correcta: sostener el objeto con la mano, llevar el brazo hacia atrás y lanzar hacia adelante.</li>
+          <li>Varía la posición del blanco (alto, bajo, izquierda, derecha) para mejorar la precisión.</li>
+          <li>Celebre cada acierto, sin importar la distancia o precisión.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade palabras clave como "¡lanza!" antes de cada tiro y "¡bien!" o "¡casi!" después. También pueden imitar el sonido del objeto al volar ("woosh") o al golpear el blanco ("¡plaf!"). Esto ayuda al niño a asociar la acción con el resultado.</p>
+        </div>
+      `;
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
+      
+      return gameContainer;
+    }
+    
+    function createBalanceGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
+      
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(78, 205, 196, 0.1)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 40px; height: 60px; background: var(--gradient); border-radius: 20px 20px 0 0; transition: all 0.5s ease;" id="balanceCharacter"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 4px; background: var(--dark);"></div>
+      `;
+      
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="balanceLeft()">Izquierda</button>
+        <button class="game-btn" onclick="balanceJump()">Saltar</button>
+        <button class="game-btn" onclick="balanceRight()">Derecha</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'balanceFeedback';
+      feedback.className = 'game-feedback';
+      
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Crea una línea recta en el suelo usando cinta adhesiva, tiza o una cuerda.</li>
+          <li>Pídele al niño que camine sobre la línea sin salirse.</li>
+          <li>Para aumentar la dificultad, haz que la línea sea curva o en zigzag.</li>
+          <li>Otra opción es usar una tabla de equilibrio o una superficie ligeramente elevada y ancha.</li>
+          <li>Añade desafíos como caminar hacia atrás, de lado o con los ojos cerrados (con supervisión).</li>
+          <li>Puedes crear un juego donde debe recoger objetos colocados a los lados de la línea sin salirse.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade un ritmo con palmadas o usando un tambor mientras camina sobre la línea. También pueden contar cuántos pasos puede dar sin salirse o imitar sonidos de diferentes animales según cómo caminen (como un elefante lento o un pájaro rápido).</p>
+        </div>
+      `;
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
+      
+      return gameContainer;
+    }
+    
+    function createSportsGame() {
+      const gameContainer = document.createElement('div');
+      gameContainer.className = 'game-container';
+      
+      const gameArea = document.createElement('div');
+      gameArea.className = 'game-area';
+      gameArea.style.background = 'rgba(76, 175, 80, 0.2)';
+      gameArea.innerHTML = `
+        <div style="position: absolute; bottom: 20px; left: 50px; width: 50px; height: 80px; background: var(--gradient); border-radius: 25px 25px 0 0; transition: all 0.3s ease;" id="sportsCharacter"></div>
+        <div style="position: absolute; bottom: 30px; left: 110px; width: 30px; height: 30px; background: white; border: 2px solid #333; border-radius: 50%; transition: all 0.3s ease;" id="sportsBall"></div>
+        <div style="position: absolute; top: 50%; right: 50px; transform: translateY(-50%); width: 100px; height: 80px; background: white; border: 3px solid #333; border-radius: 5px;"></div>
+      `;
+      
+      const controls = document.createElement('div');
+      controls.className = 'game-controls';
+      controls.innerHTML = `
+        <button class="game-btn" onclick="moveSports('left')">Izquierda</button>
+        <button class="game-btn" onclick="moveSports('kick')">Patear</button>
+        <button class="game-btn" onclick="moveSports('right')">Derecha</button>
+      `;
+      
+      const feedback = document.createElement('div');
+      feedback.id = 'sportsFeedback';
+      feedback.className = 'game-feedback';
+      
+      // Guía para implementar en casa
+      const homeGuide = document.createElement('div');
+      homeGuide.className = 'home-activity-guide';
+      homeGuide.innerHTML = `
+        <h4><i class="fas fa-home"></i> Cómo recrear esta actividad en casa</h4>
+        <ol>
+          <li>Adapta deportes simples usando materiales cotidianos: una pelota ligera y dos objetos como porterías.</li>
+          <li>Simplifica las reglas para que sean comprensibles para el niño.</li>
+          <li>Enfócate en la diversión y la participación más que en la competencia.</li>
+          <li>Enséñe habilidades básicas como patear, lanzar o atrapar la pelota.</li>
+          <li>Comienza con distancias cortas y aumenta gradualmente la dificultad.</li>
+          <li>Juegue juntos y modele el comportamiento deportivo adecuado, como felicitar al oponente.</li>
+        </ol>
+        <div class="sound-tip">
+          <h5><i class="fas fa-volume-up"></i> Componente auditivo</h5>
+          <p>Añade sonidos de animación como "¡patea!" cuando golpee la pelota o "¡gol!" cuando anote. También pueden imitar sonidos de multitudes o comentaristas deportivos para hacer el juego más emocionante. Esto ayuda al niño a asociar las acciones deportivas con respuestas positivas.</p>
+        </div>
+      `;
+      
+      gameContainer.appendChild(gameArea);
+      gameContainer.appendChild(controls);
+      gameContainer.appendChild(feedback);
+      gameContainer.appendChild(homeGuide);
+      
+      return gameContainer;
+    }
+    
+    // Funciones para los juegos
+    function completeCircuit() {
+      const feedback = document.getElementById('circuitFeedback');
+      feedback.textContent = '¡Excelente! Has completado el circuito de motricidad.';
+      feedback.className = 'game-feedback feedback-success';
+      feedback.style.display = 'block';
+    }
+    
+    function resetCircuit() {
+      const feedback = document.getElementById('circuitFeedback');
+      feedback.style.display = 'none';
+    }
+    
+    function moveCharacter(direction) {
+      const character = document.getElementById('obstacleCharacter');
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (direction === 'left' && currentLeft > 20) {
+        character.style.left = (currentLeft - 30) + 'px';
+      } else if (direction === 'right' && currentLeft < areaWidth - 70) {
+        character.style.left = (currentLeft + 30) + 'px';
+      } else if (direction === 'jump') {
+        character.style.bottom = '120px';
+        setTimeout(() => {
+          character.style.bottom = '20px';
+        }, 500);
+      }
+      
+      // Verificar si llegó al final
+      if (currentLeft >= areaWidth - 100) {
+        const feedback = document.getElementById('obstaclesFeedback');
+        feedback.textContent = '¡Felicidades! Has superado todos los obstáculos.';
+        feedback.className = 'game-feedback feedback-success';
+        feedback.style.display = 'block';
+      }
+    }
+    
+    function throwBall() {
+      const ball = document.getElementById('throwBall');
+      const gameArea = ball.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      
+      ball.style.transition = 'all 1s ease-out';
+      ball.style.left = (areaWidth - 100) + 'px';
+      ball.style.bottom = '150px';
+      
+      setTimeout(() => {
+        const feedback = document.getElementById('throwingFeedback');
+        feedback.textContent = '¡Buen lanzamiento! Sigue practicando para mejorar tu precisión.';
+        feedback.className = 'game-feedback feedback-success';
+        feedback.style.display = 'block';
+        
+        setTimeout(() => {
+          resetThrow();
+        }, 2000);
+      }, 1000);
+    }
+    
+    function resetThrow() {
+      const ball = document.getElementById('throwBall');
+      ball.style.transition = 'all 0.3s ease';
+      ball.style.left = '50px';
+      ball.style.bottom = '20px';
+      
+      const feedback = document.getElementById('throwingFeedback');
+      feedback.style.display = 'none';
+    }
+    
+    function balanceLeft() {
+      const character = document.getElementById('balanceCharacter');
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (currentLeft > 20) {
+        character.style.left = (currentLeft - 20) + 'px';
+        character.style.transform = 'translateX(-50%) rotate(-10deg)';
+        
+        setTimeout(() => {
+          character.style.transform = 'translateX(-50%) rotate(0deg)';
+        }, 300);
+      }
+    }
+    
+    function balanceRight() {
+      const character = document.getElementById('balanceCharacter');
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (currentLeft < areaWidth - 60) {
+        character.style.left = (currentLeft + 20) + 'px';
+        character.style.transform = 'translateX(-50%) rotate(10deg)';
+        
+        setTimeout(() => {
+          character.style.transform = 'translateX(-50%) rotate(0deg)';
+        }, 300);
+      }
+    }
+    
+    function balanceJump() {
+      const character = document.getElementById('balanceCharacter');
+      character.style.bottom = '100px';
+      
+      setTimeout(() => {
+        character.style.bottom = '20px';
+      }, 500);
+      
+      const feedback = document.getElementById('balanceFeedback');
+      feedback.textContent = '¡Buen equilibrio! Sigue practicando.';
+      feedback.className = 'game-feedback feedback-success';
+      feedback.style.display = 'block';
+      
+      setTimeout(() => {
+        feedback.style.display = 'none';
+      }, 2000);
+    }
+    
+    function moveSports(direction) {
+      const character = document.getElementById('sportsCharacter');
+      const ball = document.getElementById('sportsBall');
+      const gameArea = character.parentElement;
+      const areaWidth = gameArea.offsetWidth;
+      
+      let currentLeft = parseInt(character.style.left) || 50;
+      
+      if (direction === 'left' && currentLeft > 20) {
+        character.style.left = (currentLeft - 30) + 'px';
+        ball.style.left = (currentLeft - 30 + 60) + 'px';
+      } else if (direction === 'right' && currentLeft < areaWidth - 70) {
+        character.style.left = (currentLeft + 30) + 'px';
+        ball.style.left = (currentLeft + 30 + 60) + 'px';
+      } else if (direction === 'kick') {
+        ball.style.transition = 'all 1s ease-out';
+        ball.style.left = (areaWidth - 100) + 'px';
+        ball.style.bottom = '100px';
+        
+        setTimeout(() => {
+          const feedback = document.getElementById('sportsFeedback');
+          feedback.textContent = '¡Gol! Excelente jugada.';
+          feedback.className = 'game-feedback feedback-success';
+          feedback.style.display = 'block';
+          
+          setTimeout(() => {
+            ball.style.transition = 'all 0.3s ease';
+            ball.style.left = (currentLeft + 60) + 'px';
+            ball.style.bottom = '30px';
+            feedback.style.display = 'none';
+          }, 2000);
+        }, 1000);
+      }
+    }
+    
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+    
+    // Añadir animaciones CSS para los mensajes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

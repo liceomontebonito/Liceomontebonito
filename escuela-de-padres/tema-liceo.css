@@ -1,0 +1,55 @@
+/* ===== TEMA LICEO MONTEBONITO — unifica la identidad visual de los cursos ===== */
+/* Paleta del liceo: verde #2c5530 / #7AC943, naranja #FF6B35, azul cielo #87CEEB */
+
+:root {
+  --gradient: linear-gradient(135deg, #7AC943 0%, #2c5530 100%) !important;
+  --primary-color: #2c5530 !important;
+  --secondary-color: #7AC943 !important;
+  --accent-color: #FF6B35 !important;
+  --primary: #2c5530 !important;
+  --secondary: #7AC943 !important;
+}
+
+/* Encabezados / heroes de los cursos -> verde del liceo */
+.header, .hero, header, .course-header, .module-header, .intro,
+.hero-section, .curso-header {
+  background: linear-gradient(135deg, #87CEEB 0%, #7AC943 60%, #2c5530 100%) !important;
+}
+
+/* Botones principales -> naranja del liceo */
+.btn, .btn-login, .cta-button, .btn-primary, button.btn, .module-card .btn,
+.boton, .btn-comenzar, a.btn {
+  background: linear-gradient(135deg, #FF6B35 0%, #ff8c42 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.btn:hover, .btn-login:hover, .cta-button:hover, a.btn:hover { filter: brightness(1.05); }
+
+/* Numeros de modulo / insignias -> verde */
+.module-number, .modulo-numero, .numero-modulo, .step-number {
+  background: linear-gradient(135deg, #7AC943 0%, #6AB82E 100%) !important;
+  color: #ffffff !important;
+}
+
+h1, h2, h3 { color: #2c5530; }
+
+/* ===== Boton flotante "volver a Escuela de Padres" ===== */
+#liceo-volver {
+  position: fixed; left: 16px; bottom: 16px; z-index: 99999;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #2c5530 0%, #1e3d23 100%);
+  color: #ffffff !important; text-decoration: none;
+  padding: 11px 18px; border-radius: 50px;
+  font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 15px; font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#liceo-volver:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,0.3); }
+#liceo-volver .lv-logo {
+  width: 26px; height: 26px; border-radius: 50%; background: #7AC943;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px;
+}
+@media (max-width: 600px) {
+  #liceo-volver { font-size: 13px; padding: 9px 14px; left: 10px; bottom: 10px; }
+  #liceo-volver .lv-texto-largo { display: none; }
+}

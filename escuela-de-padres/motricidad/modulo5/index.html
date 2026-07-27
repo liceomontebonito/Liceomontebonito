@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Módulo 5: Recursos y Materiales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #5e72e4;
+      --secondary: #f5365c;
+      --accent: #fb6340;
+      --light: #f4f5f7;
+      --dark: #32325d;
+      --success: #2dce89;
+      --info: #11cdef;
+      --warning: #fb6340;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background 0.6s, color 0.6s;
+    }
+    /* Botón de modo oscuro mejorado */
+    #modo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #modo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    /* Navbar mejorada */
+    .navbar {
+      background: var(--gradient);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar-logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-logo i {
+      margin-right: 10px;
+    }
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    .navbar-menu li {
+      margin-left: 5px;
+    }
+    .navbar-menu a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .navbar-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    .navbar-menu a:hover::before {
+      width: 100%;
+    }
+    .navbar-menu a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* Contenedor principal mejorado */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    /* Hero section mejorada */
+    .hero {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      padding: 60px 40px;
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadein 1s;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: var(--gradient-3);
+      border-radius: 50%;
+      transform: translate(100px, -100px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      background: var(--gradient-2);
+      border-radius: 50%;
+      transform: translate(-100px, 100px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-weight: 500;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+    /* Secciones mejoradas */
+    .section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-3);
+      border-radius: 0 0 16px 16px;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gradient-3);
+      border-radius: 3px;
+    }
+    /* Tarjetas de recursos mejoradas */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .resource-card {
+      background: linear-gradient(135deg, #e6e6ff 0%, #f0f0ff 100%);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+      border-left: 5px solid var(--primary);
+    }
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: var(--gradient);
+      border-radius: 50%;
+      transform: translate(50px, -50px);
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .resource-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    .resource-header {
+      padding: 25px 25px 15px;
+      position: relative;
+      z-index: 1;
+    }
+    .resource-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    .resource-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .resource-content {
+      padding: 0 25px 25px;
+      position: relative;
+      z-index: 1;
+    }
+    .resource-links {
+      list-style: none;
+    }
+    .resource-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--dark);
+    }
+    .resource-link:hover {
+      background: white;
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .resource-link i {
+      margin-right: 10px;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    .resource-link:hover i {
+      color: var(--secondary);
+    }
+    /* Tarjetas de materiales mejoradas */
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .material-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .material-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .material-card:hover::before {
+      transform: scaleX(1);
+    }
+    .material-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    .material-header {
+      background: var(--gradient-2);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .material-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .material-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .material-content {
+      padding: 25px;
+    }
+    .material-list {
+      list-style: none;
+    }
+    .material-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .material-item:last-child {
+      border-bottom: none;
+    }
+    .material-item i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+    /* Sección de descargas mejorada */
+    .downloads-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f5ff 100%);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      border-left: 5px solid var(--info);
+    }
+    .downloads-title {
+      font-size: 1.8rem;
+      color: var(--info);
+      margin-bottom: 25px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    .downloads-title i {
+      margin-right: 10px;
+    }
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .download-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    .download-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .download-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .download-icon i {
+      color: white;
+      font-size: 1.5rem;
+    }
+    .download-info {
+      flex: 1;
+    }
+    .download-title {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    .download-description {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    .download-btn {
+      background: var(--gradient-3);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(17, 205, 239, 0.3);
+    }
+    /* Tips mejorados */
+    .tips {
+      background: rgba(79, 172, 254, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 4px solid var(--info);
+      position: relative;
+    }
+    .tips::before {
+      content: '\f05a';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--info);
+      opacity: 0.3;
+    }
+    .tips-title {
+      font-weight: 600;
+      color: var(--info);
+      margin-bottom: 10px;
+    }
+    /* Navegación entre módulos mejorada */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      background: var(--gradient);
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(94, 114, 228, 0.3);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      gap: 10px;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+    .btn:hover::before {
+      transform: translateY(0);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(94, 114, 228, 0.4);
+      color: white;
+    }
+    .btn-secondary {
+      background: var(--gradient-2);
+      box-shadow: 0 5px 15px rgba(245, 54, 108, 0.3);
+    }
+    .btn-secondary:hover {
+      box-shadow: 0 8px 25px rgba(245, 54, 108, 0.4);
+    }
+    .btn-info {
+      background: var(--gradient-3);
+      box-shadow: 0 5px 15px rgba(17, 205, 239, 0.3);
+    }
+    .btn-info:hover {
+      box-shadow: 0 8px 25px rgba(17, 205, 239, 0.4);
+    }
+    /* Footer mejorado */
+    .footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 20px;
+      margin-top: 50px;
+    }
+    .footer p {
+      margin-bottom: 15px;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .social-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    /* Modal de acceso denegado */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: var(--dark);
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .modal-description {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .access-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
+    }
+    /* Modo oscuro mejorado */
+    body.oscuro {
+      background: #111 !important;
+      color: #fff !important;
+    }
+    body.oscuro .navbar {
+      background: #222 !important;
+    }
+    body.oscuro .hero,
+    body.oscuro .section,
+    body.oscuro .material-card,
+    body.oscuro .download-card {
+      background: #222 !important;
+      color: #fff !important;
+    }
+    body.oscuro .hero-title,
+    body.oscuro .section-title,
+    body.oscuro .material-title,
+    body.oscuro .download-title {
+      color: #fff !important;
+    }
+    body.oscuro .hero-subtitle,
+    body.oscuro .download-description {
+      color: #aaa !important;
+    }
+    body.oscuro .resource-card {
+      background: #333 !important;
+    }
+    body.oscuro .resource-link {
+      background: #444 !important;
+      color: #fff !important;
+    }
+    body.oscuro .downloads-section {
+      background: #333 !important;
+    }
+    body.oscuro .material-item {
+      border-color: #444 !important;
+    }
+    body.oscuro .footer {
+      background: #000 !important;
+    }
+    body.oscuro .modal-content {
+      background: #333 !important;
+      color: #fff !important;
+    }
+    /* Responsive mejorado */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--gradient);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 100;
+      }
+      .navbar-menu.active {
+        transform: translateY(0);
+      }
+      .navbar-menu li {
+        margin: 10px 0;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+      .resources-grid,
+      .materials-grid,
+      .downloads-grid {
+        grid-template-columns: 1fr;
+      }
+      .navigation {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 576px) {
+      .hero {
+        padding: 40px 20px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .section {
+        padding: 30px 20px;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .downloads-section {
+        padding: 30px 20px;
+      }
+      .downloads-title {
+        font-size: 1.4rem;
+      }
+      .modal-content {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/escuela-de-padres/tema-liceo.css">
+</head>
+<body>
+<a id="liceo-volver" href="/escuela-de-padres/index.html"><span class="lv-logo">&#127891;</span><span><span class="lv-texto-largo">Escuela de Padres &middot; </span>Volver</span></a>
+
+  <button id="modo">
+    <i class="fas fa-moon"></i>
+    <span>Modo oscuro</span>
+  </button>
+  
+  <!-- Navbar mejorada -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <i class="fas fa-child"></i> Escuela de Padres · Liceo Montebonito
+      </a>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../modulo1/index.html">Módulo 1</a></li>
+        <li><a href="../modulo2/index.html">Módulo 2</a></li>
+        <li><a href="../modulo3/index.html">Módulo 3</a></li>
+        <li><a href="../modulo4/index.html">Módulo 4</a></li>
+        <li><a href="index.html">Módulo 5</a></li>
+      </ul>
+      <button class="navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Hero section mejorada -->
+    <section class="hero">
+      <h1 class="hero-title">Módulo 5: Recursos y Materiales</h1>
+      <p class="hero-subtitle">
+        Aquí encontrarás materiales, enlaces y videos para seguir aprendiendo sobre motricidad fina y gruesa.
+      </p>
+    </section>
+    
+    <!-- Sección: Recursos útiles -->
+    <section class="section">
+      <h2 class="section-title">Recursos útiles</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-header">
+            <div class="resource-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3 class="resource-title">Videos educativos</h3>
+          </div>
+          <div class="resource-content">
+            <ul class="resource-links">
+              <li>
+                <a href="https://www.youtube.com/results?search_query=motricidad+fina+para+niños" target="_blank" class="resource-link">
+                  <i class="fab fa-youtube"></i>
+                  Videos sobre motricidad fina
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/results?search_query=motricidad+gruesa+para+niños" target="_blank" class="resource-link">
+                  <i class="fab fa-youtube"></i>
+                  Videos sobre motricidad gruesa
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/results?search_query=juegos+motricidad+infantil" target="_blank" class="resource-link">
+                  <i class="fab fa-youtube"></i>
+                  Juegos para desarrollar motricidad
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-header">
+            <div class="resource-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3 class="resource-title">Artículos y guías</h3>
+          </div>
+          <div class="resource-content">
+            <ul class="resource-links">
+              <li>
+                <a href="https://www.guiainfantil.com/educacion/motricidad/" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  Guía Infantil: Motricidad
+                </a>
+              </li>
+              <li>
+                <a href="https://www.educapeques.com/escuela-de-padres/motricidad-fina.html" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  EducaPeques: Motricidad Fina
+                </a>
+              </li>
+              <li>
+                <a href="https://www.enfamilia.org/articulos/desarrollo/motricidad-infantil/" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  En Familia: Motricidad Infantil
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-header">
+            <div class="resource-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3 class="resource-title">Herramientas online</h3>
+          </div>
+          <div class="resource-content">
+            <ul class="resource-links">
+              <li>
+                <a href="https://www.orientacionandujar.es/herramientas/motricidad/" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  Test de evaluación motriz
+                </a>
+              </li>
+              <li>
+                <a href="https://www.aprendemosjuntos.com/actividades-motricidad/" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  Actividades por edades
+                </a>
+              </li>
+              <li>
+                <a href="https://www.fundaciononce.es/educacion/recursos-educativos/" target="_blank" class="resource-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  Recursos educativos ONCE
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tips">
+        <h3 class="tips-title">Consejo profesional</h3>
+        <p>
+          Explora estos recursos con tu hijo. Los videos y actividades interactivas son excelentes para aprender juntos y reforzar los conceptos vistos en el curso.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Sección: Materiales recomendados -->
+    <section class="section">
+      <h2 class="section-title">Materiales recomendados</h2>
+      <div class="materials-grid">
+        <div class="material-card">
+          <div class="material-header">
+            <div class="material-icon">
+              <i class="fas fa-hand-paper"></i>
+            </div>
+            <h3 class="material-title">Motricidad fina</h3>
+          </div>
+          <div class="material-content">
+            <ul class="material-list">
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Cuentas de diferentes tamaños</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Hilos y cordones gruesos</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Tijeras de seguridad</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Plastilina o masa para modelar</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Papeles de diferentes texturas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="material-card">
+          <div class="material-header">
+            <div class="material-icon">
+              <i class="fas fa-running"></i>
+            </div>
+            <h3 class="material-title">Motricidad gruesa</h3>
+          </div>
+          <div class="material-content">
+            <ul class="material-list">
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Almohadas y cojines</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Pelotas de diferentes tamaños</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Aros y conos</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Cuerda para saltar</span>
+              </li>
+              <li class="material-item">
+                <i class="fas fa-circle"></i>
+                <span>Colchoneta o alfombra gruesa</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Descargas -->
+    <section class="downloads-section">
+      <h2 class="downloads-title">
+        <i class="fas fa-download"></i>
+        Materiales descargables
+      </h2>
+      <div class="downloads-grid">
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="download-info">
+            <h3 class="download-title">Guía completa</h3>
+            <p class="download-description">PDF con todas las actividades del curso</p>
+          </div>
+          <button class="download-btn">Descargar</button>
+        </div>
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <div class="download-info">
+            <h3 class="download-title">Lista de verificación</h3>
+            <p class="download-description">Plantilla para evaluar el progreso</p>
+          </div>
+          <button class="download-btn">Descargar</button>
+        </div>
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="download-info">
+            <h3 class="download-title">Plan semanal</h3>
+            <p class="download-description">Organizador de actividades por semana</p>
+          </div>
+          <button class="download-btn">Descargar</button>
+        </div>
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="download-info">
+            <h3 class="download-title">Gráfico de progreso</h3>
+            <p class="download-description">Plantilla para visualizar avances</p>
+          </div>
+          <button class="download-btn">Descargar</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Navegación entre módulos -->
+    <div class="navigation">
+      <a href="../modulo4/index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+        Volver al Módulo 4
+      </a>
+      <a href="../index.html" class="btn btn-info">
+        <i class="fas fa-home"></i>
+        Ir al inicio
+      </a>
+    </div>
+    
+    <!-- Footer mejorado -->
+    <footer class="footer">
+      <p>Escuela de Padres · Liceo Montebonito &copy; 2025</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Modal de acceso denegado -->
+  <div id="accesoDenegadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="modal-title">Acceso Restringido</h2>
+      <p class="modal-description">Necesitas comprar el curso para acceder a este contenido. Por favor, regresa a la página principal y adquiere tu acceso.</p>
+      <button class="access-button" id="irAInicio">Ir a la página principal</button>
+    </div>
+  </div>
+  
+  <script>
+    // Verificar si el usuario tiene acceso al curso
+    document.addEventListener('DOMContentLoaded', function() {
+      const accesoAutorizado = localStorage.getItem('cursoAcceso');
+      
+      if (accesoAutorizado !== 'autorizado') {
+        // Mostrar modal de acceso denegado
+        const modal = document.getElementById('accesoDenegadoModal');
+        modal.style.display = 'flex';
+        
+        // Configurar botón para ir al inicio
+        document.getElementById('irAInicio').addEventListener('click', function() {
+          window.location.href = '../index.html';
+        });
+        
+        // Configurar cierre de modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+          modal.style.display = 'none';
+          window.location.href = '../index.html';
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            window.location.href = '../index.html';
+          }
+        });
+      } else {
+        // Si tiene acceso, inicializar el contenido del módulo
+        inicializarModulo();
+      }
+    });
+    
+    function inicializarModulo() {
+      // Funcionalidad de descarga (simulada)
+      document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const card = this.closest('.download-card');
+          const title = card.querySelector('.download-title').textContent;
+          
+          // Simular descarga
+          this.textContent = 'Descargando...';
+          this.disabled = true;
+          
+          setTimeout(() => {
+            this.textContent = 'Descargado';
+            setTimeout(() => {
+              this.textContent = 'Descargar';
+              this.disabled = false;
+            }, 2000);
+          }, 1500);
+        });
+      });
+    }
+    
+    // Animación de entrada
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s';
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.style.opacity = '1';
+    });
+    
+    // Transición al navegar
+    document.querySelectorAll('.btn, .navbar a, .resource-link, .download-btn').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (link.getAttribute('target') !== '_blank' && !link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          document.body.style.opacity = '0.2';
+          setTimeout(function() {
+            window.location.href = link.href;
+          }, 320);
+        }
+      });
+    });
+    
+    // Modo oscuro mejorado
+    document.getElementById('modo').onclick = function() {
+      document.body.classList.toggle('oscuro');
+      const icon = this.querySelector('i');
+      const text = this.querySelector('span');
+      
+      if (document.body.classList.contains('oscuro')) {
+        icon.className = 'fas fa-sun';
+        text.textContent = 'Modo claro';
+      } else {
+        icon.className = 'fas fa-moon';
+        text.textContent = 'Modo oscuro';
+      }
+    };
+    
+    // Toggle para menú móvil
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+      document.getElementById('navbar-menu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
