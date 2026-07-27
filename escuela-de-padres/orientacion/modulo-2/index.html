@@ -143,10 +143,29 @@ document.getElementById('verResultado').addEventListener('click', function(){
     bars.appendChild(row);
     setTimeout(function(){ row.querySelector('.bar-fill').style.width=Math.max(pct,8)+'%'; },50);
   });
-  var code=arr.slice(0,3).map(function(o){return o.t;}).join('');
-  document.getElementById('codigo').textContent=code;
-  document.getElementById('codeDesc').innerHTML='<strong>'+NOMBRES[arr[0].t]+':</strong> '+DESC[arr[0].t]+'<br><span style="font-size:.9rem;color:#556">Profesiones donde suele encajar: '+CARRERAS[arr[0].t]+'.</span>';
-  CURSO.save('riasec_code', code);
+  var vals=arr.map(function(o){return o.v;});
+  var maxV=vals[0], minV=vals[vals.length-1], rango=maxV-minV;
+  var dist={}; Array.prototype.forEach.call(qs,function(q){ dist[q.dataset.val]=(dist[q.dataset.val]||0)+1; });
+  var codeEl=document.getElementById('codigo'), descEl=document.getElementById('codeDesc');
+  if(rango<=2){
+    // Perfil poco diferenciado: no inventamos un codigo
+    codeEl.style.fontSize='1.05rem';
+    codeEl.textContent='Perfil poco diferenciado';
+    var motivo = (dist['1']>=24) ? 'Respondiste “Me da igual” en casi todas, así que el ejercicio no alcanza a distinguir tus intereses.' : 'Tus seis áreas quedaron muy parejas, sin una que sobresalga.';
+    descEl.innerHTML='<strong>¿Qué significa?</strong> '+motivo+' Esto <em>no</em> es un error ni algo malo: en la teoría de Holland se le llama un perfil <strong>poco diferenciado</strong>, y a tu edad es totalmente normal — puede ser que aún no hayas vivido suficientes experiencias para saber qué te atrae.'+
+      '<div style="margin-top:10px"><strong>Qué te conviene hacer:</strong><ul style="margin:6px 0 0 18px">'+
+      '<li>Vuelve a responder pensando en <strong>actividades concretas que ya hiciste</strong>, y marca con sinceridad lo que <strong>sí</strong> disfrutaste y lo que <strong>no</strong> (evita quedarte en “me da igual”).</li>'+
+      '<li>Prueba cosas nuevas: los intereses se descubren <strong>haciendo</strong> (Módulos 4 y 6).</li>'+
+      '<li>Conversa con personas de distintas profesiones.</li></ul></div>';
+    CURSO.save('riasec_code','');
+  } else {
+    var code=arr.slice(0,3).map(function(o){return o.t;}).join('');
+    codeEl.style.fontSize='1.3rem';
+    codeEl.textContent=code;
+    var caveat = (rango<=4) ? '<br><span style="color:#a5302c;font-size:.9rem">Tu perfil está poco marcado: tómalo como una pista suave, no como algo definitivo.</span>' : '';
+    descEl.innerHTML='<strong>'+NOMBRES[arr[0].t]+':</strong> '+DESC[arr[0].t]+'<br><span style="font-size:.9rem;color:#556">Profesiones donde suele encajar: '+CARRERAS[arr[0].t]+'.</span>'+caveat;
+    CURSO.save('riasec_code', code);
+  }
   CURSO.save('riasec_scores', JSON.stringify(punt));
   document.getElementById('resultado').style.display='block';
   document.getElementById('resultado').scrollIntoView({behavior:'smooth'});
