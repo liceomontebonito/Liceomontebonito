@@ -72,6 +72,7 @@
   <div class="completo-box">
     <button class="btn btn-naranja" id="completar" disabled>🏆 Finalizar el curso</button>
     <div style="margin-top:14px"><a id="nextLink" class="btn btn-verde" href="../index.html" style="display:none">Volver al índice ✓</a></div>
+    <div style="margin-top:6px"><a id="avisarLiceo" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-decoration:none;padding:12px 24px;border-radius:50px;font-weight:700;font-family:'Segoe UI',Tahoma,sans-serif;box-shadow:0 5px 14px rgba(18,140,126,.3)">📲 Avisar al liceo que terminé</a></div>
   </div>
 
   <div class="biblio">
@@ -156,5 +157,6 @@ CURSO.quiz('quiz', [
 
 CURSO.setupComplete(6,'completar','../index.html');
 </script>
+<script>(function(){var b=document.getElementById("avisarLiceo");if(!b)return;var fam="";try{fam=localStorage.getItem("ep_familia")||"";}catch(e){}var txt="Hola 👋 "+(fam?("Somos la "+fam+" y "):"")+"terminamos el curso de Orientación Vocacional de la Escuela de Padres. 🎓";b.href="https://wa.me/573126540548?text="+encodeURIComponent(txt);})();</script>
 </body>
 </html>

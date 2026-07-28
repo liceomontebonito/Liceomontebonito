@@ -620,7 +620,7 @@
             <p style="margin-bottom: 2rem; color: #666;">Una vez que hayas creado tu plan personalizado y revisado todas las secciones, marca el módulo como completado.</p>
             <button id="completeModuleBtn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease;" onclick="completeModule()">
                 ✅ Completar Módulo 5
-            </button>
+            </button><br><a id="avisarLiceo" href="#" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-decoration:none;padding:12px 24px;border-radius:50px;font-weight:700;font-family:'Segoe UI',Tahoma,sans-serif;box-shadow:0 5px 14px rgba(18,140,126,.3)">📲 Avisar al liceo que terminé</a>
         </div>
         
         <!-- Navegación del módulo -->
@@ -963,7 +963,8 @@
                                 </div>
                             </div>
                         `).join('')}
-                    </body>
+                    <script>(function(){var b=document.getElementById("avisarLiceo");if(!b)return;var fam="";try{fam=localStorage.getItem("ep_familia")||"";}catch(e){}var txt="Hola 👋 "+(fam?("Somos la "+fam+" y "):"")+"terminamos el curso de Estimulación del Lenguaje de la Escuela de Padres. 🎓";b.href="https://wa.me/573126540548?text="+encodeURIComponent(txt);})();</script>
+</body>
                 </html>
             `);
             printWindow.document.close();
