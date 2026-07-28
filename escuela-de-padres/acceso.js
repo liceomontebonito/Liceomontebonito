@@ -80,7 +80,10 @@ window.LICEO_ACCESO = {
   },
   gate: function () {
     try {
-      if (localStorage.getItem('ep_familia')) return; // ya autorizado en este dispositivo
+      var guardado = localStorage.getItem('ep_codigo');
+      if (guardado && this.familias[guardado]) return; // autorizado y su código sigue vigente
+      // código revocado o inexistente: limpiar y volver a pedir
+      localStorage.removeItem('ep_familia'); localStorage.removeItem('ep_codigo');
     } catch (e) {}
     var self = this;
     var raiz = document.body || document.documentElement;
