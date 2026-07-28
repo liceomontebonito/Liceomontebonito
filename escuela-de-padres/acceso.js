@@ -92,7 +92,7 @@ window.LICEO_ACCESO = {
     ov.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:linear-gradient(135deg,#2c5530 0%,#1e3d23 100%);display:flex;align-items:center;justify-content:center;padding:20px;font-family:Segoe UI,Tahoma,sans-serif';
     ov.innerHTML =
       '<div style="background:#fff;max-width:430px;width:100%;border-radius:20px;padding:34px 28px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35)">' +
-        '<div style="font-size:2.6rem;line-height:1">\U0001F393</div>' +
+        '<div style="font-size:2.6rem;line-height:1">🎓</div>' +
         '<h2 style="color:#2c5530;margin:8px 0 4px;font-size:1.5rem">Escuela de Padres</h2>' +
         '<p style="color:#5a6b5e;margin:0 0 18px;font-size:.98rem">Contenido exclusivo para las familias del <strong>Liceo Psicopedagógico Montebonito</strong>. Ingresa el código de tu familia.</p>' +
         '<input id="ep-code" type="text" placeholder="Tu código de familia" autocomplete="off" style="width:100%;padding:13px;border:1.5px solid #cfe0c0;border-radius:10px;font-size:1rem;text-align:center;text-transform:uppercase;box-sizing:border-box">' +
